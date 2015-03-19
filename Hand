@@ -1,0 +1,34 @@
+public class Hand {
+  public Karte head = new Karte("");
+  public static Hand hand1 = new Hand();
+  public static Hand hand2 = new Hand();
+  public static Hand hand3 = new Hand();
+	
+  public Hand() {
+    head.next = null;
+  }
+  
+  public void delete(Karte vorgaenger) {
+    vorgaenger.next = vorgaenger.next.next;    
+  }
+  
+  public void add(Karte vorgaenger, String wert) {
+    Karte newKarte = new Karte(wert);
+    newKarte.next = vorgaenger.next;
+    vorgaenger.next = newKarte;
+  }
+  
+  public void add(Karte vorgaenger, Karte wert) {
+		Karte newKarte = wert;
+		newKarte.next = vorgaenger.next;
+		vorgaenger.next = newKarte;
+	}
+
+  public void ausgeben() {
+    Karte currentKarte = head;
+    while (currentKarte != null) {
+      System.out.println(""+currentKarte.element);
+      currentKarte = currentKarte.next;
+    }   
+  }
+}
