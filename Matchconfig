@@ -1,4 +1,13 @@
 public class Matchconfig {
+
 	public static int spieler;
 	public static int startspieler;
+
+	public static void setSpielerzahl(int wert) {
+		spieler = wert;
+	}
+
+	public void setStartspieler(int wert) {
+		startspieler = wert;
+	}
 }
