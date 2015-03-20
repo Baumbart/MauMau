@@ -1,6 +1,6 @@
 public class Ablage {
 	public Karte head = new Karte("");
-	public static Ablage Ablage = new Ablage();
+	public static Ablage ablage = new Ablage();
 
 	public Ablage() {
 		head.next = null;
