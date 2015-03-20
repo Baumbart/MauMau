@@ -10,8 +10,7 @@ public class Gameconfig {
 		if (input == 2) {
 			System.out.print("Welcher Spieler soll starten? (1/2)");
 			input = scanner.nextInt();
-		} 
-		else {
+		} else {
 			System.out.print("Welcher Spieler soll starten? (1/2/3)");
 			input = scanner.nextInt();
 		}
