@@ -1,10 +1,15 @@
 import java.util.*;
 
 public class Kartenstapel {
-	private static Vergleichstabelle vgl = new Vergleichstabelle();
+	private Vergleichstabelle vgl = new Vergleichstabelle();
 	public static Stack<String> kartenstapel = new Stack<String>();
+	public static Ablage ablage = new Ablage();
 
-	public static void mischen() {
+	public Kartenstapel() {
+		mischen();
+	}
+
+	public void mischen() {
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 8; j++) {
 				kartenstapel.push(vgl.getVergleich(j, i));
@@ -13,13 +18,13 @@ public class Kartenstapel {
 		Collections.shuffle(kartenstapel);
 	}
 
-	public static void austeilen() {
+	public void austeilen() {
 		if (Matchconfig.spieler == 2) {
 			int i = 0;
 			int j = 1;
 
 			while (i < 14) {
-				Karte current = new Karte("" + kartenstapel.pop());
+				Karte current = new Karte(kartenstapel.pop());
 				if (j == 1) {
 					Hand.hand1.add(Hand.hand1.head, current);
 				} else {
@@ -33,10 +38,8 @@ public class Kartenstapel {
 		if (Matchconfig.spieler == 3) {
 			int i = 0;
 			int j = 1;
-
 			while (i < 21) {
-				Karte current = new Karte("" + kartenstapel.pop());
-
+				Karte current = new Karte(kartenstapel.pop());
 				if (j == 1) {
 					Hand.hand1.add(Hand.hand1.head, current);
 				}
@@ -50,6 +53,20 @@ public class Kartenstapel {
 				i++;
 				j++;
 			}
+		}
+		Karte current = new Karte(kartenstapel.pop());
+		ablage.push(current);
+	}
+
+	public void reuse() {
+		if (kartenstapel.empty() == true) {
+			Stack<String> temp = new Stack<String>();
+			temp.push(ablage.pop());
+			while (ablage.head.next != null) {
+				kartenstapel.push(ablage.pop());
+			}
+			Collections.shuffle(kartenstapel);
+			ablage.push(temp.pop());
 		}
 	}
 }
