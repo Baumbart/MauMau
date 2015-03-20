@@ -1,0 +1,19 @@
+import java.util.*;
+
+public class Gameconfig {
+	public static Scanner scanner = new Scanner(System.in);
+
+	public void konfiguration() {
+		System.out.print("Bitte wählen Sie die Spieleranzahl! (2/3)");
+		int input = scanner.nextInt();
+
+		if (input == 2) {
+			System.out.print("Welcher Spieler soll starten? (1/2)");
+			input = scanner.nextInt();
+		} 
+		else {
+			System.out.print("Welcher Spieler soll starten? (1/2/3)");
+			input = scanner.nextInt();
+		}
+	}
+}
