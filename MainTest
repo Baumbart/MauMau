@@ -1,12 +1,12 @@
 public class MainTest {
 	public static void main(String[] args) {
-		Matchconfig.spieler = 2;
+		Matchconfig.setSpielerzahl(2);
 		Kartenstapel test = new Kartenstapel();
 
 		test.austeilen();
 
-		for (int i = 0 ; i < 17 ; i++ ){
-		Kartenstapel.ablage.push(Kartenstapel.kartenstapel.pop());
+		for (int i = 0; i < 17; i++) {
+			Kartenstapel.ablage.push(Kartenstapel.kartenstapel.pop());
 		}
 
 		test.reuse();
