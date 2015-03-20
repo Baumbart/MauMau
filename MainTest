@@ -5,11 +5,13 @@ public class MainTest {
 
 		test.austeilen();
 
-		for (int i = 0; i < 17; i++) {
-			Kartenstapel.ablage.push(Kartenstapel.kartenstapel.pop());
+		for (int i = 0; i < 16; i++) {
+			Ablage.ablage.push(Kartenstapel.kartenstapel.pop());
 		}
 
+		Hand.hand1.legen(Hand.hand1.head.next);
 		test.reuse();
+		Hand.hand1.ziehen();
 
 		System.out.print("Hand 1: ");
 		Hand.hand1.ausgeben();
@@ -18,6 +20,6 @@ public class MainTest {
 		System.out.println("Kartenstapel: " + Kartenstapel.kartenstapel);
 		System.out.println();
 		System.out.print("Ablage: ");
-		Kartenstapel.ablage.ausgeben();
+		Ablage.ablage.ausgeben();
 	}
 }
