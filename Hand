@@ -1,44 +1,49 @@
 public class Hand {
-  public Karte head = new Karte("");
-  public static Hand hand1 = new Hand();
-  public static Hand hand2 = new Hand();
-  public static Hand hand3 = new Hand();
+	public Karte head = new Karte("");
+	public static Hand hand1 = new Hand();
+	public static Hand hand2 = new Hand();
+	public static Hand hand3 = new Hand();
 
-  public Hand() {
-    head.next = null;
-  }
+	public Hand() {
+		head.next = null;
+	}
 
-  public void delete(Karte vorgaenger) {
-    vorgaenger.next = vorgaenger.next.next;
-  }
+	public void ziehen() {
+		add(head, Kartenstapel.kartenstapel.pop());
+	}
 
-  public void add(Karte vorgaenger, String wert) {
-    Karte newKarte = new Karte(wert);
-    newKarte.next = vorgaenger.next;
-    vorgaenger.next = newKarte;
-  }
+	public void legen(Karte vorgaenger) {
+		String current = vorgaenger.next.element;
+		vorgaenger.next = vorgaenger.next.next;
+		Ablage.ablage.push(current);
+	}
 
-  public void add(Karte vorgaenger, Karte wert) {
-    Karte newKarte = wert;
-    newKarte.next = vorgaenger.next;
-    vorgaenger.next = newKarte;
-  }
+	public void add(Karte vorgaenger, String wert) {
+		Karte newKarte = new Karte(wert);
+		newKarte.next = vorgaenger.next;
+		vorgaenger.next = newKarte;
+	}
 
-  public void ausgeben() {
-    Karte currentKarte = head.next;
-    System.out.print("[");
-    while (currentKarte != null) {
-      if (currentKarte.next != null) {
-        System.out.print(currentKarte.element + ", ");
-        currentKarte = currentKarte.next;
-      } 
-      else {
-        System.out.print(currentKarte.element + "");
-        currentKarte = currentKarte.next;
-      }
-    }
-    System.out.print("]");
-    System.out.println();
-    System.out.println();
-  }
+	public void add(Karte vorgaenger, Karte wert) {
+		Karte newKarte = wert;
+		newKarte.next = vorgaenger.next;
+		vorgaenger.next = newKarte;
+	}
+
+	public void ausgeben() {
+		Karte currentKarte = head.next;
+		System.out.print("[");
+		while (currentKarte != null) {
+			if (currentKarte.next != null) {
+				System.out.print(currentKarte.element + ", ");
+				currentKarte = currentKarte.next;
+			} else {
+				System.out.print(currentKarte.element + "");
+				currentKarte = currentKarte.next;
+			}
+		}
+		System.out.print("]");
+		System.out.println();
+		System.out.println();
+	}
 }
