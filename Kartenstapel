@@ -3,7 +3,6 @@ import java.util.*;
 public class Kartenstapel {
 	private Vergleichstabelle vgl = new Vergleichstabelle();
 	public static Stack<String> kartenstapel = new Stack<String>();
-	public static Ablage ablage = new Ablage();
 
 	public Kartenstapel() {
 		mischen();
@@ -55,18 +54,18 @@ public class Kartenstapel {
 			}
 		}
 		Karte current = new Karte(kartenstapel.pop());
-		ablage.push(current);
+		Ablage.ablage.push(current);
 	}
 
 	public void reuse() {
 		if (kartenstapel.empty() == true) {
 			Stack<String> temp = new Stack<String>();
-			temp.push(ablage.pop());
-			while (ablage.head.next != null) {
-				kartenstapel.push(ablage.pop());
+			temp.push(Ablage.ablage.pop());
+			while (Ablage.ablage.head.next != null) {
+				kartenstapel.push(Ablage.ablage.pop());
 			}
 			Collections.shuffle(kartenstapel);
-			ablage.push(temp.pop());
+			Ablage.ablage.push(temp.pop());
 		}
 	}
 }
