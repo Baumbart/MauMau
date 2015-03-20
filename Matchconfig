@@ -1,3 +1,4 @@
 public class Matchconfig {
 	public static int spieler;
+	public static int startspieler;
 }
