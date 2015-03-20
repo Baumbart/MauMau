@@ -1,0 +1,48 @@
+public class Ablage {
+	public Karte head = new Karte("");
+	public static Ablage Ablage = new Ablage();
+
+	public Ablage() {
+		head.next = null;
+	}
+
+	public String pop() {
+		String current = head.next.element;
+		head.next = head.next.next;
+		return current;
+	}
+
+	public void push(String wert) {
+		Karte newKarte = new Karte(wert);
+		newKarte.next = head.next;
+		head.next = newKarte;
+	}
+
+	public void push(Karte wert) {
+		Karte newKarte = wert;
+		newKarte.next = head.next;
+		head.next = newKarte;
+	}
+
+	public String peek() {
+		String current = head.next.element;
+		return current;
+	}
+
+	public void ausgeben() {
+		Karte currentKarte = head.next;
+		System.out.print("[");
+		while (currentKarte != null) {
+			if (currentKarte.next != null) {
+				System.out.print(currentKarte.element + ", ");
+				currentKarte = currentKarte.next;
+			} else {
+				System.out.print(currentKarte.element + "");
+				currentKarte = currentKarte.next;
+			}
+		}
+		System.out.print("]");
+		System.out.println();
+		System.out.println();
+	}
+}
