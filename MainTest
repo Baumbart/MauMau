@@ -1,13 +1,23 @@
 public class MainTest {
 	public static void main(String[] args) {
 		Matchconfig.spieler = 2;
+		Kartenstapel test = new Kartenstapel();
 
-		Kartenstapel.mischen();
-		Kartenstapel.austeilen();
+		test.austeilen();
 
+		for (int i = 0 ; i < 17 ; i++ ){
+		Kartenstapel.ablage.push(Kartenstapel.kartenstapel.pop());
+		}
+
+		test.reuse();
+
+		System.out.print("Hand 1: ");
 		Hand.hand1.ausgeben();
+		System.out.print("Hand 2: ");
 		Hand.hand2.ausgeben();
-
-		System.out.println("" + Kartenstapel.kartenstapel);
+		System.out.println("Kartenstapel: " + Kartenstapel.kartenstapel);
+		System.out.println();
+		System.out.print("Ablage: ");
+		Kartenstapel.ablage.ausgeben();
 	}
 }
