@@ -40,7 +40,7 @@ public class Hand {
 		return size;
 	}
 
-	public void ausgeben() {
+	public void ausgebenTest() {
 		Karte currentKarte = head.next;
 		System.out.print("[");
 		while (currentKarte != null) {
@@ -54,6 +54,20 @@ public class Hand {
 		}
 		System.out.print("]");
 		System.out.println();
+		System.out.println();
+	}
+
+	public void ausgeben() {
+		Karte currentKarte = head.next;
+		while (currentKarte != null) {
+			if (currentKarte.next != null) {
+				System.out.print(currentKarte.element + ", ");
+				currentKarte = currentKarte.next;
+			} else {
+				System.out.print(currentKarte.element);
+				currentKarte = currentKarte.next;
+			}
+		}
 		System.out.println();
 	}
 }
