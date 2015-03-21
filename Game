@@ -1,10 +1,42 @@
 import java.util.*;
 
-public class Gameconfig {
+public class Game {
 	public static Scanner scanner = new Scanner(System.in);
 	public int aktuell;
 	public int max;
 	public int handkarten;
+	Kartenstapel kartenstapel = new Kartenstapel();
+
+	public Game() {
+		boolean win = false;
+		konfiguration();
+
+		while (win == false) {
+			zug();
+			
+			if (max == 2) {
+				if (Hand.hand1.size() == 0) {
+					System.out.println("Spieler 1 hat gewonnen!");
+				}
+				if (Hand.hand2.size() == 0) {
+					System.out.println("Spieler 2 hat gewonnen!");
+				}
+				win = true;
+			}
+			if (max == 3) {
+				if (Hand.hand1.size() == 0) {
+					System.out.println("Spieler 1 hat gewonnen!");
+				}
+				if (Hand.hand2.size() == 0) {
+					System.out.println("Spieler 2 hat gewonnen!");
+				}
+				if (Hand.hand3.size() == 0) {
+					System.out.println("Spieler 3 hat gewonnen!");
+				}
+				win = true;
+			}
+		}
+	}
 
 	public void konfiguration() {
 		System.out.println("Bitte wählen Sie die Spieleranzahl! (2/3)");
@@ -21,15 +53,12 @@ public class Gameconfig {
 		}
 		System.out.println();
 		aktuell = input;
+		kartenstapel.austeilen();
 	}
 
 	public void zug() {
-		Kartenstapel kartenstapel = new Kartenstapel();
-		kartenstapel.austeilen();
-
 		System.out.println("Spieler " + aktuell
 				+ ", machen Sie bitte Ihren Zug!");
-
 		if (max == 2) {
 			if (aktuell == 1) {
 				handkarten = Hand.hand1.size();
@@ -57,7 +86,7 @@ public class Gameconfig {
 		}
 		System.out.print(")'");
 		int input = scanner.nextInt();
-
+		
 		if (max == 2) {
 			if (aktuell == 1) {
 				Karte current = Hand.hand1.head;
