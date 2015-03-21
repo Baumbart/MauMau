@@ -30,6 +30,16 @@ public class Hand {
 		vorgaenger.next = newKarte;
 	}
 
+	public int size() {
+		Karte current = head;
+		int size = 0;
+		while (current.next != null) {
+			current = current.next;
+			size++;
+		}
+		return size;
+	}
+
 	public void ausgeben() {
 		Karte currentKarte = head.next;
 		System.out.print("[");
