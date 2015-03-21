@@ -1,19 +1,128 @@
 import java.util.*;
 
 public class Game {
-	public static Scanner scanner = new Scanner(System.in);
-	public int aktuell;
-	public int max;
-	public int handkarten;
+	Scanner scanner = new Scanner(System.in);
+	int aktuell;
+	int max;
+	int handkarten;
+	public Hand spieler;
+	boolean win = false;
 	Kartenstapel kartenstapel = new Kartenstapel();
 
 	public Game() {
-		boolean win = false;
 		konfiguration();
+		start();
+	}
 
-		while (win == false) {
-			zug();
-			
+	public void konfiguration() {
+		System.out.println("Bitte wählen Sie die Spieleranzahl! (2/3)");
+		int input = scanner.nextInt();
+		Matchconfig.setSpielerzahl(input);
+		max = input;
+		System.out.println();
+
+		if (input == 2) {
+			System.out.println("Welcher Spieler soll starten? (1/2)");
+			input = scanner.nextInt();
+		} else {
+			System.out.println("Welcher Spieler soll starten? (1/2/3)");
+			input = scanner.nextInt();
+		}
+		System.out.println();
+		aktuell = input;
+		kartenstapel.austeilen();
+	}
+
+	public void start() {
+		System.out.println("Spieler " + aktuell
+				+ ", machen Sie bitte Ihren Zug!");
+		if (max == 2) {
+			if (aktuell == 1) {
+				handkarten = Hand.hand1.size();
+				spieler = Hand.hand1;
+			}
+			if (aktuell == 2) {
+				handkarten = Hand.hand2.size();
+				spieler = Hand.hand1;
+			}
+		} else {
+			if (aktuell == 1) {
+				handkarten = Hand.hand1.size();
+				spieler = Hand.hand1;
+			}
+			if (aktuell == 2) {
+				handkarten = Hand.hand2.size();
+				spieler = Hand.hand2;
+			}
+			if (aktuell == 3) {
+				handkarten = Hand.hand3.size();
+				spieler = Hand.hand3;
+			}
+		}
+		System.out.println();
+		System.out.print("[Handkarten]: ");
+		spieler.ausgeben();
+		System.out.print("[Aktuell]: ");
+		Ablage.ablage.ausgeben();
+		System.out.print("[Zug]: 'Ich lege Karte (");
+		for (int i = 1; i <= handkarten; i++) {
+			System.out.print(i);
+			if (i != handkarten) {
+				System.out.print("/");
+			}
+		}
+		System.out.print(")'");
+		System.out.println();
+		int input = scanner.nextInt();
+
+		if (max == 2) {
+			if (aktuell == 1) {
+				Karte current = Hand.hand1.head;
+				for (int i = 0; i < input - 1; i++) {
+					current = current.next;
+				}
+				Hand.hand1.legen(current);
+			}
+			if (aktuell == 2) {
+				Karte current = Hand.hand2.head;
+				for (int i = 0; i < input - 1; i++) {
+					current = current.next;
+				}
+				Hand.hand2.legen(current);
+			}
+		} else {
+			if (aktuell == 1) {
+				Karte current = Hand.hand1.head;
+				for (int i = 0; i < input - 1; i++) {
+					current = current.next;
+				}
+				Hand.hand1.legen(current);
+			}
+			if (aktuell == 2) {
+				Karte current = Hand.hand2.head;
+				for (int i = 0; i < input - 1; i++) {
+					current = current.next;
+				}
+				Hand.hand2.legen(current);
+			}
+			if (aktuell == 3) {
+				Karte current = Hand.hand3.head;
+				for (int i = 0; i < input - 1; i++) {
+					current = current.next;
+				}
+				Hand.hand3.legen(current);
+			}
+		}
+		if (aktuell != max) {
+			aktuell++;
+		} else {
+			aktuell = 1;
+		}
+		System.out.println();
+
+		if (win == false) {
+			start();
+		} else {
 			if (max == 2) {
 				if (Hand.hand1.size() == 0) {
 					System.out.println("Spieler 1 hat gewonnen!");
@@ -21,7 +130,6 @@ public class Game {
 				if (Hand.hand2.size() == 0) {
 					System.out.println("Spieler 2 hat gewonnen!");
 				}
-				win = true;
 			}
 			if (max == 3) {
 				if (Hand.hand1.size() == 0) {
@@ -33,114 +141,6 @@ public class Game {
 				if (Hand.hand3.size() == 0) {
 					System.out.println("Spieler 3 hat gewonnen!");
 				}
-				win = true;
-			}
-		}
-	}
-
-	public void konfiguration() {
-		System.out.println("Bitte wählen Sie die Spieleranzahl! (2/3)");
-		int input = scanner.nextInt();
-		max = input;
-		System.out.println();
-
-		if (input == 2) {
-			System.out.println("Welcher Spieler soll starten? (1/2)");
-			input = scanner.nextInt();
-		} else {
-			System.out.print("Welcher Spieler soll starten? (1/2/3)");
-			input = scanner.nextInt();
-		}
-		System.out.println();
-		aktuell = input;
-		kartenstapel.austeilen();
-	}
-
-	public void zug() {
-		System.out.println("Spieler " + aktuell
-				+ ", machen Sie bitte Ihren Zug!");
-		if (max == 2) {
-			if (aktuell == 1) {
-				handkarten = Hand.hand1.size();
-			}
-			if (aktuell == 2) {
-				handkarten = Hand.hand2.size();
-			}
-		} else {
-			if (aktuell == 1) {
-				handkarten = Hand.hand1.size();
-			}
-			if (aktuell == 2) {
-				handkarten = Hand.hand2.size();
-			}
-			if (aktuell == 3) {
-				handkarten = Hand.hand3.size();
-			}
-			System.out.print("'Ich lege Karte (");
-			for (int i = 0; i < handkarten; i++) {
-				System.out.print("" + i);
-				if (i != handkarten) {
-					System.out.print("/");
-				}
-			}
-		}
-		System.out.print(")'");
-		int input = scanner.nextInt();
-		
-		if (max == 2) {
-			if (aktuell == 1) {
-				Karte current = Hand.hand1.head;
-				for (int i = input; i < input; i++) {
-					current = current.next;
-				}
-				Hand.hand1.legen(current);
-			}
-			if (aktuell == 2) {
-				Karte current = Hand.hand2.head;
-				for (int i = input; i < input; i++) {
-					current = current.next;
-				}
-				Hand.hand2.legen(current);
-			}
-		} else {
-			if (aktuell == 1) {
-				Karte current = Hand.hand1.head;
-				for (int i = input; i < input; i++) {
-					current = current.next;
-				}
-				Hand.hand1.legen(current);
-			}
-			if (aktuell == 2) {
-				Karte current = Hand.hand2.head;
-				for (int i = input; i < input; i++) {
-					current = current.next;
-				}
-				Hand.hand2.legen(current);
-			}
-			if (aktuell == 3) {
-				Karte current = Hand.hand3.head;
-				for (int i = input; i < input; i++) {
-					current = current.next;
-				}
-				Hand.hand3.legen(current);
-			}
-		}
-		if (max == 2) {
-			if (aktuell == 1) {
-				aktuell++;
-			}
-			if (aktuell == 2) {
-				aktuell = 1;
-			}
-		} else {
-			if (aktuell == 1) {
-				aktuell++;
-			}
-			if (aktuell == 2) {
-				aktuell++;
-			}
-			if (aktuell == 3) {
-				aktuell = 1;
 			}
 		}
 	}
