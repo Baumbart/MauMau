@@ -14,16 +14,15 @@ public class MainTest {
 		Hand.hand1.ziehen();
 
 		System.out.print("Hand 1: ");
-		Hand.hand1.ausgeben();
+		Hand.hand1.ausgebenTest();
 		System.out.print("Hand 2: ");
-		Hand.hand2.ausgeben();
+		Hand.hand2.ausgebenTest();
 		System.out.println("Kartenstapel: " + Kartenstapel.kartenstapel);
 		System.out.println();
 		System.out.print("Ablage: ");
-		Ablage.ablage.ausgeben();
+		Ablage.ablage.ausgebenTest();
 		System.out.println("Handkarten Hand 1: [" + Hand.hand1.size() + "]");
 		System.out.println();
 		System.out.println("Handkarten Hand 2: [" + Hand.hand2.size() + "]");
 	}
 }
-
