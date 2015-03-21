@@ -21,5 +21,9 @@ public class MainTest {
 		System.out.println();
 		System.out.print("Ablage: ");
 		Ablage.ablage.ausgeben();
+		System.out.println("Handkarten Hand 1: [" + Hand.hand1.size() + "]");
+		System.out.println();
+		System.out.println("Handkarten Hand 2: [" + Hand.hand2.size() + "]");
 	}
 }
+
