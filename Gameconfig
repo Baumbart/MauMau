@@ -2,17 +2,117 @@ import java.util.*;
 
 public class Gameconfig {
 	public static Scanner scanner = new Scanner(System.in);
+	public int aktuell;
+	public int max;
+	public int handkarten;
 
 	public void konfiguration() {
-		System.out.print("Bitte wählen Sie die Spieleranzahl! (2/3)");
+		System.out.println("Bitte wählen Sie die Spieleranzahl! (2/3)");
 		int input = scanner.nextInt();
+		max = input;
+		System.out.println();
 
 		if (input == 2) {
-			System.out.print("Welcher Spieler soll starten? (1/2)");
+			System.out.println("Welcher Spieler soll starten? (1/2)");
 			input = scanner.nextInt();
 		} else {
 			System.out.print("Welcher Spieler soll starten? (1/2/3)");
 			input = scanner.nextInt();
+		}
+		System.out.println();
+		aktuell = input;
+	}
+
+	public void zug() {
+		Kartenstapel kartenstapel = new Kartenstapel();
+		kartenstapel.austeilen();
+
+		System.out.println("Spieler " + aktuell
+				+ ", machen Sie bitte Ihren Zug!");
+
+		if (max == 2) {
+			if (aktuell == 1) {
+				handkarten = Hand.hand1.size();
+			}
+			if (aktuell == 2) {
+				handkarten = Hand.hand2.size();
+			}
+		} else {
+			if (aktuell == 1) {
+				handkarten = Hand.hand1.size();
+			}
+			if (aktuell == 2) {
+				handkarten = Hand.hand2.size();
+			}
+			if (aktuell == 3) {
+				handkarten = Hand.hand3.size();
+			}
+			System.out.print("'Ich lege Karte (");
+			for (int i = 0; i < handkarten; i++) {
+				System.out.print("" + i);
+				if (i != handkarten) {
+					System.out.print("/");
+				}
+			}
+		}
+		System.out.print(")'");
+		int input = scanner.nextInt();
+
+		if (max == 2) {
+			if (aktuell == 1) {
+				Karte current = Hand.hand1.head;
+				for (int i = input; i < input; i++) {
+					current = current.next;
+				}
+				Hand.hand1.legen(current);
+			}
+			if (aktuell == 2) {
+				Karte current = Hand.hand2.head;
+				for (int i = input; i < input; i++) {
+					current = current.next;
+				}
+				Hand.hand2.legen(current);
+			}
+		} else {
+			if (aktuell == 1) {
+				Karte current = Hand.hand1.head;
+				for (int i = input; i < input; i++) {
+					current = current.next;
+				}
+				Hand.hand1.legen(current);
+			}
+			if (aktuell == 2) {
+				Karte current = Hand.hand2.head;
+				for (int i = input; i < input; i++) {
+					current = current.next;
+				}
+				Hand.hand2.legen(current);
+			}
+			if (aktuell == 3) {
+				Karte current = Hand.hand3.head;
+				for (int i = input; i < input; i++) {
+					current = current.next;
+				}
+				Hand.hand3.legen(current);
+			}
+		}
+		if (max == 2) {
+			if (aktuell == 1) {
+				aktuell++;
+			}
+			if (aktuell == 2) {
+				aktuell = 1;
+			}
+		} else {
+			if (aktuell == 1) {
+				aktuell++;
+			}
+			if (aktuell == 2) {
+				aktuell++;
+			}
+			if (aktuell == 3) {
+				aktuell = 1;
+			}
 		}
 	}
 }
