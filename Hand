@@ -40,6 +40,22 @@ public class Hand {
 		return size;
 	}
 
+	public boolean vergleich(Karte handKarte) {
+		boolean vergleich = false;
+		String handWert = handKarte.next.element;
+		String ablageWert = Ablage.ablage.peek();
+
+		char handWert1 = handWert.charAt(0);
+		char handWert2 = handWert.charAt(1);
+		char ablageWert1 = ablageWert.charAt(0);
+		char ablageWert2 = ablageWert.charAt(1);
+
+		if (handWert1 == ablageWert1 || handWert2 == ablageWert2) {
+			vergleich = true;
+		}
+		return vergleich;
+	}
+
 	public void ausgebenTest() {
 		Karte currentKarte = head.next;
 		System.out.print("[");
