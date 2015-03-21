@@ -43,7 +43,7 @@ public class Game {
 			}
 			if (aktuell == 2) {
 				handkarten = Hand.hand2.size();
-				spieler = Hand.hand1;
+				spieler = Hand.hand2;
 			}
 		} else {
 			if (aktuell == 1) {
@@ -81,14 +81,22 @@ public class Game {
 				for (int i = 0; i < input - 1; i++) {
 					current = current.next;
 				}
-				Hand.hand1.legen(current);
+				if (Hand.hand1.vergleich(current) == true) {
+					Hand.hand1.legen(current);
+				} else {
+					start();
+				}
 			}
 			if (aktuell == 2) {
 				Karte current = Hand.hand2.head;
 				for (int i = 0; i < input - 1; i++) {
 					current = current.next;
 				}
-				Hand.hand2.legen(current);
+				if (Hand.hand2.vergleich(current) == true) {
+					Hand.hand2.legen(current);
+				} else {
+					start();
+				}
 			}
 		} else {
 			if (aktuell == 1) {
@@ -96,21 +104,33 @@ public class Game {
 				for (int i = 0; i < input - 1; i++) {
 					current = current.next;
 				}
-				Hand.hand1.legen(current);
+				if (Hand.hand1.vergleich(current) == true) {
+					Hand.hand1.legen(current);
+				} else {
+					start();
+				}
 			}
 			if (aktuell == 2) {
 				Karte current = Hand.hand2.head;
 				for (int i = 0; i < input - 1; i++) {
 					current = current.next;
 				}
-				Hand.hand2.legen(current);
+				if (Hand.hand2.vergleich(current) == true) {
+					Hand.hand2.legen(current);
+				} else {
+					start();
+				}
 			}
 			if (aktuell == 3) {
 				Karte current = Hand.hand3.head;
 				for (int i = 0; i < input - 1; i++) {
 					current = current.next;
 				}
-				Hand.hand3.legen(current);
+				if (Hand.hand3.vergleich(current) == true) {
+					Hand.hand3.legen(current);
+				} else {
+					start();
+				}
 			}
 		}
 		if (aktuell != max) {
