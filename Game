@@ -5,6 +5,7 @@ public class Game {
 	int aktuell;
 	int max;
 	int handkarten;
+	int counter;
 	public Hand spieler;
 	boolean win = false;
 	Kartenstapel kartenstapel = new Kartenstapel();
@@ -64,81 +65,156 @@ public class Game {
 		spieler.ausgeben();
 		System.out.print("[Aktuell]: ");
 		Ablage.ablage.ausgeben();
-		System.out.print("[Zug]: 'Ich lege Karte (");
-		for (int i = 1; i <= handkarten; i++) {
-			System.out.print(i);
-			if (i != handkarten) {
-				System.out.print("/");
-			}
-		}
-		System.out.print(")'");
-		System.out.println();
-		int input = scanner.nextInt();
 
-		if (max == 2) {
-			if (aktuell == 1) {
-				Karte current = Hand.hand1.head;
-				for (int i = 0; i < input - 1; i++) {
-					current = current.next;
+		if (aktuell == 1) {
+			counter = 0;
+			Karte pruefe = Hand.hand1.head;
+			for (int i = 0; i < handkarten; i++) {
+				if (Hand.hand1.vergleich(pruefe) == true) {
+					counter++;
 				}
-				if (Hand.hand1.vergleich(current) == true) {
-					Hand.hand1.legen(current);
-				} else {
-					start();
-				}
-			}
-			if (aktuell == 2) {
-				Karte current = Hand.hand2.head;
-				for (int i = 0; i < input - 1; i++) {
-					current = current.next;
-				}
-				if (Hand.hand2.vergleich(current) == true) {
-					Hand.hand2.legen(current);
-				} else {
-					start();
-				}
-			}
-		} else {
-			if (aktuell == 1) {
-				Karte current = Hand.hand1.head;
-				for (int i = 0; i < input - 1; i++) {
-					current = current.next;
-				}
-				if (Hand.hand1.vergleich(current) == true) {
-					Hand.hand1.legen(current);
-				} else {
-					start();
-				}
-			}
-			if (aktuell == 2) {
-				Karte current = Hand.hand2.head;
-				for (int i = 0; i < input - 1; i++) {
-					current = current.next;
-				}
-				if (Hand.hand2.vergleich(current) == true) {
-					Hand.hand2.legen(current);
-				} else {
-					start();
-				}
-			}
-			if (aktuell == 3) {
-				Karte current = Hand.hand3.head;
-				for (int i = 0; i < input - 1; i++) {
-					current = current.next;
-				}
-				if (Hand.hand3.vergleich(current) == true) {
-					Hand.hand3.legen(current);
-				} else {
-					start();
-				}
+				pruefe = pruefe.next;
 			}
 		}
+		if (aktuell == 2) {
+			counter = 0;
+			Karte pruefe = Hand.hand2.head;
+			for (int i = 0; i < handkarten; i++) {
+				if (Hand.hand2.vergleich(pruefe) == true) {
+					counter++;
+				}
+				pruefe = pruefe.next;
+			}
+		}
+		if (aktuell == 3) {
+			counter = 0;
+			Karte pruefe = Hand.hand3.head;
+			for (int i = 0; i < handkarten; i++) {
+				if (Hand.hand3.vergleich(pruefe) == true) {
+					counter++;
+				}
+				pruefe = pruefe.next;
+			}
+		}
+
+		if (counter > 0) {
+			System.out
+					.println("[Zug]: 'Ich lege eine Karte' / 'Ich ziehe eine Karte' (1/2)");
+			int input = scanner.nextInt();
+			System.out.println();
+
+			if (input == 1) {
+				System.out.print("[Zug]: 'Ich lege Karte (");
+				if (aktuell == 1) {
+					Karte current = Hand.hand1.head.next;
+					for (int i = 0; i < handkarten; i++) {
+						System.out.print(i + 1 + ": [" + current.element + "]");
+						if (i != handkarten - 1) {
+							System.out.print(" / ");
+						}
+						current = current.next;
+					}
+				}
+				if (aktuell == 2) {
+					Karte current = Hand.hand2.head.next;
+					for (int i = 0; i < handkarten; i++) {
+						System.out.print(i + 1 + ": [" + current.element + "]");
+						if (i != handkarten - 1) {
+							System.out.print(" / ");
+						}
+						current = current.next;
+					}
+				}
+				if (aktuell == 3) {
+					Karte current = Hand.hand3.head.next;
+					for (int i = 0; i < handkarten; i++) {
+						System.out.print(i + 1 + ": [" + current.element + "]");
+						if (i != handkarten - 1) {
+							System.out.print(" / ");
+						}
+						current = current.next;
+					}
+				}
+				System.out.print(")'");
+				System.out.println();
+				input = scanner.nextInt();
+
+				if (aktuell == 1) {
+					Karte current = Hand.hand1.head;
+					for (int i = 0; i < input - 1; i++) {
+						current = current.next;
+					}
+					if (Hand.hand1.vergleich(current) == true) {
+						Hand.hand1.legen(current);
+					} else {
+						start();
+					}
+				}
+				if (aktuell == 2) {
+					Karte current = Hand.hand2.head;
+					for (int i = 0; i < input - 1; i++) {
+						current = current.next;
+					}
+					if (Hand.hand2.vergleich(current) == true) {
+						Hand.hand2.legen(current);
+					} else {
+						start();
+					}
+				}
+				if (aktuell == 3) {
+					Karte current = Hand.hand3.head;
+					for (int i = 0; i < input - 1; i++) {
+						current = current.next;
+					}
+					if (Hand.hand3.vergleich(current) == true) {
+						Hand.hand3.legen(current);
+					} else {
+						start();
+					}
+					System.out.println();
+				}
+			} else {
+				if (aktuell == 1) {
+					Hand.hand1.ziehen();
+				}
+				if (aktuell == 2) {
+					Hand.hand2.ziehen();
+				}
+				if (aktuell == 3) {
+					Hand.hand3.ziehen();
+				}
+				System.out.println("'[Zug]: Karte gezogen'");
+			}
+
+		} else {
+			System.out.println("[Zug]: 'Ich ziehe eine Karte' (1)");
+			int input = scanner.nextInt();
+			System.out.println();
+			if (input == 1) {
+
+				if (aktuell == 1) {
+					Hand.hand1.ziehen();
+				}
+				if (aktuell == 2) {
+					Hand.hand2.ziehen();
+				}
+				if (aktuell == 3) {
+					Hand.hand3.ziehen();
+				}
+				System.out.println("'[Zug]: Karte gezogen'");
+			}
+		}
+
 		if (aktuell != max) {
 			aktuell++;
 		} else {
 			aktuell = 1;
 		}
 		System.out.println();
+
+		if (handkarten == 0) {
+			win = true;
+		}
 
 		if (win == false) {
 			start();
