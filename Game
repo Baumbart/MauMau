@@ -179,14 +179,28 @@ public class Game {
 					System.out.println();
 				}
 			} else {
-				if (aktuell == 1) {
-					Hand.hand1.ziehen();
-				}
-				if (aktuell == 2) {
-					Hand.hand2.ziehen();
-				}
-				if (aktuell == 3) {
-					Hand.hand3.ziehen();
+				if (Kartenstapel.kartenstapel.empty() == false) {
+					if (aktuell == 1) {
+						Hand.hand1.ziehen();
+					}
+					if (aktuell == 2) {
+						Hand.hand2.ziehen();
+					}
+					if (aktuell == 3) {
+						Hand.hand3.ziehen();
+					} else {
+						kartenstapel.reuse();
+
+						if (aktuell == 1) {
+							Hand.hand1.ziehen();
+						}
+						if (aktuell == 2) {
+							Hand.hand2.ziehen();
+						}
+						if (aktuell == 3) {
+							Hand.hand3.ziehen();
+						}
+					}
 				}
 				System.out.println("-------------------------");
 				System.out.println("[Zug]: 'Karte gezogen'");
