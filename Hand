@@ -50,10 +50,23 @@ public class Hand {
 		char ablageWert1 = ablageWert.charAt(0);
 		char ablageWert2 = ablageWert.charAt(1);
 
-		if (handWert1 == ablageWert1 || handWert2 == ablageWert2 || handWert2 == 'B') {
+		if (handWert1 == ablageWert1 || handWert2 == ablageWert2
+				|| handWert2 == 'B') {
 			vergleich = true;
 		}
 		return vergleich;
+	}
+
+	public boolean detectSeven() {
+		boolean sieben = false;
+		Karte detector = head.next;
+		for (int i = 0; i < size() - 1; i++) {
+			detector = detector.next;
+			if (detector.element.charAt(1) == '7') {
+				sieben = true;
+			}
+		}
+		return sieben;
 	}
 
 	public void ausgebenTest() {
@@ -87,3 +100,4 @@ public class Hand {
 		System.out.println();
 	}
 }
+
