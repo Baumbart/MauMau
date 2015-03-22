@@ -239,19 +239,114 @@ public class Game {
 			if (max == 2) {
 				if (Hand.hand1.size() == 0) {
 					System.out.println("Spieler 1 hat gewonnen!");
+					System.out.println();
+					System.out
+							.println("Zum Neustarten bitte '1' drücken! / Zum Beenden bitte '2' drücken!");
+					int input = scanner.nextInt();
+					System.out.println("-------------------------");
+					System.out.println();
+
+					if (input == 1) {
+						System.out.println("~NEUSTART~");
+						System.out.println();
+						System.out.println("-------------------------");
+						System.out.println();
+						kartenstapel.mischen();
+						konfiguration();
+					} else {
+						System.out.println("~SPIEL BEENDET~");
+						System.out.println();
+						System.out.println("-------------------------");
+					}
 				}
 				if (Hand.hand2.size() == 0) {
 					System.out.println("Spieler 2 hat gewonnen!");
+					System.out.println();
+					System.out
+							.println("Zum Neustarten bitte '1' drücken! / Zum Beenden bitte '2' drücken!");
+					int input = scanner.nextInt();
+					System.out.println("-------------------------");
+					System.out.println();
+
+					if (input == 1) {
+						System.out.println("~NEUSTART~");
+						System.out.println();
+						System.out.println("-------------------------");
+						System.out.println();
+						kartenstapel.mischen();
+						konfiguration();
+					} else {
+						System.out.println("~SPIEL BEENDET~");
+						System.out.println();
+						System.out.println("-------------------------");
+					}
 				}
 			} else {
 				if (Hand.hand1.size() == 0) {
 					System.out.println("Spieler 1 hat gewonnen!");
+					System.out.println();
+					System.out
+							.println("Zum Neustarten bitte '1' drücken! / Zum Beenden bitte '2' drücken!");
+					int input = scanner.nextInt();
+					System.out.println("-------------------------");
+					System.out.println();
+
+					if (input == 1) {
+						System.out.println("~NEUSTART~");
+						System.out.println();
+						System.out.println("-------------------------");
+						System.out.println();
+						kartenstapel.mischen();
+						konfiguration();
+					} else {
+						System.out.println("~SPIEL BEENDET~");
+						System.out.println();
+						System.out.println("-------------------------");
+					}
 				}
 				if (Hand.hand2.size() == 0) {
 					System.out.println("Spieler 2 hat gewonnen!");
+					System.out.println();
+					System.out
+							.println("Zum Neustarten bitte '1' drücken! / Zum Beenden bitte '2' drücken!");
+					int input = scanner.nextInt();
+					System.out.println("-------------------------");
+					System.out.println();
+
+					if (input == 1) {
+						System.out.println("~NEUSTART~");
+						System.out.println();
+						System.out.println("-------------------------");
+						System.out.println();
+						kartenstapel.mischen();
+						konfiguration();
+					} else {
+						System.out.println("~SPIEL BEENDET~");
+						System.out.println();
+						System.out.println("-------------------------");
+					}
 				}
 				if (Hand.hand3.size() == 0) {
 					System.out.println("Spieler 3 hat gewonnen!");
+					System.out.println();
+					System.out
+							.println("Zum Neustarten bitte '1' drücken! / Zum Beenden bitte '2' drücken!");
+					int input = scanner.nextInt();
+					System.out.println("-------------------------");
+					System.out.println();
+
+					if (input == 1) {
+						System.out.println("~NEUSTART~");
+						System.out.println();
+						System.out.println("-------------------------");
+						System.out.println();
+						kartenstapel.mischen();
+						konfiguration();
+					} else {
+						System.out.println("~SPIEL BEENDET~");
+						System.out.println();
+						System.out.println("-------------------------");
+					}
 				}
 			}
 		}
