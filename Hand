@@ -50,7 +50,7 @@ public class Hand {
 		char ablageWert1 = ablageWert.charAt(0);
 		char ablageWert2 = ablageWert.charAt(1);
 
-		if (handWert1 == ablageWert1 || handWert2 == ablageWert2) {
+		if (handWert1 == ablageWert1 || handWert2 == ablageWert2 || handWert2 == 'B') {
 			vergleich = true;
 		}
 		return vergleich;
