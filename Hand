@@ -51,8 +51,14 @@ public class Hand {
 		char ablageWert2 = ablageWert.charAt(1);
 
 		if (handWert1 == ablageWert1 || handWert2 == ablageWert2
-				|| handWert2 == 'B') {
-			vergleich = true;
+				|| handWert2 == 'B' || ablageWert2 == 'B') {
+			if (ablageWert2 == 'B') {
+				if (handWert1 == Game.bubeChar) {
+					vergleich = true;
+				}
+			} else {
+				vergleich = true;
+			}
 		}
 		return vergleich;
 	}
@@ -100,4 +106,3 @@ public class Hand {
 		System.out.println();
 	}
 }
-
