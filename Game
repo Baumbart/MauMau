@@ -11,6 +11,9 @@ public class Game {
 	boolean seven;
 	boolean eight;
 	boolean bube;
+	boolean bubeError;
+	int bubenInput;
+	public static char bubeChar;
 	Kartenstapel kartenstapel = new Kartenstapel();
 
 	public Game() {
@@ -78,10 +81,15 @@ public class Game {
 		System.out.print("[Handkarten]: ");
 		spieler.ausgeben();
 		System.out.print("[Aktuell]: ");
-		Ablage.ablage.ausgeben();
+		if (bube != true) {
+			Ablage.ablage.ausgeben();
+		} else {
+			System.out.println(bubeChar);
+			System.out.println();
+		}
 		pruefen();
 		zug();
-		
+
 		if (aktuell != max) {
 			aktuell++;
 		} else {
@@ -268,7 +276,6 @@ public class Game {
 					if (aktuell == 3) {
 						Hand.hand3.ziehen();
 					}
-
 				}
 			}
 		}
@@ -336,7 +343,14 @@ public class Game {
 				System.out.println("-------------------------");
 				System.out.println();
 				System.out.print("[Aktuell]: ");
-				Ablage.ablage.ausgeben();
+				if (bube != true) {
+					Ablage.ablage.ausgeben();
+				} else {
+					System.out.println(bubeChar);
+					System.out.println();
+					bube = false;
+					bubeError = true;
+				}
 				System.out.print("[Zug]: 'Ich lege Karte (");
 				if (aktuell == 1) {
 					Karte current = Hand.hand1.head.next;
@@ -385,10 +399,41 @@ public class Game {
 						if (current.next.element.charAt(1) == '8') {
 							eight = true;
 						}
+						if (current.next.element.charAt(1) == 'B') {
+							bube = true;
+						}
+						if (bube == true) {
+							System.out.println();
+							System.out.print("[Bitte wählen sie ein Symbol]: ");
+							System.out
+									.print("(1: [°] / 2: [+] / 3: [#] / 4: [*])");
+							System.out.println();
+							bubenInput = scanner.nextInt();
+							System.out.println("-------------------------");
+
+							if (bubenInput == 1) {
+								bubeChar = '°';
+							}
+							if (bubenInput == 2) {
+								bubeChar = '+';
+							}
+							if (bubenInput == 3) {
+								bubeChar = '#';
+							}
+							if (bubenInput == 4) {
+								bubeChar = '*';
+							}
+						}
 						Hand.hand1.legen(current);
 					} else {
-						System.out.println();
-						start();
+						if (bubeError != true) {
+							System.out.println();
+							start();
+						} else {
+							System.out.println();
+							bube = true;
+							start();
+						}
 					}
 				}
 				if (aktuell == 2) {
@@ -403,10 +448,41 @@ public class Game {
 						if (current.next.element.charAt(1) == '8') {
 							eight = true;
 						}
+						if (current.next.element.charAt(1) == 'B') {
+							bube = true;
+						}
+						if (bube == true) {
+							System.out.println();
+							System.out.print("[Bitte wählen sie ein Symbol]: ");
+							System.out
+									.print("(1: [°] / 2: [+] / 3: [#] / 4: [*])");
+							System.out.println();
+							bubenInput = scanner.nextInt();
+							System.out.println("-------------------------");
+
+							if (bubenInput == 1) {
+								bubeChar = '°';
+							}
+							if (bubenInput == 2) {
+								bubeChar = '+';
+							}
+							if (bubenInput == 3) {
+								bubeChar = '#';
+							}
+							if (bubenInput == 4) {
+								bubeChar = '*';
+							}
+						}
 						Hand.hand2.legen(current);
 					} else {
-						System.out.println();
-						start();
+						if (bubeError != true) {
+							System.out.println();
+							start();
+						} else {
+							System.out.println();
+							bube = true;
+							start();
+						}
 					}
 				}
 				if (aktuell == 3) {
@@ -421,16 +497,46 @@ public class Game {
 						if (current.next.element.charAt(1) == '8') {
 							eight = true;
 						}
+						if (current.next.element.charAt(1) == 'B') {
+							bube = true;
+						}
+						if (bube == true) {
+							System.out.println();
+							System.out.print("[Bitte wählen sie ein Symbol]: ");
+							System.out
+									.print("(1: [°] / 2: [+] / 3: [#] / 4: [*])");
+							System.out.println();
+							bubenInput = scanner.nextInt();
+							System.out.println("-------------------------");
+
+							if (bubenInput == 1) {
+								bubeChar = '°';
+							}
+							if (bubenInput == 2) {
+								bubeChar = '+';
+							}
+							if (bubenInput == 3) {
+								bubeChar = '#';
+							}
+							if (bubenInput == 4) {
+								bubeChar = '*';
+							}
+						}
 						Hand.hand3.legen(current);
 					} else {
-						System.out.println();
-						start();
+						if (bubeError != true) {
+							System.out.println();
+							start();
+						} else {
+							System.out.println();
+							bube = true;
+							start();
+						}
 					}
 				}
 			} else {
 				ziehenAlle();
 			}
-
 		} else {
 			if (seven == true) {
 				ziehenAlle();
