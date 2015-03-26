@@ -6,6 +6,16 @@ public class Ablage {
 		head.next = null;
 	}
 
+	public int size() {
+		Karte current = head;
+		int size = 0;
+		while (current.next != null) {
+			current = current.next;
+			size++;
+		}
+		return size;
+	}
+
 	public String pop() {
 		String current = head.next.element;
 		head.next = head.next.next;
