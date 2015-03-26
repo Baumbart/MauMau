@@ -1,27 +1,27 @@
 import java.util.*;
 
 public class Game {
-	Scanner scanner = new Scanner(System.in);
-	int aktuell;
-	int max;
-	int handkarten;
-	int counter;
-	public Hand spieler;
-	boolean win;
-	boolean seven;
-	boolean eight;
-	boolean bube;
-	boolean bubeError;
-	int bubenInput;
+	private Scanner scanner = new Scanner(System.in);
+	private int aktuell;
+	private int max;
+	private int handkarten;
+	private int counter;
+	private Hand spieler;
+	private boolean win;
+	private boolean seven;
+	private boolean eight;
+	private boolean bube;
+	private boolean bubeError;
+	private int bubenInput;
 	public static char bubeChar;
-	Kartenstapel kartenstapel = new Kartenstapel();
+	private Kartenstapel kartenstapel = new Kartenstapel();
 
 	public Game() {
 		konfiguration();
 		start();
 	}
 
-	public void konfiguration() {
+	private void konfiguration() {
 		System.out.println("Bitte wählen Sie die Spieleranzahl! (2/3)");
 		int input = scanner.nextInt();
 		Matchconfig.setSpielerzahl(input);
@@ -40,7 +40,7 @@ public class Game {
 		kartenstapel.austeilen();
 	}
 
-	public void start() {
+	private void start() {
 		win = false;
 
 		if (eight == true) {
@@ -229,7 +229,7 @@ public class Game {
 		}
 	}
 
-	public void ziehenAlle() {
+	private void ziehenAlle() {
 		if (Kartenstapel.kartenstapel.empty() == false) {
 			if (seven == true) {
 				for (int i = 0; i < 1; i++) {
@@ -241,18 +241,6 @@ public class Game {
 					}
 					if (aktuell == 3) {
 						Hand.hand3.ziehen();
-					} else {
-						kartenstapel.reuse();
-
-						if (aktuell == 1) {
-							Hand.hand1.ziehen();
-						}
-						if (aktuell == 2) {
-							Hand.hand2.ziehen();
-						}
-						if (aktuell == 3) {
-							Hand.hand3.ziehen();
-						}
 					}
 				}
 			} else {
@@ -264,9 +252,12 @@ public class Game {
 				}
 				if (aktuell == 3) {
 					Hand.hand3.ziehen();
-				} else {
-					kartenstapel.reuse();
-
+				}
+			}
+		} else {
+			kartenstapel.reuse();
+			if (seven == true) {
+				for (int i = 0; i < 1; i++) {
 					if (aktuell == 1) {
 						Hand.hand1.ziehen();
 					}
@@ -276,6 +267,16 @@ public class Game {
 					if (aktuell == 3) {
 						Hand.hand3.ziehen();
 					}
+				}
+			} else {
+				if (aktuell == 1) {
+					Hand.hand1.ziehen();
+				}
+				if (aktuell == 2) {
+					Hand.hand2.ziehen();
+				}
+				if (aktuell == 3) {
+					Hand.hand3.ziehen();
 				}
 			}
 		}
@@ -292,7 +293,7 @@ public class Game {
 		System.out.println("-------------------------");
 	}
 
-	public void pruefen() {
+	private void pruefen() {
 		if (aktuell == 1) {
 			counter = 0;
 			Karte pruefe = Hand.hand1.head;
@@ -325,7 +326,7 @@ public class Game {
 		}
 	}
 
-	public void zug() {
+	private void zug() {
 		if (counter > 0) {
 			if (seven == true) {
 				ziehenAlle();
