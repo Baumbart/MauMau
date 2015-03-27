@@ -19,7 +19,6 @@ public class Game {
 
 	public Game() {
 		konfiguration();
-		start();
 	}
 
 	private void konfiguration() {
@@ -50,6 +49,7 @@ public class Game {
 			kartenstapel.mischen();
 			konfiguration();
 		}
+		start();
 	}
 
 	private void start() {
@@ -121,7 +121,10 @@ public class Game {
 				win = true;
 			}
 		}
+		win();
+	}
 
+	public void win() {
 		if (win == false) {
 			start();
 		} else {
@@ -142,7 +145,8 @@ public class Game {
 						System.out.println();
 						kartenstapel.mischen();
 						konfiguration();
-					} else {
+					}
+					if (input == 2) {
 						System.out.println("~SPIEL BEENDET~");
 						System.out.println();
 						System.out.println("-------------------------");
@@ -164,7 +168,8 @@ public class Game {
 						System.out.println();
 						kartenstapel.mischen();
 						konfiguration();
-					} else {
+					}
+					if (input == 2) {
 						System.out.println("~SPIEL BEENDET~");
 						System.out.println();
 						System.out.println("-------------------------");
@@ -187,7 +192,8 @@ public class Game {
 						System.out.println();
 						kartenstapel.mischen();
 						konfiguration();
-					} else {
+					}
+					if (input == 2) {
 						System.out.println("~SPIEL BEENDET~");
 						System.out.println();
 						System.out.println("-------------------------");
@@ -209,7 +215,8 @@ public class Game {
 						System.out.println();
 						kartenstapel.mischen();
 						konfiguration();
-					} else {
+					}
+					if (input == 2) {
 						System.out.println("~SPIEL BEENDET~");
 						System.out.println();
 						System.out.println("-------------------------");
@@ -231,7 +238,8 @@ public class Game {
 						System.out.println();
 						kartenstapel.mischen();
 						konfiguration();
-					} else {
+					}
+					if (input == 2) {
 						System.out.println("~SPIEL BEENDET~");
 						System.out.println();
 						System.out.println("-------------------------");
@@ -244,7 +252,7 @@ public class Game {
 	private void ziehenAlle() {
 		if (Kartenstapel.kartenstapel.empty() == false) {
 			if (seven == true) {
-				for (int i = 0; i < 1; i++) {
+				for (int i = 0; i < 2; i++) {
 					if (aktuell == 1) {
 						Hand.hand1.ziehen();
 					}
