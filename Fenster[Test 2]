@@ -16,6 +16,8 @@ public class Fenster extends JFrame {
 		//FR.setLocation(250, 70); // gibt die Startposition des Fensters vor
 		FR.setVisible(true); // sonst wird kein Fenster generiert
 		//frei verstanden nach:
+		//https://public.hochschule-trier.de/~rudolph/gdv/cg/node6.html
+		//(nur erste hälfte (vor(!) aufzählung))
 
 		
 		
