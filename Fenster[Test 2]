@@ -1,0 +1,37 @@
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
+import javax.swing.JFrame;
+
+public class Fenster extends JFrame {
+
+	public static void main(String[] args) {
+		
+
+		JFrame FR = new JFrame();
+		// ist die Reihenfolge ab hier wichtig? //nein (siehe abschnitt dynamisches Fenster)
+		FR.setTitle(" Noble Überschrift");
+		FR.setDefaultCloseOperation(EXIT_ON_CLOSE); // Beendet das Programm beim Schliessen des Fensters
+		//FR.setSize(500, 500); // Grösse des Fensters
+		//FR.setLocation(250, 70); // gibt die Startposition des Fensters vor
+		FR.setVisible(true); // sonst wird kein Fenster generiert
+		//frei verstanden nach:
+
+		
+		
+		//versuch eines dynamischen Fensters (basierend auf Bildschirmgrösse)
+		
+		//int x = getScreenSize(); // <-erster versuch 
+		//zweiter versuch:
+		//http://stackoverflow.com/questions/3680221/how-can-i-get-the-monitor-size-in-java
+		//von hier 
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		int breite = (int) screenSize.getWidth(); // variablennamen modifiziert und 
+		int hoehe = (int) screenSize.getHeight(); // von elipse cast to int einfügen lasen
+		//bis hier
+		FR.setSize(breite/2,hoehe/2);// Grösse des Fensters (stets die hälfte des Bildschirms, lang wie breit)
+		FR.setLocation(breite/4,hoehe/4);
+		
+	}
+
+}
