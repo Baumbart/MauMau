@@ -1,5 +1,6 @@
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.Color;
 
 import javax.swing.JFrame;
 
@@ -17,10 +18,7 @@ public class Fenster extends JFrame {
 		FR.setVisible(true); // sonst wird kein Fenster generiert
 		//frei verstanden nach:
 		//https://public.hochschule-trier.de/~rudolph/gdv/cg/node6.html
-		//(nur erste hälfte (vor(!) aufzählung))
-
-		
-		
+		//(nur erste hälfte (vor(!) aufzählung))		
 		//versuch eines dynamischen Fensters (basierend auf Bildschirmgrösse)
 		
 		//int x = getScreenSize(); // <-erster versuch 
@@ -33,6 +31,8 @@ public class Fenster extends JFrame {
 		//bis hier
 		FR.setSize(breite/2,hoehe/2);// Grösse des Fensters (stets die hälfte des Bildschirms, lang wie breit)
 		FR.setLocation(breite/4,hoehe/4);
+		FR.getContentPane().setBackground(Color.GREEN);
+		
 		
 	}
 
