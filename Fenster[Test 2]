@@ -27,7 +27,7 @@ public class Fenster extends JFrame {
 		//von hier 
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		int breite = (int) screenSize.getWidth(); // variablennamen modifiziert und 
-		int hoehe = (int) screenSize.getHeight(); // von elipse cast to int einfügen lasen
+		int hoehe = (int) screenSize.getHeight(); // von elipse cast to int einfügen lassen
 		//bis hier
 		FR.setSize(breite/2,hoehe/2);// Grösse des Fensters (stets die hälfte des Bildschirms, lang wie breit)
 		FR.setLocation(breite/4,hoehe/4);
