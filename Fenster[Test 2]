@@ -3,7 +3,7 @@ import java.awt.Toolkit;
 import java.awt.Color;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.JButton;
 
 public class Fenster extends JFrame {
 
@@ -49,14 +49,14 @@ public class Fenster extends JFrame {
 		// http://stackoverflow.com/questions/16744152/java-gui-about-getcontentpane-method-and-content
 		// http://docs.oracle.com/javase/tutorial/uiswing/components/rootpane.html
 
-		JLabel drawLabel = new JLabel();
-		drawLabel.setLocation(500, 500);
-		drawLabel.setSize(100, 100);
-		drawLabel.setVisible(true);
-		drawLabel.setText("text");
-		FR.getContentPane().add(drawLabel);
-		// drawLabel.getGlassPane().setBackground(Color.RED);
-
+		JButton drawButton = new JButton();
+		drawButton.setLocation(50, 50);
+		drawButton.setSize(10, 10);
+		drawButton.setVisible(true);
+		drawButton.setText("text");
+		FR.getContentPane().add(drawButton);
+		drawButton.setBackground(Color.RED);
+		
 	}
 
 }
