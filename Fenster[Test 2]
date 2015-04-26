@@ -49,14 +49,24 @@ public class Fenster extends JFrame {
 		// http://stackoverflow.com/questions/16744152/java-gui-about-getcontentpane-method-and-content
 		// http://docs.oracle.com/javase/tutorial/uiswing/components/rootpane.html
 
-		JButton drawButton = new JButton();
-		drawButton.setLocation(50, 50);
-		drawButton.setSize(10, 10);
-		drawButton.setVisible(true);
-		drawButton.setText("text");
-		FR.getContentPane().add(drawButton);
-		drawButton.setBackground(Color.RED);
-		
-	}
+	    
 
+    jButton1.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent evt) {
+        jButton1_ActionPerformed(evt);
+        
+        
+      }
+    });
+    
+    JButton LayDownButton = new JButton();
+    LayDownButton.setLocation(70, 70);
+    LayDownButton.setSize(50, 50);
+    FR.setLayout(null);
+    LayDownButton.setVisible(true);
+    LayDownButton.setText("LayDownButton");
+    FR.getContentPane().add(LayDownButton);
+    LayDownButton.setBackground(Color.RED);
+    
+  }
 }
