@@ -2,29 +2,27 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
-
 /**
-  *
-  * Beschreibung
-  *
-  * @version 1.0 vom 22.04.2015
-  * @author 
-  */
-
+*
+* Beschreibung
+*
+* @version 1.0 vom 22.04.2015
+* @author
+*/
 public class fenster2 extends JFrame {
-  // Anfang Attribute
-  private JButton jButton1 = new JButton();
-  private JButton jButton2 = new JButton();
-  private JButton jButton3 = new JButton();
-  private JButton jButton4 = new JButton();
-  private JLabel jLabel1 = new JLabel();
+// Anfang Attribute
+private JButton drawButton = new JButton();
+private JButton drawCard = new JButton();
+  private JButton platzHalterButton = new JButton();
+private JButton optionsButton = new JButton();
+private JLabel jLabel1 = new JLabel();
   // Ende Attribute
-  
-  public fenster2(String title) { 
+ 
+  public fenster2(String title) {
     // Frame-Initialisierung
     super(title);
     setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-    int frameWidth = 866; 
+    int frameWidth = 866;
     int frameHeight = 560;
     setSize(frameWidth, frameHeight);
     Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
@@ -37,42 +35,42 @@ public class fenster2 extends JFrame {
     cp.setBackground(Color.GREEN);
     // Anfang Komponenten
     
-    jButton1.setBounds(48, 56, 145, 185);
-    jButton1.setText("jButton1");
-    jButton1.setMargin(new Insets(2, 2, 2, 2));
-    jButton1.addActionListener(new ActionListener() { 
-      public void actionPerformed(ActionEvent evt) { 
-        jButton1_ActionPerformed(evt);
+    drawButton.setBounds(48, 56, 145, 185);
+    drawButton.setText("drawButton");
+    drawButton.setMargin(new Insets(2, 2, 2, 2));
+    drawButton.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent evt) {
+        drawButton_ActionPerformed(evt);
       }
     });
-    cp.add(jButton1);
-    jButton2.setBounds(40, 440, 177, 57);
-    jButton2.setText("jButton2");
-    jButton2.setMargin(new Insets(2, 2, 2, 2));
-    jButton2.addActionListener(new ActionListener() { 
-      public void actionPerformed(ActionEvent evt) { 
-        jButton2_ActionPerformed(evt);
+    cp.add(drawButton);
+    drawCard.setBounds(40, 440, 177, 57);
+    drawCard.setText("drawCard");
+    drawCard.setMargin(new Insets(2, 2, 2, 2));
+    drawCard.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent evt) {
+        drawCard_ActionPerformed(evt);
       }
     });
-    cp.add(jButton2);
-    jButton3.setBounds(40, 368, 177, 57);
-    jButton3.setText("jButton3");
-    jButton3.setMargin(new Insets(2, 2, 2, 2));
-    jButton3.addActionListener(new ActionListener() { 
-      public void actionPerformed(ActionEvent evt) { 
-        jButton3_ActionPerformed(evt);
+    cp.add(drawCard);
+    platzHalterButton.setBounds(40, 368, 177, 57);
+    platzHalterButton.setText("platzHalterButton");
+    platzHalterButton.setMargin(new Insets(2, 2, 2, 2));
+    platzHalterButton.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent evt) {
+        platzHalterButton_ActionPerformed(evt);
       }
     });
-    cp.add(jButton3);
-    jButton4.setBounds(696, 48, 129, 41);
-    jButton4.setText("jButton4");
-    jButton4.setMargin(new Insets(2, 2, 2, 2));
-    jButton4.addActionListener(new ActionListener() { 
-      public void actionPerformed(ActionEvent evt) { 
-        jButton4_ActionPerformed(evt);
+    cp.add(platzHalterButton);
+    optionsButton.setBounds(696, 48, 129, 41);
+    optionsButton.setText("optionsButton");
+    optionsButton.setMargin(new Insets(2, 2, 2, 2));
+    optionsButton.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent evt) {
+        optionsButton_ActionPerformed(evt);
       }
     });
-    cp.add(jButton4);
+    cp.add(optionsButton);
     jLabel1.setBounds(376, 72, 115, 161);
     jLabel1.setText("text");
     cp.add(jLabel1);
@@ -80,28 +78,28 @@ public class fenster2 extends JFrame {
     
     setVisible(true);
   } // end of public fenster2
-  
+ 
   // Anfang Methoden
-  
+      /*
   public static void main(String[] args) {
     new fenster2("fenster2");
   } // end of main
-  
-  public void jButton1_ActionPerformed(ActionEvent evt) {
+          */
+  public void drawButton_ActionPerformed(ActionEvent evt) {
     // TODO hier Quelltext einfügen
-  } // end of jButton1_ActionPerformed
-  
-  public void jButton2_ActionPerformed(ActionEvent evt) {
+  } // end of drawButton_ActionPerformed
+ 
+  public void drawCard_ActionPerformed(ActionEvent evt) {
     // TODO hier Quelltext einfügen
-  } // end of jButton2_ActionPerformed
-  
-  public void jButton3_ActionPerformed(ActionEvent evt) {
+  } // end of drawCard_ActionPerformed
+ 
+  public void platzHalterButton_ActionPerformed(ActionEvent evt) {
     // TODO hier Quelltext einfügen
-  } // end of jButton3_ActionPerformed
-  
-  public void jButton4_ActionPerformed(ActionEvent evt) {
+  } // end of platzHalterButton_ActionPerformed
+ 
+  public void optionsButton_ActionPerformed(ActionEvent evt) {
     // TODO hier Quelltext einfügen
-  } // end of jButton4_ActionPerformed
-  
+  } // end of optionsButton_ActionPerformed
+ 
   // Ende Methoden
 } // end of class fenster2
