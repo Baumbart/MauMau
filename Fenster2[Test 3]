@@ -12,17 +12,17 @@ import javax.swing.event.*;
 public class fenster2 extends JFrame {
 // Anfang Attribute
 private JButton drawButton = new JButton();
-private JButton drawCard = new JButton();
+private JButton layDownCard = new JButton();
   private JButton platzHalterButton = new JButton();
 private JButton optionsButton = new JButton();
 private JLabel jLabel1 = new JLabel();
   // Ende Attribute
- 
+  
   public fenster2(String title) {
     // Frame-Initialisierung
     super(title);
     setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-    int frameWidth = 866;
+    int frameWidth = 866; 
     int frameHeight = 560;
     setSize(frameWidth, frameHeight);
     Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
@@ -40,25 +40,32 @@ private JLabel jLabel1 = new JLabel();
     drawButton.setMargin(new Insets(2, 2, 2, 2));
     drawButton.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent evt) {
-        drawButton_ActionPerformed(evt);
+        //drawButton_ActionPerformed(evt);
+        //layDownCard();
+        //giveCardt.getCurrentPlayer();
       }
     });
     cp.add(drawButton);
-    drawCard.setBounds(40, 440, 177, 57);
-    drawCard.setText("drawCard");
-    drawCard.setMargin(new Insets(2, 2, 2, 2));
-    drawCard.addActionListener(new ActionListener() {
+    layDownCard.setBounds(40, 440, 177, 57);
+    layDownCard.setText("layDownCard");
+    layDownCard.setMargin(new Insets(2, 2, 2, 2));
+    layDownCard.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent evt) {
-        drawCard_ActionPerformed(evt);
-      }
+        layDownCard_ActionPerformed(evt);
+        //getHighlightedCard();
+        //testForDiskardable
+        //testForSpecial;
+        //laydownCard();
+      } 
     });
-    cp.add(drawCard);
+    cp.add(layDownCard);
     platzHalterButton.setBounds(40, 368, 177, 57);
     platzHalterButton.setText("platzHalterButton");
     platzHalterButton.setMargin(new Insets(2, 2, 2, 2));
     platzHalterButton.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent evt) {
         platzHalterButton_ActionPerformed(evt);
+        
       }
     });
     cp.add(platzHalterButton);
@@ -68,6 +75,7 @@ private JLabel jLabel1 = new JLabel();
     optionsButton.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent evt) {
         optionsButton_ActionPerformed(evt);
+        //displayOptionsPanelFullSize
       }
     });
     cp.add(optionsButton);
@@ -78,28 +86,28 @@ private JLabel jLabel1 = new JLabel();
     
     setVisible(true);
   } // end of public fenster2
- 
+  
   // Anfang Methoden
-      /*
+  
   public static void main(String[] args) {
     new fenster2("fenster2");
   } // end of main
-          */
+  
   public void drawButton_ActionPerformed(ActionEvent evt) {
     // TODO hier Quelltext einfügen
   } // end of drawButton_ActionPerformed
- 
-  public void drawCard_ActionPerformed(ActionEvent evt) {
+  
+  public void layDownCard_ActionPerformed(ActionEvent evt) {
     // TODO hier Quelltext einfügen
-  } // end of drawCard_ActionPerformed
- 
+  } // end of layDownCard_ActionPerformed
+  
   public void platzHalterButton_ActionPerformed(ActionEvent evt) {
     // TODO hier Quelltext einfügen
   } // end of platzHalterButton_ActionPerformed
- 
+  
   public void optionsButton_ActionPerformed(ActionEvent evt) {
     // TODO hier Quelltext einfügen
   } // end of optionsButton_ActionPerformed
- 
+  
   // Ende Methoden
 } // end of class fenster2
