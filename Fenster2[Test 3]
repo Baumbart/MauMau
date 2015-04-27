@@ -12,7 +12,7 @@ import javax.swing.event.*;
 public class fenster2 extends JFrame {
 // Anfang Attribute
 private JButton drawButton = new JButton();
-private JButton drawCard = new JButton();
+private JButton layDownCard = new JButton();
   private JButton platzHalterButton = new JButton();
 private JButton optionsButton = new JButton();
 private JLabel jLabel1 = new JLabel();
@@ -41,24 +41,24 @@ private JLabel jLabel1 = new JLabel();
     drawButton.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent evt) {
         //drawButton_ActionPerformed(evt);
-        //drawCard();
+        //layDownCard();
         //giveCardt.getCurrentPlayer();
       }
     });
     cp.add(drawButton);
-    drawCard.setBounds(40, 440, 177, 57);
-    drawCard.setText("drawCard");
-    drawCard.setMargin(new Insets(2, 2, 2, 2));
-    drawCard.addActionListener(new ActionListener() {
+    layDownCard.setBounds(40, 440, 177, 57);
+    layDownCard.setText("layDownCard");
+    layDownCard.setMargin(new Insets(2, 2, 2, 2));
+    layDownCard.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent evt) {
-        drawCard_ActionPerformed(evt);
+        layDownCard_ActionPerformed(evt);
         //getHighlightedCard();
         //testForDiskardable
         //testForSpecial;
-        //drawCard();
+        //laydownCard();
       } 
     });
-    cp.add(drawCard);
+    cp.add(layDownCard);
     platzHalterButton.setBounds(40, 368, 177, 57);
     platzHalterButton.setText("platzHalterButton");
     platzHalterButton.setMargin(new Insets(2, 2, 2, 2));
@@ -97,9 +97,9 @@ private JLabel jLabel1 = new JLabel();
     // TODO hier Quelltext einfügen
   } // end of drawButton_ActionPerformed
   
-  public void drawCard_ActionPerformed(ActionEvent evt) {
+  public void layDownCard_ActionPerformed(ActionEvent evt) {
     // TODO hier Quelltext einfügen
-  } // end of drawCard_ActionPerformed
+  } // end of layDownCard_ActionPerformed
   
   public void platzHalterButton_ActionPerformed(ActionEvent evt) {
     // TODO hier Quelltext einfügen
