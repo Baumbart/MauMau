@@ -1,8 +1,8 @@
-public class Karte{
-  public String element = "";
-  public Karte next;
-  
-  public class setKarte(String wert="") {
-    element = wert;    
-  }
+public class Karte {
+	public String element = "";
+	public Karte next;
+
+	public Karte(String wert) {
+		element = wert;
+	}
 }
