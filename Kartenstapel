@@ -1,13 +1,15 @@
 import java.util.*;
 
 public class Kartenstapel {
-	private Vergleichstabelle vgl = new Vergleichstabelle();
-	public static Stack<String> kartenstapel = new Stack<String>();
+	private Vergleichstabelle vgl = new Vergleichstabelle(); //Erzeugung einer Vergleichstabelle mit allen Kartenwerten.
+	static Stack<String> kartenstapel = new Stack<String>(); //Erzeugung eines Kartenstapels (Stack aus Java.util).
 
+	//"Kartendeck", von dem die Karten gezogen werden:
 	public Kartenstapel() {
 		mischen();
 	}
 
+	//Liest die Kartenwerte aus dem Vergeleichsstapel aus, fügt sie dem Kartenstapel hinzu und mischt dann den Kartenstapel:
 	public void mischen() {
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 8; j++) {
@@ -17,6 +19,7 @@ public class Kartenstapel {
 		Collections.shuffle(kartenstapel);
 	}
 
+	//Prüft die Spieleranzahl, verteilt dementsprechend Karten an die Spieler und entfernt die ausgeteilten Karten vom Kartenstapel:
 	public void austeilen() {
 		if (Matchconfig.spieler == 2) {
 			int i = 0;
@@ -57,6 +60,7 @@ public class Kartenstapel {
 		Ablage.ablage.push(current);
 	}
 
+	//Nimmt die Karten aus der Ablage, fügt sie in den Kartenstapel ein und mischt den Kartenstapel. Die oberste Karte der Ablage bleibt liegen:
 	public void reuse() {
 		if (kartenstapel.empty() == true) {
 			Stack<String> temp = new Stack<String>();
@@ -69,4 +73,3 @@ public class Kartenstapel {
 		}
 	}
 }
-
