@@ -1,8 +1,9 @@
 public class Vergleichstabelle {
-	private String[][] vgl = new String[8][4];
+	private String[][] vgl = new String[8][4]; 
 
+	//Zweidimensionales String-Array mit allen Kartenwerten in Form von Strings:
 	public Vergleichstabelle() {
-		String[] hilf = { "7", "8", "9", "10", "B", "D", "K", "A" };
+		String[] hilf = { "7", "8", "9", "10", "B", "D", "K", "A" }; 
 
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 8; j++) {
@@ -22,8 +23,9 @@ public class Vergleichstabelle {
 		}
 	}
 
+	//Return des Kartenwertes bei einem bestimmten Index:
 	public String getVergleich(int j, int i) {
-		String karte = vgl[j][i];
+		String karte = vgl[j][i]; 
 		return karte;
 	}
 }
