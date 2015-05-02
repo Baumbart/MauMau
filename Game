@@ -110,7 +110,7 @@ public class Game {
 		//Prüft, ob die Variable "bube" auf "true" ist:
 		if (bube != true) { //Wenn die Variable "bube" auf "false" ist, wird ganz normal die oberste Karte auf der Ablage ausgegeben:
 			Ablage.ablage.ausgeben(); 
-		} else { //Wenn die Variable "bube" auf true ist, wird lediglich der Char des Kartenwerts angegeben, weil der zweite egal ist:
+		} else { //Wenn die Variable "bube" auf true ist, wird lediglich der erste "char" des Kartenwerts angegeben, weil der zweite egal ist:
 			System.out.println(bubeChar);
 			System.out.println();
 		}
