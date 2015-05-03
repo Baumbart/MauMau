@@ -1,0 +1,15 @@
+import java.awt.*;
+import java.awt.event.*;
+
+import javax.swing.*;
+import javax.swing.event.*;
+
+public class Spiel extends FrameTest{
+
+	public Spiel(String title) {
+		super(title);
+		// TODO Auto-generated constructor stub
+	}
+  
+  
+}
