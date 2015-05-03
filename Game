@@ -45,7 +45,7 @@ public class Game {
 			kartenstapel.mischen();
 			konfiguration();
 		} 
-		if (input < max) { 
+		if (input <= max) { 
 			System.out.println("-------------------------");
 			System.out.println();
 			aktuell = input; //Der Variable "aktuell" wird der Startspieler / aktuelle Spieler zugewiesen.
