@@ -1,0 +1,110 @@
+public class Hand {
+  public Karte head = new Karte("");
+  
+  //Erzeugung der 3 unten definierten Hände:
+  public static Hand hand1 = new Hand();
+  public static Hand hand2 = new Hand();
+  public static Hand hand3 = new Hand();
+  
+  //Hand (Linked List), auf der sich die Handkarten eines Spielers befinden.
+  public Hand() {
+    head.next = null;
+  }
+  
+  //Zieht eine Karte vom Kartenstapel und fügt sie einer Hand hinzu:
+  public void ziehen() {
+    add(head, Kartenstapel.kartenstapel.pop());
+  }
+  
+  //Legt eine Karte auf den Ablagestapel und entfernt diese von der Hand:
+  public void legen(Karte vorgaenger) {
+    String current = vorgaenger.next.element;
+    vorgaenger.next = vorgaenger.next.next;
+    Ablage.ablage.push(current);
+  }
+  
+  //Erzeugt eine Karte und fügt sie einer Hand hinzu:
+  public void add(Karte vorgaenger, String wert) {
+    Karte newKarte = new Karte(wert);
+    newKarte.next = vorgaenger.next;
+    vorgaenger.next = newKarte;
+  }
+  
+  //Fügt eine bereits vorhandene Karte einer Hand hinzu:
+  public void add(Karte vorgaenger, Karte wert) {
+    Karte newKarte = wert;
+    newKarte.next = vorgaenger.next;
+    vorgaenger.next = newKarte;
+  }
+  
+  //Return der Kartenanzahl auf einer Hand:
+  public int size() {
+    Karte current = head;
+    int size = 0;
+    while (current.next != null) {
+      current = current.next;
+      size++;
+    }
+    return size;
+  }
+  
+  //Schaut, ob ein Spieler die ausgewählte Karte überhaupt legen kann und returned dann "true" oder "false":
+  public boolean vergleich(Karte handKarte) {
+    boolean vergleich = false;
+    String handWert = handKarte.next.element;
+    String ablageWert = Ablage.ablage.peek();
+    
+    char handWert1 = handWert.charAt(0);
+    char handWert2 = handWert.charAt(1);
+    char ablageWert1 = ablageWert.charAt(0);
+    char ablageWert2 = ablageWert.charAt(1);
+    
+    //Prüft, ob die ausgewählte Karte entweder ein Bube ist oder ob eine Stelle des Kartenwertes mit dem der obersten Karte auf der Ablage übereinstimmt:
+    if (handWert1 == ablageWert1 || handWert2 == ablageWert2 || handWert2 == 'B' || ablageWert2 == 'B') {
+      if (ablageWert2 == 'B') {
+        if (handWert1 == Game.bubeChar) {
+          vergleich = true;
+        }
+      } else {
+        vergleich = true;
+      }
+    }
+    return vergleich;
+  }
+  
+  //Prüft, ob eine Karte mit dem Wert "7" auf einer Hand ist:
+  public boolean detectSeven() {
+    boolean sieben = false;
+    Karte detector = head.next;
+    for (int i = 0; i < size() - 1; i++) {
+      detector = detector.next;
+      if (detector.element.charAt(1) == '7') {
+        sieben = true;
+      }
+    }
+    return sieben;
+  }
+  
+  //Ausgabe der Werte aller Handkarten einer Hand:
+  public void ausgeben() {
+    Karte currentKarte = head.next;
+    Fenster3.jLabel4.setText("");
+    while (currentKarte != null) {
+      if (currentKarte.next != null) {
+        Fenster3.jLabel4.setVisible(true);
+        //System.out.print(currentKarte.element + ", ");        
+        Fenster3.jLabel4.setText(Fenster3.jLabel4.getText()+" "+currentKarte.element+"");
+        currentKarte = currentKarte.next;
+      } else {
+        Fenster3.jLabel4.setVisible(true);
+        //System.out.print(currentKarte.element);
+        
+        //das hier Weg?
+        Fenster3.jLabel4.setText(Fenster3.jLabel4.getText()+" "+currentKarte.element);
+        
+        currentKarte = currentKarte.next;
+      }
+    }
+    //System.out.println();
+  }
+}
