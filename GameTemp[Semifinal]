@@ -17,7 +17,7 @@ public class Game {
   public static char bubeChar;
   private Kartenstapel kartenstapel = new Kartenstapel(); //Erzeugung eines neuen "Kartendecks".  
   static int input;
-  static boolean gedrückt;
+  static boolean interagiert;
   
   
   
@@ -32,19 +32,23 @@ public class Game {
   //Konfiguration des Spiels:
   private void konfiguration() {
     //Auswahl der Spieleranzahl:
+    
+    
     Fenster3.jButton1.setVisible(false);
+    
     Fenster3.jLabel2.setVisible(false);
     Fenster3.jLabel3.setVisible(false);
+    
     //System.out.println("Bitte wählen Sie die Spieleranzahl! (2/3)");
     Fenster3.jLabel1.setText("Bitte wählen Sie die Spieleranzahl!");
     
     //int input = scanner.nextInt();
-    while (gedrückt != true) {//Wartet auf usereingabe in Fenster3 damit das Programm nicht vorschnell weiterläuft
+    while (interagiert != true) {//Wartet auf usereingabe in "Fenster3" damit das Programm in "Game" nicht vorschnell weiterläuft
       //System.out.print("");
-      Fenster3.jLabel1.setText("Bitte wählen Sie die Spieleranzahl!");      
+      Fenster3.jLabel1.setText("Bitte wählen Sie die Spieleranzahl!");     
     } // end of while
     
-    gedrückt= false;
+    interagiert= false;
     
     
     //int input = scanner.nextInt();
@@ -54,7 +58,7 @@ public class Game {
     //Auswahl des Spielers, der als erstes dran ist - basierend auf der Spielerzahl:
     if (input < 3 || input > 1) { //Prüft, ob die Spieleranzahl entweder den Wert "2" oder "3" beträgt.
       if (max == 2) {
-        Fenster3.zähler++;
+        Fenster3.pressCounter++;
         
         //System.out.println("Welcher Spieler soll starten? (1/2)");
         Fenster3.jLabel1.setText("Welcher Spieler soll starten?");
@@ -63,14 +67,14 @@ public class Game {
         Fenster3.jButton3.setText("Spieler Zwei");
         
         
-        while(gedrückt != true){
+        while(interagiert != true){//Wartet auf usereingabe in "Fenster3" damit das Programm in "Game" nicht vorschnell weiterläuft
           Fenster3.jLabel1.setText("Welcher Spieler soll starten?");          
         }
-        gedrückt= false;        
+        interagiert= false;        
         //input = scanner.nextInt();
       }
       if (max == 3) {
-        Fenster3.zähler++;
+        Fenster3.pressCounter++;
         
         Fenster3.jButton1.setVisible(true);
         //System.out.println("Welcher Spieler soll starten? (1/2/3)");
@@ -78,10 +82,10 @@ public class Game {
         
         Fenster3.jButton2.setText("Spieler Eins");
         Fenster3.jButton3.setText("Spieler Zwei");
-        while(gedrückt != true){
+        while(interagiert != true){//Wartet auf usereingabe in "Fenster3" damit das Programm in "Game" nicht vorschnell weiterläuft
           Fenster3.jLabel1.setText("Welcher Spieler soll starten?");          
         }
-        gedrückt= false;
+        interagiert= false;
         //input = scanner.nextInt();
       }
     } else { //Wenn die Spieleranzahl kleiner als "2" oder größer als "3" ist, wird die Konfiguration neugestartet:
@@ -96,12 +100,12 @@ public class Game {
     
     
     if (input <= max) { 
-      /*
+      
       System.out.println("-------------------------");
-      System.out.println();
-      */
+      
       aktuell = input; //Der Variable "aktuell" wird der Startspieler / aktuelle Spieler zugewiesen. 
       kartenstapel.austeilen(); //Die Karten werden an die Spieler ausgeteilt.  
+      
     } else { //Wenn bei der Auswahl des Startspielers ein unbrauchbarer Wert eingegeben wurde, wird die Konfiguration neugestartet:
       kartenstapel.mischen();
       konfiguration();
