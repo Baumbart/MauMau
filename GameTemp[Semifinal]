@@ -33,6 +33,8 @@ public class Game {
   private void konfiguration() {
     //Auswahl der Spieleranzahl:
     Fenster3.jButton1.setVisible(false);
+    Fenster3.jLabel2.setVisible(false);
+    Fenster3.jLabel3.setVisible(false);
     //System.out.println("Bitte wählen Sie die Spieleranzahl! (2/3)");
     Fenster3.jLabel1.setText("Bitte wählen Sie die Spieleranzahl!");
     
@@ -121,8 +123,8 @@ public class Game {
       }
       eight = false; //Die Variable "eight" wird wieder auf "false" gesetzt, wenn sie auf "true" war.
     }
-    System.out.println("Spieler " + aktuell + ", machen Sie bitte Ihren Zug!"); //Der aktuelle Spieler wird aufgefordert, seinen Zug zu machen.
-    
+    //System.out.println("Spieler " + aktuell + ", machen Sie bitte Ihren Zug!"); //Der aktuelle Spieler wird aufgefordert, seinen Zug zu machen.
+    Fenster3.jLabel1.setText("Spieler " + aktuell + ", machen Sie bitte Ihren Zug!");  
     //Prüft, ob die Spieleranzahl 2 oder 3 ist:
     if (max == 2) {
       
@@ -316,8 +318,7 @@ public class Game {
         System.out.println();
         seven = false;
       }
-      System.out
-      .println("[Zug]: 'Ich lege eine Karte' / 'Ich ziehe eine Karte' (1/2)");
+      System.out.println("[Zug]: 'Ich lege eine Karte' / 'Ich ziehe eine Karte' (1/2)");
       int input = scanner.nextInt();
       
       if (input < 3) {
