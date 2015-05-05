@@ -1,21 +1,21 @@
 import java.util.*;  
 
 public class Game {
-  static Scanner scanner = new Scanner(System.in);  //Erzeugung eines Scanners aus java.util.
-  static int aktuell; 
-  static int max; 
-  static int handkarten; 
-  static int counter;
-  static Hand spieler; 
-  static boolean win; //Prüft, ob ein Spieler gewonnen hat.
-  static boolean seven;
-  static boolean eight;
-  static boolean bube;
-  static boolean bubeError;
-  static int bubenInput;
-  static Karte current;
+  private Scanner scanner = new Scanner(System.in);  //Erzeugung eines Scanners aus java.util.
+  private int aktuell; 
+  private int max; 
+  private int handkarten; 
+  private int counter;
+  private Hand spieler; 
+  private boolean win; //Prüft, ob ein Spieler gewonnen hat.
+  private boolean seven;
+  private boolean eight;
+  private boolean bube;
+  private boolean bubeError;
+  private int bubenInput;
+  private Karte current;
   public static char bubeChar;
-  static Kartenstapel kartenstapel = new Kartenstapel(); //Erzeugung eines neuen "Kartendecks".  
+  private Kartenstapel kartenstapel = new Kartenstapel(); //Erzeugung eines neuen "Kartendecks".  
   static int input;
   static boolean gedrückt;
   
@@ -30,12 +30,9 @@ public class Game {
   
   
   //Konfiguration des Spiels:
-  static void konfiguration() {
+  private void konfiguration() {
     //Auswahl der Spieleranzahl:
     Fenster3.jButton1.setVisible(false);
-    Fenster3.jLabel2.setVisible(false);
-    Fenster3.jLabel3.setVisible(false);
-    
     //System.out.println("Bitte wählen Sie die Spieleranzahl! (2/3)");
     Fenster3.jLabel1.setText("Bitte wählen Sie die Spieleranzahl!");
     
@@ -112,7 +109,7 @@ public class Game {
   }
   
   //Startet das eigentliche Spiel:
-  static void start() { 
+  private void start() { 
     win = false; //Zu Spielbeginn wird die Variable "win" auf "false" gesetzt, weil noch keiner gewonnen hat.
     
     //Prüft, ob der vorherige Spieler eine 8 gelegt hat:
@@ -124,8 +121,7 @@ public class Game {
       }
       eight = false; //Die Variable "eight" wird wieder auf "false" gesetzt, wenn sie auf "true" war.
     }
-    //System.out.println("Spieler " + aktuell + ", machen Sie bitte Ihren Zug!"); //Der aktuelle Spieler wird aufgefordert, seinen Zug zu machen.
-    Fenster3.jLabel1.setText("Spieler " + aktuell + ", machen Sie bitte Ihren Zug!");   
+    System.out.println("Spieler " + aktuell + ", machen Sie bitte Ihren Zug!"); //Der aktuelle Spieler wird aufgefordert, seinen Zug zu machen.
     
     //Prüft, ob die Spieleranzahl 2 oder 3 ist:
     if (max == 2) {
@@ -157,12 +153,10 @@ public class Game {
     }
     
     //Die Werte der Handkarten und der Wert der obersten Karte auf der Ablage werden ausgegeben:
-    
     System.out.println();
     System.out.print("[Handkarten]: ");
     spieler.ausgeben();
     System.out.print("[Aktuell]: ");
-    
     
     //Prüft, ob die Variable "bube" auf "true" ist:
     if (bube != true) { //Wenn die Variable "bube" auf "false" ist, wird ganz normal die oberste Karte auf der Ablage ausgegeben:
@@ -197,7 +191,7 @@ public class Game {
   }
   
   //Zieht eine Karte vom Kartenstapel und fügt sie bei dem aktuellen Spieler auf der Hand hinzu:
-  static void ziehenAlle() {
+  private void ziehenAlle() {
     if (Kartenstapel.kartenstapel.empty() == false) { //Prüft, ob der Kartenstapel leer ist:
       
       //Prüft, ob der vorherige Spieler eine 7 gelegt hat:
@@ -266,7 +260,7 @@ public class Game {
   }
   
   //Prüft, ob der aktuelle Spieler mindestens eine Karte legen kann:
-  static void pruefen() { 
+  private void pruefen() { 
     if (aktuell == 1) {
       counter = 0; //Weist der Variable "counter" den Wert "0" zu.
       Karte pruefe = Hand.hand1.head; //Erzeugt eine Karte "pruefe" und setzt sie mit dem "head" von "hand1" gleich.
@@ -312,7 +306,7 @@ public class Game {
   }
   
   //Startet den Zug des aktuellen Spielers:
-  static void zug() {
+  private void zug() {
     if (counter > 0) {
       if (seven == true) {
         ziehenAlle();
@@ -322,8 +316,8 @@ public class Game {
         System.out.println();
         seven = false;
       }
-      System.out.println("[Zug]: 'Ich lege eine Karte' / 'Ich ziehe eine Karte' (1/2)");
-      
+      System.out
+      .println("[Zug]: 'Ich lege eine Karte' / 'Ich ziehe eine Karte' (1/2)");
       int input = scanner.nextInt();
       
       if (input < 3) {
@@ -467,7 +461,7 @@ public class Game {
     }
   }
   
-  static void special() {
+  public void special() {
     if (current.next.element.charAt(1) == '7') {
       seven = true;
     }
@@ -505,7 +499,7 @@ public class Game {
     }
   }
   
-  static void win() {
+  public void win() {
     if (win == false) {
       start();
     } else {
@@ -535,7 +529,7 @@ public class Game {
     }
   }
   
-  static void end() {
+  public void end() {
     System.out.println();
     System.out
     .println("Zum Neustarten bitte '1' drücken! / Zum Beenden bitte '2' drücken!");
