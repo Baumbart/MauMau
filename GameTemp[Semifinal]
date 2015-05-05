@@ -12,7 +12,7 @@ public class Game {
   private boolean eight;
   private boolean bube;
   private boolean bubeError;
-  private int bubenInput;
+  static int bubenInput;
   private Karte current;
   public static char bubeChar;
   private Kartenstapel kartenstapel = new Kartenstapel(); //Erzeugung eines neuen "Kartendecks".  
@@ -59,6 +59,11 @@ public class Game {
     Fenster3.jButton23.setVisible(false);
     Fenster3.jButton24.setVisible(false);
     Fenster3.jButton25.setVisible(false);
+    
+    Fenster3.jButton26.setVisible(false);
+    Fenster3.jButton27.setVisible(false);
+    Fenster3.jButton28.setVisible(false);
+    Fenster3.jButton29.setVisible(false);  
     
     Fenster3.jButton1.setVisible(false);
     Fenster3.jButton4.setVisible(false);
@@ -458,6 +463,7 @@ public class Game {
           System.out.println();
           */
           
+          
           if (handkarten== 1) {
             Fenster3.jButton6.setVisible(true);
             
@@ -719,65 +725,71 @@ public class Game {
           //input = scanner.nextInt();
           System.out.println("-------------------------");
           
-          if (input <= handkarten) {
+          if (input <= handkarten) { //Prüft, ob ein brauchbarer Wert für den Zug eingegeben wurde.
             if (aktuell == 1) {
               current = Hand.hand1.head;
-              for (int i = 0; i < input - 1; i++) {
+              for (int i = 0; i < input - 1; i++) { //Läuft vom "head" der Hand des aktuellen Spielers bis zur ausgewählten Karte:
                 current = current.next;
               }
-              if (Hand.hand1.vergleich(current) == true) {
-                special();
-                Hand.hand1.legen(current);
-              } else {
-                if (bubeError != true) {
+              
+              //Prüft, ob die ausgewählte Karte überhaupt gelegt werden kann:
+              if (Hand.hand1.vergleich(current) == true) { 
+                special(); //Prüft, ob die ausgewählte Karte einen Spezialeffekt (7/8/Bube) hat.
+                Hand.hand1.legen(current); //Legt die ausgewählte Karte auf die Ablage.
+              } else { //Wenn die ausgewählte Karte nicht gelegt werden kann, wird der aktuelle Zug noch einmal neu gestartet:
+                if (bubeError != true) { //Prüft, ob die Variable "bubeError" auf "true" ist. 
                   System.out.println();
-                  start();
-                } else {
+                  start(); //Neustart des gesamten Zuges durch Aufrufen der Methode "start()".
+                } else { //Wenn die Variable "bubeError" auf "true" ist, muss die Variable "bube" ebenfalls noch einmal auf "true" gesetzt werden, da der aktuelle Zug danach neustartet. 
                   System.out.println();
-                  bube = true;
-                  start();
+                  bube = true; 
+                  start(); //Neustart des gesamten Zuges durch Aufrufen der Methode "start()".
                 }
               }
             }
             if (aktuell == 2) {
               current = Hand.hand2.head;
-              for (int i = 0; i < input - 1; i++) {
+              for (int i = 0; i < input - 1; i++) { //Läuft vom "head" der Hand des aktuellen Spielers bis zur ausgewählten Karte:
                 current = current.next;
               }
+              
+              //Prüft, ob die ausgewählte Karte überhaupt gelegt werden kann:
               if (Hand.hand2.vergleich(current) == true) {
-                special();
-                Hand.hand2.legen(current);
-              } else {
-                if (bubeError != true) {
+                special(); //Prüft, ob die ausgewählte Karte einen Spezialeffekt (7/8/Bube) hat.
+                Hand.hand2.legen(current); //Legt die ausgewählte Karte auf die Ablage.
+              } else { //Wenn die ausgewählte Karte nicht gelegt werden kann, wird der aktuelle Zug noch einmal neu gestartet:
+                if (bubeError != true) { //Prüft, ob die Variable "bubeError" auf "true" ist. 
                   System.out.println();
-                  start();
-                } else {
+                  start(); //Neustart des gesamten Zuges durch Aufrufen der Methode "start()".
+                } else { //Wenn die Variable "bubeError" auf "true" ist, muss die Variable "bube" ebenfalls noch einmal auf "true" gesetzt werden, da der aktuelle Zug danach neustartet.
                   System.out.println();
                   bube = true;
-                  start();
+                  start(); //Neustart des gesamten Zuges durch Aufrufen der Methode "start()".
                 }
               }
             }
             if (aktuell == 3) {
               current = Hand.hand3.head;
-              for (int i = 0; i < input - 1; i++) {
+              for (int i = 0; i < input - 1; i++) { //Läuft vom "head" der Hand des aktuellen Spielers bis zur ausgewählten Karte:
                 current = current.next;
               }
+              
+              //Prüft, ob die ausgewählte Karte überhaupt gelegt werden kann:
               if (Hand.hand3.vergleich(current) == true) {
-                special();
-                Hand.hand3.legen(current);
-              } else {
-                if (bubeError != true) {
+                special(); //Prüft, ob die ausgewählte Karte einen Spezialeffekt (7/8/Bube) hat.
+                Hand.hand3.legen(current); //Legt die ausgewählte Karte auf die Ablage.
+              } else { //Wenn die ausgewählte Karte nicht gelegt werden kann, wird der aktuelle Zug noch einmal neu gestartet:
+                if (bubeError != true) { //Prüft, ob die Variable "bubeError" auf "true" ist. 
                   System.out.println();
-                  start();
-                } else {
+                  start(); //Neustart des gesamten Zuges durch Aufrufen der Methode "start()".
+                } else { //Wenn die Variable "bubeError" auf "true" ist, muss die Variable "bube" ebenfalls noch einmal auf "true" gesetzt werden, da der aktuelle Zug danach neustartet.
                   System.out.println();
                   bube = true;
-                  start();
+                  start(); //Neustart des gesamten Zuges durch Aufrufen der Methode "start()".
                 }
               }
             }
-          } else {
+          } else { //Wenn ein unbrauchbarer Wert eingegeben wurde, wird der Zug neugestartet:
             System.out.println();
             zug();
           }
@@ -819,11 +831,26 @@ public class Game {
       bube = true;
     }
     if (bube == true) {
-      System.out.println();
+      /*System.out.println();
       System.out.print("[Bitte wählen sie ein Symbol]: ");
       System.out.print("(1: [°] / 2: [+] / 3: [#] / 4: [*])");
       System.out.println();
-      bubenInput = scanner.nextInt();
+      */
+      Fenster3.jLabel1.setText("Bitte wählen sie ein Symbol");
+      
+      Fenster3.jButton26.setVisible(true);
+      Fenster3.jButton27.setVisible(true);
+      Fenster3.jButton28.setVisible(true);
+      Fenster3.jButton29.setVisible(true);          
+      
+      while (interagiert !=true) {
+        Fenster3.jLabel1.setText("Spieler " + aktuell + ", machen Sie bitte Ihren Zug!");        
+      } // end of while 
+      
+      interagiert= false;
+      
+      
+      //bubenInput = scanner.nextInt();
       
       if (bubenInput < 5) {
         System.out.println("-------------------------");
