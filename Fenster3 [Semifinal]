@@ -44,6 +44,10 @@ public class Fenster3 extends JFrame {
   static JButton jButton24 = new JButton();
   static JButton jButton25 = new JButton();
   
+  static JButton jButton26 = new JButton();
+  static JButton jButton27 = new JButton();
+  static JButton jButton28 = new JButton();
+  static JButton jButton29 = new JButton();
   // Ende Attribute
   
   public Fenster3(String title) { 
@@ -128,7 +132,7 @@ public class Fenster3 extends JFrame {
     });
     cp.add(jButton5);
     jButton6.setBounds(50, 400, 100, 50);
-    jButton6.setText("jButton6");
+    jButton6.setText("Erste Karte ");
     jButton6.setMargin(new Insets(2, 2, 2, 2));
     jButton6.addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
@@ -137,7 +141,7 @@ public class Fenster3 extends JFrame {
     });
     cp.add(jButton6);
     jButton7.setBounds(152, 400, 100, 50);
-    jButton7.setText("jButton7");
+    jButton7.setText("Zweite Karte");
     jButton7.setMargin(new Insets(2, 2, 2, 2));
     jButton7.addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
@@ -146,7 +150,7 @@ public class Fenster3 extends JFrame {
     });
     cp.add(jButton7);
     jButton8.setBounds(256, 400, 100, 50);
-    jButton8.setText("jButton8");
+    jButton8.setText("Dritte Karte");
     jButton8.setMargin(new Insets(2, 2, 2, 2));
     jButton8.addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
@@ -155,7 +159,7 @@ public class Fenster3 extends JFrame {
     });
     cp.add(jButton8);
     jButton9.setBounds(360, 400, 100, 50);
-    jButton9.setText("jButton9");
+    jButton9.setText("Vierte Karte");
     jButton9.setMargin(new Insets(2, 2, 2, 2));
     jButton9.addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
@@ -164,7 +168,7 @@ public class Fenster3 extends JFrame {
     });
     cp.add(jButton9);
     jButton10.setBounds(464, 400, 100, 50);
-    jButton10.setText("jButton10");
+    jButton10.setText("Fünfte Karte");
     jButton10.setMargin(new Insets(2, 2, 2, 2));
     jButton10.addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
@@ -173,7 +177,7 @@ public class Fenster3 extends JFrame {
     });
     cp.add(jButton10);
     jButton11.setBounds(568, 400, 100, 50);
-    jButton11.setText("jButton11");
+    jButton11.setText("Sechste Karte");
     jButton11.setMargin(new Insets(2, 2, 2, 2));
     jButton11.addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
@@ -182,7 +186,7 @@ public class Fenster3 extends JFrame {
     });
     cp.add(jButton11);
     jButton12.setBounds(672, 400, 100, 50);
-    jButton12.setText("jButton12");
+    jButton12.setText("Siebte Karte");
     jButton12.setMargin(new Insets(2, 2, 2, 2));
     jButton12.addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
@@ -191,7 +195,7 @@ public class Fenster3 extends JFrame {
     });
     cp.add(jButton12);
     jButton13.setBounds(776, 400, 100, 50);
-    jButton13.setText("jButton13");
+    jButton13.setText("Achte Karte");
     jButton13.setMargin(new Insets(2, 2, 2, 2));
     jButton13.addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
@@ -200,7 +204,7 @@ public class Fenster3 extends JFrame {
     });
     cp.add(jButton13);
     jButton14.setBounds(880, 400, 100, 50);
-    jButton14.setText("jButton14");
+    jButton14.setText("Neunte Karte");
     jButton14.setMargin(new Insets(2, 2, 2, 2));
     jButton14.addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
@@ -209,7 +213,7 @@ public class Fenster3 extends JFrame {
     });
     cp.add(jButton14);
     jButton15.setBounds(984, 400, 100, 50);
-    jButton15.setText("jButton15");
+    jButton15.setText("Zehnte Karte");
     jButton15.setMargin(new Insets(2, 2, 2, 2));
     jButton15.addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
@@ -218,7 +222,7 @@ public class Fenster3 extends JFrame {
     });
     cp.add(jButton15);
     jButton16.setBounds(48, 500, 100, 50);
-    jButton16.setText("jButton16");
+    jButton16.setText("Elfte Karte");
     jButton16.setMargin(new Insets(2, 2, 2, 2));
     jButton16.addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
@@ -227,7 +231,7 @@ public class Fenster3 extends JFrame {
     });
     cp.add(jButton16);
     jButton17.setBounds(152, 500, 100, 50);
-    jButton17.setText("jButton17");
+    jButton17.setText("Zweölfte Karte");
     jButton17.setMargin(new Insets(2, 2, 2, 2));
     jButton17.addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
@@ -236,7 +240,7 @@ public class Fenster3 extends JFrame {
     });
     cp.add(jButton17);
     jButton18.setBounds(256, 500, 100, 50);
-    jButton18.setText("jButton18");
+    jButton18.setText("13. Karte");
     jButton18.setMargin(new Insets(2, 2, 2, 2));
     jButton18.addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
@@ -245,7 +249,7 @@ public class Fenster3 extends JFrame {
     });
     cp.add(jButton18);
     jButton19.setBounds(360, 500, 100, 50);
-    jButton19.setText("jButton19");
+    jButton19.setText("14. Karte");
     jButton19.setMargin(new Insets(2, 2, 2, 2));
     jButton19.addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
@@ -254,7 +258,7 @@ public class Fenster3 extends JFrame {
     });
     cp.add(jButton19);
     jButton20.setBounds(464, 500, 100, 50);
-    jButton20.setText("jButton20");
+    jButton20.setText("15. Karte");
     jButton20.setMargin(new Insets(2, 2, 2, 2));
     jButton20.addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
@@ -263,7 +267,7 @@ public class Fenster3 extends JFrame {
     });
     cp.add(jButton20);
     jButton21.setBounds(568, 500, 100, 50);
-    jButton21.setText("jButton21");
+    jButton21.setText("16. Karte");
     jButton21.setMargin(new Insets(2, 2, 2, 2));
     jButton21.addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
@@ -272,7 +276,7 @@ public class Fenster3 extends JFrame {
     });
     cp.add(jButton21);
     jButton22.setBounds(672, 500, 100, 50);
-    jButton22.setText("jButton22");
+    jButton22.setText("17. Karte");
     jButton22.setMargin(new Insets(2, 2, 2, 2));
     jButton22.addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
@@ -281,7 +285,7 @@ public class Fenster3 extends JFrame {
     });
     cp.add(jButton22);
     jButton23.setBounds(776, 500, 100, 50);
-    jButton23.setText("jButton23");
+    jButton23.setText("18. Karte");
     jButton23.setMargin(new Insets(2, 2, 2, 2));
     jButton23.addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
@@ -290,7 +294,7 @@ public class Fenster3 extends JFrame {
     });
     cp.add(jButton23);
     jButton24.setBounds(880, 500, 100, 50);
-    jButton24.setText("jButton24");
+    jButton24.setText("19. Karte");
     jButton24.setMargin(new Insets(2, 2, 2, 2));
     jButton24.addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
@@ -299,7 +303,7 @@ public class Fenster3 extends JFrame {
     });
     cp.add(jButton24);
     jButton25.setBounds(984, 500, 100, 50);
-    jButton25.setText("jButton25");
+    jButton25.setText("20. Karte");
     jButton25.setMargin(new Insets(2, 2, 2, 2));
     jButton25.addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
@@ -307,6 +311,42 @@ public class Fenster3 extends JFrame {
       }
     });
     cp.add(jButton25);
+    jButton26.setBounds(240, 384, 75, 75);
+    jButton26.setText("°");
+    jButton26.setMargin(new Insets(2, 2, 2, 2));
+    jButton26.addActionListener(new ActionListener() { 
+      public void actionPerformed(ActionEvent evt) { 
+        jButton26_ActionPerformed(evt);
+      }
+    });
+    cp.add(jButton26);
+    jButton27.setBounds(430, 384, 75, 75);
+    jButton27.setText("+");
+    jButton27.setMargin(new Insets(2, 2, 2, 2));
+    jButton27.addActionListener(new ActionListener() { 
+      public void actionPerformed(ActionEvent evt) { 
+        jButton27_ActionPerformed(evt);
+      }
+    });
+    cp.add(jButton27);
+    jButton28.setBounds(552, 384, 75, 75);
+    jButton28.setText("#");
+    jButton28.setMargin(new Insets(2, 2, 2, 2));
+    jButton28.addActionListener(new ActionListener() { 
+      public void actionPerformed(ActionEvent evt) { 
+        jButton28_ActionPerformed(evt);
+      }
+    });
+    cp.add(jButton28);
+    jButton29.setBounds(742, 384, 75, 75);
+    jButton29.setText("*");
+    jButton29.setMargin(new Insets(2, 2, 2, 2));
+    jButton29.addActionListener(new ActionListener() { 
+      public void actionPerformed(ActionEvent evt) { 
+        jButton29_ActionPerformed(evt);
+      }
+    });
+    cp.add(jButton29);
     // Ende Komponenten
     
     setVisible(true);
@@ -890,6 +930,46 @@ public class Fenster3 extends JFrame {
     Fenster3.jButton25.setVisible(false);
     Game.interagiert= true;
   } // end of jButton25_ActionPerformed
+  
+  public void jButton26_ActionPerformed(ActionEvent evt) {
+    // TODO hier Quelltext einfügen
+    Game.bubenInput= 1;
+    Fenster3.jButton26.setVisible(true);
+    Fenster3.jButton27.setVisible(true);
+    Fenster3.jButton28.setVisible(true);
+    Fenster3.jButton29.setVisible(true);
+    Game.interagiert= true;
+  } // end of jButton26_ActionPerformed
+  
+  public void jButton27_ActionPerformed(ActionEvent evt) {
+    // TODO hier Quelltext einfügen
+    Game.bubenInput= 2;
+    Fenster3.jButton26.setVisible(true);
+    Fenster3.jButton27.setVisible(true);
+    Fenster3.jButton28.setVisible(true);
+    Fenster3.jButton29.setVisible(true);
+    Game.interagiert= true;
+  } // end of jButton27_ActionPerformed
+  
+  public void jButton28_ActionPerformed(ActionEvent evt) {
+    // TODO hier Quelltext einfügen
+    Game.bubenInput= 3;
+    Fenster3.jButton26.setVisible(true);
+    Fenster3.jButton27.setVisible(true);
+    Fenster3.jButton28.setVisible(true);
+    Fenster3.jButton29.setVisible(true);
+    Game.interagiert= true;
+  } // end of jButton28_ActionPerformed
+  
+  public void jButton29_ActionPerformed(ActionEvent evt) {
+    // TODO hier Quelltext einfügen
+    Game.bubenInput= 4;
+    Fenster3.jButton26.setVisible(true);
+    Fenster3.jButton27.setVisible(true);
+    Fenster3.jButton28.setVisible(true);
+    Fenster3.jButton29.setVisible(true);
+    Game.interagiert= true;
+  } // end of jButton29_ActionPerformed
   
   // Ende Methoden
 } // end of class Fenster3
