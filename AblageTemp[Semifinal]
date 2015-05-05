@@ -49,6 +49,9 @@ public class Ablage {
   public void ausgeben() {
     Fenster3.jLabel2.setVisible(true); 
     Fenster3.jLabel3.setVisible(true);
+    Fenster3.jLabel5.setVisible(true);
+    
+    
     /*
     System.out.println(head.next.element);
     System.out.println();
