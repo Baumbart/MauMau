@@ -2,20 +2,20 @@ import java.util.*;
 
 public class Game {
 	private Scanner scanner = new Scanner(System.in);  //Erzeugung eines Scanners aus java.util.
-	private int aktuell; 
-	private int max; 
-	private int handkarten; 
-	private int counter;
-	private Hand spieler; 
+	private int aktuell; //Aktueller Spieler
+	private int max; //Spieleranzahl
+	private int handkarten; //Zahl der Handkarten eines Spielers
+	private int counter; //Zählvariable für die Methode "pruefen()"
+	private Hand spieler; //"Hand" des aktuellen Spielers
 	private boolean win; //Prüft, ob ein Spieler gewonnen hat.
-	private boolean seven;
-	private boolean eight;
-	private boolean bube;
-	private boolean bubeError;
-	private int bubenInput;
-	private Karte current;
-	public static char bubeChar;
-	private Kartenstapel kartenstapel = new Kartenstapel(); //Erzeugung eines neuen "Kartendecks".
+	private boolean seven; //Prüft, ob im vorherigen Zug eine 7 gelegt wurde.
+	private boolean eight; //Prüft, ob im vorherigen Zug eine 8 gelegt wurde.
+	private boolean bube; //Prüft, ob im vorherigen Zug ein Bube gelegt wurde.
+	private boolean bubeError; //Prüft, ob bei dem Neustart eines Zuges (aufgrund einer fehlerhaften Eingabe) die Variable "bube" auf "true" war, um sie ggf. erneut auf "true" zu setzen.
+	private int bubenInput; //Für die Auswahl eines gewünschten "Zeichens", nachdem ein Bube gelegt wurde.
+	private Karte current; //Zählnode für die Methoden "zug()" und "special()"
+	public static char bubeChar; //Das gewünschte "Zeichen", das ausgewählt wird, nachdem ein Bube gelegt wurde.
+	private Kartenstapel kartenstapel = new Kartenstapel(); //Erzeugung eines neuen "Kartendecks", von dem alle Karten gezogen werden.
 
 	//Objekt, das bei der Erzeugung das Spiel startet:
 	public Game() {
@@ -27,25 +27,25 @@ public class Game {
 		
 		//Auswahl der Spieleranzahl:
 		System.out.println("Bitte wählen Sie die Spieleranzahl! (2/3)");
-		int input = scanner.nextInt();
-		Matchconfig.setSpielerzahl(input);
+		int input = scanner.nextInt(); //Nächste Tasteneingabe wird eingelesen.
+		Matchconfig.setSpielerzahl(input); //Änderung der Spieleranzahl in der class "Matchconfig".
 		max = input; //Der Variable "max" wird die Spielerzahl zugewiesen.
 
 		//Auswahl des Spielers, der als erstes dran ist - basierend auf der Spielerzahl:
 		if (input < 3 || input > 1) { //Prüft, ob die Spieleranzahl entweder den Wert "2" oder "3" beträgt.
 			if (max == 2) {
 				System.out.println("Welcher Spieler soll starten? (1/2)");
-				input = scanner.nextInt();
+				input = scanner.nextInt(); //Nächste Tasteneingabe wird eingelesen.
 			}
 			if (max == 3) {
 				System.out.println("Welcher Spieler soll starten? (1/2/3)");
-				input = scanner.nextInt();
+				input = scanner.nextInt(); //Nächste Tasteneingabe wird eingelesen.
 			}
 		} else { //Wenn die Spieleranzahl kleiner als "2" oder größer als "3" ist, wird die Konfiguration neugestartet:
-			kartenstapel.mischen();
+			kartenstapel.mischen(); 
 			konfiguration();
 		} 
-		if (input <= max) { 
+		if (input <= max) { //Prüft, ob ein brauchbarer Wert für den Startspieler eingegeben wurde. 
 			System.out.println("-------------------------");
 			System.out.println();
 			aktuell = input; //Der Variable "aktuell" wird der Startspieler / aktuelle Spieler zugewiesen.
@@ -63,9 +63,9 @@ public class Game {
 
 		//Prüft, ob der vorherige Spieler eine 8 gelegt hat:
 		if (eight == true) { //Wenn die Variable "eight" auf "true" ist, wird der aktuelle Spieler übersprungen und der nächste Spieler ist dran:
-			if (aktuell != max) {
+			if (aktuell != max) { //Prüft, ob die Variable "akutell" die maximale Spieleranzahl überschreitet.
 				aktuell++;
-			} else { 
+			} else { //Wenn die Variable "aktuell" über die maximale Spieleranzahl herausschreitet, wird sie auf 1 zurückgesetzt: 
 				aktuell = 1;
 			}
 			eight = false; //Die Variable "eight" wird wieder auf "false" gesetzt, wenn sie auf "true" war.
@@ -76,7 +76,7 @@ public class Game {
 		if (max == 2) {
 			
 			//Prüft, welcher Spieler aktuell am Zug ist:
-			if (aktuell == 1) {
+			if (aktuell == 1) { 
 				handkarten = Hand.hand1.size(); //Der Variable "handkarten" wird die Anzahl der Karten auf "hand1" aus der Klasse "Hand" zugewiesen.
 				spieler = Hand.hand1; //Der Variable "spieler" wird die Hand "hand1" aus der Klasse "Hand" zugewiesen.
 			}
@@ -104,23 +104,23 @@ public class Game {
 		//Die Werte der Handkarten und der Wert der obersten Karte auf der Ablage werden ausgegeben:
 		System.out.println();
 		System.out.print("[Handkarten]: ");
-		spieler.ausgeben();
+		spieler.ausgeben(); //Gibt die Kartenwerte auf der Hand des aktuellen Spielers aus.
 		System.out.print("[Aktuell]: ");
 		
 		//Prüft, ob die Variable "bube" auf "true" ist:
 		if (bube != true) { //Wenn die Variable "bube" auf "false" ist, wird ganz normal die oberste Karte auf der Ablage ausgegeben:
 			Ablage.ablage.ausgeben(); 
 		} else { //Wenn die Variable "bube" auf true ist, wird lediglich der erste "char" des Kartenwerts angegeben, weil der zweite egal ist:
-			System.out.println(bubeChar);
+			System.out.println(bubeChar); //Erster "char" des Kartenwerts
 			System.out.println();
 		}
 		pruefen(); //Prüft, ob der aktuelle Spieler mindestens eine Karte legen kann.
 		zug(); //Startet den Zug des aktuellen Spielers.
 
 		//Nach dem Zug wird der Spieler gewechselt:
-		if (aktuell != max) { 
+		if (aktuell != max) { //Prüft, ob die Variable "akutell" die maximale Spieleranzahl überschreitet.
 			aktuell++; 
-		} else {
+		} else { //Wenn die Variable "aktuell" über die maximale Spieleranzahl herausschreitet, wird sie auf 1 zurückgesetzt: 
 			aktuell = 1;
 		}
 		System.out.println();
@@ -145,58 +145,58 @@ public class Game {
 			
 			//Prüft, ob der vorherige Spieler eine 7 gelegt hat:
 			if (seven == true) { //Wenn die Variable "seven" auf "true" ist, zieht der aktuelle Spieler zwei Karten:
-				for (int i = 0; i < 2; i++) {
+				for (int i = 0; i < 2; i++) { //Eine "For-Schleife" mit 2 Durchgängen:
 					if (aktuell == 1) {
-						Hand.hand1.ziehen();
+						Hand.hand1.ziehen(); //Nimmt eine Karte aus dem "kartenstapel" und fügt sie der Hand "hand1" hinzu.
 					}
 					if (aktuell == 2) {
-						Hand.hand2.ziehen();
+						Hand.hand2.ziehen(); //Nimmt eine Karte aus dem "kartenstapel" und fügt sie der Hand "hand2" hinzu.
 					}
 					if (aktuell == 3) {
-						Hand.hand3.ziehen();
+						Hand.hand3.ziehen(); //Nimmt eine Karte aus dem "kartenstapel" und fügt sie der Hand "hand3" hinzu.
 					}
 				}
 			} else { //Wenn die Variable "seven" auf "false" ist, zieht der aktuelle Spieler eine Karte:
 				if (aktuell == 1) {
-					Hand.hand1.ziehen();
+					Hand.hand1.ziehen(); //Nimmt eine Karte aus dem "kartenstapel" und fügt sie der Hand "hand1" hinzu.
 				}
 				if (aktuell == 2) {
-					Hand.hand2.ziehen();
+					Hand.hand2.ziehen(); //Nimmt eine Karte aus dem "kartenstapel" und fügt sie der Hand "hand2" hinzu.
 				}
 				if (aktuell == 3) {
-					Hand.hand3.ziehen();
+					Hand.hand3.ziehen(); //Nimmt eine Karte aus dem "kartenstapel" und fügt sie der Hand "hand3" hinzu.
 				}
 			}
 		} else { //Wenn der Kartenstapel leer ist, wird er "aufgefüllt" und danach werden erst die Karten gezogen:
 			kartenstapel.reuse(); //Die Karten der Ablage werden auf den Kartenstapel übertragen und gemischt. Die oberste Karte der Ablage bleibt hierbei liegen.
-			if (seven == true) {
-				for (int i = 0; i < 1; i++) {
+			if (seven == true) { //Wenn die Variable "seven" auf "true" ist, zieht der aktuelle Spieler zwei Karten:
+				for (int i = 0; i < 1; i++) { //Eine "For-Schleife" mit 2 Durchgängen:
 					if (aktuell == 1) {
-						Hand.hand1.ziehen();
+						Hand.hand1.ziehen(); //Nimmt eine Karte aus dem "kartenstapel" und fügt sie der Hand "hand1" hinzu.
 					}
 					if (aktuell == 2) {
-						Hand.hand2.ziehen();
+						Hand.hand2.ziehen(); //Nimmt eine Karte aus dem "kartenstapel" und fügt sie der Hand "hand1" hinzu.
 					}
 					if (aktuell == 3) {
-						Hand.hand3.ziehen();
+						Hand.hand3.ziehen(); //Nimmt eine Karte aus dem "kartenstapel" und fügt sie der Hand "hand1" hinzu.
 					}
 				}
-			} else {
+			} else { //Wenn die Variable "seven" auf "false" ist, zieht der aktuelle Spieler eine Karte:
 				if (aktuell == 1) {
-					Hand.hand1.ziehen();
+					Hand.hand1.ziehen(); //Nimmt eine Karte aus dem "kartenstapel" und fügt sie der Hand "hand1" hinzu.
 				}
 				if (aktuell == 2) {
-					Hand.hand2.ziehen();
+					Hand.hand2.ziehen(); //Nimmt eine Karte aus dem "kartenstapel" und fügt sie der Hand "hand1" hinzu.
 				}
 				if (aktuell == 3) {
-					Hand.hand3.ziehen();
+					Hand.hand3.ziehen(); //Nimmt eine Karte aus dem "kartenstapel" und fügt sie der Hand "hand1" hinzu.
 				}
 			}
 		}
 		
 		//Es wird angezeigt, wie viele Karten gezogen wurden:
 		System.out.println("-------------------------");
-		if (seven == true) {
+		if (seven == true) { 
 			System.out.println();
 			System.out.println("[Zug]: '2 Karten gezogen'");
 			System.out.println();
@@ -255,246 +255,255 @@ public class Game {
 	}
 
 	//Startet den Zug des aktuellen Spielers:
-	private void zug() {
-		if (counter > 0) {
-			if (seven == true) {
-				ziehenAlle();
+	private void zug() { 
+		if (counter > 0) { //Prüft, ob die Variable "counter" größer als 0 ist (d.h. ob mindestens eine kompatible Karte gelegt werden kann).
+			if (seven == true) { //Prüft, ob im vorherigen Zug eine Karte mit dem Wert "7" gelegt wurde:
+				ziehenAlle(); //Der aktuelle Spieler zieht 2 Karten vom Kartenstapel, weil sein Vorgänger eine "7" gelegt hat.
 				System.out.println();
 				System.out.print("[Handkarten]: ");
-				spieler.ausgeben();
+				spieler.ausgeben(); //Ausgabe aller Karten auf der Hand des aktuellen Spielers
 				System.out.println();
-				seven = false;
+				seven = false; //Die Variable "seven" wird wieder auf "false" gesetzt, da der aktuelle Spieler bereits 2 Karten gezogen hat.
 			}
-			System.out
-					.println("[Zug]: 'Ich lege eine Karte' / 'Ich ziehe eine Karte' (1/2)");
-			int input = scanner.nextInt();
+			System.out.println("[Zug]: 'Ich lege eine Karte' / 'Ich ziehe eine Karte' (1/2)");
+			int input = scanner.nextInt(); //Nächste Tasteneingabe wird eingelesen.
 
-			if (input < 3) {
-				if (input == 1) {
+			if (input < 3) { //Prüft, ob ein brauchbarer Wert für den Zug eingegeben wurde.
+				if (input == 1) { 
 					System.out.println("-------------------------");
 					System.out.println();
 					System.out.print("[Aktuell]: ");
-					if (bube != true) {
+					if (bube != true) { //Wenn kein Bube oben auf der Ablage liegt, wird ganz normal die oberste Karte auf der Ablage ausgegeben:
 						Ablage.ablage.ausgeben();
-					} else {
-						System.out.println(bubeChar);
+					} else { //Wenn die Variable "bube" auf true ist, wird lediglich der erste "char" des Kartenwerts angegeben, weil der zweite egal ist:
+						System.out.println(bubeChar); //Erster "char" des Kartenwerts
 						System.out.println();
-						bube = false;
-						bubeError = true;
+						bube = false; //Die Variable "bube" wird wieder auf "false" gesetzt, da bubeChar bereits ausgegeben wurde.
+						bubeError = true; //Die Variable "bubeError" wird auf "true" gesetzt, um Fehlern bei einer falschen Eingabe vorzubeugen. 
 					}
+					
+					//Auswahl der Karte, welche gelegt werden soll:
 					System.out.print("[Zug]: 'Ich lege Karte (");
 					if (aktuell == 1) {
 						current = Hand.hand1.head.next;
-						for (int i = 0; i < handkarten; i++) {
+						for (int i = 0; i < handkarten; i++) { //Ausgabe der Handkarten des aktuellen Spielers:
 							System.out.print(i + 1 + ": [" + current.element
 									+ "]");
-							if (i != handkarten - 1) {
+							if (i != handkarten - 1) { //Zwischen jedem Kartenwert wird ein "/" eingefügt:
 								System.out.print(" / ");
 							}
-							current = current.next;
+							current = current.next; //"current.next" wird bei jedem Durchlauf zu "current", damit die nächste Karte ausgegeben wird.
 						}
 					}
 					if (aktuell == 2) {
 						current = Hand.hand2.head.next;
-						for (int i = 0; i < handkarten; i++) {
+						for (int i = 0; i < handkarten; i++) { //Ausgabe der Handkarten des aktuellen Spielers:
 							System.out.print(i + 1 + ": [" + current.element
 									+ "]");
-							if (i != handkarten - 1) {
-								System.out.print(" / ");
+							if (i != handkarten - 1) { //Zwischen jedem Kartenwert wird ein "/" eingefügt:
+								System.out.print(" / "); 
 							}
-							current = current.next;
+							current = current.next; //"current.next" wird bei jedem Durchlauf zu "current", damit die nächste Karte ausgegeben wird.
 						}
 					}
 					if (aktuell == 3) {
 						current = Hand.hand3.head.next;
-						for (int i = 0; i < handkarten; i++) {
+						for (int i = 0; i < handkarten; i++) { //Ausgabe der Handkarten des aktuellen Spielers:
 							System.out.print(i + 1 + ": [" + current.element
 									+ "]");
-							if (i != handkarten - 1) {
+							if (i != handkarten - 1) { //Zwischen jedem Kartenwert wird ein "/" eingefügt:
 								System.out.print(" / ");
 							}
-							current = current.next;
+							current = current.next; //"current.next" wird bei jedem Durchlauf zu "current", damit die nächste Karte ausgegeben wird.
 						}
 					}
 					System.out.print(")'");
 					System.out.println();
-					input = scanner.nextInt();
+					input = scanner.nextInt(); //Nächste Tasteneingabe wird eingelesen.
 					System.out.println("-------------------------");
 
-					if (input <= handkarten) {
+					if (input <= handkarten) { //Prüft, ob ein brauchbarer Wert für den Zug eingegeben wurde.
 						if (aktuell == 1) {
 							current = Hand.hand1.head;
-							for (int i = 0; i < input - 1; i++) {
+							for (int i = 0; i < input - 1; i++) { //Läuft vom "head" der Hand des aktuellen Spielers bis zur ausgewählten Karte:
 								current = current.next;
 							}
-							if (Hand.hand1.vergleich(current) == true) {
-								special();
-								Hand.hand1.legen(current);
-							} else {
-								if (bubeError != true) {
+							
+							//Prüft, ob die ausgewählte Karte überhaupt gelegt werden kann:
+							if (Hand.hand1.vergleich(current) == true) { 
+								special(); //Prüft, ob die ausgewählte Karte einen Spezialeffekt (7/8/Bube) hat.
+								Hand.hand1.legen(current); //Legt die ausgewählte Karte auf die Ablage.
+							} else { //Wenn die ausgewählte Karte nicht gelegt werden kann, wird der aktuelle Zug noch einmal neu gestartet:
+								if (bubeError != true) { //Prüft, ob die Variable "bubeError" auf "true" ist. 
 									System.out.println();
-									start();
-								} else {
+									start(); //Neustart des gesamten Zuges durch Aufrufen der Methode "start()".
+								} else { //Wenn die Variable "bubeError" auf "true" ist, muss die Variable "bube" ebenfalls noch einmal auf "true" gesetzt werden, da der aktuelle Zug danach neustartet. 
 									System.out.println();
-									bube = true;
-									start();
+									bube = true; 
+									start(); //Neustart des gesamten Zuges durch Aufrufen der Methode "start()".
 								}
 							}
 						}
 						if (aktuell == 2) {
 							current = Hand.hand2.head;
-							for (int i = 0; i < input - 1; i++) {
+							for (int i = 0; i < input - 1; i++) { //Läuft vom "head" der Hand des aktuellen Spielers bis zur ausgewählten Karte:
 								current = current.next;
 							}
+							
+							//Prüft, ob die ausgewählte Karte überhaupt gelegt werden kann:
 							if (Hand.hand2.vergleich(current) == true) {
-								special();
-								Hand.hand2.legen(current);
-							} else {
-								if (bubeError != true) {
+								special(); //Prüft, ob die ausgewählte Karte einen Spezialeffekt (7/8/Bube) hat.
+								Hand.hand2.legen(current); //Legt die ausgewählte Karte auf die Ablage.
+							} else { //Wenn die ausgewählte Karte nicht gelegt werden kann, wird der aktuelle Zug noch einmal neu gestartet:
+								if (bubeError != true) { //Prüft, ob die Variable "bubeError" auf "true" ist. 
 									System.out.println();
-									start();
-								} else {
+									start(); //Neustart des gesamten Zuges durch Aufrufen der Methode "start()".
+								} else { //Wenn die Variable "bubeError" auf "true" ist, muss die Variable "bube" ebenfalls noch einmal auf "true" gesetzt werden, da der aktuelle Zug danach neustartet.
 									System.out.println();
 									bube = true;
-									start();
+									start(); //Neustart des gesamten Zuges durch Aufrufen der Methode "start()".
 								}
 							}
 						}
 						if (aktuell == 3) {
 							current = Hand.hand3.head;
-							for (int i = 0; i < input - 1; i++) {
+							for (int i = 0; i < input - 1; i++) { //Läuft vom "head" der Hand des aktuellen Spielers bis zur ausgewählten Karte:
 								current = current.next;
 							}
+							
+							//Prüft, ob die ausgewählte Karte überhaupt gelegt werden kann:
 							if (Hand.hand3.vergleich(current) == true) {
-								special();
-								Hand.hand3.legen(current);
-							} else {
-								if (bubeError != true) {
+								special(); //Prüft, ob die ausgewählte Karte einen Spezialeffekt (7/8/Bube) hat.
+								Hand.hand3.legen(current); //Legt die ausgewählte Karte auf die Ablage.
+							} else { //Wenn die ausgewählte Karte nicht gelegt werden kann, wird der aktuelle Zug noch einmal neu gestartet:
+								if (bubeError != true) { //Prüft, ob die Variable "bubeError" auf "true" ist. 
 									System.out.println();
-									start();
-								} else {
+									start(); //Neustart des gesamten Zuges durch Aufrufen der Methode "start()".
+								} else { //Wenn die Variable "bubeError" auf "true" ist, muss die Variable "bube" ebenfalls noch einmal auf "true" gesetzt werden, da der aktuelle Zug danach neustartet.
 									System.out.println();
 									bube = true;
-									start();
+									start(); //Neustart des gesamten Zuges durch Aufrufen der Methode "start()".
 								}
 							}
 						}
-					} else {
+					} else { //Wenn ein unbrauchbarer Wert eingegeben wurde, wird der Zug neugestartet:
 						System.out.println();
 						zug();
 					}
-				} else {
+				} else { //Wenn Option 2 ausgewählt wurde, zieht der aktuelle Spieler lediglich eine Karte vom Kartenstapel:
 					ziehenAlle();
 				}
-			} else {
-				zug();
+			} else { //Wenn ein unbrauchbarer Wert eingegeben wurde, wird der Zug neugestartet:
+				zug(); 
 			}
-		} else {
-			if (seven == true) {
-				ziehenAlle();
+		} else { //Wenn wenn sich keine kompatible Karte auf der Hand befindet, kann lediglich eine Karte vom Kartenstapel gezogen werden.
+			if (seven == true) { //Prüft, ob im vorherigen Zug eine Karte mit dem Wert "7" gelegt wurde:
+				ziehenAlle(); //Der aktuelle Spieler zieht 2 Karten vom Kartenstapel, weil sein Vorgänger eine "7" gelegt hat.
 				System.out.println();
 				System.out.print("[Handkarten]: ");
-				spieler.ausgeben();
-				seven = false;
-				pruefen();
-				zug();
+				spieler.ausgeben(); //Ausgabe aller Karten auf der Hand des aktuellen Spielers
+				seven = false; //Die Variable "seven" wird wieder auf "false" gesetzt, da der aktuelle Spieler bereits 2 Karten gezogen hat.
+	     		pruefen(); //Prüft, ob der aktuelle Spieler mindestens eine Karte legen kann.
+				zug(); //Neustart des Zuges.
 			}
-			System.out.println("[Zug]: 'Ich ziehe eine Karte' (1)");
-			int input = scanner.nextInt();
+			System.out.println("[Zug]: 'Ich ziehe eine Karte' (1)"); 
+			int input = scanner.nextInt(); //Nächste Tasteneingabe wird eingelesen.
 			System.out.println();
-			if (input < 2) {
-				ziehenAlle();
-			} else {
+			if (input < 2) { //Prüft, ob ein brauchbarer Wert für den Zug eingegeben wurde.
+				ziehenAlle(); //Der Spieler zieht eine Karte vom Kartenstapel.
+			} else { //Wenn ein unbrauchbarer Wert eingegeben wurde, wird der Zug neugestartet:
 				zug();
 			}
 		}
 	}
 
+	//Prüft, ob eine Karte einen Spezialeffekt (7/8/Bube) hat.
 	public void special() {
-		if (current.next.element.charAt(1) == '7') {
+		if (current.next.element.charAt(1) == '7') { //Wenn der zweite "char" der aktuellen Karte eine "7" ist, wird die Variable "seven" auf "true" gesetzt:
 			seven = true;
 		}
-		if (current.next.element.charAt(1) == '8') {
+		if (current.next.element.charAt(1) == '8') { //Wenn der zweite "char" der aktuellen Karte eine "8" ist, wird die Variable "eight" auf "true" gesetzt:
 			eight = true;
 		}
-		if (current.next.element.charAt(1) == 'B') {
+		if (current.next.element.charAt(1) == 'B') { //Wenn der zweite "char" der aktuellen Karte eine "B" ist, wird die Variable "bube" auf "true" gesetzt:
 			bube = true;
 		}
-		if (bube == true) {
+		if (bube == true) { //Wenn die Variable "bube" auf "true" ist, darf der aktuelle Spieler sich ein Symbol aussuchen:
 			System.out.println();
 			System.out.print("[Bitte wählen sie ein Symbol]: ");
 			System.out.print("(1: [°] / 2: [+] / 3: [#] / 4: [*])");
 			System.out.println();
-			bubenInput = scanner.nextInt();
+			bubenInput = scanner.nextInt(); //Nächste Tasteneingabe wird eingelesen.
 
-			if (bubenInput < 5) {
+			if (bubenInput < 5) { //Prüft, ob ein brauchbarer Wert eingegeben wurde:
 				System.out.println("-------------------------");
 
-				if (bubenInput == 1) {
+				if (bubenInput == 1) { //Wenn der Wert "1" eingegeben wurde, wird der Variable "bubeChar" der Wert '°' zugewiesen:
 					bubeChar = '°';
 				}
-				if (bubenInput == 2) {
+				if (bubenInput == 2) { //Wenn der Wert "2" eingegeben wurde, wird der Variable "bubeChar" der Wert '+' zugewiesen:
 					bubeChar = '+';
 				}
-				if (bubenInput == 3) {
+				if (bubenInput == 3) { //Wenn der Wert "3" eingegeben wurde, wird der Variable "bubeChar" der Wert '#' zugewiesen:
 					bubeChar = '#';
 				}
-				if (bubenInput == 4) {
+				if (bubenInput == 4) { //Wenn der Wert "4" eingegeben wurde, wird der Variable "bubeChar" der Wert '*' zugewiesen:
 					bubeChar = '*';
 				}
-			} else {
-				special();
+			} else { //Wenn ein unbrauchbarer Wert eingegeben wurde, wird die Methode "special" neugestartet:
+				special(); 
 			}
 		}
 	}
 	
+	//Startet die nächste Runde des Spiels, bzw. beendet ggf. das Spiel, wenn ein Spieler gewonnen hat:
 	public void win() {
-		if (win == false) {
-			start();
-		} else {
+		if (win == false) { //Wenn die Variable "win" auf "false" ist, wird eine neue Runde gestartet: 
+			start(); 
+		} else { //Wenn ein Spieler gewonnen hat (wenn die Variable "win" auf "true" ist), wird der Sieger angezeigt und das Spiel beendet:
 			if (max == 2) {
 				if (Hand.hand1.size() == 0) {
 					System.out.println("Spieler 1 hat gewonnen!");
-					end();
+					end(); //Beendet das Spiel.
 				}
 				if (Hand.hand2.size() == 0) {
 					System.out.println("Spieler 2 hat gewonnen!");
-					end();
+					end(); //Beendet das Spiel.
 				}
 			} else {
 				if (Hand.hand1.size() == 0) {
 					System.out.println("Spieler 1 hat gewonnen!");
-					end();
+					end(); //Beendet das Spiel.
 				}
 				if (Hand.hand2.size() == 0) {
 					System.out.println("Spieler 2 hat gewonnen!");
-					end();
+					end(); //Beendet das Spiel.
 				}
 				if (Hand.hand3.size() == 0) {
 					System.out.println("Spieler 3 hat gewonnen!");
-					end();
+					end(); //Beendet das Spiel.
 				}
 			}
 		}
 	}
 	
+	//Auswahl, ob das Spiel beendet oder ein neues Spiel gestartet werden soll:
 	public void end() {
 		System.out.println();
-		System.out
-				.println("Zum Neustarten bitte '1' drücken! / Zum Beenden bitte '2' drücken!");
-		int input = scanner.nextInt();
+		System.out.println("Zum Neustarten bitte '1' drücken! / Zum Beenden bitte '2' drücken!");
+		int input = scanner.nextInt(); //Nächste Tasteneingabe wird eingelesen.
 		System.out.println("-------------------------");
 		System.out.println();
 
-		if (input == 1) {
+		if (input == 1) { //Wenn der Wert "1" eingegeben wurde, wird das Spiel neugestartet:
 			System.out.println("~NEUSTART~");
 			System.out.println();
 			System.out.println("-------------------------");
 			System.out.println();
-			kartenstapel.mischen();
-			konfiguration();
+			kartenstapel.mischen(); //Der Kartenstapel wird neu gemischt.
+			konfiguration(); //Die Konfiguration wird neu gestartet.
 		}
-		if (input == 2) {
+		if (input == 2) { //Wenn der Wert "1" eingegeben wurde, wird das Spiel beendet:
 			System.out.println("~SPIEL BEENDET~");
 			System.out.println();
 			System.out.println("-------------------------");
