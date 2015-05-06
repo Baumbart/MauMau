@@ -12,18 +12,18 @@ import javax.swing.event.*;
 
 public class Fenster3 extends JFrame {
   // Anfang Attribute
-  static JButton jButton2 = new JButton();//Button für die auswahl: "Zweispielrmodus" und "Spieler 1 beginnt" 
-  static JButton jButton3 = new JButton(); //Button für die auswahl:"Dreispielermodus" und "Spieler 2 beginnt"
-  static JLabel jLabel1 = new JLabel();//Label für: Anweisungen an den Spieler
-  static JButton jButton1 = new JButton();//Button für die auswahl:"Spieler 3 beginnt"          
-  static JLabel jLabel2 = new JLabel();//Label für: Das Anzegen  der Obersten Ablagestapelkarte 
-  static JLabel jLabel3 = new JLabel();//Label für: Den Schriftzug "Oberste Karte"
-  static int pressCounter;//Zählt wie oft Button 2+3 Gedrückt wurden
-  static JLabel jLabel4 = new JLabel();//Label für: Das Anzeigen der aktuellen Handkarten
-  static JButton jButton4 = new JButton();//Button für die auswahl: "Ablegen einer Karte"
-  static JButton jButton5 = new JButton();//Button für die auswahl: "Eine Karte aufnemen"
+  static JButton jButton2 = new JButton();
+  static JButton jButton3 = new JButton();
+  static JLabel jLabel1 = new JLabel();
+  static JButton jButton1 = new JButton();          
+  static JLabel jLabel2 = new JLabel();
+  static JLabel jLabel3 = new JLabel();
+  static int pressCounter;
+  static JLabel jLabel4 = new JLabel();
+  static JButton jButton4 = new JButton();
+  static JButton jButton5 = new JButton();
   
-  static JButton jButton6 = new JButton();//Button (6-25) für die auswahl der Abzulegenden Karte  
+  static JButton jButton6 = new JButton();  
   static JButton jButton7 = new JButton();
   static JButton jButton8 = new JButton();
   static JButton jButton9 = new JButton();
@@ -44,40 +44,39 @@ public class Fenster3 extends JFrame {
   static JButton jButton24 = new JButton();
   static JButton jButton25 = new JButton();
   
-  static JButton jButton26 = new JButton();//Button für die auswahl:"°" Bei einem abgelegten Buben 
-  static JButton jButton27 = new JButton();//Button für die auswahl:"+" Bei einem abgelegten Buben
-  static JButton jButton28 = new JButton();//Button für die auswahl:"#" Bei einem abgelegten Buben
-  static JButton jButton29 = new JButton();//Button für die auswahl:"*" Bei einem abgelegten Buben
-  static JLabel jLabel5 = new JLabel();//Label für:Den Schriftzug "Handkarten"
-  static JLabel jLabel6 = new JLabel();//Label für: Die Informationseinblendung von einer oder zwei gezognen Karten
-  static JButton jButton30 = new JButton();//Button für die auswahl: "Neustart"
-  static JButton jButton31 = new JButton();//Button für die auswahl: "Beenden des Spiels"
-  static JLabel jLabel7 = new JLabel();//Label für: Den Schriftzug welcher Spieler das Spiel gewonnen hat
+  static JButton jButton26 = new JButton();
+  static JButton jButton27 = new JButton();
+  static JButton jButton28 = new JButton();
+  static JButton jButton29 = new JButton();
+  static JLabel jLabel5 = new JLabel();
+  static JLabel jLabel6 = new JLabel();
+  static JButton jButton30 = new JButton();
+  static JButton jButton31 = new JButton();
+  static JLabel jLabel7 = new JLabel();
   // Ende Attribute
   
   public Fenster3(String title) { 
     // Frame-Initialisierung
     super(title);
-    setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);//Setzt die beim Schließen ausgeführte operation auf "Entfernen aus dem Speicher" 
-    int frameWidth = 1144;//Fensterbreite 
-    int frameHeight = 670;//Fensterhöhe
+    setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+    int frameWidth = 1144; 
+    int frameHeight = 670;
     setSize(frameWidth, frameHeight);
     Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-    int x = (d.width - getSize().width) / 2;// Die breite das Fensters wird mit der Hälte der Bildschirmbreite verringert
-    int y = (d.height - getSize().height) / 2;// Die höhe das Fensters wird mit der Hälte der Bildschirmhöhe verringert
-    setLocation(x, y);//Startposition
-    setResizable(false);//Verhindert das Vergrößern oder verkleinern des Fensters
-    Container cp = getContentPane();//Das(/die) "Content Pane", in welchem sich der Hauptteil der Buttons o.ä. befindet(muss bei Initialisierung festgelegt werden) wird der Variable cp om Typ Container übergeben 
-    cp.setLayout(null);//Layoutmanager(?)  
+    int x = (d.width - getSize().width) / 2;
+    int y = (d.height - getSize().height) / 2;
+    setLocation(x, y);
+    setResizable(false);
+    Container cp = getContentPane();
+    cp.setLayout(null);  
     // Anfang Komponenten    
     
-    
-    jButton2.setBounds(104, 256, 265, 129);//jew höhe breite und position in x- und y- richtung(hier überall Gleiche Beschreibung)
-    jButton2.setText("Zwei Spieler");//Test der auf dem Button/Label zu Sehen ist/Text den der User zu Gesicht bekommt(hier überall Gleiche Beschreibung)
-    jButton2.setMargin(new Insets(2, 2, 2, 2));//Da Button ein (Interfce ist) bzw eigenschaften und methoden von unter anderem solchen erbt sogt dies für die allgemeine verhaltensweise von Buttons(und Menüleisten) "Defines common behaviors for buttons and menu items" (hier überall Gleiche Beschreibung) 
-    jButton2.addActionListener(new ActionListener() {//Aktionswächter gibt auskunft sobald ein sich ein "erignis"(event) ereignet  
-      public void actionPerformed(ActionEvent evt) {//wie z.B. ein "ActionEvent" 
-        jButton2_ActionPerformed(evt);              //bei "ActionPerformed" (Knopfdruck)(hier überall Gleiche Beschreibung)
+    jButton2.setBounds(104, 256, 265, 129);
+    jButton2.setText("Zwei Spieler");
+    jButton2.setMargin(new Insets(2, 2, 2, 2));
+    jButton2.addActionListener(new ActionListener() { 
+      public void actionPerformed(ActionEvent evt) { 
+        jButton2_ActionPerformed(evt);
       }
     });
     cp.add(jButton2);
@@ -90,11 +89,11 @@ public class Fenster3 extends JFrame {
       }
     });
     cp.add(jButton3);
-    jLabel1.setBounds(360, 48, 347, 49);//Diemensionen und Standpunkt(hier überall Gleiche Beschreibung)
-    jLabel1.setText("Spieleraufforderungen");//Text im sinne von Anmerkungen für den Programmierenden (Keine ToolTipps)(hier überall Gleiche Beschreibung)
-    jLabel1.setBackground(new Color(0xFFC800));//Hintergundfarbe(hier überall Gleiche Beschreibung)
-    jLabel1.setOpaque(true);//Sichtbarkeit(hier überall Gleiche Beschreibung)
-    cp.add(jLabel1);//Hinzufügen des Labels zum "Content Pane"(hier überall Gleiche Beschreibung)
+    jLabel1.setBounds(360, 48, 347, 49);
+    jLabel1.setText("Spieleraufforderungen");
+    jLabel1.setBackground(new Color(0xFFC800));
+    jLabel1.setOpaque(true);
+    cp.add(jLabel1);
     jButton1.setBounds(696, 256, 265, 129);
     jButton1.setText("Spieler Drei");
     jButton1.setMargin(new Insets(2, 2, 2, 2));
@@ -107,7 +106,7 @@ public class Fenster3 extends JFrame {
     jLabel2.setBounds(720, 136, 35, 49);
     jLabel2.setText("AblageAusgabe");
     jLabel2.setBackground(new Color(0xFFC800));
-    jLabel2.setOpaque(true);//Sichtbarkeit
+    jLabel2.setOpaque(true);
     cp.add(jLabel2);
     jLabel3.setBounds(584, 136, 139, 49);
     jLabel3.setText("Oberste Karte:");
@@ -381,7 +380,7 @@ public class Fenster3 extends JFrame {
       }
     });
     cp.add(jButton31);
-    jLabel7.setBounds(296, 368, 491, 161);
+    jLabel7.setBounds(296, 336, 491, 161);
     jLabel7.setText("SpielerWin");
     jLabel7.setBackground(Color.YELLOW);
     jLabel7.setOpaque(true);
@@ -393,20 +392,20 @@ public class Fenster3 extends JFrame {
   
   // Anfang Methoden
   
-  public static void main(String[] args) {//Main Methde (/Start-/Haupt-)
-    new Fenster3("Fenster3");//Initialisierung des Fensters 
-    Game game = new Game();//Initialisierung der Methode Game
+  public static void main(String[] args) {
+    new Fenster3("Fenster3");
+    Game game = new Game();
   } // end of main
   
   public void jButton2_ActionPerformed(ActionEvent evt) {
     // TODO hier Quelltext einfügen
-    if(pressCounter== 0){//Prüft ob der Knopf bereits in Gebrauch war (hier überall Gleiche Beschreibung)
-      Game.input= 2;//Setzt input auf 2 um die Option in der nachfolgenden Bedingung/Abfrage ind richtung "Zwei Spieler" abbiegen zu lassen
-      Game.interagiert= true;//Setzt die (Nachfolgende) Bedingung der "Warteschleife" auf erfüllt (Hält die Threads Synchron da sonst Game zu schnell agieren würde)(hier überall Gleiche Beschreibung)
+    if(pressCounter== 0){
+      Game.input= 2;
+      Game.interagiert= true;
     }
     
-    if (pressCounter== 1) {//Wenn der Knopf bereits in Gebrauch war wurde der Code in der Vorrangegangenen Verzweigung bereits konfiguriert bzw soll nun etwas anderes konfiguriert werden
-      Game.input= 1;//Setzt input auf 1 um die Option in der nachfolgenden Bedingung/Abfrage ind richtung "Spieler 1 beginnt" abbiegen zu lassen
+    if (pressCounter== 1) {
+      Game.input= 1;
       Game.interagiert= true;
     } // end of if
     
@@ -415,12 +414,12 @@ public class Fenster3 extends JFrame {
   public void jButton3_ActionPerformed(ActionEvent evt) {
     // TODO hier Quelltext einfügen
     if(pressCounter== 0){
-      Game.input= 3;//Lässt(Nachfolgende)Bedingung in Richtung "Drei Spieler" abzweigen
+      Game.input= 3;
       Game.interagiert= true;
     }
     
     if (pressCounter== 1) {
-      Game.input= 2;//Lässt die nachfolgende Bedingung in Richtung "Spieler 2 beginnt" abbiegen
+      Game.input= 2; 
       Game.interagiert= true;     
     } // end of if
     
@@ -429,22 +428,22 @@ public class Fenster3 extends JFrame {
   public void jButton1_ActionPerformed(ActionEvent evt) {
     // TODO hier Quelltext einfügen
     if (pressCounter== 1) {  
-      Game.input= 3;//Lässt die nachfolgende Bedingung in Richtung "Spieler 3 beginnt" abbiegen   
+      Game.input= 3;   
       Game.interagiert= true;
     } // end of if
   } // end of jButton1_ActionPerformed
   
   public void jButton4_ActionPerformed(ActionEvent evt) {
     // TODO hier Quelltext einfügen
-    Game.input=1;//Lässt die nachfolgende Bedingung das Ablegen einer Karte ansteuern
-    jButton4.setVisible(false);//Verbirgt jButton4(Hier wiederholen sich die erklärungen ebenfalls (Lediglich variablennamen ändern sich)) 
-    jButton5.setVisible(false);//Verbirgt jButton5
+    Game.input=1;
+    jButton4.setVisible(false);
+    jButton5.setVisible(false);
     Game.interagiert= true;     
   } // end of jButton4_ActionPerformed
   
   public void jButton5_ActionPerformed(ActionEvent evt) {
     // TODO hier Quelltext einfügen
-    Game.input=2;//Lässt die nachfolgende Bedingung das Aufnemen einer Karte zur Folge haben
+    Game.input=2;
     jButton5.setVisible(false);
     jButton4.setVisible(false);
     Game.interagiert= true;
@@ -452,7 +451,7 @@ public class Fenster3 extends JFrame {
   
   public void jButton6_ActionPerformed(ActionEvent evt) {
     // TODO hier Quelltext einfügen
-    Game.input=1;//Setzt input auf 1, womit die Nachfolgene Abfrage das Enthüllen des Knopfes(jButton6) zur Folge hat(Beschreibung hier fast identisch lediglich jew. ein Knopf mehr Pro gehaltener Karte)
+    Game.input=1;
     Fenster3.jButton6.setVisible(false);
     Fenster3.jButton7.setVisible(false);
     Fenster3.jButton8.setVisible(false);
@@ -478,7 +477,7 @@ public class Fenster3 extends JFrame {
   
   public void jButton7_ActionPerformed(ActionEvent evt) {
     // TODO hier Quelltext einfügen
-    Game.input=2;//Setzt input auf 2, womit die Nachfolgene Abfrage das Enthüllen des Knopfes selbst(jButton7) und das Enthüllen des Vorangengangenen(jButton6) zur Folge hat(Beschreibung hier fast identisch lediglich jew. ein Knopf mehr Pro gehaltener Karte)
+    Game.input=2;
     Fenster3.jButton6.setVisible(false);
     Fenster3.jButton7.setVisible(false);
     Fenster3.jButton8.setVisible(false);
@@ -504,7 +503,7 @@ public class Fenster3 extends JFrame {
   
   public void jButton8_ActionPerformed(ActionEvent evt) {
     // TODO hier Quelltext einfügen
-    Game.input=3;//Setzt input auf 3, womit die Nachfolgene Abfrage das Enthüllen des Knopfes selbst(jButton8) und das Enthüllen des Vorangengangenen(jButton7), sowie wiederum dessen vorgänger zur Folge(bis jButton6) hat(Beschreibung hier fast identisch lediglich jew. ein Knopf mehr Pro gehaltener Karte)(wie erwähn wiederholt sich das Prozedere und wird deshalb nicht einzeln Beschriftet)
+    Game.input=3;
     Fenster3.jButton6.setVisible(false);
     Fenster3.jButton7.setVisible(false);
     Fenster3.jButton8.setVisible(false);
@@ -946,7 +945,7 @@ public class Fenster3 extends JFrame {
   
   public void jButton25_ActionPerformed(ActionEvent evt) {
     // TODO hier Quelltext einfügen
-    Game.input=20;//Letzter in der Kette der vorangegangenen Knöpfe(bis einschließlich jButton6) und somit die selbe funktion
+    Game.input=20;
     Fenster3.jButton6.setVisible(false);
     Fenster3.jButton7.setVisible(false);
     Fenster3.jButton8.setVisible(false);
@@ -972,7 +971,7 @@ public class Fenster3 extends JFrame {
   
   public void jButton26_ActionPerformed(ActionEvent evt) {
     // TODO hier Quelltext einfügen
-    Game.bubenInput= 1;//Setzt den bubenInput auf 1 was in der Nachfolgenden Bedingung eine Auswahl des Kartentypus "°" zur Folge hat 
+    Game.bubenInput= 1;
     Fenster3.jButton26.setVisible(false);
     Fenster3.jButton27.setVisible(false);
     Fenster3.jButton28.setVisible(false);
@@ -982,7 +981,7 @@ public class Fenster3 extends JFrame {
   
   public void jButton27_ActionPerformed(ActionEvent evt) {
     // TODO hier Quelltext einfügen
-    Game.bubenInput= 2;//Setzt den bubenInput auf 1 was in der Nachfolgenden Bedingung eine Auswahl des Kartentypus "+" zur Folge hat 
+    Game.bubenInput= 2;
     Fenster3.jButton26.setVisible(false);
     Fenster3.jButton27.setVisible(false);
     Fenster3.jButton28.setVisible(false);
@@ -992,7 +991,7 @@ public class Fenster3 extends JFrame {
   
   public void jButton28_ActionPerformed(ActionEvent evt) {
     // TODO hier Quelltext einfügen
-    Game.bubenInput= 3;//Setzt den bubenInput auf 1 was in der Nachfolgenden Bedingung eine Auswahl des Kartentypus "#" zur Folge hat 
+    Game.bubenInput= 3;
     Fenster3.jButton26.setVisible(false);
     Fenster3.jButton27.setVisible(false);
     Fenster3.jButton28.setVisible(false);
@@ -1002,7 +1001,7 @@ public class Fenster3 extends JFrame {
   
   public void jButton29_ActionPerformed(ActionEvent evt) {
     // TODO hier Quelltext einfügen
-    Game.bubenInput= 4;//Setzt den bubenInput auf 1 was in der Nachfolgenden Bedingung eine Auswahl des Kartentypus "*" zur Folge hat 
+    Game.bubenInput= 4;
     Fenster3.jButton26.setVisible(false);
     Fenster3.jButton27.setVisible(false);
     Fenster3.jButton28.setVisible(false);
@@ -1012,7 +1011,7 @@ public class Fenster3 extends JFrame {
   
   public void jButton30_ActionPerformed(ActionEvent evt) {
     // TODO hier Quelltext einfügen
-    Game.input= 1;//Richtet die nachfolgende Bedingung auf "Neustart" aus 
+    Game.input= 1;
     Fenster3.jButton30.setVisible(false);
     Fenster3.jButton31.setVisible(false);
     Game.interagiert= true;
@@ -1020,7 +1019,7 @@ public class Fenster3 extends JFrame {
   
   public void jButton31_ActionPerformed(ActionEvent evt) {
     // TODO hier Quelltext einfügen
-    Game.input= 2;//Richtet die nachfolgende Bedingung auf "Spiel Beenden" aus
+    Game.input= 2;
     Fenster3.jButton30.setVisible(false);
     Fenster3.jButton31.setVisible(false);
     Game.interagiert= true;      
