@@ -47,9 +47,9 @@ public class Ablage {
   
   //Ausgabe der obersten Karte auf der Ablage:
   public void ausgeben() {
-    Fenster3.jLabel2.setVisible(true); 
-    Fenster3.jLabel3.setVisible(true);
-    Fenster3.jLabel5.setVisible(true);
+    Fenster3.jLabel2.setVisible(true);//Enthüllt das jew jLabels 
+    Fenster3.jLabel3.setVisible(true);//"
+    Fenster3.jLabel5.setVisible(true);//"
     
     
     /*
@@ -57,6 +57,6 @@ public class Ablage {
     System.out.println();
     */
     
-    Fenster3.jLabel2.setText(head.next.element);
+    Fenster3.jLabel2.setText(head.next.element);//setzt den Text des jLabel2 auf das oberste Ablagestapelelement 
   }
 }
