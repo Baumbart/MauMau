@@ -69,9 +69,17 @@ public class Game {
     Fenster3.jButton4.setVisible(false);
     Fenster3.jButton5.setVisible(false);
     
+    Fenster3.jButton30.setVisible(false);
+    Fenster3.jButton31.setVisible(false);
+    
+    
     Fenster3.jLabel2.setVisible(false);
     Fenster3.jLabel3.setVisible(false);
     Fenster3.jLabel4.setVisible(false);
+    Fenster3.jLabel5.setVisible(false);
+    Fenster3.jLabel6.setVisible(false);
+    
+    Fenster3.jLabel7.setVisible(false);
     
     //System.out.println("Bitte wählen Sie die Spieleranzahl! (2/3)");
     Fenster3.jLabel1.setText("Bitte wählen Sie die Spieleranzahl!");
@@ -208,8 +216,8 @@ public class Game {
     if (bube != true) { //Wenn die Variable "bube" auf "false" ist, wird ganz normal die oberste Karte auf der Ablage ausgegeben:
       Ablage.ablage.ausgeben(); 
     } else { //Wenn die Variable "bube" auf true ist, wird lediglich der erste "char" des Kartenwerts angegeben, weil der zweite egal ist:
-      System.out.println(bubeChar);
-      System.out.println();       
+      //System.out.println(bubeChar);
+      //System.out.println();       
     }
     
     pruefen(); //Prüft, ob der aktuelle Spieler mindestens eine Karte legen kann.
@@ -221,7 +229,7 @@ public class Game {
     } else {
       aktuell = 1;
     }
-    System.out.println("Marker");
+    //System.out.println("Marker");
     
     //Prüft, ob ein Spieler 0 Karten auf seiner Hand hat:
     if (max == 2) {
@@ -293,17 +301,26 @@ public class Game {
     }
     
     //Es wird angezeigt, wie viele Karten gezogen wurden:
-    System.out.println("-------------------------");
+    //System.out.println("-------------------------");
     if (seven == true) {
+      /*
       System.out.println();
       System.out.println("[Zug]: '2 Karten gezogen'");
       System.out.println();
+      */
+      Fenster3.jLabel6.setVisible(true);
+      Fenster3.jLabel6.setText("Spieler " + aktuell +": "+ "2 Karten gezogen");
+      
     } else {
+      /*
       System.out.println();
       System.out.println("[Zug]: 'Karte gezogen'");
       System.out.println();
+      */
+      Fenster3.jLabel6.setVisible(true); 
+      Fenster3.jLabel6.setText("Spieler " + aktuell +": "+ "Karte gezogen");
     }
-    System.out.println("-------------------------");
+    //System.out.println("-------------------------");
   }
   
   //Prüft, ob der aktuelle Spieler mindestens eine Karte legen kann:
@@ -354,7 +371,7 @@ public class Game {
   
   //Startet den Zug des aktuellen Spielers:
   private void zug() {
-    if (counter > 0) {
+    if (counter >= 0) {
       if (seven == true) {
         ziehenAlle();
         /*
@@ -374,6 +391,7 @@ public class Game {
       while (interagiert !=true) {
         Fenster3.jLabel1.setText("Spieler " + aktuell + ", machen Sie bitte Ihren Zug!");        
       } // end of while 
+      Fenster3.jLabel6.setVisible(false);
       interagiert= false;       
       
       //int input = scanner.nextInt();
@@ -723,7 +741,7 @@ public class Game {
           interagiert= false;
           
           //input = scanner.nextInt();
-          System.out.println("-------------------------");
+          //System.out.println("-------------------------");
           
           if (input <= handkarten) { //Prüft, ob ein brauchbarer Wert für den Zug eingegeben wurde.
             if (aktuell == 1) {
@@ -790,7 +808,7 @@ public class Game {
               }
             }
           } else { //Wenn ein unbrauchbarer Wert eingegeben wurde, wird der Zug neugestartet:
-            System.out.println();
+            //System.out.println("marker hier");
             zug();
           }
         } else {
@@ -809,9 +827,12 @@ public class Game {
         pruefen();
         zug();
       }
+      /*
       System.out.println("[Zug]: 'Ich ziehe eine Karte' (1)");
       int input = scanner.nextInt();
       System.out.println();
+      */
+      input=2;
       if (input < 2) {
         ziehenAlle();
       } else {
@@ -853,7 +874,7 @@ public class Game {
       //bubenInput = scanner.nextInt();
       
       if (bubenInput < 5) {
-        System.out.println("-------------------------");
+        //System.out.println("marker3");
         
         if (bubenInput == 1) {
           bubeChar = '°';
@@ -877,26 +898,32 @@ public class Game {
     if (win == false) {
       start();
     } else {
+      Fenster3.jLabel7.setVisible(true);
       if (max == 2) {
-        if (Hand.hand1.size() == 0) {
-          System.out.println("Spieler 1 hat gewonnen!");
+        if (Hand.hand1.size() == 0) {          
+          //System.out.println("Spieler 1 hat gewonnen!");
+          Fenster3.jLabel7.setText("Spieler 1 hat gewonnen!");
           end();
         }
         if (Hand.hand2.size() == 0) {
-          System.out.println("Spieler 2 hat gewonnen!");
+          //System.out.println("Spieler 2 hat gewonnen!");
+          Fenster3.jLabel7.setText("Spieler 2 hat gewonnen!");
           end();
         }
       } else {
         if (Hand.hand1.size() == 0) {
-          System.out.println("Spieler 1 hat gewonnen!");
+          //System.out.println("Spieler 1 hat gewonnen!");
+          Fenster3.jLabel7.setText("Spieler 1 hat gewonnen!");
           end();
         }
         if (Hand.hand2.size() == 0) {
-          System.out.println("Spieler 2 hat gewonnen!");
+          //System.out.println("Spieler 2 hat gewonnen!");
+          Fenster3.jLabel7.setText("Spieler 2 hat gewonnen!");
           end();
         }
         if (Hand.hand3.size() == 0) {
-          System.out.println("Spieler 3 hat gewonnen!");
+          //System.out.println("Spieler 3 hat gewonnen!");
+          Fenster3.jLabel7.setText("Spieler 3 hat gewonnen!");
           end();
         }
       }
@@ -904,24 +931,59 @@ public class Game {
   }
   
   public void end() {
+    /*
     System.out.println();
     System.out.println("Zum Neustarten bitte '1' drücken! / Zum Beenden bitte '2' drücken!");
-    int input = scanner.nextInt();
+    */
+    Fenster3.jLabel1.setText("Zum Neustarten oder Beenden bitte anwählen");
+    
+    Fenster3.jButton30.setVisible(true);
+    Fenster3.jButton31.setVisible(true);
+    
+    Fenster3.jLabel2.setVisible(false);
+    Fenster3.jLabel3.setVisible(false);
+    Fenster3.jLabel4.setVisible(false);
+    Fenster3.jLabel5.setVisible(false);
+    Fenster3.jLabel6.setVisible(false);
+    
+    while (interagiert!=true) {
+      Fenster3.jLabel1.setText("Zum Neustarten oder Beenden bitte Option anwählen");       
+    } // end of while
+    Game.interagiert= true;    
+    
+    //int input = scanner.nextInt();
+    
+    /*
     System.out.println("-------------------------");
     System.out.println();
+    */
     
     if (input == 1) {
+      Fenster3.jLabel1.setText("~NEUSTART~");
+      for (int i = 0; i<=20 ; i++) {
+        Fenster3.jLabel1.setText("~NEUSTART~");         
+      } // end of for
+      /*
       System.out.println("~NEUSTART~");
+      
       System.out.println();
       System.out.println("-------------------------");
       System.out.println();
+      */
       kartenstapel.mischen();
       konfiguration();
     }
     if (input == 2) {
-      System.out.println("~SPIEL BEENDET~");
-      System.out.println();
-      System.out.println("-------------------------");
+      //System.out.println("~SPIEL BEENDET~");
+      Fenster3.jLabel1.setText("~SPIEL BEENDET~");
+      for (int i = 0; i<=20 ; i++) {
+        Fenster3.jLabel1.setText("~SPIEL BEENDET~");         
+      } // end of for
+      
+      
+      //System.out.println();
+      //System.out.println("-------------------------");
+      
     }
   }
 }
