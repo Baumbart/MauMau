@@ -48,6 +48,11 @@ public class Fenster3 extends JFrame {
   static JButton jButton27 = new JButton();
   static JButton jButton28 = new JButton();
   static JButton jButton29 = new JButton();
+  static JLabel jLabel5 = new JLabel();
+  static JLabel jLabel6 = new JLabel();
+  static JButton jButton30 = new JButton();
+  static JButton jButton31 = new JButton();
+  static JLabel jLabel7 = new JLabel();
   // Ende Attribute
   
   public Fenster3(String title) { 
@@ -108,8 +113,8 @@ public class Fenster3 extends JFrame {
     jLabel3.setBackground(new Color(0xFFC800));
     jLabel3.setOpaque(true);
     cp.add(jLabel3);
-    jLabel4.setBounds(160, 136, 331, 49);
-    jLabel4.setText("Handkarten: ");
+    jLabel4.setBounds(232, 136, 259, 49);
+    jLabel4.setText("");
     jLabel4.setBackground(new Color(0xFFC800));
     jLabel4.setOpaque(true);
     cp.add(jLabel4);
@@ -347,6 +352,39 @@ public class Fenster3 extends JFrame {
       }
     });
     cp.add(jButton29);
+    jLabel5.setBounds(160, 136, 75, 49);
+    jLabel5.setText("Handkarten: ");
+    jLabel5.setBackground(new Color(0xFFC800));
+    jLabel5.setOpaque(true);
+    cp.add(jLabel5);
+    jLabel6.setBounds(784, 136, 163, 49);
+    jLabel6.setText("Karte gezogen");
+    jLabel6.setBackground(new Color(0xFFC800));
+    jLabel6.setOpaque(true);
+    cp.add(jLabel6);
+    jButton30.setBounds(144, 216, 265, 129);
+    jButton30.setText("Neustart");
+    jButton30.setMargin(new Insets(2, 2, 2, 2));
+    jButton30.addActionListener(new ActionListener() { 
+      public void actionPerformed(ActionEvent evt) { 
+        jButton30_ActionPerformed(evt);
+      }
+    });
+    cp.add(jButton30);
+    jButton31.setBounds(656, 216, 265, 129);
+    jButton31.setText("Beenden");
+    jButton31.setMargin(new Insets(2, 2, 2, 2));
+    jButton31.addActionListener(new ActionListener() { 
+      public void actionPerformed(ActionEvent evt) { 
+        jButton31_ActionPerformed(evt);
+      }
+    });
+    cp.add(jButton31);
+    jLabel7.setBounds(296, 368, 491, 161);
+    jLabel7.setText("SpielerWin");
+    jLabel7.setBackground(Color.YELLOW);
+    jLabel7.setOpaque(true);
+    cp.add(jLabel7);
     // Ende Komponenten
     
     setVisible(true);
@@ -934,42 +972,58 @@ public class Fenster3 extends JFrame {
   public void jButton26_ActionPerformed(ActionEvent evt) {
     // TODO hier Quelltext einfügen
     Game.bubenInput= 1;
-    Fenster3.jButton26.setVisible(true);
-    Fenster3.jButton27.setVisible(true);
-    Fenster3.jButton28.setVisible(true);
-    Fenster3.jButton29.setVisible(true);
+    Fenster3.jButton26.setVisible(false);
+    Fenster3.jButton27.setVisible(false);
+    Fenster3.jButton28.setVisible(false);
+    Fenster3.jButton29.setVisible(false);
     Game.interagiert= true;
   } // end of jButton26_ActionPerformed
   
   public void jButton27_ActionPerformed(ActionEvent evt) {
     // TODO hier Quelltext einfügen
     Game.bubenInput= 2;
-    Fenster3.jButton26.setVisible(true);
-    Fenster3.jButton27.setVisible(true);
-    Fenster3.jButton28.setVisible(true);
-    Fenster3.jButton29.setVisible(true);
+    Fenster3.jButton26.setVisible(false);
+    Fenster3.jButton27.setVisible(false);
+    Fenster3.jButton28.setVisible(false);
+    Fenster3.jButton29.setVisible(false);
     Game.interagiert= true;
   } // end of jButton27_ActionPerformed
   
   public void jButton28_ActionPerformed(ActionEvent evt) {
     // TODO hier Quelltext einfügen
     Game.bubenInput= 3;
-    Fenster3.jButton26.setVisible(true);
-    Fenster3.jButton27.setVisible(true);
-    Fenster3.jButton28.setVisible(true);
-    Fenster3.jButton29.setVisible(true);
+    Fenster3.jButton26.setVisible(false);
+    Fenster3.jButton27.setVisible(false);
+    Fenster3.jButton28.setVisible(false);
+    Fenster3.jButton29.setVisible(false);
     Game.interagiert= true;
   } // end of jButton28_ActionPerformed
   
   public void jButton29_ActionPerformed(ActionEvent evt) {
     // TODO hier Quelltext einfügen
     Game.bubenInput= 4;
-    Fenster3.jButton26.setVisible(true);
-    Fenster3.jButton27.setVisible(true);
-    Fenster3.jButton28.setVisible(true);
-    Fenster3.jButton29.setVisible(true);
+    Fenster3.jButton26.setVisible(false);
+    Fenster3.jButton27.setVisible(false);
+    Fenster3.jButton28.setVisible(false);
+    Fenster3.jButton29.setVisible(false);
     Game.interagiert= true;
   } // end of jButton29_ActionPerformed
+  
+  public void jButton30_ActionPerformed(ActionEvent evt) {
+    // TODO hier Quelltext einfügen
+    Game.input= 1;
+    Fenster3.jButton30.setVisible(false);
+    Fenster3.jButton31.setVisible(false);
+    Game.interagiert= true;
+  } // end of jButton30_ActionPerformed
+  
+  public void jButton31_ActionPerformed(ActionEvent evt) {
+    // TODO hier Quelltext einfügen
+    Game.input= 2;
+    Fenster3.jButton30.setVisible(false);
+    Fenster3.jButton31.setVisible(false);
+    Game.interagiert= true;      
+  } // end of jButton31_ActionPerformed
   
   // Ende Methoden
 } // end of class Fenster3
