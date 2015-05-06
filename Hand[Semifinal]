@@ -88,19 +88,18 @@ public class Hand {
   //Ausgabe der Werte aller Handkarten einer Hand:
   public void ausgeben() {
     Karte currentKarte = head.next;
-    Fenster3.jLabel4.setText("");
+    Fenster3.jLabel4.setText("");//Leert das jLabel4 von Text
     while (currentKarte != null) {
       if (currentKarte.next != null) {
-        Fenster3.jLabel4.setVisible(true);
+        Fenster3.jLabel4.setVisible(true);//Enthüllt das jLabel4
         //System.out.print(currentKarte.element + ", ");        
-        Fenster3.jLabel4.setText(Fenster3.jLabel4.getText()+" "+currentKarte.element+"");
+        Fenster3.jLabel4.setText(Fenster3.jLabel4.getText()+" "+currentKarte.element+"");//Beschriftet das jLabel4 mit den aktuellen Handkarten(ausgenommen der Letzten)
         currentKarte = currentKarte.next;
       } else {
-        Fenster3.jLabel4.setVisible(true);
+        Fenster3.jLabel4.setVisible(true);//Enthüllt das jLabel4
         //System.out.print(currentKarte.element);
         
-        //das hier Weg?
-        Fenster3.jLabel4.setText(Fenster3.jLabel4.getText()+" "+currentKarte.element);
+        Fenster3.jLabel4.setText(Fenster3.jLabel4.getText()+" "+currentKarte.element);//Beschriftet das jLabel4 mit den aktuellen Handkarten(eingeschlossen der Letzten)
         
         currentKarte = currentKarte.next;
       }
