@@ -1,53 +1,58 @@
 public class Ablage {
-  public Karte head = new Karte("");
-  public static Ablage ablage = new Ablage(); //Erzeugung des unten definierten Ablagestapels.
-  
-  //"Ablagestapel" (Stack), auf welchen die Karten gelegt werden:
-  public Ablage() {
-    head.next = null;
-  }
-  
-  //Return der Kartenanzahl auf der Ablage:
-  public int size() {
-    Karte current = head;
-    int size = 0;
-    while (current.next != null) {
-      current = current.next;
-      size++;
-    }
-    return size;
-  }
-  
-  //Entfernt die oberste Karte auf der Ablage:
-  public String pop() {
-    String current = head.next.element;
-    head.next = head.next.next;
-    return current;
-  }
-  
-  //Erzeugt eine Karte und legt sie oben auf díe Ablage:
-  public void push(String wert) {
-    Karte newKarte = new Karte(wert);
-    newKarte.next = head.next;
-    head.next = newKarte;
-  }
-  
-  //Legt eine bereits vorhandene Karte oben auf die Ablage:
-  public void push(Karte wert) {
-    Karte newKarte = wert;
-    newKarte.next = head.next;
-    head.next = newKarte;
-  }
-  
-  //Return der obersten Karte auf der Ablage:
-  public String peek() {
-    String current = head.next.element;
-    return current;
-  }
-  
-  //Ausgabe der obersten Karte auf der Ablage:
-  public void ausgeben() {
-    System.out.println(head.next.element);
-    System.out.println();
-  }
+	public Karte head = new Karte("");
+	public static Ablage ablage = new Ablage(); //Erzeugung des unten definierten Ablagestapels.
+
+	//"Ablagestapel" (Stack), auf welchen die "Karten" gelegt werden:
+	public Ablage() {
+		head.next = null;
+	}
+
+	//Return der Kartenanzahl auf der "ablage":
+	public int size() {
+		Karte current = head;
+		int size = 0;
+		while (current.next != null) {
+			current = current.next;
+			size++;
+		}
+		return size;
+	}
+
+	//Entfernt die oberste "Karte" auf der "ablage":
+	public String pop() {
+		String current = head.next.element;
+		head.next = head.next.next;
+		return current;
+	}
+
+	//Erzeugt eine "Karte" und legt sie oben auf díe "ablage":
+	public void push(String wert) {
+		Karte newKarte = new Karte(wert);
+		newKarte.next = head.next;
+		head.next = newKarte;
+	}
+	
+	//Legt eine bereits vorhandene "Karte" oben auf die "ablage":
+	public void push(Karte wert) {
+		Karte newKarte = wert;
+		newKarte.next = head.next;
+		head.next = newKarte;
+	}
+
+	//Return der obersten "Karte" auf der "ablage":
+	public String peek() {
+		String current = head.next.element;
+		return current;
+	}
+	
+	//Entfernt alle "Karten" von der "ablage":
+	public void clear() {
+		head.next = null;
+	}
+
+	//Ausgabe der obersten "Karte" auf der "ablage":
+	public void ausgeben() {
+		System.out.println(head.next.element);
+		System.out.println();
+	}
 }
