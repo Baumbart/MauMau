@@ -2,26 +2,29 @@ import java.util.*;
 
 public class Kartenstapel {
 	private Vergleichstabelle vgl = new Vergleichstabelle(); //Erzeugung einer Vergleichstabelle mit allen Kartenwerten.
-	static Stack<String> kartenstapel = new Stack<String>(); //Erzeugung eines Kartenstapels (Stack aus Java.util).
+	static Stack<String> kartenstapel = new Stack<String>(); //Erzeugung eines Kartenstapels (Stack aus "java.util").
 
 	//"Kartendeck", von dem die Karten gezogen werden:
 	public Kartenstapel() {
 		mischen();
 	}
 
-	//Liest die Kartenwerte aus dem Vergeleichsstapel aus, fügt sie dem Kartenstapel hinzu und mischt dann den Kartenstapel:
+	//Leert den "kartenstapel", liest die Kartenwerte aus der "Vergleichstabelle" aus, fügt sie dem "kartenstapel" hinzu und mischt diesen dann:
 	public void mischen() {
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < kartenstapel.size(); i++) { //Leert jede einzelne "Karte" aus dem "kartenstapel": 
+			kartenstapel.pop();
+		}
+		for (int i = 0; i < 4; i++) { //Füllt den "kartenstapel" mit 32 "Karten" aller Kartenwerte aus der "Vergleichstabelle":
 			for (int j = 0; j < 8; j++) {
 				kartenstapel.push(vgl.getVergleich(j, i));
 			}
 		}
-		Collections.shuffle(kartenstapel);
+		Collections.shuffle(kartenstapel); //"shuffle" aus "java.util" verwendet.
 	}
 
-	//Prüft die Spieleranzahl, verteilt dementsprechend Karten an die Spieler und entfernt die ausgeteilten Karten vom Kartenstapel:
+	//Prüft die Spieleranzahl, verteilt dementsprechend "Karten" an die Spieler, legt eine "Karte" auf die "ablage" und entfernt die ausgeteilten "Karten" vom "kartenstapel":
 	public void austeilen() {
-		if (Matchconfig.spieler == 2) {
+		if (Matchconfig.spieler == 2) { //Wenn die Spieleranzahl "2" beträgt, werden auch lediglich "Karten" an "hand1" und "hand2" verteilt:
 			int i = 0;
 			int j = 1;
 
@@ -37,7 +40,7 @@ public class Kartenstapel {
 				j++;
 			}
 		}
-		if (Matchconfig.spieler == 3) {
+		if (Matchconfig.spieler == 3) { //Wenn die Spieleranzahl "3" beträgt, werden "Karten" an alle "Hände" verteilt:
 			int i = 0;
 			int j = 1;
 			while (i < 21) {
@@ -56,19 +59,23 @@ public class Kartenstapel {
 				j++;
 			}
 		}
+		
+		//Am Ende wird noch eine weitere "Karte" vom "kartenstapel" entfernt und oben auf die "ablage" gelegt:
 		Karte current = new Karte(kartenstapel.pop());
 		Ablage.ablage.push(current);
 	}
 
-	//Nimmt die Karten aus der Ablage, fügt sie in den Kartenstapel ein und mischt den Kartenstapel. Die oberste Karte der Ablage bleibt liegen:
+	//Wenn der "kartenstapel" leer ist, werden die Karten aus der "ablage" entfernt und dem "kartenstapel" wieder hinzugefügt:
 	public void reuse() {
-		if (kartenstapel.empty() == true) {
+		if (kartenstapel.empty() == true) { 
 			Stack<String> temp = new Stack<String>();
-			temp.push(Ablage.ablage.pop());
+			temp.push(Ablage.ablage.pop()); 
 			while (Ablage.ablage.head.next != null) {
 				kartenstapel.push(Ablage.ablage.pop());
 			}
-			Collections.shuffle(kartenstapel);
+			
+			//Am Ende wird der "kartenstapel" gemischt und die letzte "Karte" wird wieder der "ablage" hinzugefügt:
+			Collections.shuffle(kartenstapel); //"shuffle" aus "java.util" verwendet.
 			Ablage.ablage.push(temp.pop());
 		}
 	}
