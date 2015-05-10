@@ -13,8 +13,9 @@ public class Game {
 	private boolean eight; //Prüft, ob im vorherigen Zug eine "8" gelegt wurde.
 	private boolean bube; //Prüft, ob im vorherigen Zug ein "Bube" gelegt wurde.
 	private boolean bubeError; //Prüft, ob bei dem Neustart eines Zuges (aufgrund einer fehlerhaften Eingabe) die Variable "bube" auf "true" war, um sie ggf. erneut auf "true" zu setzen.
-	public static boolean bubeException; //Beugt Fehler vor, die am Beginn und am Ende des Spiels mit einer "Buben-Karte" aufkommen würden.
-	public static char bubeChar; //Das gewünschte "Zeichen", das ausgewählt wird, nachdem ein "Bube" gelegt wurde.
+	static boolean draw;
+	static boolean bubeException; //Beugt Fehler vor, die am Beginn und am Ende des Spiels mit einer "Buben-Karte" aufkommen würden.
+	static char bubeChar; //Das gewünschte "Zeichen", das ausgewählt wird, nachdem ein "Bube" gelegt wurde.
 	private Hand spieler; //"Hand" des aktuellen Spielers
 	private Karte current; //Zählnode für die Methoden "zug()" und "special()"
 	private Kartenstapel kartenstapel = new Kartenstapel(); //Erzeugung eines neuen "Kartendecks", von dem alle Karten gezogen werden.
@@ -59,12 +60,13 @@ public class Game {
 		if (Ablage.ablage.peek().charAt(1) == 'B') { //Wenn auf der "ablage" ein Bube liegt, wird die Variable "BubeException" auf "true" gesetzt, damit im Verlauf des Zuges kein Fehler auftritt:
 		    bubeException = true; 
 		}
+		win = false; //Zu Spielbeginn wird die Variable "win" auf "false" gesetzt, weil noch keiner gewonnen hat.
+		draw = false; //Zu Spielbeginn wird die Variable "win" auf "false" gesetzt, weil noch kein Unentschieden entstanden ist.
 		start(); //Das Spiel wird gestartet.
 	}
 
 	//Startet das eigentliche Spiel:
 	private void start() { 
-		win = false; //Zu Rundenbeginn wird die Variable "win" auf "false" gesetzt, wenn noch keiner gewonnen hat.
 
 		//Prüft, ob der vorherige Spieler eine "8" gelegt hat:
 		if (eight == true) { //Wenn die Variable "eight" auf "true" ist, wird der aktuelle Spieler übersprungen und der nächste Spieler ist dran:
@@ -145,71 +147,75 @@ public class Game {
 
 	//Zieht eine "Karte" vom "kartenstapel" und fügt sie bei dem aktuellen Spieler auf der "Hand" hinzu:
 	private void ziehenAlle() {
-		if (Kartenstapel.kartenstapel.empty() == false) { //Prüft, ob der "kartenstapel" leer ist:
-			
-			//Prüft, ob der vorherige Spieler eine "7" gelegt hat:
-			if (seven == true) { //Wenn die Variable "seven" auf "true" ist, zieht der aktuelle Spieler zwei "Karten":
-				for (int i = 0; i < 1 + sevenStack - 1; i++) { //Eine "For-Schleife" mit 2 Durchgängen:
+		if (Kartenstapel.kartenstapel.empty() == false && sevenStack <= Kartenstapel.kartenstapel.size()) { // Prüft, ob der "kartenstapel" leer ist:
+
+			// Prüft, ob der vorherige Spieler eine "7" gelegt hat:
+			if (seven == true) { // Wenn die Variable "seven" auf "true" ist, zieht der aktuelle Spieler zwei "Karten":
+				for (int i = 0; i < sevenStack; i++) { // Eine "For-Schleife" mit 2 Durchgängen:
 					if (aktuell == 1) {
-						Hand.hand1.ziehen(); //Nimmt eine "Karte" aus dem "kartenstapel" und fügt sie der Hand "hand1" hinzu.
+						Hand.hand1.ziehen(); // Nimmt eine "Karte" aus dem "kartenstapel" und fügt sie der Hand "hand1" hinzu.
 					}
 					if (aktuell == 2) {
-						Hand.hand2.ziehen(); //Nimmt eine "Karte" aus dem "kartenstapel" und fügt sie der Hand "hand2" hinzu.
+						Hand.hand2.ziehen(); // Nimmt eine "Karte" aus dem "kartenstapel" und fügt sie der Hand "hand2" hinzu.
 					}
 					if (aktuell == 3) {
-						Hand.hand3.ziehen(); //Nimmt eine "Karte" aus dem "kartenstapel" und fügt sie der Hand "hand3" hinzu.
+						Hand.hand3.ziehen(); // Nimmt eine "Karte" aus dem "kartenstapel" und fügt sie der Hand "hand3" hinzu.
 					}
 				}
-			} else { //Wenn die Variable "seven" auf "false" ist, zieht der aktuelle Spieler eine "Karte":
+			} else { // Wenn die Variable "seven" auf "false" ist, zieht der aktuelle Spieler eine "Karte":
 				if (aktuell == 1) {
-					Hand.hand1.ziehen(); //Nimmt eine "Karte" aus dem "kartenstapel" und fügt sie der Hand "hand1" hinzu.
+					Hand.hand1.ziehen(); // Nimmt eine "Karte" aus dem "kartenstapel" und fügt sie der Hand "hand1" hinzu.
 				}
 				if (aktuell == 2) {
-					Hand.hand2.ziehen(); //Nimmt eine "Karte" aus dem "kartenstapel" und fügt sie der Hand "hand2" hinzu.
+					Hand.hand2.ziehen(); // Nimmt eine "Karte" aus dem "kartenstapel" und fügt sie der Hand "hand2" hinzu.
 				}
 				if (aktuell == 3) {
-					Hand.hand3.ziehen(); //Nimmt eine "Karte" aus dem "kartenstapel" und fügt sie der Hand "hand3" hinzu.
+					Hand.hand3.ziehen(); // Nimmt eine "Karte" aus dem "kartenstapel" und fügt sie der Hand "hand3" hinzu.
 				}
 			}
-		} else { //Wenn der "kartenstapel" leer ist, wird er "aufgefüllt" und danach werden erst die "Karten" gezogen:
-			kartenstapel.reuse(); //Die "Karten" der "ablage" werden auf den "Kartenstapel" übertragen und gemischt. Die oberste "Karte" der "ablage" bleibt hierbei liegen.
-			if (seven == true) { //Wenn die Variable "seven" auf "true" ist, zieht der aktuelle Spieler zwei "Karten":
-				for (int i = 0; i < 1; i++) { //Eine "For-Schleife" mit 2 Durchgängen:
+		} else { // Wenn der "kartenstapel" leer ist, wird er "aufgefüllt" und danach werden erst die "Karten" gezogen:
+			kartenstapel.reuse(); // Die "Karten" der "ablage" werden auf den "Kartenstapel" übertragen und gemischt. Die oberste "Karte" der "ablage" bleibt hierbei liegen.
+			if (draw == false) {
+				if (seven == true) { // Wenn die Variable "seven" auf "true" ist, zieht der aktuelle Spieler zwei "Karten":
+					for (int i = 0; i < sevenStack; i++) { // Eine "For-Schleife" mit 2 Durchgängen:
+						if (aktuell == 1) {
+							Hand.hand1.ziehen(); // Nimmt eine "Karte" aus dem "kartenstapel" und fügt sie der Hand "hand1" hinzu.
+						}
+						if (aktuell == 2) {
+							Hand.hand2.ziehen(); // Nimmt eine "Karte" aus dem "kartenstapel" und fügt sie der Hand "hand1" hinzu.
+						}
+						if (aktuell == 3) {
+							Hand.hand3.ziehen(); // Nimmt eine "Karte" aus dem "kartenstapel" und fügt sie der Hand "hand1" hinzu.
+						}
+					}
+				} else { // Wenn die Variable "seven" auf "false" ist, zieht der aktuelle Spieler eine "Karte":
 					if (aktuell == 1) {
-						Hand.hand1.ziehen(); //Nimmt eine "Karte" aus dem "kartenstapel" und fügt sie der Hand "hand1" hinzu.
+						Hand.hand1.ziehen(); // Nimmt eine "Karte" aus dem "kartenstapel" und fügt sie der Hand "hand1" hinzu.
 					}
 					if (aktuell == 2) {
-						Hand.hand2.ziehen(); //Nimmt eine "Karte" aus dem "kartenstapel" und fügt sie der Hand "hand1" hinzu.
+						Hand.hand2.ziehen(); // Nimmt eine "Karte" aus dem "kartenstapel" und fügt sie der Hand "hand1" hinzu.
 					}
 					if (aktuell == 3) {
-						Hand.hand3.ziehen(); //Nimmt eine "Karte" aus dem "kartenstapel" und fügt sie der Hand "hand1" hinzu.
+						Hand.hand3.ziehen(); // Nimmt eine "Karte" aus dem "kartenstapel" und fügt sie der Hand "hand1" hinzu.
 					}
 				}
-			} else { //Wenn die Variable "seven" auf "false" ist, zieht der aktuelle Spieler eine "Karte":
-				if (aktuell == 1) {
-					Hand.hand1.ziehen(); //Nimmt eine "Karte" aus dem "kartenstapel" und fügt sie der Hand "hand1" hinzu.
-				}
-				if (aktuell == 2) {
-					Hand.hand2.ziehen(); //Nimmt eine "Karte" aus dem "kartenstapel" und fügt sie der Hand "hand1" hinzu.
-				}
-				if (aktuell == 3) {
-					Hand.hand3.ziehen(); //Nimmt eine "Karte" aus dem "kartenstapel" und fügt sie der Hand "hand1" hinzu.
-				}
+			} else {
+				win();
 			}
 		}
-		
-		//Es wird angezeigt, wie viele "Karten" gezogen wurden:
-		System.out.println("-------------------------");
-		if (seven == true) { 
-			System.out.println();
-			System.out.println("[Zug]: '" + sevenStack + " Karten gezogen'");
-			System.out.println();
-		} else {
-			System.out.println();
-			System.out.println("[Zug]: 'Karte gezogen'");
-			System.out.println();
+		if (draw = false) {
+			System.out.println("-------------------------");
+			if (seven == true) {
+				System.out.println();
+				System.out.println("[Zug]: '" + sevenStack + " Karten gezogen'");
+				System.out.println();
+			} else {
+				System.out.println();
+				System.out.println("[Zug]: 'Karte gezogen'");
+				System.out.println();
+			}
+			System.out.println("-------------------------");
 		}
-		System.out.println("-------------------------");
 	}
 
 	//Prüft, ob der aktuelle Spieler mindestens eine "Karte" legen kann:
@@ -557,10 +563,11 @@ public class Game {
 	
 	//Startet den nächsten Zug des Spiels, bzw. beendet ggf. das Spiel, wenn ein Spieler gewonnen hat:
 	public void win() {
-		if (win == false) { //Wenn die Variable "win" auf "false" ist, wird der nächste Zug gestartet: 
+		if (win == false && draw == false) { //Wenn die Variable "win" auf "false" ist, wird der nächste Zug gestartet: 
 			bubeException = false;
 			start(); 
-		} else { //Wenn ein Spieler gewonnen hat (wenn die Variable "win" auf "true" ist), wird der Sieger angezeigt und das Spiel beendet:
+		} 
+		if (win = true) { //Wenn ein Spieler gewonnen hat (wenn die Variable "win" auf "true" ist), wird der Sieger angezeigt und das Spiel beendet:
 			if (max == 2) {
 				if (Hand.hand1.size() == 0) {
 					System.out.println("Spieler 1 hat gewonnen!");
@@ -584,6 +591,12 @@ public class Game {
 					end(); //Beendet das Spiel.
 				}
 			}
+		}
+		if (draw = true) {
+			System.out.println("-------------------------");
+			System.out.println();
+			System.out.println("Unentschieden!");
+			end();
 		}
 	}
 	
