@@ -73,6 +73,9 @@ public class Hand {
 				if (handWert1 == Game.bubeChar || handWert2 == 'B') { //Prüft, ob der erste char der ausgewählten "Karte" mit dem Wert der Variable "bubeChar" übereinstimmt oder ob die ausgewählte "Karte" ein "Bube" ist:
 					vergleich = true;
 				}	
+				if (handWert1 == ablageWert1) {
+					vergleich = true;
+				}
 			} else { //Wenn oben auf der "ablage" kein "Bube" liegt, dann reicht der vorherige Vergleicht, um die Variable "vergleich" auf "true" zu setzen:
 				vergleich = true;
 			}
@@ -80,8 +83,6 @@ public class Hand {
 		return vergleich;
 	}
 
-	/*
-	//Experimentelle Methode, die aber noch keine Anwendung findet, da man in der aktuellen Version des Spiels noch keine "7er" kontern kann.
 	//Prüft, ob eine Karte mit dem Wert "7" auf einer Hand ist:
 	public boolean detectSeven() {
 		boolean sieben = false;
@@ -94,7 +95,6 @@ public class Hand {
 		}
 		return sieben;
 	}
-	*/
 
 	//Ausgabe der Werte aller Handkarten einer "Hand":
 	public void ausgeben() {
