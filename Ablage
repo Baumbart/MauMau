@@ -1,6 +1,6 @@
 public class Ablage {
-	public Karte head = new Karte("");
-	public static Ablage ablage = new Ablage(); //Erzeugung des unten definierten Ablagestapels.
+	Karte head = new Karte("");
+	static Ablage ablage = new Ablage(); //Erzeugung des unten definierten Ablagestapels.
 
 	//"Ablagestapel" (Stack), auf welchen die "Karten" gelegt werden:
 	public Ablage() {
