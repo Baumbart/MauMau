@@ -1,9 +1,9 @@
 public class Hand {
 	Karte head = new Karte(""); 
 	
-	public static Hand hand1 = new Hand(); //Erzeugung einer "Hand" für Spieler 1
-	public static Hand hand2 = new Hand(); //Erzeugung einer "Hand" für Spieler 2
-	public static Hand hand3 = new Hand(); //Erzeugung einer "Hand" für Spieler 3
+	static Hand hand1 = new Hand(); //Erzeugung einer "Hand" für Spieler 1
+	static Hand hand2 = new Hand(); //Erzeugung einer "Hand" für Spieler 2
+	static Hand hand3 = new Hand(); //Erzeugung einer "Hand" für Spieler 3
 
 	//"Hand" (Linked List), auf der sich die Handkarten eines Spielers befinden:
 	public Hand() {
@@ -64,7 +64,7 @@ public class Hand {
 		char ablageWert1 = ablageWert.charAt(0);
 		char ablageWert2 = ablageWert.charAt(1);
 
-        //Prüft, ob die ausgewählte Karte entweder ein Bube ist oder ob eine Stelle des Kartenwertes mit dem der obersten Karte auf der Ablage übereinstimmt:
+        //Prüft, ob die ausgewählte "Karte" entweder ein Bube ist oder ob eine Stelle des Kartenwertes mit dem der obersten "Karte" auf der "ablage" übereinstimmt:
 		if (handWert1 == ablageWert1 || handWert2 == ablageWert2 || handWert2 == 'B' || ablageWert2 == 'B') {
 			if (ablageWert2 == 'B') { //Wenn oben auf der "ablage" ein "Bube" liegt, muss noch ein Sonderfall überprüft werden:
 				if (Game.bubeException == true) { //Wenn die Variable "bubeException" auf "true" ist, darf sich der aktuelle Spieler aussuchen, welche "Karte" er legt:
@@ -73,7 +73,7 @@ public class Hand {
 				if (handWert1 == Game.bubeChar || handWert2 == 'B') { //Prüft, ob der erste char der ausgewählten "Karte" mit dem Wert der Variable "bubeChar" übereinstimmt oder ob die ausgewählte "Karte" ein "Bube" ist:
 					vergleich = true;
 				}	
-				if (handWert1 == ablageWert1) {
+				if (handWert1 == ablageWert1) { //Prüft, ob der erste char der ausgewählten "Karte" mit dem ersten char der obersten "Karte" auf der "ablage" übereinstimmt:
 					vergleich = true;
 				}
 			} else { //Wenn oben auf der "ablage" kein "Bube" liegt, dann reicht der vorherige Vergleicht, um die Variable "vergleich" auf "true" zu setzen:
@@ -85,12 +85,12 @@ public class Hand {
 
 	//Prüft, ob eine Karte mit dem Wert "7" auf einer Hand ist:
 	public boolean detectSeven() {
-		boolean sieben = false;
+		boolean sieben = false; //Die Variable "seven" wird zuerst auf "false" gesetzt:
 		Karte detector = head.next;
-		for (int i = 0; i < size() - 1; i++) {
+		for (int i = 0; i < size() - 1; i++) { //Die For-Schleife läuft durch die "Hand" des aktuellen Spielers und prüft, ob sich darin eine "Karte" mit dem Wert "7" befindet:
 			detector = detector.next;
-			if (detector.element.charAt(1) == '7') {
-				sieben = true;
+			if (detector.element.charAt(1) == '7') { //Wenn ja, wird die Variable "sieben" auf "true" gesetzt:
+				sieben = true; 
 			}
 		}
 		return sieben;
