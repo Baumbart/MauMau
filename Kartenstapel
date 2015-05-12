@@ -67,16 +67,20 @@ public class Kartenstapel {
 
 	//Wenn der "kartenstapel" leer ist, werden die Karten aus der "ablage" entfernt und dem "kartenstapel" wieder hinzugefügt:
 	public void reuse() {
-		if (kartenstapel.empty() == true) { 
-			Stack<String> temp = new Stack<String>();
-			temp.push(Ablage.ablage.pop()); 
-			while (Ablage.ablage.head.next != null) {
-				kartenstapel.push(Ablage.ablage.pop());
-			}
+		if (kartenstapel.empty() == true) { //Wenn der "kartenstapel" leer ist und die "ablage" ebenfalls nur noch über eine "Karte" verfügt, geht das Spiel unentschieden aus, weil nicht mehr die Möglichkeit besteht, eine Karte zu ziehen:
+			if (Ablage.ablage.size() == 1) {
+				Game.draw = true;
+			} else { //Ansonsten werden alle "Karten" aus der "ablage" herausgenommen und dem "kartenstapel" hinzugefügt:
+				Stack<String> temp = new Stack<String>();
+				temp.push(Ablage.ablage.pop());
+				while (Ablage.ablage.head.next != null) {
+					kartenstapel.push(Ablage.ablage.pop());
+				}
 			
-			//Am Ende wird der "kartenstapel" gemischt und die letzte "Karte" wird wieder der "ablage" hinzugefügt:
-			Collections.shuffle(kartenstapel); //"shuffle" aus "java.util" verwendet.
-			Ablage.ablage.push(temp.pop());
+				// Am Ende wird der "kartenstapel" gemischt und die letzte "Karte" wird wieder der "ablage" hinzugefügt:
+				Collections.shuffle(kartenstapel); // "shuffle" aus "java.util" verwendet.
+				Ablage.ablage.push(temp.pop()); //Die "Karte", die ursprünglich ganz oben auf der "ablage" gelegen ist, wird danach wieder aus dem "kartenstapel" entfernt und der "ablage" hinzugefügt, weil sonst nich weitergespielt werden könnte.
+			}
 		}
 	}
 }
