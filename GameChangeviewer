@@ -1,23 +1,23 @@
 import java.util.*;
 
 public class Game {
-	private Scanner scanner = new Scanner(System.in);  //Erzeugung eines Scanners aus java.util.
-	private int aktuell; //Aktueller Spieler
-	private int max; //Spieleranzahl
-	private int handkarten; //Zahl der Handkarten eines Spielers
-	private int counter; //Zählvariable für die Methode "pruefen()"
-	private Hand spieler; //"Hand" des aktuellen Spielers
-	private boolean win; //Prüft, ob ein Spieler gewonnen hat.
-	private boolean seven; //Prüft, ob im vorherigen Zug eine 7 gelegt wurde.
-	private boolean eight; //Prüft, ob im vorherigen Zug eine 8 gelegt wurde.
-	private boolean bube; //Prüft, ob im vorherigen Zug ein Bube gelegt wurde.
-	private boolean bubeError; //Prüft, ob bei dem Neustart eines Zuges (aufgrund einer fehlerhaften Eingabe) die Variable "bube" auf "true" war, um sie ggf. erneut auf "true" zu setzen.
-	public static boolean bubeException; //Beugt Fehler vor, die am Beginn und am Ende des Spiels mit einer "Buben-Karte" aufkommen würden.
-	private int bubenInput; //Für die Auswahl eines gewünschten "Zeichens", nachdem ein Bube gelegt wurde.
-	private Karte current; //Zählnode für die Methoden "zug()" und "special()"
-	public static char bubeChar; //Das gewünschte "Zeichen", das ausgewählt wird, nachdem ein Bube gelegt wurde.
-	private Kartenstapel kartenstapel = new Kartenstapel(); //Erzeugung eines neuen "Kartendecks", von dem alle Karten gezogen werden.
-
+  private Scanner scanner = new Scanner(System.in); // Scanner aus "java.util", der Usereingaben einliest
+  private int aktuell; // Aktueller Spieler
+  static int player; // Spieleranzahl
+  private int sevenStack = 0; // Zahl der Karten, die ein Spieler ziehen muss (basierend auf der Zahl zuvor gelegter "7er")
+  private int counter; // Zählvariable für die Methode "pruefen()"
+  private boolean win; // Prüft, ob ein Spieler gewonnen hat
+  private boolean seven; // Prüft, ob im vorherigen Zug eine "7" gelegt wurde
+  private boolean eight; // Prüft, ob im vorherigen Zug eine "8" gelegt wurde
+  private boolean bube; // Prüft, ob im vorherigen Zug ein "Bube" gelegt wurde
+  private boolean bubeError; // Prüft, ob bei dem Neustart eines Zuges (aufgrund einer fehlerhaften Eingabe) die Variable "bube" auf "true" war.
+  static boolean bubeException; // Sorgt dafür, dass kein Fehler aufkommt, wenn ein "Bube" am zu begin des Spiels auf der Ablage liegt.
+  static boolean refill; // Prüft, ob der Kartenstapel nachgefüllt werden muss.
+  private Karte current; // Zählnode für mehrere Methoden
+  private Hand spieler; // Hand des aktuellen Spielers
+  static char bubeChar; // Das Zeichen, das ausgewählt wird, nachdem ein "Bube" gelegt wurde.
+  private Kartenstapel kartenstapel = new Kartenstapel(); // Erzeugung des Kartenstapels, das im Spiel verwendet wird.
+  
 	//Objekt, das bei der Erzeugung das Spiel startet:
 	public Game() {
 		konfiguration();
