@@ -13,6 +13,7 @@ public class Game {
   private boolean bube;
   private boolean bubeError;
   static int bubenInput;
+  public static boolean bubeException; //Beugt Fehler vor, die am Beginn und am Ende des Spiels mit einer "Buben-Karte" aufkommen würden.
   private Karte current;
   public static char bubeChar;
   private Kartenstapel kartenstapel = new Kartenstapel(); //Erzeugung eines neuen "Kartendecks".  
@@ -28,7 +29,6 @@ public class Game {
     konfiguration();
   }
   
-  
   //Konfiguration des Spiels:
   private void konfiguration() {
     //Auswahl der Spieleranzahl:
@@ -39,55 +39,55 @@ public class Game {
     } // end of for //oder auch nicht
     */
     
-    Fenster3.jButton6.setVisible(false);//Macht die Knöpfe und Label unsichtbar(nicht extra/einzeln aufgeführt)
-    Fenster3.jButton7.setVisible(false);
-    Fenster3.jButton8.setVisible(false);
-    Fenster3.jButton9.setVisible(false);
-    Fenster3.jButton10.setVisible(false);
-    Fenster3.jButton11.setVisible(false);
-    Fenster3.jButton12.setVisible(false);
-    Fenster3.jButton13.setVisible(false);
-    Fenster3.jButton14.setVisible(false);
-    Fenster3.jButton15.setVisible(false); 
-    Fenster3.jButton16.setVisible(false);
-    Fenster3.jButton17.setVisible(false);
-    Fenster3.jButton18.setVisible(false);
-    Fenster3.jButton19.setVisible(false);
-    Fenster3.jButton20.setVisible(false);
-    Fenster3.jButton21.setVisible(false);
-    Fenster3.jButton22.setVisible(false);
-    Fenster3.jButton23.setVisible(false);
-    Fenster3.jButton24.setVisible(false);
-    Fenster3.jButton25.setVisible(false);
+    Fenster3.kartenAblageButton1.setVisible(false);//Macht die Knöpfe und Label unsichtbar(nicht extra/einzeln aufgeführt)
+    Fenster3.kartenAblageButton2.setVisible(false);
+    Fenster3.kartenAblageButton3.setVisible(false);
+    Fenster3.kartenAblageButton4.setVisible(false);
+    Fenster3.kartenAblageButton5.setVisible(false);
+    Fenster3.kartenAblageButton6.setVisible(false);
+    Fenster3.kartenAblageButton7.setVisible(false);
+    Fenster3.kartenAblageButton8.setVisible(false);
+    Fenster3.kartenAblageButton9.setVisible(false);
+    Fenster3.kartenAblageButton10.setVisible(false); 
+    Fenster3.kartenAblageButton11.setVisible(false);
+    Fenster3.kartenAblageButton12.setVisible(false);
+    Fenster3.kartenAblageButton13.setVisible(false);
+    Fenster3.kartenAblageButton14.setVisible(false);
+    Fenster3.kartenAblageButton15.setVisible(false);
+    Fenster3.kartenAblageButton16.setVisible(false);
+    Fenster3.kartenAblageButton17.setVisible(false);
+    Fenster3.kartenAblageButton18.setVisible(false);
+    Fenster3.kartenAblageButton19.setVisible(false);
+    Fenster3.kartenAblageButton20.setVisible(false);
     
-    Fenster3.jButton26.setVisible(false);
-    Fenster3.jButton27.setVisible(false);
-    Fenster3.jButton28.setVisible(false);
-    Fenster3.jButton29.setVisible(false);  
+    Fenster3.bubeSetCircle.setVisible(false);
+    Fenster3.bubeSetPlus.setVisible(false);
+    Fenster3.bubeSetHashtag.setVisible(false);
+    Fenster3.bubeSetStar.setVisible(false);  
     
-    Fenster3.jButton1.setVisible(false);
-    Fenster3.jButton4.setVisible(false);
-    Fenster3.jButton5.setVisible(false);
+    Fenster3.optionsButton3.setVisible(false);
+    Fenster3.karteLegenButton.setVisible(false);
+    Fenster3.karteAufnehmenButton.setVisible(false);
     
-    Fenster3.jButton30.setVisible(false);
-    Fenster3.jButton31.setVisible(false);
+    Fenster3.neuStartButton.setVisible(false);
+    Fenster3.beendeenButton.setVisible(false);
     
     
-    Fenster3.jLabel2.setVisible(false);
-    Fenster3.jLabel3.setVisible(false);
-    Fenster3.jLabel4.setVisible(false);
-    Fenster3.jLabel5.setVisible(false);
-    Fenster3.jLabel6.setVisible(false);
+    Fenster3.labelAblageAusgabe.setVisible(false);
+    Fenster3.labelObersteKarte.setVisible(false);
+    Fenster3.labelHandKarten.setVisible(false);
+    Fenster3.labelTextHandkarten.setVisible(false);
+    Fenster3.labelInfoTextGezogen.setVisible(false);
     
-    Fenster3.jLabel7.setVisible(false);
+    Fenster3.LabelTextWinner.setVisible(false);
     
     //System.out.println("Bitte wählen Sie die Spieleranzahl! (2/3)");
-    Fenster3.jLabel1.setText("Bitte wählen Sie die Spieleranzahl!");//Setzt das Label auf den Entsprechenden Text hier: "Bitte wählen Sie die Spieleranzahl!"
+    Fenster3.labelSpielerAnweisungen.setText("Bitte wählen Sie die Spieleranzahl!");//Setzt das Label auf den Entsprechenden Text hier: "Bitte wählen Sie die Spieleranzahl!"
     
     //int input = scanner.nextInt();
     while (interagiert != true) {//Wartet auf Usereingabe in "Fenster3" damit das Programm in "Game" nicht vorschnell weiterläuft(Im folgenden Ebenfalls nicht jede ml wieder aufgeführt)
       //System.out.print("");
-      Fenster3.jLabel1.setText("Bitte wählen Sie die Spieleranzahl!");//Setzt das Label auf den Entsprechenden Text hier: "Bitte wählen Sie die Spieleranzahl!"     
+      Fenster3.labelSpielerAnweisungen.setText("Bitte wählen Sie die Spieleranzahl!");//Setzt das Label auf den Entsprechenden Text hier: "Bitte wählen Sie die Spieleranzahl!"     
     } // end of while
     
     interagiert= false;//Setzt die UsereingabeAbfrageVariable wieder zurück
@@ -103,14 +103,14 @@ public class Game {
         Fenster3.pressCounter++;//Erhöht den Zähler der Knöpfinteraktionen um den wert +1 nach oben
         
         //System.out.println("Welcher Spieler soll starten? (1/2)");
-        Fenster3.jLabel1.setText("Welcher Spieler soll starten?");//Setzt das Label auf den Entsprechenden Text hier:"Welcher Spieler soll starten?"
+        Fenster3.labelSpielerAnweisungen.setText("Welcher Spieler soll starten?");//Setzt das Label auf den Entsprechenden Text hier:"Welcher Spieler soll starten?"
         
-        Fenster3.jButton2.setText("Spieler Eins");//Setzt das Label auf den Entsprechenden Text hier: "Spieler Eins" (Im folgenden nicht explizit erwähnt)
-        Fenster3.jButton3.setText("Spieler Zwei");
+        Fenster3.optionsButton1.setText("Spieler Eins");//Setzt das Label auf den Entsprechenden Text hier: "Spieler Eins" (Im folgenden nicht explizit erwähnt)
+        Fenster3.optionsButton2.setText("Spieler Zwei");
         
         
         while(interagiert != true){//Wartet auf usereingabe in "Fenster3" damit das Programm in "Game" nicht vorschnell weiterläuft
-          Fenster3.jLabel1.setText("Welcher Spieler soll starten?");          
+          Fenster3.labelSpielerAnweisungen.setText("Welcher Spieler soll starten?");          
         }
         interagiert= false;        
         //input = scanner.nextInt();
@@ -118,14 +118,14 @@ public class Game {
       if (max == 3) {
         Fenster3.pressCounter++;
         
-        Fenster3.jButton1.setVisible(true);
+        Fenster3.optionsButton3.setVisible(true);
         //System.out.println("Welcher Spieler soll starten? (1/2/3)");
-        Fenster3.jLabel1.setText("Welcher Spieler soll starten?");
+        Fenster3.labelSpielerAnweisungen.setText("Welcher Spieler soll starten?");
         
-        Fenster3.jButton2.setText("Spieler Eins");
-        Fenster3.jButton3.setText("Spieler Zwei");
+        Fenster3.optionsButton1.setText("Spieler Eins");
+        Fenster3.optionsButton2.setText("Spieler Zwei");
         while(interagiert != true){//Wartet auf usereingabe in "Fenster3" damit das Programm in "Game" nicht vorschnell weiterläuft
-          Fenster3.jLabel1.setText("Welcher Spieler soll starten?");          
+          Fenster3.labelSpielerAnweisungen.setText("Welcher Spieler soll starten?");          
         }
         interagiert= false;
         //input = scanner.nextInt();
@@ -134,10 +134,10 @@ public class Game {
       kartenstapel.mischen();
       konfiguration();
     }
-    
-    Fenster3.jButton1.setVisible(false);
-    Fenster3.jButton2.setVisible(false);
-    Fenster3.jButton3.setVisible(false);
+   
+    Fenster3.optionsButton3.setVisible(false);
+    Fenster3.optionsButton1.setVisible(false);
+    Fenster3.optionsButton2.setVisible(false);
     
     
     
@@ -170,7 +170,7 @@ public class Game {
       eight = false; //Die Variable "eight" wird wieder auf "false" gesetzt, wenn sie auf "true" war.
     }
     //System.out.println("Spieler " + aktuell + ", machen Sie bitte Ihren Zug!"); //Der aktuelle Spieler wird aufgefordert, seinen Zug zu machen.
-    Fenster3.jLabel1.setText("Spieler " + aktuell + ", machen Sie bitte Ihren Zug!");//Fordert den aktuellen Spieler über das jLabe1 zum Zug auf 
+    Fenster3.labelSpielerAnweisungen.setText("Spieler " + aktuell + ", machen Sie bitte Ihren Zug!");//Fordert den aktuellen Spieler über das jLabe1 zum Zug auf 
     
     //Prüft, ob die Spieleranzahl 2 oder 3 ist:
     if (max == 2) {
@@ -307,8 +307,8 @@ public class Game {
       System.out.println("[Zug]: '2 Karten gezogen'");
       System.out.println();
       */
-      Fenster3.jLabel6.setVisible(true);
-      Fenster3.jLabel6.setText("Spieler " + aktuell +": "+ "2 Karten gezogen");//Zeigt dem Spieler dass und wie viele Karten er gezogen hat/ ziehen musste (Bis die Nächste eingabe eines Spielers bevorsteht)
+      Fenster3.labelInfoTextGezogen.setVisible(true);
+      Fenster3.labelInfoTextGezogen.setText("Spieler " + aktuell +": "+ "2 Karten gezogen");//Zeigt dem Spieler dass und wie viele Karten er gezogen hat/ ziehen musste (Bis die Nächste eingabe eines Spielers bevorsteht)
       
     } else {
       /*
@@ -316,8 +316,8 @@ public class Game {
       System.out.println("[Zug]: 'Karte gezogen'");
       System.out.println();
       */
-      Fenster3.jLabel6.setVisible(true); 
-      Fenster3.jLabel6.setText("Spieler " + aktuell +": "+ "Karte gezogen");//Zeigt dem Spieler dass und wie viele Karten er gezogen hat/ ziehen musste (Bis die Nächste eingabe eines Spielers bevorsteht)
+      Fenster3.labelInfoTextGezogen.setVisible(true); 
+      Fenster3.labelInfoTextGezogen.setText("Spieler " + aktuell +": "+ "Karte gezogen");//Zeigt dem Spieler dass und wie viele Karten er gezogen hat/ ziehen musste (Bis die Nächste eingabe eines Spielers bevorsteht)
     }
     //System.out.println("-------------------------");
   }
@@ -384,13 +384,13 @@ public class Game {
         seven = false;
       }
       //System.out.println("[Zug]: 'Ich lege eine Karte' / 'Ich ziehe eine Karte' (1/2)");
-      Fenster3.jButton4.setVisible(true);
-      Fenster3.jButton5.setVisible(true);
+      Fenster3.karteLegenButton.setVisible(true);
+      Fenster3.karteAufnehmenButton.setVisible(true);
       
       while (interagiert !=true) {
-        Fenster3.jLabel1.setText("Spieler " + aktuell + ", machen Sie bitte Ihren Zug!");        
+        Fenster3.labelSpielerAnweisungen.setText("Spieler " + aktuell + ", machen Sie bitte Ihren Zug!");        
       } // end of while 
-      Fenster3.jLabel6.setVisible(false);
+      Fenster3.labelInfoTextGezogen.setVisible(false);
       interagiert= false;       
       
       //int input = scanner.nextInt();
@@ -482,259 +482,259 @@ public class Game {
           
           
           if (handkarten== 1) {//Prüft jew die Anzahl Handkarten und gibt entsprechen Auswahl jene abzulegen(Nicht bei jedem einzelnen anmerkungen explizit wiederholt)
-            Fenster3.jButton6.setVisible(true);
+            Fenster3.kartenAblageButton1.setVisible(true);
             
           } // end of if
           if (handkarten== 2) {
-            Fenster3.jButton6.setVisible(true);
-            Fenster3.jButton7.setVisible(true);
+            Fenster3.kartenAblageButton1.setVisible(true);
+            Fenster3.kartenAblageButton2.setVisible(true);
           } // end of if
           if (handkarten== 3) {
-            Fenster3.jButton6.setVisible(true);
-            Fenster3.jButton7.setVisible(true);
-            Fenster3.jButton8.setVisible(true);          
+            Fenster3.kartenAblageButton1.setVisible(true);
+            Fenster3.kartenAblageButton2.setVisible(true);
+            Fenster3.kartenAblageButton3.setVisible(true);          
           } // end of if
           if (handkarten== 4) {
-            Fenster3.jButton6.setVisible(true);
-            Fenster3.jButton7.setVisible(true);
-            Fenster3.jButton8.setVisible(true);
-            Fenster3.jButton9.setVisible(true);            
+            Fenster3.kartenAblageButton1.setVisible(true);
+            Fenster3.kartenAblageButton2.setVisible(true);
+            Fenster3.kartenAblageButton3.setVisible(true);
+            Fenster3.kartenAblageButton4.setVisible(true);            
           } // end of if
           if (handkarten== 5) {
-            Fenster3.jButton6.setVisible(true);
-            Fenster3.jButton7.setVisible(true);
-            Fenster3.jButton8.setVisible(true);
-            Fenster3.jButton9.setVisible(true);
-            Fenster3.jButton10.setVisible(true);
+            Fenster3.kartenAblageButton1.setVisible(true);
+            Fenster3.kartenAblageButton2.setVisible(true);
+            Fenster3.kartenAblageButton3.setVisible(true);
+            Fenster3.kartenAblageButton4.setVisible(true);
+            Fenster3.kartenAblageButton5.setVisible(true);
           } // end of if
           if (handkarten== 6) {
-            Fenster3.jButton6.setVisible(true);
-            Fenster3.jButton7.setVisible(true);
-            Fenster3.jButton8.setVisible(true);
-            Fenster3.jButton9.setVisible(true);
-            Fenster3.jButton10.setVisible(true);
-            Fenster3.jButton11.setVisible(true);           
+            Fenster3.kartenAblageButton1.setVisible(true);
+            Fenster3.kartenAblageButton2.setVisible(true);
+            Fenster3.kartenAblageButton3.setVisible(true);
+            Fenster3.kartenAblageButton4.setVisible(true);
+            Fenster3.kartenAblageButton5.setVisible(true);
+            Fenster3.kartenAblageButton6.setVisible(true);           
           } // end of if
           if (handkarten==7) {
-            Fenster3.jButton6.setVisible(true);
-            Fenster3.jButton7.setVisible(true);
-            Fenster3.jButton8.setVisible(true);
-            Fenster3.jButton9.setVisible(true);
-            Fenster3.jButton10.setVisible(true);
-            Fenster3.jButton11.setVisible(true);
-            Fenster3.jButton12.setVisible(true);
+            Fenster3.kartenAblageButton1.setVisible(true);
+            Fenster3.kartenAblageButton2.setVisible(true);
+            Fenster3.kartenAblageButton3.setVisible(true);
+            Fenster3.kartenAblageButton4.setVisible(true);
+            Fenster3.kartenAblageButton5.setVisible(true);
+            Fenster3.kartenAblageButton6.setVisible(true);
+            Fenster3.kartenAblageButton7.setVisible(true);
           } // end of if
           if (handkarten== 8) {
-            Fenster3.jButton6.setVisible(true);
-            Fenster3.jButton7.setVisible(true);
-            Fenster3.jButton8.setVisible(true);
-            Fenster3.jButton9.setVisible(true);
-            Fenster3.jButton10.setVisible(true);
-            Fenster3.jButton11.setVisible(true);
-            Fenster3.jButton12.setVisible(true);
-            Fenster3.jButton13.setVisible(true);           
+            Fenster3.kartenAblageButton1.setVisible(true);
+            Fenster3.kartenAblageButton2.setVisible(true);
+            Fenster3.kartenAblageButton3.setVisible(true);
+            Fenster3.kartenAblageButton4.setVisible(true);
+            Fenster3.kartenAblageButton5.setVisible(true);
+            Fenster3.kartenAblageButton6.setVisible(true);
+            Fenster3.kartenAblageButton7.setVisible(true);
+            Fenster3.kartenAblageButton8.setVisible(true);           
           } // end of if
           if (handkarten== 9) {
-            Fenster3.jButton6.setVisible(true);
-            Fenster3.jButton7.setVisible(true);
-            Fenster3.jButton8.setVisible(true);
-            Fenster3.jButton9.setVisible(true);
-            Fenster3.jButton10.setVisible(true);
-            Fenster3.jButton11.setVisible(true);
-            Fenster3.jButton12.setVisible(true);
-            Fenster3.jButton13.setVisible(true);
-            Fenster3.jButton14.setVisible(true);
+            Fenster3.kartenAblageButton1.setVisible(true);
+            Fenster3.kartenAblageButton2.setVisible(true);
+            Fenster3.kartenAblageButton3.setVisible(true);
+            Fenster3.kartenAblageButton4.setVisible(true);
+            Fenster3.kartenAblageButton5.setVisible(true);
+            Fenster3.kartenAblageButton6.setVisible(true);
+            Fenster3.kartenAblageButton7.setVisible(true);
+            Fenster3.kartenAblageButton8.setVisible(true);
+            Fenster3.kartenAblageButton9.setVisible(true);
           } // end of if
           if (handkarten== 10) {
-            Fenster3.jButton6.setVisible(true);
-            Fenster3.jButton7.setVisible(true);
-            Fenster3.jButton8.setVisible(true);
-            Fenster3.jButton9.setVisible(true);
-            Fenster3.jButton10.setVisible(true);
-            Fenster3.jButton11.setVisible(true);
-            Fenster3.jButton12.setVisible(true);
-            Fenster3.jButton13.setVisible(true);
-            Fenster3.jButton14.setVisible(true);
-            Fenster3.jButton15.setVisible(true);
+            Fenster3.kartenAblageButton1.setVisible(true);
+            Fenster3.kartenAblageButton2.setVisible(true);
+            Fenster3.kartenAblageButton3.setVisible(true);
+            Fenster3.kartenAblageButton4.setVisible(true);
+            Fenster3.kartenAblageButton5.setVisible(true);
+            Fenster3.kartenAblageButton6.setVisible(true);
+            Fenster3.kartenAblageButton7.setVisible(true);
+            Fenster3.kartenAblageButton8.setVisible(true);
+            Fenster3.kartenAblageButton9.setVisible(true);
+            Fenster3.kartenAblageButton10.setVisible(true);
           } // end of if
           if (handkarten== 11) {
-            Fenster3.jButton6.setVisible(true);
-            Fenster3.jButton7.setVisible(true);
-            Fenster3.jButton8.setVisible(true);
-            Fenster3.jButton9.setVisible(true);
-            Fenster3.jButton10.setVisible(true);
-            Fenster3.jButton11.setVisible(true);
-            Fenster3.jButton12.setVisible(true);
-            Fenster3.jButton13.setVisible(true);
-            Fenster3.jButton14.setVisible(true);
-            Fenster3.jButton15.setVisible(true); 
-            Fenster3.jButton16.setVisible(true);
+            Fenster3.kartenAblageButton1.setVisible(true);
+            Fenster3.kartenAblageButton2.setVisible(true);
+            Fenster3.kartenAblageButton3.setVisible(true);
+            Fenster3.kartenAblageButton4.setVisible(true);
+            Fenster3.kartenAblageButton5.setVisible(true);
+            Fenster3.kartenAblageButton6.setVisible(true);
+            Fenster3.kartenAblageButton7.setVisible(true);
+            Fenster3.kartenAblageButton8.setVisible(true);
+            Fenster3.kartenAblageButton9.setVisible(true);
+            Fenster3.kartenAblageButton10.setVisible(true); 
+            Fenster3.kartenAblageButton11.setVisible(true);
           } // end of if
           if (handkarten== 12) {
-            Fenster3.jButton6.setVisible(true);
-            Fenster3.jButton7.setVisible(true);
-            Fenster3.jButton8.setVisible(true);
-            Fenster3.jButton9.setVisible(true);
-            Fenster3.jButton10.setVisible(true);
-            Fenster3.jButton11.setVisible(true);
-            Fenster3.jButton12.setVisible(true);
-            Fenster3.jButton13.setVisible(true);
-            Fenster3.jButton14.setVisible(true);
-            Fenster3.jButton15.setVisible(true); 
-            Fenster3.jButton16.setVisible(true);
-            Fenster3.jButton17.setVisible(true);
+            Fenster3.kartenAblageButton1.setVisible(true);
+            Fenster3.kartenAblageButton2.setVisible(true);
+            Fenster3.kartenAblageButton3.setVisible(true);
+            Fenster3.kartenAblageButton4.setVisible(true);
+            Fenster3.kartenAblageButton5.setVisible(true);
+            Fenster3.kartenAblageButton6.setVisible(true);
+            Fenster3.kartenAblageButton7.setVisible(true);
+            Fenster3.kartenAblageButton8.setVisible(true);
+            Fenster3.kartenAblageButton9.setVisible(true);
+            Fenster3.kartenAblageButton10.setVisible(true); 
+            Fenster3.kartenAblageButton11.setVisible(true);
+            Fenster3.kartenAblageButton12.setVisible(true);
           } // end of if
           if (handkarten== 13) {
-            Fenster3.jButton6.setVisible(true);
-            Fenster3.jButton7.setVisible(true);
-            Fenster3.jButton8.setVisible(true);
-            Fenster3.jButton9.setVisible(true);
-            Fenster3.jButton10.setVisible(true);
-            Fenster3.jButton11.setVisible(true);
-            Fenster3.jButton12.setVisible(true);
-            Fenster3.jButton13.setVisible(true);
-            Fenster3.jButton14.setVisible(true);
-            Fenster3.jButton15.setVisible(true); 
-            Fenster3.jButton16.setVisible(true);
-            Fenster3.jButton17.setVisible(true);
-            Fenster3.jButton18.setVisible(true);
+            Fenster3.kartenAblageButton1.setVisible(true);
+            Fenster3.kartenAblageButton2.setVisible(true);
+            Fenster3.kartenAblageButton3.setVisible(true);
+            Fenster3.kartenAblageButton4.setVisible(true);
+            Fenster3.kartenAblageButton5.setVisible(true);
+            Fenster3.kartenAblageButton6.setVisible(true);
+            Fenster3.kartenAblageButton7.setVisible(true);
+            Fenster3.kartenAblageButton8.setVisible(true);
+            Fenster3.kartenAblageButton9.setVisible(true);
+            Fenster3.kartenAblageButton10.setVisible(true); 
+            Fenster3.kartenAblageButton11.setVisible(true);
+            Fenster3.kartenAblageButton12.setVisible(true);
+            Fenster3.kartenAblageButton13.setVisible(true);
           } // end of if
           if (handkarten== 14) {
-            Fenster3.jButton6.setVisible(true);
-            Fenster3.jButton7.setVisible(true);
-            Fenster3.jButton8.setVisible(true);
-            Fenster3.jButton9.setVisible(true);
-            Fenster3.jButton10.setVisible(true);
-            Fenster3.jButton11.setVisible(true);
-            Fenster3.jButton12.setVisible(true);
-            Fenster3.jButton13.setVisible(true);
-            Fenster3.jButton14.setVisible(true);
-            Fenster3.jButton15.setVisible(true); 
-            Fenster3.jButton16.setVisible(true);
-            Fenster3.jButton17.setVisible(true);
-            Fenster3.jButton18.setVisible(true);
-            Fenster3.jButton19.setVisible(true);
+            Fenster3.kartenAblageButton1.setVisible(true);
+            Fenster3.kartenAblageButton2.setVisible(true);
+            Fenster3.kartenAblageButton3.setVisible(true);
+            Fenster3.kartenAblageButton4.setVisible(true);
+            Fenster3.kartenAblageButton5.setVisible(true);
+            Fenster3.kartenAblageButton6.setVisible(true);
+            Fenster3.kartenAblageButton7.setVisible(true);
+            Fenster3.kartenAblageButton8.setVisible(true);
+            Fenster3.kartenAblageButton9.setVisible(true);
+            Fenster3.kartenAblageButton10.setVisible(true); 
+            Fenster3.kartenAblageButton11.setVisible(true);
+            Fenster3.kartenAblageButton12.setVisible(true);
+            Fenster3.kartenAblageButton13.setVisible(true);
+            Fenster3.kartenAblageButton14.setVisible(true);
           } // end of if
           if (handkarten== 15) {
-            Fenster3.jButton6.setVisible(true);
-            Fenster3.jButton7.setVisible(true);
-            Fenster3.jButton8.setVisible(true);
-            Fenster3.jButton9.setVisible(true);
-            Fenster3.jButton10.setVisible(true);
-            Fenster3.jButton11.setVisible(true);
-            Fenster3.jButton12.setVisible(true);
-            Fenster3.jButton13.setVisible(true);
-            Fenster3.jButton14.setVisible(true);
-            Fenster3.jButton15.setVisible(true); 
-            Fenster3.jButton16.setVisible(true);
-            Fenster3.jButton17.setVisible(true);
-            Fenster3.jButton18.setVisible(true);
-            Fenster3.jButton19.setVisible(true);
-            Fenster3.jButton20.setVisible(true);
+            Fenster3.kartenAblageButton1.setVisible(true);
+            Fenster3.kartenAblageButton2.setVisible(true);
+            Fenster3.kartenAblageButton3.setVisible(true);
+            Fenster3.kartenAblageButton4.setVisible(true);
+            Fenster3.kartenAblageButton5.setVisible(true);
+            Fenster3.kartenAblageButton6.setVisible(true);
+            Fenster3.kartenAblageButton7.setVisible(true);
+            Fenster3.kartenAblageButton8.setVisible(true);
+            Fenster3.kartenAblageButton9.setVisible(true);
+            Fenster3.kartenAblageButton10.setVisible(true); 
+            Fenster3.kartenAblageButton11.setVisible(true);
+            Fenster3.kartenAblageButton12.setVisible(true);
+            Fenster3.kartenAblageButton13.setVisible(true);
+            Fenster3.kartenAblageButton14.setVisible(true);
+            Fenster3.kartenAblageButton15.setVisible(true);
           } // end of if
           if (handkarten== 16) {
-            Fenster3.jButton6.setVisible(true);
-            Fenster3.jButton7.setVisible(true);
-            Fenster3.jButton8.setVisible(true);
-            Fenster3.jButton9.setVisible(true);
-            Fenster3.jButton10.setVisible(true);
-            Fenster3.jButton11.setVisible(true);
-            Fenster3.jButton12.setVisible(true);
-            Fenster3.jButton13.setVisible(true);
-            Fenster3.jButton14.setVisible(true);
-            Fenster3.jButton15.setVisible(true); 
-            Fenster3.jButton16.setVisible(true);
-            Fenster3.jButton17.setVisible(true);
-            Fenster3.jButton18.setVisible(true);
-            Fenster3.jButton19.setVisible(true);
-            Fenster3.jButton20.setVisible(true);
-            Fenster3.jButton21.setVisible(true);
+            Fenster3.kartenAblageButton1.setVisible(true);
+            Fenster3.kartenAblageButton2.setVisible(true);
+            Fenster3.kartenAblageButton3.setVisible(true);
+            Fenster3.kartenAblageButton4.setVisible(true);
+            Fenster3.kartenAblageButton5.setVisible(true);
+            Fenster3.kartenAblageButton6.setVisible(true);
+            Fenster3.kartenAblageButton7.setVisible(true);
+            Fenster3.kartenAblageButton8.setVisible(true);
+            Fenster3.kartenAblageButton9.setVisible(true);
+            Fenster3.kartenAblageButton10.setVisible(true); 
+            Fenster3.kartenAblageButton11.setVisible(true);
+            Fenster3.kartenAblageButton12.setVisible(true);
+            Fenster3.kartenAblageButton13.setVisible(true);
+            Fenster3.kartenAblageButton14.setVisible(true);
+            Fenster3.kartenAblageButton15.setVisible(true);
+            Fenster3.kartenAblageButton16.setVisible(true);
           } // end of if
           if (handkarten== 17) {
-            Fenster3.jButton6.setVisible(true);
-            Fenster3.jButton7.setVisible(true);
-            Fenster3.jButton8.setVisible(true);
-            Fenster3.jButton9.setVisible(true);
-            Fenster3.jButton10.setVisible(true);
-            Fenster3.jButton11.setVisible(true);
-            Fenster3.jButton12.setVisible(true);
-            Fenster3.jButton13.setVisible(true);
-            Fenster3.jButton14.setVisible(true);
-            Fenster3.jButton15.setVisible(true); 
-            Fenster3.jButton16.setVisible(true);
-            Fenster3.jButton17.setVisible(true);
-            Fenster3.jButton18.setVisible(true);
-            Fenster3.jButton19.setVisible(true);
-            Fenster3.jButton20.setVisible(true);
-            Fenster3.jButton21.setVisible(true);
-            Fenster3.jButton22.setVisible(true);
+            Fenster3.kartenAblageButton1.setVisible(true);
+            Fenster3.kartenAblageButton2.setVisible(true);
+            Fenster3.kartenAblageButton3.setVisible(true);
+            Fenster3.kartenAblageButton4.setVisible(true);
+            Fenster3.kartenAblageButton5.setVisible(true);
+            Fenster3.kartenAblageButton6.setVisible(true);
+            Fenster3.kartenAblageButton7.setVisible(true);
+            Fenster3.kartenAblageButton8.setVisible(true);
+            Fenster3.kartenAblageButton9.setVisible(true);
+            Fenster3.kartenAblageButton10.setVisible(true); 
+            Fenster3.kartenAblageButton11.setVisible(true);
+            Fenster3.kartenAblageButton12.setVisible(true);
+            Fenster3.kartenAblageButton13.setVisible(true);
+            Fenster3.kartenAblageButton14.setVisible(true);
+            Fenster3.kartenAblageButton15.setVisible(true);
+            Fenster3.kartenAblageButton16.setVisible(true);
+            Fenster3.kartenAblageButton17.setVisible(true);
           } // end of if
           if (handkarten== 18) {
-            Fenster3.jButton6.setVisible(true);
-            Fenster3.jButton7.setVisible(true);
-            Fenster3.jButton8.setVisible(true);
-            Fenster3.jButton9.setVisible(true);
-            Fenster3.jButton10.setVisible(true);
-            Fenster3.jButton11.setVisible(true);
-            Fenster3.jButton12.setVisible(true);
-            Fenster3.jButton13.setVisible(true);
-            Fenster3.jButton14.setVisible(true);
-            Fenster3.jButton15.setVisible(true); 
-            Fenster3.jButton16.setVisible(true);
-            Fenster3.jButton17.setVisible(true);
-            Fenster3.jButton18.setVisible(true);
-            Fenster3.jButton19.setVisible(true);
-            Fenster3.jButton20.setVisible(true);
-            Fenster3.jButton21.setVisible(true);
-            Fenster3.jButton22.setVisible(true);
-            Fenster3.jButton23.setVisible(true);
+            Fenster3.kartenAblageButton1.setVisible(true);
+            Fenster3.kartenAblageButton2.setVisible(true);
+            Fenster3.kartenAblageButton3.setVisible(true);
+            Fenster3.kartenAblageButton4.setVisible(true);
+            Fenster3.kartenAblageButton5.setVisible(true);
+            Fenster3.kartenAblageButton6.setVisible(true);
+            Fenster3.kartenAblageButton7.setVisible(true);
+            Fenster3.kartenAblageButton8.setVisible(true);
+            Fenster3.kartenAblageButton9.setVisible(true);
+            Fenster3.kartenAblageButton10.setVisible(true); 
+            Fenster3.kartenAblageButton11.setVisible(true);
+            Fenster3.kartenAblageButton12.setVisible(true);
+            Fenster3.kartenAblageButton13.setVisible(true);
+            Fenster3.kartenAblageButton14.setVisible(true);
+            Fenster3.kartenAblageButton15.setVisible(true);
+            Fenster3.kartenAblageButton16.setVisible(true);
+            Fenster3.kartenAblageButton17.setVisible(true);
+            Fenster3.kartenAblageButton18.setVisible(true);
           } // end of if
           if (handkarten== 19) {
-            Fenster3.jButton6.setVisible(true);
-            Fenster3.jButton7.setVisible(true);
-            Fenster3.jButton8.setVisible(true);
-            Fenster3.jButton9.setVisible(true);
-            Fenster3.jButton10.setVisible(true);
-            Fenster3.jButton11.setVisible(true);
-            Fenster3.jButton12.setVisible(true);
-            Fenster3.jButton13.setVisible(true);
-            Fenster3.jButton14.setVisible(true);
-            Fenster3.jButton15.setVisible(true); 
-            Fenster3.jButton16.setVisible(true);
-            Fenster3.jButton17.setVisible(true);
-            Fenster3.jButton18.setVisible(true);
-            Fenster3.jButton19.setVisible(true);
-            Fenster3.jButton20.setVisible(true);
-            Fenster3.jButton21.setVisible(true);
-            Fenster3.jButton22.setVisible(true);
-            Fenster3.jButton23.setVisible(true);
-            Fenster3.jButton24.setVisible(true);         
+            Fenster3.kartenAblageButton1.setVisible(true);
+            Fenster3.kartenAblageButton2.setVisible(true);
+            Fenster3.kartenAblageButton3.setVisible(true);
+            Fenster3.kartenAblageButton4.setVisible(true);
+            Fenster3.kartenAblageButton5.setVisible(true);
+            Fenster3.kartenAblageButton6.setVisible(true);
+            Fenster3.kartenAblageButton7.setVisible(true);
+            Fenster3.kartenAblageButton8.setVisible(true);
+            Fenster3.kartenAblageButton9.setVisible(true);
+            Fenster3.kartenAblageButton10.setVisible(true); 
+            Fenster3.kartenAblageButton11.setVisible(true);
+            Fenster3.kartenAblageButton12.setVisible(true);
+            Fenster3.kartenAblageButton13.setVisible(true);
+            Fenster3.kartenAblageButton14.setVisible(true);
+            Fenster3.kartenAblageButton15.setVisible(true);
+            Fenster3.kartenAblageButton16.setVisible(true);
+            Fenster3.kartenAblageButton17.setVisible(true);
+            Fenster3.kartenAblageButton18.setVisible(true);
+            Fenster3.kartenAblageButton19.setVisible(true);         
           } // end of if
           if (handkarten== 20) {
-            Fenster3.jButton6.setVisible(true);
-            Fenster3.jButton7.setVisible(true);
-            Fenster3.jButton8.setVisible(true);
-            Fenster3.jButton9.setVisible(true);
-            Fenster3.jButton10.setVisible(true);
-            Fenster3.jButton11.setVisible(true);
-            Fenster3.jButton12.setVisible(true);
-            Fenster3.jButton13.setVisible(true);
-            Fenster3.jButton14.setVisible(true);
-            Fenster3.jButton15.setVisible(true); 
-            Fenster3.jButton16.setVisible(true);
-            Fenster3.jButton17.setVisible(true);
-            Fenster3.jButton18.setVisible(true);
-            Fenster3.jButton19.setVisible(true);
-            Fenster3.jButton20.setVisible(true);
-            Fenster3.jButton21.setVisible(true);
-            Fenster3.jButton22.setVisible(true);
-            Fenster3.jButton23.setVisible(true);
-            Fenster3.jButton24.setVisible(true);
-            Fenster3.jButton25.setVisible(true);
+            Fenster3.kartenAblageButton1.setVisible(true);
+            Fenster3.kartenAblageButton2.setVisible(true);
+            Fenster3.kartenAblageButton3.setVisible(true);
+            Fenster3.kartenAblageButton4.setVisible(true);
+            Fenster3.kartenAblageButton5.setVisible(true);
+            Fenster3.kartenAblageButton6.setVisible(true);
+            Fenster3.kartenAblageButton7.setVisible(true);
+            Fenster3.kartenAblageButton8.setVisible(true);
+            Fenster3.kartenAblageButton9.setVisible(true);
+            Fenster3.kartenAblageButton10.setVisible(true); 
+            Fenster3.kartenAblageButton11.setVisible(true);
+            Fenster3.kartenAblageButton12.setVisible(true);
+            Fenster3.kartenAblageButton13.setVisible(true);
+            Fenster3.kartenAblageButton14.setVisible(true);
+            Fenster3.kartenAblageButton15.setVisible(true);
+            Fenster3.kartenAblageButton16.setVisible(true);
+            Fenster3.kartenAblageButton17.setVisible(true);
+            Fenster3.kartenAblageButton18.setVisible(true);
+            Fenster3.kartenAblageButton19.setVisible(true);
+            Fenster3.kartenAblageButton20.setVisible(true);
           } // end of if
           
           while (interagiert !=true) {
-            Fenster3.jLabel1.setText("Spieler " + aktuell + ", machen Sie bitte Ihren Zug!");        
+            Fenster3.labelSpielerAnweisungen.setText("Spieler " + aktuell + ", machen Sie bitte Ihren Zug!");        
           } // end of while 
           
           interagiert= false;
@@ -858,15 +858,15 @@ public class Game {
       System.out.print("(1: [°] / 2: [+] / 3: [#] / 4: [*])");
       System.out.println();
       */
-      Fenster3.jLabel1.setText("Bitte wählen sie ein Symbol");
+      Fenster3.labelSpielerAnweisungen.setText("Bitte wählen sie ein Symbol");
       
-      Fenster3.jButton26.setVisible(true);
-      Fenster3.jButton27.setVisible(true);
-      Fenster3.jButton28.setVisible(true);
-      Fenster3.jButton29.setVisible(true);          
+      Fenster3.bubeSetCircle.setVisible(true);
+      Fenster3.bubeSetPlus.setVisible(true);
+      Fenster3.bubeSetHashtag.setVisible(true);
+      Fenster3.bubeSetStar.setVisible(true);          
       
       while (interagiert !=true) {
-        Fenster3.jLabel1.setText("Spieler " + aktuell + ", machen Sie bitte Ihren Zug!");        
+        Fenster3.labelSpielerAnweisungen.setText("Spieler " + aktuell + ", machen Sie bitte Ihren Zug!");        
       } // end of while 
       
       interagiert= false;
@@ -899,32 +899,32 @@ public class Game {
     if (win == false) {
       start();
     } else {
-      Fenster3.jLabel7.setVisible(true);
+      Fenster3.LabelTextWinner.setVisible(true);
       if (max == 2) {
         if (Hand.hand1.size() == 0) {          
           //System.out.println("Spieler 1 hat gewonnen!");
-          Fenster3.jLabel7.setText("                Spieler 1 hat gewonnen!");
+          Fenster3.LabelTextWinner.setText("                Spieler 1 hat gewonnen!");
           end();
         }
         if (Hand.hand2.size() == 0) {
           //System.out.println("Spieler 2 hat gewonnen!");
-          Fenster3.jLabel7.setText("                Spieler 2 hat gewonnen!");
+          Fenster3.LabelTextWinner.setText("                Spieler 2 hat gewonnen!");
           end();
         }
       } else {
         if (Hand.hand1.size() == 0) {
           //System.out.println("Spieler 1 hat gewonnen!");
-          Fenster3.jLabel7.setText("                Spieler 1 hat gewonnen!");
+          Fenster3.LabelTextWinner.setText("                Spieler 1 hat gewonnen!");
           end();
         }
         if (Hand.hand2.size() == 0) {
           //System.out.println("Spieler 2 hat gewonnen!");
-          Fenster3.jLabel7.setText("                Spieler 2 hat gewonnen!");
+          Fenster3.LabelTextWinner.setText("                Spieler 2 hat gewonnen!");
           end();
         }
         if (Hand.hand3.size() == 0) {
           //System.out.println("Spieler 3 hat gewonnen!");
-          Fenster3.jLabel7.setText("                Spieler 3 hat gewonnen!");
+          Fenster3.LabelTextWinner.setText("                Spieler 3 hat gewonnen!");
           end();
         }
       }
@@ -936,19 +936,19 @@ public class Game {
     System.out.println();
     System.out.println("Zum Neustarten bitte '1' drücken! / Zum Beenden bitte '2' drücken!");
     */
-    Fenster3.jLabel1.setText("Zum Neustarten oder Beenden bitte anwählen");
+    Fenster3.labelSpielerAnweisungen.setText("Zum Neustarten oder Beenden bitte anwählen");
     
-    Fenster3.jButton30.setVisible(true);
-    Fenster3.jButton31.setVisible(true);
+    Fenster3.neuStartButton.setVisible(true);
+    Fenster3.beendeenButton.setVisible(true);
     
-    Fenster3.jLabel2.setVisible(false);
-    Fenster3.jLabel3.setVisible(false);
-    Fenster3.jLabel4.setVisible(false);
-    Fenster3.jLabel5.setVisible(false);
-    Fenster3.jLabel6.setVisible(false);
+    Fenster3.labelAblageAusgabe.setVisible(false);
+    Fenster3.labelObersteKarte.setVisible(false);
+    Fenster3.labelHandKarten.setVisible(false);
+    Fenster3.labelTextHandkarten.setVisible(false);
+    Fenster3.labelInfoTextGezogen.setVisible(false);
     
     while (interagiert!=true) {
-      Fenster3.jLabel1.setText("Zum Neustarten oder Beenden bitte Option anwählen");       
+      Fenster3.labelSpielerAnweisungen.setText("Zum Neustarten oder Beenden bitte Option anwählen");       
     } // end of while
     Game.interagiert= true;    
     
@@ -960,9 +960,9 @@ public class Game {
     */
     
     if (input == 1) {
-      Fenster3.jLabel1.setText("~NEUSTART~");
+      Fenster3.labelSpielerAnweisungen.setText("~NEUSTART~");
       for (int i = 0; i<=20 ; i++) {
-        Fenster3.jLabel1.setText("~NEUSTART~");         
+        Fenster3.labelSpielerAnweisungen.setText("~NEUSTART~");         
       } // end of for
       /*
       System.out.println("~NEUSTART~");
@@ -976,9 +976,9 @@ public class Game {
     }
     if (input == 2) {
       //System.out.println("~SPIEL BEENDET~");
-      Fenster3.jLabel1.setText("~SPIEL BEENDET~");
+      Fenster3.labelSpielerAnweisungen.setText("~SPIEL BEENDET~");
       for (int i = 0; i<=20 ; i++) {
-        Fenster3.jLabel1.setText("~SPIEL BEENDET~");         
+        Fenster3.labelSpielerAnweisungen.setText("~SPIEL BEENDET~");         
       } // end of for
       
       
