@@ -1,8 +1,0 @@
-public class Matchconfig {
-	public static int spieler; //Spieleranzahl
-
-	//Legt Spieleranzahl fest:
-	public static void setSpielerzahl(int wert) {
-		spieler = wert;
-	}
-}
