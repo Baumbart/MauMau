@@ -1,8 +1,8 @@
-public class Karte { 
-	public String element = "";
-	public Karte next;
+public class Karte {
+	String element = "";
+	Karte next;
 
-	//"Karten" (Node), mit denen das Spiel gespielt wird:
+	// Karten, mit denen gespielt wird:
 	public Karte(String wert) {
 		element = wert;
 	}
