@@ -85,9 +85,15 @@ public class Game {
     Fenster3.labelSpielerAnweisungen.setText("Bitte wählen Sie die Spieleranzahl!");//Setzt das Label auf den Entsprechenden Text hier: "Bitte wählen Sie die Spieleranzahl!"
     
     //int input = scanner.nextInt();
+    Fenster3.labelSpielerAnweisungen.setText("Bitte wählen Sie die Spieleranzahl!");//Setzt das Label auf den Entsprechenden Text hier: "Bitte wählen Sie die Spieleranzahl!"
     while (interagiert != true) {//Wartet auf Usereingabe in "Fenster3" damit das Programm in "Game" nicht vorschnell weiterläuft(Im folgenden Ebenfalls nicht jede ml wieder aufgeführt)
-      //System.out.print("");
-      Fenster3.labelSpielerAnweisungen.setText("Bitte wählen Sie die Spieleranzahl!");//Setzt das Label auf den Entsprechenden Text hier: "Bitte wählen Sie die Spieleranzahl!"     
+      //System.out.print("");     
+    	try {
+			Thread.sleep(30);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     } // end of while
     
     interagiert= false;//Setzt die UsereingabeAbfrageVariable wieder zurück
@@ -107,10 +113,14 @@ public class Game {
         
         Fenster3.optionsButton1.setText("Spieler Eins");//Setzt das Label auf den Entsprechenden Text hier: "Spieler Eins" (Im folgenden nicht explizit erwähnt)
         Fenster3.optionsButton2.setText("Spieler Zwei");
-        
-        
+             
         while(interagiert != true){//Wartet auf usereingabe in "Fenster3" damit das Programm in "Game" nicht vorschnell weiterläuft
-          Fenster3.labelSpielerAnweisungen.setText("Welcher Spieler soll starten?");          
+        	try {
+				Thread.sleep(30);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
         }
         interagiert= false;        
         //input = scanner.nextInt();
@@ -124,8 +134,13 @@ public class Game {
         
         Fenster3.optionsButton1.setText("Spieler Eins");
         Fenster3.optionsButton2.setText("Spieler Zwei");
-        while(interagiert != true){//Wartet auf usereingabe in "Fenster3" damit das Programm in "Game" nicht vorschnell weiterläuft
-          Fenster3.labelSpielerAnweisungen.setText("Welcher Spieler soll starten?");          
+        while(!interagiert){//Wartet auf usereingabe in "Fenster3" damit das Programm in "Game" nicht vorschnell weiterläuft
+          try {
+			Thread.sleep(30);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}          
         }
         interagiert= false;
         //input = scanner.nextInt();
@@ -391,9 +406,15 @@ public class Game {
       //System.out.println("[Zug]: 'Ich lege eine Karte' / 'Ich ziehe eine Karte' (1/2)");
       Fenster3.karteLegenButton.setVisible(true);
       Fenster3.karteAufnehmenButton.setVisible(true);
+      Fenster3.labelSpielerAnweisungen.setText("Spieler " + aktuell + ", machen Sie bitte Ihren Zug!");
       
-      while (interagiert !=true) {
-        Fenster3.labelSpielerAnweisungen.setText("Spieler " + aktuell + ", machen Sie bitte Ihren Zug!");        
+      while (!interagiert) {
+    	  try {
+			Thread.sleep(30);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}                
       } // end of while 
       Fenster3.labelInfoTextGezogen.setVisible(false);
       interagiert= false;       
@@ -738,8 +759,14 @@ public class Game {
             Fenster3.kartenAblageButton20.setVisible(true);
           } // end of if
           
+          Fenster3.labelSpielerAnweisungen.setText("Spieler " + aktuell + ", machen Sie bitte Ihren Zug!");
           while (!interagiert) {
-            Fenster3.labelSpielerAnweisungen.setText("Spieler " + aktuell + ", machen Sie bitte Ihren Zug!");        
+        	  try {
+				Thread.sleep(30);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}                    
           } // end of while 
           
           interagiert= false;
@@ -868,14 +895,19 @@ public class Game {
       Fenster3.bubeSetCircle.setVisible(true);
       Fenster3.bubeSetPlus.setVisible(true);
       Fenster3.bubeSetHashtag.setVisible(true);
-      Fenster3.bubeSetStar.setVisible(true);          
+      Fenster3.bubeSetStar.setVisible(true);  
+      Fenster3.labelSpielerAnweisungen.setText("Spieler " + aktuell + ", machen Sie bitte Ihren Zug!");
       
-      while (!interagiert) {
-        Fenster3.labelSpielerAnweisungen.setText("Spieler " + aktuell + ", machen Sie bitte Ihren Zug!");        
+      while (!interagiert) {    	  
+    	  try {
+			Thread.sleep(30);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}    	                  
       } // end of while 
       
       interagiert= false;
-      
       
       //bubenInput = scanner.nextInt();
       
@@ -952,10 +984,17 @@ public class Game {
     Fenster3.labelHandKarten.setVisible(false);
     Fenster3.labelTextHandkarten.setVisible(false);
     Fenster3.labelInfoTextGezogen.setVisible(false);
+    Fenster3.labelSpielerAnweisungen.setText("Zum Neustarten oder Beenden bitte Option anwählen");
     
     while (!interagiert) {
-      Fenster3.labelSpielerAnweisungen.setText("Zum Neustarten oder Beenden bitte Option anwählen");       
+    	try {
+			Thread.sleep(30);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}             
     } // end of while
+    
     Game.interagiert= true;    
     
     //int input = scanner.nextInt();
