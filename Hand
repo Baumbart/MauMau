@@ -66,7 +66,7 @@ public class Hand {
 
 		if (handWert1 == ablageWert1 || handWert2 == ablageWert2 || handWert2 == 'B' || ablageWert2 == 'B') {
 			if (ablageWert2 == 'B') {
-				if (Game.bubeException == true) {
+				if (Game.bubeException == true) { //Wenn die Variable "bubeException" auf "true" ist, darf jede Karte gelegt werden:
 					vergleich = true;
 				}
 				if (handWert1 == Game.bubeChar || handWert2 == 'B') {
