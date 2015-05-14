@@ -153,6 +153,11 @@ public class Game {
       konfiguration();
     }
     
+    if (Ablage.ablage.peek().charAt(1) == 'B') { //Wenn auf der Ablage ein Bube liegt, wird die Variable "BubeException" auf "true" gesetzt, damit im Verlauf des Zuges kein Fehler auftritt:
+    	  bubeException = true; 
+    	}
+    	    
+    
     start(); //Das Spiel wird gestartet.
   }
   
@@ -733,7 +738,7 @@ public class Game {
             Fenster3.kartenAblageButton20.setVisible(true);
           } // end of if
           
-          while (interagiert !=true) {
+          while (!interagiert) {
             Fenster3.labelSpielerAnweisungen.setText("Spieler " + aktuell + ", machen Sie bitte Ihren Zug!");        
           } // end of while 
           
@@ -849,7 +854,7 @@ public class Game {
     if (current.next.element.charAt(1) == '8') {
       eight = true;
     }
-    if (current.next.element.charAt(1) == 'B') {
+    if (current.next.element.charAt(1) == 'B' && spieler.size() > 1) { //Wenn der zweite "char" der aktuellen Karte eine "B" ist, wird die Variable "bube" auf "true" gesetzt:
       bube = true;
     }
     if (bube == true) {
@@ -865,7 +870,7 @@ public class Game {
       Fenster3.bubeSetHashtag.setVisible(true);
       Fenster3.bubeSetStar.setVisible(true);          
       
-      while (interagiert !=true) {
+      while (!interagiert) {
         Fenster3.labelSpielerAnweisungen.setText("Spieler " + aktuell + ", machen Sie bitte Ihren Zug!");        
       } // end of while 
       
@@ -897,6 +902,7 @@ public class Game {
   
   public void win() {
     if (win == false) {
+    	bubeException = false;
       start();
     } else {
       Fenster3.LabelTextWinner.setVisible(true);
@@ -947,7 +953,7 @@ public class Game {
     Fenster3.labelTextHandkarten.setVisible(false);
     Fenster3.labelInfoTextGezogen.setVisible(false);
     
-    while (interagiert!=true) {
+    while (!interagiert) {
       Fenster3.labelSpielerAnweisungen.setText("Zum Neustarten oder Beenden bitte Option anwählen");       
     } // end of while
     Game.interagiert= true;    
@@ -971,6 +977,9 @@ public class Game {
       System.out.println("-------------------------");
       System.out.println();
       */
+      Hand.hand1.clear(); //Die Hand "hand1" wird geleert.
+      Hand.hand2.clear(); //Die Hand "hand1" wird geleert.
+      Hand.hand3.clear(); //Die Hand "hand1" wird geleert.
       kartenstapel.mischen();
       konfiguration();
     }
