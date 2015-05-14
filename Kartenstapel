@@ -1,35 +1,36 @@
 import java.util.*;
 
 public class Kartenstapel {
-	private Vergleichstabelle vgl = new Vergleichstabelle(); //Erzeugung einer Vergleichstabelle mit allen Kartenwerten.
-	static Stack<String> kartenstapel = new Stack<String>(); //Erzeugung eines Kartenstapels (Stack aus "java.util").
+	private Vergleichstabelle vgl = new Vergleichstabelle(); // Erzeugung einer Vergleichstabelle
+	static Stack<String> kartenstapel = new Stack<String>(); // Erzeugung eines Stacks, der als Kartenstapel verwendet wird verwendet wird (Stack aus "java.util")
 
-	//"Kartendeck", von dem die Karten gezogen werden:
+	// "Kartendeck" von dem alle Karten gezogen werden:
 	public Kartenstapel() {
 		mischen();
 	}
 
-	//Leert den "kartenstapel", liest die Kartenwerte aus der "Vergleichstabelle" aus, fügt sie dem "kartenstapel" hinzu und mischt diesen dann:
+	// Fügt dem Kartenstapel alle 32 Karten hinzu und mischt ihn danach:
 	public void mischen() {
-		for (int i = 0; i < kartenstapel.size(); i++) { //Leert jede einzelne "Karte" aus dem "kartenstapel": 
+		for (int i = 0; i < kartenstapel.size(); i++) {
 			kartenstapel.pop();
 		}
-		for (int i = 0; i < 4; i++) { //Füllt den "kartenstapel" mit 32 "Karten" aller Kartenwerte aus der "Vergleichstabelle":
+		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 8; j++) {
 				kartenstapel.push(vgl.getVergleich(j, i));
 			}
 		}
-		Collections.shuffle(kartenstapel); //"shuffle" aus "java.util" verwendet.
+		Collections.shuffle(kartenstapel);
 	}
 
-	//Prüft die Spieleranzahl, verteilt dementsprechend "Karten" an die Spieler, legt eine "Karte" auf die "ablage" und entfernt die ausgeteilten "Karten" vom "kartenstapel":
+	// Entfernt jeweils 7 Karten aus dem Kartenstapel und fügt sie den Händen der Spieler hinzu:
 	public void austeilen() {
-		if (Matchconfig.spieler == 2) { //Wenn die Spieleranzahl "2" beträgt, werden auch lediglich "Karten" an "hand1" und "hand2" verteilt:
+		if (Game.player == 2) {
 			int i = 0;
 			int j = 1;
 
 			while (i < 14) {
 				Karte current = new Karte(kartenstapel.pop());
+
 				if (j == 1) {
 					Hand.hand1.add(Hand.hand1.head, current);
 				} else {
@@ -40,11 +41,13 @@ public class Kartenstapel {
 				j++;
 			}
 		}
-		if (Matchconfig.spieler == 3) { //Wenn die Spieleranzahl "3" beträgt, werden "Karten" an alle "Hände" verteilt:
+		if (Game.player == 3) {
 			int i = 0;
 			int j = 1;
+
 			while (i < 21) {
 				Karte current = new Karte(kartenstapel.pop());
+
 				if (j == 1) {
 					Hand.hand1.add(Hand.hand1.head, current);
 				}
@@ -59,28 +62,23 @@ public class Kartenstapel {
 				j++;
 			}
 		}
-		
-		//Am Ende wird noch eine weitere "Karte" vom "kartenstapel" entfernt und oben auf die "ablage" gelegt:
 		Karte current = new Karte(kartenstapel.pop());
 		Ablage.ablage.push(current);
 	}
 
-	//Wenn der "kartenstapel" leer ist, werden die Karten aus der "ablage" entfernt und dem "kartenstapel" wieder hinzugefügt:
+	// Entfernt alle Karten (bis auf die oberste) von der Ablage, fügt sie dem Kartenstapel hinzu und mischt diesen:
 	public void reuse() {
-		if (kartenstapel.empty() == true) { //Wenn der "kartenstapel" leer ist und die "ablage" ebenfalls nur noch über eine "Karte" verfügt, geht das Spiel unentschieden aus, weil nicht mehr die Möglichkeit besteht, eine Karte zu ziehen:
-			if (Ablage.ablage.size() == 1) {
-				Game.draw = true;
-			} else { //Ansonsten werden alle "Karten" aus der "ablage" herausgenommen und dem "kartenstapel" hinzugefügt:
-				Stack<String> temp = new Stack<String>();
-				temp.push(Ablage.ablage.pop());
-				while (Ablage.ablage.head.next != null) {
-					kartenstapel.push(Ablage.ablage.pop());
-				}
-			
-				// Am Ende wird der "kartenstapel" gemischt und die letzte "Karte" wird wieder der "ablage" hinzugefügt:
-				Collections.shuffle(kartenstapel); // "shuffle" aus "java.util" verwendet.
-				Ablage.ablage.push(temp.pop()); //Die "Karte", die ursprünglich ganz oben auf der "ablage" gelegen ist, wird danach wieder aus dem "kartenstapel" entfernt und der "ablage" hinzugefügt, weil sonst nich weitergespielt werden könnte.
+		if (Ablage.ablage.size() == 1) {
+			Game.refill = true;
+		} else {
+			Stack<String> temp = new Stack<String>();
+			temp.push(Ablage.ablage.pop());
+
+			while (Ablage.ablage.head.next != null) {
+				kartenstapel.push(Ablage.ablage.pop());
 			}
+			Collections.shuffle(kartenstapel);
+			Ablage.ablage.push(temp.pop());
 		}
 	}
 }
