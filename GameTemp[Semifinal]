@@ -405,8 +405,8 @@ public class Game {
           if (bube != true) {
             Ablage.ablage.ausgeben();
           } else {
-            System.out.println(bubeChar);
-            System.out.println();
+            //System.out.println(bubeChar);
+            //System.out.println();
             bube = false;
             bubeError = true;
           }
@@ -755,10 +755,10 @@ public class Game {
                 Hand.hand1.legen(current); //Legt die ausgewählte Karte auf die Ablage.
               } else { //Wenn die ausgewählte Karte nicht gelegt werden kann, wird der aktuelle Zug noch einmal neu gestartet:
                 if (bubeError != true) { //Prüft, ob die Variable "bubeError" auf "true" ist. 
-                  System.out.println();
+                  //System.out.println("hier");
                   start(); //Neustart des gesamten Zuges durch Aufrufen der Methode "start()".
                 } else { //Wenn die Variable "bubeError" auf "true" ist, muss die Variable "bube" ebenfalls noch einmal auf "true" gesetzt werden, da der aktuelle Zug danach neustartet. 
-                  System.out.println();
+                  //System.out.println("hier2");
                   bube = true; 
                   start(); //Neustart des gesamten Zuges durch Aufrufen der Methode "start()".
                 }
@@ -776,10 +776,10 @@ public class Game {
                 Hand.hand2.legen(current); //Legt die ausgewählte Karte auf die Ablage.
               } else { //Wenn die ausgewählte Karte nicht gelegt werden kann, wird der aktuelle Zug noch einmal neu gestartet:
                 if (bubeError != true) { //Prüft, ob die Variable "bubeError" auf "true" ist. 
-                  System.out.println();
+                  //System.out.println("hier3");
                   start(); //Neustart des gesamten Zuges durch Aufrufen der Methode "start()".
                 } else { //Wenn die Variable "bubeError" auf "true" ist, muss die Variable "bube" ebenfalls noch einmal auf "true" gesetzt werden, da der aktuelle Zug danach neustartet.
-                  System.out.println();
+                  //System.out.println("hier4");
                   bube = true;
                   start(); //Neustart des gesamten Zuges durch Aufrufen der Methode "start()".
                 }
@@ -797,10 +797,10 @@ public class Game {
                 Hand.hand3.legen(current); //Legt die ausgewählte Karte auf die Ablage.
               } else { //Wenn die ausgewählte Karte nicht gelegt werden kann, wird der aktuelle Zug noch einmal neu gestartet:
                 if (bubeError != true) { //Prüft, ob die Variable "bubeError" auf "true" ist. 
-                  System.out.println();
+                  //System.out.println("hier5");
                   start(); //Neustart des gesamten Zuges durch Aufrufen der Methode "start()".
                 } else { //Wenn die Variable "bubeError" auf "true" ist, muss die Variable "bube" ebenfalls noch einmal auf "true" gesetzt werden, da der aktuelle Zug danach neustartet.
-                  System.out.println();
+                  //System.out.println("hier6");
                   bube = true;
                   start(); //Neustart des gesamten Zuges durch Aufrufen der Methode "start()".
                 }
