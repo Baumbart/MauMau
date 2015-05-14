@@ -1,107 +1,109 @@
 public class Hand {
-	Karte head = new Karte(""); 
-	
-	static Hand hand1 = new Hand(); //Erzeugung einer "Hand" für Spieler 1
-	static Hand hand2 = new Hand(); //Erzeugung einer "Hand" für Spieler 2
-	static Hand hand3 = new Hand(); //Erzeugung einer "Hand" für Spieler 3
+	Karte head = new Karte("");
 
-	//"Hand" (Linked List), auf der sich die Handkarten eines Spielers befinden:
+	static Hand hand1 = new Hand(); //Erzeugung der Hand von Spieler 1
+	static Hand hand2 = new Hand(); //Erzeugung der Hand von Spieler 2
+	static Hand hand3 = new Hand(); //Erzeugung der Hand von Spieler 3
+
+	// Hand, auf der sich alle Karten eines Spielers befinden:
 	public Hand() {
 		head.next = null;
 	}
 
-	//Löscht eine Karte vom "kartenstapel" und fügt sie einer "Hand" hinzu:
+	// Entfernt eine Karte vom Kartenstapel und fügt sie einer Hand hinzu:
 	public void ziehen() {
-		add(head, Kartenstapel.kartenstapel.pop()); 
+		add(head, Kartenstapel.kartenstapel.pop());
 	}
 
-	//Löscht eine "Karte" von einer "Hand" und fügt sie oben auf der "ablage" hinzu:
-	public void legen(Karte vorgaenger) { 
-		String current = vorgaenger.next.element; //Der Variable "current" wird der Wert der aktuellen Karte zugewiesen.
-		vorgaenger.next = vorgaenger.next.next; 
-		Ablage.ablage.push(current); //Fügt eine "Karte" mit dem Wert von "current" oben auf der "ablage" ein.
+	// Entfernt eine Karte von einer Hand und fügt sie der Ablage hinzu:
+	public void legen(Karte vorgaenger) {
+		String current = vorgaenger.next.element;
+		vorgaenger.next = vorgaenger.next.next;
+		Ablage.ablage.push(current);
 	}
 
-	//Erzeugt eine Karte und fügt sie einer Hand hinzu:
+	// Erzeugt eine neue Karte und fügt sie einer Hand hinzu:
 	public void add(Karte vorgaenger, String wert) {
 		Karte newKarte = new Karte(wert);
 		newKarte.next = vorgaenger.next;
 		vorgaenger.next = newKarte;
 	}
 
-	//Fügt eine bereits vorhandene "Karte" einer "Hand" hinzu:
+	// Fügt eine Karte einer Hand hinzu:
 	public void add(Karte vorgaenger, Karte wert) {
 		Karte newKarte = wert;
 		newKarte.next = vorgaenger.next;
 		vorgaenger.next = newKarte;
 	}
 
-	//Return der Kartenanzahl auf einer "Hand":
+	// Gibt die Anzahl der Karten auf einer Hand zurück:
 	public int size() {
 		Karte current = head;
-		int size = 0; //"size" ist die Zählvariable, deren Wert später zurückgegeben wird.
-		while (current.next != null) { 
+		int size = 0;
+
+		while (current.next != null) {
 			current = current.next;
-			size++; //Bei jedem Durchlauf wird der Wert der Variable "size" um "1" erhöht.
+			size++;
 		}
 		return size;
 	}
-	
-	  //Entfernt alle "Karten" von einer "Hand":
-	  public void clear() {
-	    head.next = null;
-	  }
 
-	//Schaut, ob ein Spieler die ausgewählte "Karte" überhaupt legen kann und returned dann "true" oder "false":
+	// Entfernt alle Karten auf einer Hand:
+	public void clear() {
+		head.next = null;
+	}
+
+	// Prüft, ob eine Karte mit der obersten Karte auf der Ablage kompatibel ist und gibt einen boolean zurück:
 	public boolean vergleich(Karte handKarte) {
-		boolean vergleich = false; //Der boolean "vergleich" wird zu beginn auf "false" gesetzt, da bisher noch nichts verglichen wurde.
-		String handWert = handKarte.next.element; //Die Variable "handWert" bekommt den Wert der ausgewählten "Karte" zugewiesen.
-		String ablageWert = Ablage.ablage.peek(); //Die Variable "ablageWert" bekommt den Wert der obersten Karte auf der "ablage" zugewiesen.
+		boolean vergleich = false;
+		String handWert = handKarte.next.element;
+		String ablageWert = Ablage.ablage.peek();
 
-		//Die einzelnen chars werden verschiedenen Variablen zugewiesen:
 		char handWert1 = handWert.charAt(0);
 		char handWert2 = handWert.charAt(1);
 		char ablageWert1 = ablageWert.charAt(0);
 		char ablageWert2 = ablageWert.charAt(1);
 
-        //Prüft, ob die ausgewählte "Karte" entweder ein Bube ist oder ob eine Stelle des Kartenwertes mit dem der obersten "Karte" auf der "ablage" übereinstimmt:
 		if (handWert1 == ablageWert1 || handWert2 == ablageWert2 || handWert2 == 'B' || ablageWert2 == 'B') {
-			if (ablageWert2 == 'B') { //Wenn oben auf der "ablage" ein "Bube" liegt, muss noch ein Sonderfall überprüft werden:
-				if (Game.bubeException == true) { //Wenn die Variable "bubeException" auf "true" ist, darf sich der aktuelle Spieler aussuchen, welche "Karte" er legt:
+			if (ablageWert2 == 'B') {
+				if (Game.bubeException == true) {
 					vergleich = true;
 				}
-				if (handWert1 == Game.bubeChar || handWert2 == 'B') { //Prüft, ob der erste char der ausgewählten "Karte" mit dem Wert der Variable "bubeChar" übereinstimmt oder ob die ausgewählte "Karte" ein "Bube" ist:
-					vergleich = true;
-				}	
-				if (handWert1 == ablageWert1) { //Prüft, ob der erste char der ausgewählten "Karte" mit dem ersten char der obersten "Karte" auf der "ablage" übereinstimmt:
+				if (handWert1 == Game.bubeChar || handWert2 == 'B') {
 					vergleich = true;
 				}
-			} else { //Wenn oben auf der "ablage" kein "Bube" liegt, dann reicht der vorherige Vergleicht, um die Variable "vergleich" auf "true" zu setzen:
+				if (handWert1 == ablageWert1) {
+					vergleich = true;
+				}
+			} else {
 				vergleich = true;
 			}
 		}
 		return vergleich;
 	}
 
-	//Prüft, ob eine Karte mit dem Wert "7" auf einer Hand ist:
+	// Prüft, ob sich einer "7" auf einer Hand befindet und gibt einen boolean zurück:
 	public boolean detectSeven() {
-		boolean sieben = false; //Die Variable "seven" wird zuerst auf "false" gesetzt:
+		boolean sieben = false;
 		Karte detector = head.next;
-		for (int i = 0; i < size() - 1; i++) { //Die For-Schleife läuft durch die "Hand" des aktuellen Spielers und prüft, ob sich darin eine "Karte" mit dem Wert "7" befindet:
+
+		for (int i = 0; i < size() - 1; i++) {
 			detector = detector.next;
-			if (detector.element.charAt(1) == '7') { //Wenn ja, wird die Variable "sieben" auf "true" gesetzt:
-				sieben = true; 
+
+			if (detector.element.charAt(1) == '7') {
+				sieben = true;
 			}
 		}
 		return sieben;
 	}
 
-	//Ausgabe der Werte aller Handkarten einer "Hand":
+	// Gibt die Werte aller Karten auf einer Hand aus:
 	public void ausgeben() {
 		Karte currentKarte = head.next;
+
 		while (currentKarte != null) {
 			if (currentKarte.next != null) {
-				System.out.print(currentKarte.element + ", "); //Zwischen jeder "Karte" werden ein Komma und ein Leerzeichen gesetzt.
+				System.out.print(currentKarte.element + ", ");
 				currentKarte = currentKarte.next;
 			} else {
 				System.out.print(currentKarte.element);
