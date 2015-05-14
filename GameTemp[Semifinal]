@@ -505,259 +505,300 @@ public class Game {
           System.out.print(")'");
           System.out.println();
           */
+                              
+          switch (handkarten) {
+          case  1:
+          Fenster3.kartenAblageButton1.setVisible(true);  
+          break;
           
+          case  2:
+          Fenster3.kartenAblageButton1.setVisible(true);
+          Fenster3.kartenAblageButton2.setVisible(true); 
+          break;
           
-          if (handkarten== 1) {//Prüft jew die Anzahl Handkarten und gibt entsprechen Auswahl jene abzulegen(Nicht bei jedem einzelnen anmerkungen explizit wiederholt)
-            Fenster3.kartenAblageButton1.setVisible(true);
-            
-          } // end of if
-          if (handkarten== 2) {
-            Fenster3.kartenAblageButton1.setVisible(true);
-            Fenster3.kartenAblageButton2.setVisible(true);
-          } // end of if
-          if (handkarten== 3) {
-            Fenster3.kartenAblageButton1.setVisible(true);
-            Fenster3.kartenAblageButton2.setVisible(true);
-            Fenster3.kartenAblageButton3.setVisible(true);          
-          } // end of if
-          if (handkarten== 4) {
-            Fenster3.kartenAblageButton1.setVisible(true);
-            Fenster3.kartenAblageButton2.setVisible(true);
-            Fenster3.kartenAblageButton3.setVisible(true);
-            Fenster3.kartenAblageButton4.setVisible(true);            
-          } // end of if
-          if (handkarten== 5) {
-            Fenster3.kartenAblageButton1.setVisible(true);
-            Fenster3.kartenAblageButton2.setVisible(true);
-            Fenster3.kartenAblageButton3.setVisible(true);
-            Fenster3.kartenAblageButton4.setVisible(true);
-            Fenster3.kartenAblageButton5.setVisible(true);
-          } // end of if
-          if (handkarten== 6) {
-            Fenster3.kartenAblageButton1.setVisible(true);
-            Fenster3.kartenAblageButton2.setVisible(true);
-            Fenster3.kartenAblageButton3.setVisible(true);
-            Fenster3.kartenAblageButton4.setVisible(true);
-            Fenster3.kartenAblageButton5.setVisible(true);
-            Fenster3.kartenAblageButton6.setVisible(true);           
-          } // end of if
-          if (handkarten==7) {
-            Fenster3.kartenAblageButton1.setVisible(true);
-            Fenster3.kartenAblageButton2.setVisible(true);
-            Fenster3.kartenAblageButton3.setVisible(true);
-            Fenster3.kartenAblageButton4.setVisible(true);
-            Fenster3.kartenAblageButton5.setVisible(true);
-            Fenster3.kartenAblageButton6.setVisible(true);
-            Fenster3.kartenAblageButton7.setVisible(true);
-          } // end of if
-          if (handkarten== 8) {
-            Fenster3.kartenAblageButton1.setVisible(true);
-            Fenster3.kartenAblageButton2.setVisible(true);
-            Fenster3.kartenAblageButton3.setVisible(true);
-            Fenster3.kartenAblageButton4.setVisible(true);
-            Fenster3.kartenAblageButton5.setVisible(true);
-            Fenster3.kartenAblageButton6.setVisible(true);
-            Fenster3.kartenAblageButton7.setVisible(true);
-            Fenster3.kartenAblageButton8.setVisible(true);           
-          } // end of if
-          if (handkarten== 9) {
-            Fenster3.kartenAblageButton1.setVisible(true);
-            Fenster3.kartenAblageButton2.setVisible(true);
-            Fenster3.kartenAblageButton3.setVisible(true);
-            Fenster3.kartenAblageButton4.setVisible(true);
-            Fenster3.kartenAblageButton5.setVisible(true);
-            Fenster3.kartenAblageButton6.setVisible(true);
-            Fenster3.kartenAblageButton7.setVisible(true);
-            Fenster3.kartenAblageButton8.setVisible(true);
-            Fenster3.kartenAblageButton9.setVisible(true);
-          } // end of if
-          if (handkarten== 10) {
-            Fenster3.kartenAblageButton1.setVisible(true);
-            Fenster3.kartenAblageButton2.setVisible(true);
-            Fenster3.kartenAblageButton3.setVisible(true);
-            Fenster3.kartenAblageButton4.setVisible(true);
-            Fenster3.kartenAblageButton5.setVisible(true);
-            Fenster3.kartenAblageButton6.setVisible(true);
-            Fenster3.kartenAblageButton7.setVisible(true);
-            Fenster3.kartenAblageButton8.setVisible(true);
-            Fenster3.kartenAblageButton9.setVisible(true);
-            Fenster3.kartenAblageButton10.setVisible(true);
-          } // end of if
-          if (handkarten== 11) {
-            Fenster3.kartenAblageButton1.setVisible(true);
-            Fenster3.kartenAblageButton2.setVisible(true);
-            Fenster3.kartenAblageButton3.setVisible(true);
-            Fenster3.kartenAblageButton4.setVisible(true);
-            Fenster3.kartenAblageButton5.setVisible(true);
-            Fenster3.kartenAblageButton6.setVisible(true);
-            Fenster3.kartenAblageButton7.setVisible(true);
-            Fenster3.kartenAblageButton8.setVisible(true);
-            Fenster3.kartenAblageButton9.setVisible(true);
-            Fenster3.kartenAblageButton10.setVisible(true); 
-            Fenster3.kartenAblageButton11.setVisible(true);
-          } // end of if
-          if (handkarten== 12) {
-            Fenster3.kartenAblageButton1.setVisible(true);
-            Fenster3.kartenAblageButton2.setVisible(true);
-            Fenster3.kartenAblageButton3.setVisible(true);
-            Fenster3.kartenAblageButton4.setVisible(true);
-            Fenster3.kartenAblageButton5.setVisible(true);
-            Fenster3.kartenAblageButton6.setVisible(true);
-            Fenster3.kartenAblageButton7.setVisible(true);
-            Fenster3.kartenAblageButton8.setVisible(true);
-            Fenster3.kartenAblageButton9.setVisible(true);
-            Fenster3.kartenAblageButton10.setVisible(true); 
-            Fenster3.kartenAblageButton11.setVisible(true);
-            Fenster3.kartenAblageButton12.setVisible(true);
-          } // end of if
-          if (handkarten== 13) {
-            Fenster3.kartenAblageButton1.setVisible(true);
-            Fenster3.kartenAblageButton2.setVisible(true);
-            Fenster3.kartenAblageButton3.setVisible(true);
-            Fenster3.kartenAblageButton4.setVisible(true);
-            Fenster3.kartenAblageButton5.setVisible(true);
-            Fenster3.kartenAblageButton6.setVisible(true);
-            Fenster3.kartenAblageButton7.setVisible(true);
-            Fenster3.kartenAblageButton8.setVisible(true);
-            Fenster3.kartenAblageButton9.setVisible(true);
-            Fenster3.kartenAblageButton10.setVisible(true); 
-            Fenster3.kartenAblageButton11.setVisible(true);
-            Fenster3.kartenAblageButton12.setVisible(true);
-            Fenster3.kartenAblageButton13.setVisible(true);
-          } // end of if
-          if (handkarten== 14) {
-            Fenster3.kartenAblageButton1.setVisible(true);
-            Fenster3.kartenAblageButton2.setVisible(true);
-            Fenster3.kartenAblageButton3.setVisible(true);
-            Fenster3.kartenAblageButton4.setVisible(true);
-            Fenster3.kartenAblageButton5.setVisible(true);
-            Fenster3.kartenAblageButton6.setVisible(true);
-            Fenster3.kartenAblageButton7.setVisible(true);
-            Fenster3.kartenAblageButton8.setVisible(true);
-            Fenster3.kartenAblageButton9.setVisible(true);
-            Fenster3.kartenAblageButton10.setVisible(true); 
-            Fenster3.kartenAblageButton11.setVisible(true);
-            Fenster3.kartenAblageButton12.setVisible(true);
-            Fenster3.kartenAblageButton13.setVisible(true);
-            Fenster3.kartenAblageButton14.setVisible(true);
-          } // end of if
-          if (handkarten== 15) {
-            Fenster3.kartenAblageButton1.setVisible(true);
-            Fenster3.kartenAblageButton2.setVisible(true);
-            Fenster3.kartenAblageButton3.setVisible(true);
-            Fenster3.kartenAblageButton4.setVisible(true);
-            Fenster3.kartenAblageButton5.setVisible(true);
-            Fenster3.kartenAblageButton6.setVisible(true);
-            Fenster3.kartenAblageButton7.setVisible(true);
-            Fenster3.kartenAblageButton8.setVisible(true);
-            Fenster3.kartenAblageButton9.setVisible(true);
-            Fenster3.kartenAblageButton10.setVisible(true); 
-            Fenster3.kartenAblageButton11.setVisible(true);
-            Fenster3.kartenAblageButton12.setVisible(true);
-            Fenster3.kartenAblageButton13.setVisible(true);
-            Fenster3.kartenAblageButton14.setVisible(true);
-            Fenster3.kartenAblageButton15.setVisible(true);
-          } // end of if
-          if (handkarten== 16) {
-            Fenster3.kartenAblageButton1.setVisible(true);
-            Fenster3.kartenAblageButton2.setVisible(true);
-            Fenster3.kartenAblageButton3.setVisible(true);
-            Fenster3.kartenAblageButton4.setVisible(true);
-            Fenster3.kartenAblageButton5.setVisible(true);
-            Fenster3.kartenAblageButton6.setVisible(true);
-            Fenster3.kartenAblageButton7.setVisible(true);
-            Fenster3.kartenAblageButton8.setVisible(true);
-            Fenster3.kartenAblageButton9.setVisible(true);
-            Fenster3.kartenAblageButton10.setVisible(true); 
-            Fenster3.kartenAblageButton11.setVisible(true);
-            Fenster3.kartenAblageButton12.setVisible(true);
-            Fenster3.kartenAblageButton13.setVisible(true);
-            Fenster3.kartenAblageButton14.setVisible(true);
-            Fenster3.kartenAblageButton15.setVisible(true);
-            Fenster3.kartenAblageButton16.setVisible(true);
-          } // end of if
-          if (handkarten== 17) {
-            Fenster3.kartenAblageButton1.setVisible(true);
-            Fenster3.kartenAblageButton2.setVisible(true);
-            Fenster3.kartenAblageButton3.setVisible(true);
-            Fenster3.kartenAblageButton4.setVisible(true);
-            Fenster3.kartenAblageButton5.setVisible(true);
-            Fenster3.kartenAblageButton6.setVisible(true);
-            Fenster3.kartenAblageButton7.setVisible(true);
-            Fenster3.kartenAblageButton8.setVisible(true);
-            Fenster3.kartenAblageButton9.setVisible(true);
-            Fenster3.kartenAblageButton10.setVisible(true); 
-            Fenster3.kartenAblageButton11.setVisible(true);
-            Fenster3.kartenAblageButton12.setVisible(true);
-            Fenster3.kartenAblageButton13.setVisible(true);
-            Fenster3.kartenAblageButton14.setVisible(true);
-            Fenster3.kartenAblageButton15.setVisible(true);
-            Fenster3.kartenAblageButton16.setVisible(true);
-            Fenster3.kartenAblageButton17.setVisible(true);
-          } // end of if
-          if (handkarten== 18) {
-            Fenster3.kartenAblageButton1.setVisible(true);
-            Fenster3.kartenAblageButton2.setVisible(true);
-            Fenster3.kartenAblageButton3.setVisible(true);
-            Fenster3.kartenAblageButton4.setVisible(true);
-            Fenster3.kartenAblageButton5.setVisible(true);
-            Fenster3.kartenAblageButton6.setVisible(true);
-            Fenster3.kartenAblageButton7.setVisible(true);
-            Fenster3.kartenAblageButton8.setVisible(true);
-            Fenster3.kartenAblageButton9.setVisible(true);
-            Fenster3.kartenAblageButton10.setVisible(true); 
-            Fenster3.kartenAblageButton11.setVisible(true);
-            Fenster3.kartenAblageButton12.setVisible(true);
-            Fenster3.kartenAblageButton13.setVisible(true);
-            Fenster3.kartenAblageButton14.setVisible(true);
-            Fenster3.kartenAblageButton15.setVisible(true);
-            Fenster3.kartenAblageButton16.setVisible(true);
-            Fenster3.kartenAblageButton17.setVisible(true);
-            Fenster3.kartenAblageButton18.setVisible(true);
-          } // end of if
-          if (handkarten== 19) {
-            Fenster3.kartenAblageButton1.setVisible(true);
-            Fenster3.kartenAblageButton2.setVisible(true);
-            Fenster3.kartenAblageButton3.setVisible(true);
-            Fenster3.kartenAblageButton4.setVisible(true);
-            Fenster3.kartenAblageButton5.setVisible(true);
-            Fenster3.kartenAblageButton6.setVisible(true);
-            Fenster3.kartenAblageButton7.setVisible(true);
-            Fenster3.kartenAblageButton8.setVisible(true);
-            Fenster3.kartenAblageButton9.setVisible(true);
-            Fenster3.kartenAblageButton10.setVisible(true); 
-            Fenster3.kartenAblageButton11.setVisible(true);
-            Fenster3.kartenAblageButton12.setVisible(true);
-            Fenster3.kartenAblageButton13.setVisible(true);
-            Fenster3.kartenAblageButton14.setVisible(true);
-            Fenster3.kartenAblageButton15.setVisible(true);
-            Fenster3.kartenAblageButton16.setVisible(true);
-            Fenster3.kartenAblageButton17.setVisible(true);
-            Fenster3.kartenAblageButton18.setVisible(true);
-            Fenster3.kartenAblageButton19.setVisible(true);         
-          } // end of if
-          if (handkarten== 20) {
-            Fenster3.kartenAblageButton1.setVisible(true);
-            Fenster3.kartenAblageButton2.setVisible(true);
-            Fenster3.kartenAblageButton3.setVisible(true);
-            Fenster3.kartenAblageButton4.setVisible(true);
-            Fenster3.kartenAblageButton5.setVisible(true);
-            Fenster3.kartenAblageButton6.setVisible(true);
-            Fenster3.kartenAblageButton7.setVisible(true);
-            Fenster3.kartenAblageButton8.setVisible(true);
-            Fenster3.kartenAblageButton9.setVisible(true);
-            Fenster3.kartenAblageButton10.setVisible(true); 
-            Fenster3.kartenAblageButton11.setVisible(true);
-            Fenster3.kartenAblageButton12.setVisible(true);
-            Fenster3.kartenAblageButton13.setVisible(true);
-            Fenster3.kartenAblageButton14.setVisible(true);
-            Fenster3.kartenAblageButton15.setVisible(true);
-            Fenster3.kartenAblageButton16.setVisible(true);
-            Fenster3.kartenAblageButton17.setVisible(true);
-            Fenster3.kartenAblageButton18.setVisible(true);
-            Fenster3.kartenAblageButton19.setVisible(true);
-            Fenster3.kartenAblageButton20.setVisible(true);
-          } // end of if
+          case  3:
+          Fenster3.kartenAblageButton1.setVisible(true);
+          Fenster3.kartenAblageButton2.setVisible(true);
+          Fenster3.kartenAblageButton3.setVisible(true);    
+          break;
+          
+          case  4:
+          Fenster3.kartenAblageButton1.setVisible(true);
+          Fenster3.kartenAblageButton2.setVisible(true);
+          Fenster3.kartenAblageButton3.setVisible(true);
+          Fenster3.kartenAblageButton4.setVisible(true);  
+          break;
+          
+          case  5:
+          Fenster3.kartenAblageButton1.setVisible(true);
+          Fenster3.kartenAblageButton2.setVisible(true);
+          Fenster3.kartenAblageButton3.setVisible(true);
+          Fenster3.kartenAblageButton4.setVisible(true);
+          Fenster3.kartenAblageButton5.setVisible(true); 
+          break;
+          
+          case  6:
+          Fenster3.kartenAblageButton1.setVisible(true);
+          Fenster3.kartenAblageButton2.setVisible(true);
+          Fenster3.kartenAblageButton3.setVisible(true);
+          Fenster3.kartenAblageButton4.setVisible(true);
+          Fenster3.kartenAblageButton5.setVisible(true);
+          Fenster3.kartenAblageButton6.setVisible(true);     
+          break;
+          
+          case  7:
+          Fenster3.kartenAblageButton1.setVisible(true);
+          Fenster3.kartenAblageButton2.setVisible(true);
+          Fenster3.kartenAblageButton3.setVisible(true);
+          Fenster3.kartenAblageButton4.setVisible(true);
+          Fenster3.kartenAblageButton5.setVisible(true);
+          Fenster3.kartenAblageButton6.setVisible(true);
+          Fenster3.kartenAblageButton7.setVisible(true); 
+          break;
+          
+          case  8:
+          Fenster3.kartenAblageButton1.setVisible(true);
+          Fenster3.kartenAblageButton2.setVisible(true);
+          Fenster3.kartenAblageButton3.setVisible(true);
+          Fenster3.kartenAblageButton4.setVisible(true);
+          Fenster3.kartenAblageButton5.setVisible(true);
+          Fenster3.kartenAblageButton6.setVisible(true);
+          Fenster3.kartenAblageButton7.setVisible(true);
+          Fenster3.kartenAblageButton8.setVisible(true);  
+          break; 
+          
+          case  9:
+          Fenster3.kartenAblageButton1.setVisible(true);
+          Fenster3.kartenAblageButton2.setVisible(true);
+          Fenster3.kartenAblageButton3.setVisible(true);
+          Fenster3.kartenAblageButton4.setVisible(true);
+          Fenster3.kartenAblageButton5.setVisible(true);
+          Fenster3.kartenAblageButton6.setVisible(true);
+          Fenster3.kartenAblageButton7.setVisible(true);
+          Fenster3.kartenAblageButton8.setVisible(true);
+          Fenster3.kartenAblageButton9.setVisible(true);
+          break;
+          
+          case  10:
+          Fenster3.kartenAblageButton1.setVisible(true);
+          Fenster3.kartenAblageButton2.setVisible(true);
+          Fenster3.kartenAblageButton3.setVisible(true);
+          Fenster3.kartenAblageButton4.setVisible(true);
+          Fenster3.kartenAblageButton5.setVisible(true);
+          Fenster3.kartenAblageButton6.setVisible(true);
+          Fenster3.kartenAblageButton7.setVisible(true);
+          Fenster3.kartenAblageButton8.setVisible(true);
+          Fenster3.kartenAblageButton9.setVisible(true);
+          Fenster3.kartenAblageButton10.setVisible(true); 
+          break;
+          
+          case  11:
+          Fenster3.kartenAblageButton1.setVisible(true);
+          Fenster3.kartenAblageButton2.setVisible(true);
+          Fenster3.kartenAblageButton3.setVisible(true);
+          Fenster3.kartenAblageButton4.setVisible(true);
+          Fenster3.kartenAblageButton5.setVisible(true);
+          Fenster3.kartenAblageButton6.setVisible(true);
+          Fenster3.kartenAblageButton7.setVisible(true);
+          Fenster3.kartenAblageButton8.setVisible(true);
+          Fenster3.kartenAblageButton9.setVisible(true);
+          Fenster3.kartenAblageButton10.setVisible(true); 
+          Fenster3.kartenAblageButton11.setVisible(true); 
+          break;
+          
+          case  12:
+          Fenster3.kartenAblageButton1.setVisible(true);
+          Fenster3.kartenAblageButton2.setVisible(true);
+          Fenster3.kartenAblageButton3.setVisible(true);
+          Fenster3.kartenAblageButton4.setVisible(true);
+          Fenster3.kartenAblageButton5.setVisible(true);
+          Fenster3.kartenAblageButton6.setVisible(true);
+          Fenster3.kartenAblageButton7.setVisible(true);
+          Fenster3.kartenAblageButton8.setVisible(true);
+          Fenster3.kartenAblageButton9.setVisible(true);
+          Fenster3.kartenAblageButton10.setVisible(true); 
+          Fenster3.kartenAblageButton11.setVisible(true);
+          Fenster3.kartenAblageButton12.setVisible(true); 
+          break;
+          
+          case  13:
+          Fenster3.kartenAblageButton1.setVisible(true);
+          Fenster3.kartenAblageButton2.setVisible(true);
+          Fenster3.kartenAblageButton3.setVisible(true);
+          Fenster3.kartenAblageButton4.setVisible(true);
+          Fenster3.kartenAblageButton5.setVisible(true);
+          Fenster3.kartenAblageButton6.setVisible(true);
+          Fenster3.kartenAblageButton7.setVisible(true);
+          Fenster3.kartenAblageButton8.setVisible(true);
+          Fenster3.kartenAblageButton9.setVisible(true);
+          Fenster3.kartenAblageButton10.setVisible(true); 
+          Fenster3.kartenAblageButton11.setVisible(true);
+          Fenster3.kartenAblageButton12.setVisible(true);
+          Fenster3.kartenAblageButton13.setVisible(true);  
+          break;
+          
+          case  14:
+          Fenster3.kartenAblageButton1.setVisible(true);
+          Fenster3.kartenAblageButton2.setVisible(true);
+          Fenster3.kartenAblageButton3.setVisible(true);
+          Fenster3.kartenAblageButton4.setVisible(true);
+          Fenster3.kartenAblageButton5.setVisible(true);
+          Fenster3.kartenAblageButton6.setVisible(true);
+          Fenster3.kartenAblageButton7.setVisible(true);
+          Fenster3.kartenAblageButton8.setVisible(true);
+          Fenster3.kartenAblageButton9.setVisible(true);
+          Fenster3.kartenAblageButton10.setVisible(true); 
+          Fenster3.kartenAblageButton11.setVisible(true);
+          Fenster3.kartenAblageButton12.setVisible(true);
+          Fenster3.kartenAblageButton13.setVisible(true);
+          Fenster3.kartenAblageButton14.setVisible(true);  
+          break;
+          
+          case  15:
+          Fenster3.kartenAblageButton1.setVisible(true);
+          Fenster3.kartenAblageButton2.setVisible(true);
+          Fenster3.kartenAblageButton3.setVisible(true);
+          Fenster3.kartenAblageButton4.setVisible(true);
+          Fenster3.kartenAblageButton5.setVisible(true);
+          Fenster3.kartenAblageButton6.setVisible(true);
+          Fenster3.kartenAblageButton7.setVisible(true);
+          Fenster3.kartenAblageButton8.setVisible(true);
+          Fenster3.kartenAblageButton9.setVisible(true);
+          Fenster3.kartenAblageButton10.setVisible(true); 
+          Fenster3.kartenAblageButton11.setVisible(true);
+          Fenster3.kartenAblageButton12.setVisible(true);
+          Fenster3.kartenAblageButton13.setVisible(true);
+          Fenster3.kartenAblageButton14.setVisible(true);
+          Fenster3.kartenAblageButton15.setVisible(true);  
+          break;
+          
+          case  16:
+          Fenster3.kartenAblageButton1.setVisible(true);
+          Fenster3.kartenAblageButton2.setVisible(true);
+          Fenster3.kartenAblageButton3.setVisible(true);
+          Fenster3.kartenAblageButton4.setVisible(true);
+          Fenster3.kartenAblageButton5.setVisible(true);
+          Fenster3.kartenAblageButton6.setVisible(true);
+          Fenster3.kartenAblageButton7.setVisible(true);
+          Fenster3.kartenAblageButton8.setVisible(true);
+          Fenster3.kartenAblageButton9.setVisible(true);
+          Fenster3.kartenAblageButton10.setVisible(true); 
+          Fenster3.kartenAblageButton11.setVisible(true);
+          Fenster3.kartenAblageButton12.setVisible(true);
+          Fenster3.kartenAblageButton13.setVisible(true);
+          Fenster3.kartenAblageButton14.setVisible(true);
+          Fenster3.kartenAblageButton15.setVisible(true);
+          Fenster3.kartenAblageButton16.setVisible(true);  
+          break;
+          
+          case  17:
+          Fenster3.kartenAblageButton1.setVisible(true);
+          Fenster3.kartenAblageButton2.setVisible(true);
+          Fenster3.kartenAblageButton3.setVisible(true);
+          Fenster3.kartenAblageButton4.setVisible(true);
+          Fenster3.kartenAblageButton5.setVisible(true);
+          Fenster3.kartenAblageButton6.setVisible(true);
+          Fenster3.kartenAblageButton7.setVisible(true);
+          Fenster3.kartenAblageButton8.setVisible(true);
+          Fenster3.kartenAblageButton9.setVisible(true);
+          Fenster3.kartenAblageButton10.setVisible(true); 
+          Fenster3.kartenAblageButton11.setVisible(true);
+          Fenster3.kartenAblageButton12.setVisible(true);
+          Fenster3.kartenAblageButton13.setVisible(true);
+          Fenster3.kartenAblageButton14.setVisible(true);
+          Fenster3.kartenAblageButton15.setVisible(true);
+          Fenster3.kartenAblageButton16.setVisible(true);
+          Fenster3.kartenAblageButton17.setVisible(true);  
+          break;
+          
+          case  18:
+          Fenster3.kartenAblageButton1.setVisible(true);
+          Fenster3.kartenAblageButton2.setVisible(true);
+          Fenster3.kartenAblageButton3.setVisible(true);
+          Fenster3.kartenAblageButton4.setVisible(true);
+          Fenster3.kartenAblageButton5.setVisible(true);
+          Fenster3.kartenAblageButton6.setVisible(true);
+          Fenster3.kartenAblageButton7.setVisible(true);
+          Fenster3.kartenAblageButton8.setVisible(true);
+          Fenster3.kartenAblageButton9.setVisible(true);
+          Fenster3.kartenAblageButton10.setVisible(true); 
+          Fenster3.kartenAblageButton11.setVisible(true);
+          Fenster3.kartenAblageButton12.setVisible(true);
+          Fenster3.kartenAblageButton13.setVisible(true);
+          Fenster3.kartenAblageButton14.setVisible(true);
+          Fenster3.kartenAblageButton15.setVisible(true);
+          Fenster3.kartenAblageButton16.setVisible(true);
+          Fenster3.kartenAblageButton17.setVisible(true);
+          Fenster3.kartenAblageButton18.setVisible(true);  
+          break;
+          
+          case  19:
+          Fenster3.kartenAblageButton1.setVisible(true);
+          Fenster3.kartenAblageButton2.setVisible(true);
+          Fenster3.kartenAblageButton3.setVisible(true);
+          Fenster3.kartenAblageButton4.setVisible(true);
+          Fenster3.kartenAblageButton5.setVisible(true);
+          Fenster3.kartenAblageButton6.setVisible(true);
+          Fenster3.kartenAblageButton7.setVisible(true);
+          Fenster3.kartenAblageButton8.setVisible(true);
+          Fenster3.kartenAblageButton9.setVisible(true);
+          Fenster3.kartenAblageButton10.setVisible(true); 
+          Fenster3.kartenAblageButton11.setVisible(true);
+          Fenster3.kartenAblageButton12.setVisible(true);
+          Fenster3.kartenAblageButton13.setVisible(true);
+          Fenster3.kartenAblageButton14.setVisible(true);
+          Fenster3.kartenAblageButton15.setVisible(true);
+          Fenster3.kartenAblageButton16.setVisible(true);
+          Fenster3.kartenAblageButton17.setVisible(true);
+          Fenster3.kartenAblageButton18.setVisible(true);
+          Fenster3.kartenAblageButton19.setVisible(true);    
+          break;
+          
+          case  20:
+          Fenster3.kartenAblageButton1.setVisible(true);
+          Fenster3.kartenAblageButton2.setVisible(true);
+          Fenster3.kartenAblageButton3.setVisible(true);
+          Fenster3.kartenAblageButton4.setVisible(true);
+          Fenster3.kartenAblageButton5.setVisible(true);
+          Fenster3.kartenAblageButton6.setVisible(true);
+          Fenster3.kartenAblageButton7.setVisible(true);
+          Fenster3.kartenAblageButton8.setVisible(true);
+          Fenster3.kartenAblageButton9.setVisible(true);
+          Fenster3.kartenAblageButton10.setVisible(true); 
+          Fenster3.kartenAblageButton11.setVisible(true);
+          Fenster3.kartenAblageButton12.setVisible(true);
+          Fenster3.kartenAblageButton13.setVisible(true);
+          Fenster3.kartenAblageButton14.setVisible(true);
+          Fenster3.kartenAblageButton15.setVisible(true);
+          Fenster3.kartenAblageButton16.setVisible(true);
+          Fenster3.kartenAblageButton17.setVisible(true);
+          Fenster3.kartenAblageButton18.setVisible(true);
+          Fenster3.kartenAblageButton19.setVisible(true);
+          Fenster3.kartenAblageButton20.setVisible(true);  
+          break;
+          
+          default:
+          Fenster3.kartenAblageButton1.setVisible(true);
+          Fenster3.kartenAblageButton2.setVisible(true);
+          Fenster3.kartenAblageButton3.setVisible(true);
+          Fenster3.kartenAblageButton4.setVisible(true);
+          Fenster3.kartenAblageButton5.setVisible(true);
+          Fenster3.kartenAblageButton6.setVisible(true);
+          Fenster3.kartenAblageButton7.setVisible(true);
+          Fenster3.kartenAblageButton8.setVisible(true);
+          Fenster3.kartenAblageButton9.setVisible(true);
+          Fenster3.kartenAblageButton10.setVisible(true); 
+          Fenster3.kartenAblageButton11.setVisible(true);
+          Fenster3.kartenAblageButton12.setVisible(true);
+          Fenster3.kartenAblageButton13.setVisible(true);
+          Fenster3.kartenAblageButton14.setVisible(true);
+          Fenster3.kartenAblageButton15.setVisible(true);
+          Fenster3.kartenAblageButton16.setVisible(true);
+          Fenster3.kartenAblageButton17.setVisible(true);
+          Fenster3.kartenAblageButton18.setVisible(true);
+          Fenster3.kartenAblageButton19.setVisible(true);
+          Fenster3.kartenAblageButton20.setVisible(true); 
+        } // end of switch
           
           Fenster3.labelSpielerAnweisungen.setText("Spieler " + aktuell + ", machen Sie bitte Ihren Zug!");
           while (!interagiert) {
