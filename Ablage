@@ -1,4 +1,4 @@
-public class Ablage {
+public class Ablage {//tetetetet
 	Karte head = new Karte("");
 	static Ablage ablage = new Ablage(); //Erzeugung des unten definierten Ablagestapels.
 
