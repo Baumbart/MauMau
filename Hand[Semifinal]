@@ -98,22 +98,21 @@ public class Hand {
     return sieben;
   }
   
-  
-  //Ausgabe der Werte aller Handkarten einer "Hand":
+  //Ausgabe der Werte aller Handkarten einer Hand:
   public void ausgeben() {
     Karte currentKarte = head.next;
-    Fenster3.jLabel4.setText("");//Leert das jLabel4 von Text
+    Fenster3.labelHandKarten.setText("");//Leert das labelHandKarten von Text
     while (currentKarte != null) {
       if (currentKarte.next != null) {
-        Fenster3.jLabel4.setVisible(true);//Enthüllt das jLabel4
-        //System.out.print(currentKarte.element + ", ");//Zwischen jeder "Karte" werden ein Komma und ein Leerzeichen gesetzt.        
-        Fenster3.jLabel4.setText(Fenster3.jLabel4.getText()+" "+currentKarte.element+"");//Beschriftet das jLabel4 mit den aktuellen Handkarten(ausgenommen der Letzten)
+        Fenster3.labelHandKarten.setVisible(true);//Enthüllt das labelHandKarten
+        //System.out.print(currentKarte.element + ", ");        
+        Fenster3.labelHandKarten.setText(Fenster3.labelHandKarten.getText()+" "+currentKarte.element+"");//Beschriftet das labelHandKarten mit den aktuellen Handkarten(ausgenommen der Letzten)
         currentKarte = currentKarte.next;
       } else {
-        Fenster3.jLabel4.setVisible(true);//Enthüllt das jLabel4
+        Fenster3.labelHandKarten.setVisible(true);//Enthüllt das labelHandKarten
         //System.out.print(currentKarte.element);
         
-        Fenster3.jLabel4.setText(Fenster3.jLabel4.getText()+" "+currentKarte.element);//Beschriftet das jLabel4 mit den aktuellen Handkarten(eingeschlossen der Letzten)
+        Fenster3.labelHandKarten.setText(Fenster3.labelHandKarten.getText()+" "+currentKarte.element);//Beschriftet das labelHandKarten mit den aktuellen Handkarten(eingeschlossen der Letzten)
         
         currentKarte = currentKarte.next;
       }
