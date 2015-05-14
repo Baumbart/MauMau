@@ -1,5 +1,5 @@
 public class Ablage {
-	Karte head = new Karte("");
+	Karte head = new Karte("");//tetetetetet
 	static Ablage ablage = new Ablage(); //Erzeugung des unten definierten Ablagestapels.
 
 	//"Ablagestapel" (Stack), auf welchen die "Karten" gelegt werden:
