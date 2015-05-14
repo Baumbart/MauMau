@@ -1,11 +1,10 @@
 public class Vergleichstabelle {
-	private String[][] vgl = new String[8][4]; //Zweidimensionales String-Array, in das alle Kartenwerte eingetragen werden.
+	private String[][] vgl = new String[8][4]; // Erzeugung eines zweidimensionalen Arrays mit der Größe "32"
 
-	// Objekt, das beim Erzeugen alle Kartenwerte in das obige Array "vgl" einträgt:
+	// Zweidimensionales Array gefüllt mit allen 32 Kartenwerten:
 	public Vergleichstabelle() {
-		String[] hilf = { "7", "8", "9", "10", "B", "D", "K", "A" }; //Erzeugt ein Hilfs-Array mit den Werten von "7" bis "Ass".
+		String[] hilf = { "7", "8", "9", "10", "B", "D", "K", "A" };
 
-		//Jedem String aus dem Hilfs-Array werden die jeweils einzeln die unten stehenden Sonderzeichen hinzugefügt, wodurch am Ende 32 verschiedene Kartenwerte entstehen:
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 8; j++) {
 				if (i == 0) {
@@ -24,9 +23,9 @@ public class Vergleichstabelle {
 		}
 	}
 
-	//Return des Kartenwertes bei einem bestimmten Index:
+	// Gibt einen Kartenwert aus der Vergleichstabelle zurück:
 	public String getVergleich(int j, int i) {
-		String karte = vgl[j][i]; 
+		String karte = vgl[j][i];
 		return karte;
 	}
 }
