@@ -65,7 +65,7 @@ public class Fenster3 extends JFrame {
   public Fenster3(String title) { 
     // Frame-Initialisierung
     super(title);
-    setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);//Setzt die beim Schließen ausgeführte operation auf "Entfernen aus dem Speicher" 
+    setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);//Setzt die beim Schließen ausgeführte operation auf "Entfernen aus dem Speicher" 
     int frameWidth = 1144; //Fensterhöhe 
     int frameHeight = 670; //Fensterbreite
     setSize(frameWidth, frameHeight);
