@@ -53,7 +53,15 @@ public class Ablage {
 
 	// Gibt den Wert der obersten Karte auf der Ablage aus:
 	public void ausgeben() {
-		System.out.println(head.next.element);
-		System.out.println();
-	}
+	    GameFrame.labelAblageAusgabe.setVisible(true);//Enthüllt das jew jLabels 
+	    GameFrame.labelObersteKarte.setVisible(true);//"
+	    GameFrame.labelTextHandkarten.setVisible(true);//"
+	   	    
+	    /*
+	    System.out.println(head.next.element);
+	    System.out.println();
+	    */
+	    
+	    GameFrame.labelAblageAusgabe.setText(head.next.element);//setzt den Text des labelAblageAusgabe auf das oberste Ablagestapelelement 
+	  }
 }
