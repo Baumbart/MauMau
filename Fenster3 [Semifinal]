@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
 import javax.swing.event.*;
 
@@ -10,13 +11,23 @@ import javax.swing.event.*;
   * @author 
   */
 
-public class Fenster3 extends JFrame {
+public class GameFrame extends JFrame {
   // Anfang Attribute
+	
+  //Options Buttons
 	
   static JButton optionsButton1 = new JButton();//Button für die auswahl: "Zweispielermodus" und "Spieler 1 beginnt" 
   static JButton optionsButton2 = new JButton(); //Button für die auswahl:"Dreispielermodus" und "Spieler 2 beginnt"
   static JButton optionsButton3 = new JButton();//Button für die auswahl:"Spieler 3 beginnt"   
   
+  static JButton[] optionsButtons = new JButton[3];{
+  
+	  for(int i=0; i<=3;i++){
+		  optionsButtons[i] = new JButton();
+	  }
+  }
+  
+
   static JLabel labelSpielerAnweisungen = new JLabel();//Label für: Anweisungen an den Spieler       
   static JLabel labelAblageAusgabe = new JLabel();//Label für: Das Anzegen  der Obersten Ablagestapelkarte 
   static JLabel labelObersteKarte = new JLabel();//Label für: Den Schriftzug "Oberste Karte"
@@ -27,26 +38,15 @@ public class Fenster3 extends JFrame {
   static JButton karteAufnehmenButton = new JButton();//Button für die auswahl: "Eine Karte aufnehmen"
   
   //KartenablageButtons 
-  static JButton kartenAblageButton1 = new JButton();//kartenAblageButton1-20 für die auswahl der Abzulegenden Karte  
-  static JButton kartenAblageButton2 = new JButton();
-  static JButton kartenAblageButton3 = new JButton();
-  static JButton kartenAblageButton4 = new JButton();
-  static JButton kartenAblageButton5 = new JButton();
-  static JButton kartenAblageButton6 = new JButton();
-  static JButton kartenAblageButton7 = new JButton();
-  static JButton kartenAblageButton8 = new JButton();
-  static JButton kartenAblageButton9 = new JButton();
-  static JButton kartenAblageButton10 = new JButton();
-  static JButton kartenAblageButton11 = new JButton();
-  static JButton kartenAblageButton12 = new JButton();
-  static JButton kartenAblageButton13 = new JButton();
-  static JButton kartenAblageButton14 = new JButton();
-  static JButton kartenAblageButton15 = new JButton();
-  static JButton kartenAblageButton16 = new JButton();
-  static JButton kartenAblageButton17 = new JButton();
-  static JButton kartenAblageButton18 = new JButton();
-  static JButton kartenAblageButton19 = new JButton();
-  static JButton kartenAblageButton20 = new JButton();
+    
+  static JButton[] kartenAblageButtons = new JButton[21];{//kartenAblageButtons[1-20] für die auswahl der Abzulegenden Karte
+	  //21
+	  
+	  for(int i=0; i<=20; i++){
+		  kartenAblageButtons[i] = new JButton();
+	  }
+  }
+  
   
   //Buttons für den "Bubenwunsch"
   static JButton bubeSetCircle = new JButton();//Button für die auswahl:"°" Bei einem abgelegten Buben 
@@ -62,7 +62,7 @@ public class Fenster3 extends JFrame {
   static JLabel LabelTextWinner = new JLabel();//Label für: Den Schriftzug welcher Spieler das Spiel gewonnen hat
   // Ende Attribute
   
-  public Fenster3(String title) { 
+  public GameFrame(String title) { 
     // Frame-Initialisierung
     super(title);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);//Setzt die beim Schließen ausgeführte operation auf "Entfernen aus dem Speicher" 
@@ -82,12 +82,13 @@ public class Fenster3 extends JFrame {
     optionsButton1.setBounds(104, 256, 265, 129);//jew höhe breite und position in x- und y- richtung(hier überall Gleiche Beschreibung)
     optionsButton1.setText("Zwei Spieler");//Test der auf dem Button/Label zu Sehen ist/Text den der User zu Gesicht bekommt(hier überall Gleiche Beschreibung)
     optionsButton1.setMargin(new Insets(2, 2, 2, 2));//Da Button ein (Interfce ist) bzw eigenschaften und methoden von unter anderem solchen erbt sogt dies für die allgemeine verhaltensweise von Buttons(und Menüleisten) "Defines common behaviors for buttons and menu items" (hier überall Gleiche Beschreibung) 
-    optionsButton1.addActionListener(new ActionListener() {//Aktionswächter gibt auskunft sobald ein sich ein "erignis"(event) ereignet  
-      public void actionPerformed(ActionEvent evt) {//wie z.B. ein "ActionEvent" 
+    optionsButton1.addActionListener(new ActionListener() {//Aktionswächter gibt auskunft sobald ein sich ein "erignis"(event) ereignet
+    	public void actionPerformed(ActionEvent evt) {//wie z.B. ein "ActionEvent" 
         jButton2_ActionPerformed(evt);              //bei "ActionPerformed" (Knopfdruck)(hier überall Gleiche Beschreibung)
       }
     });
-    cp.add(optionsButton1);
+    cp.add(optionsButton1);//Hinzufügen des Labels zum "Content Pane"(hier überall Gleiche Beschreibung)
+    
     optionsButton2.setBounds(400, 256, 265, 129);
     optionsButton2.setText("Drei Spieler");
     optionsButton2.setMargin(new Insets(2, 2, 2, 2));
@@ -97,11 +98,13 @@ public class Fenster3 extends JFrame {
       }
     });
     cp.add(optionsButton2);
+    
     labelSpielerAnweisungen.setBounds(360, 48, 347, 49);//Diemensionen und Standpunkt(hier überall Gleiche Beschreibung)
     labelSpielerAnweisungen.setText("Spieleraufforderungen");//Text im sinne von Anmerkungen für den Programmierenden (Keine ToolTipps)(hier überall Gleiche Beschreibung)
     labelSpielerAnweisungen.setBackground(new Color(0xFFC800));//Hintergundfarbe(hier überall Gleiche Beschreibung)
     labelSpielerAnweisungen.setOpaque(true);//Sichtbarkeit(hier überall Gleiche Beschreibung)
-    cp.add(labelSpielerAnweisungen);//Hinzufügen des Labels zum "Content Pane"(hier überall Gleiche Beschreibung)
+    cp.add(labelSpielerAnweisungen);
+    
     optionsButton3.setBounds(696, 256, 265, 129);
     optionsButton3.setText("Spieler Drei");
     optionsButton3.setMargin(new Insets(2, 2, 2, 2));
@@ -111,21 +114,25 @@ public class Fenster3 extends JFrame {
       }
     });
     cp.add(optionsButton3);
+    
     labelAblageAusgabe.setBounds(720, 136, 35, 49);
     labelAblageAusgabe.setText("AblageAusgabe");
     labelAblageAusgabe.setBackground(new Color(0xFFC800));
     labelAblageAusgabe.setOpaque(true);//Sichtbarkeit
     cp.add(labelAblageAusgabe);
+    
     labelObersteKarte.setBounds(584, 136, 139, 49);
     labelObersteKarte.setText("Oberste Karte:");
     labelObersteKarte.setBackground(new Color(0xFFC800));
     labelObersteKarte.setOpaque(true);
     cp.add(labelObersteKarte);
+    
     labelHandKarten.setBounds(232, 136, 259, 49);
     labelHandKarten.setText("");
     labelHandKarten.setBackground(new Color(0xFFC800));
     labelHandKarten.setOpaque(true);
     cp.add(labelHandKarten);
+    
     karteLegenButton.setBounds(240, 256, 265, 129);
     karteLegenButton.setText("Legen");
     karteLegenButton.setMargin(new Insets(2, 2, 2, 2));
@@ -135,6 +142,7 @@ public class Fenster3 extends JFrame {
       }
     });
     cp.add(karteLegenButton);
+    
     karteAufnehmenButton.setBounds(552, 256, 265, 129);
     karteAufnehmenButton.setText("Ziehen");
     karteAufnehmenButton.setMargin(new Insets(2, 2, 2, 2));
@@ -144,186 +152,207 @@ public class Fenster3 extends JFrame {
       }
     });
     cp.add(karteAufnehmenButton);
-    kartenAblageButton1.setBounds(50, 400, 100, 50);
-    kartenAblageButton1.setText("Erste Karte ");
-    kartenAblageButton1.setMargin(new Insets(2, 2, 2, 2));
-    kartenAblageButton1.addActionListener(new ActionListener() { 
+    
+    kartenAblageButtons[1].setBounds(50, 400, 100, 50);
+    kartenAblageButtons[1].setText("Erste Karte ");
+    kartenAblageButtons[1].setMargin(new Insets(2, 2, 2, 2));
+    kartenAblageButtons[1].addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
         kartenAblageButton1_ActionPerformed(evt);
       }
     });
-    cp.add(kartenAblageButton1);
-    kartenAblageButton2.setBounds(152, 400, 100, 50);
-    kartenAblageButton2.setText("Zweite Karte");
-    kartenAblageButton2.setMargin(new Insets(2, 2, 2, 2));
-    kartenAblageButton2.addActionListener(new ActionListener() { 
+    cp.add(kartenAblageButtons[1]);
+    
+    kartenAblageButtons[2].setBounds(152, 400, 100, 50);
+    kartenAblageButtons[2].setText("Zweite Karte");
+    kartenAblageButtons[2].setMargin(new Insets(2, 2, 2, 2));
+    kartenAblageButtons[2].addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
         kartenAblageButton2_ActionPerformed(evt);
       }
     });
-    cp.add(kartenAblageButton2);
-    kartenAblageButton3.setBounds(256, 400, 100, 50);
-    kartenAblageButton3.setText("Dritte Karte");
-    kartenAblageButton3.setMargin(new Insets(2, 2, 2, 2));
-    kartenAblageButton3.addActionListener(new ActionListener() { 
+    cp.add(kartenAblageButtons[2]);
+    
+    kartenAblageButtons[3].setBounds(256, 400, 100, 50);
+    kartenAblageButtons[3].setText("Dritte Karte");
+    kartenAblageButtons[3].setMargin(new Insets(2, 2, 2, 2));
+    kartenAblageButtons[3].addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
         kartenAblageButton3_ActionPerformed(evt);
       }
     });
-    cp.add(kartenAblageButton3);
-    kartenAblageButton4.setBounds(360, 400, 100, 50);
-    kartenAblageButton4.setText("Vierte Karte");
-    kartenAblageButton4.setMargin(new Insets(2, 2, 2, 2));
-    kartenAblageButton4.addActionListener(new ActionListener() { 
+    cp.add(kartenAblageButtons[3]);
+    
+    kartenAblageButtons[4].setBounds(360, 400, 100, 50);
+    kartenAblageButtons[4].setText("Vierte Karte");
+    kartenAblageButtons[4].setMargin(new Insets(2, 2, 2, 2));
+    kartenAblageButtons[4].addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
         kartenAblageButton4_ActionPerformed(evt);
       }
     });
-    cp.add(kartenAblageButton4);
-    kartenAblageButton5.setBounds(464, 400, 100, 50);
-    kartenAblageButton5.setText("Fünfte Karte");
-    kartenAblageButton5.setMargin(new Insets(2, 2, 2, 2));
-    kartenAblageButton5.addActionListener(new ActionListener() { 
+    cp.add(kartenAblageButtons[4]);
+    
+    kartenAblageButtons[5].setBounds(464, 400, 100, 50);
+    kartenAblageButtons[5].setText("Fünfte Karte");
+    kartenAblageButtons[5].setMargin(new Insets(2, 2, 2, 2));
+    kartenAblageButtons[5].addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
         kartenAblageButton5_ActionPerformed(evt);
       }
     });
-    cp.add(kartenAblageButton5);
-    kartenAblageButton6.setBounds(568, 400, 100, 50);
-    kartenAblageButton6.setText("Sechste Karte");
-    kartenAblageButton6.setMargin(new Insets(2, 2, 2, 2));
-    kartenAblageButton6.addActionListener(new ActionListener() { 
+    cp.add(kartenAblageButtons[5]);
+    
+    kartenAblageButtons[6].setBounds(568, 400, 100, 50);
+    kartenAblageButtons[6].setText("Sechste Karte");
+    kartenAblageButtons[6].setMargin(new Insets(2, 2, 2, 2));
+    kartenAblageButtons[6].addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
         kartenAblageButton6_ActionPerformed(evt);
       }
     });
-    cp.add(kartenAblageButton6);
-    kartenAblageButton7.setBounds(672, 400, 100, 50);
-    kartenAblageButton7.setText("Siebte Karte");
-    kartenAblageButton7.setMargin(new Insets(2, 2, 2, 2));
-    kartenAblageButton7.addActionListener(new ActionListener() { 
+    cp.add(kartenAblageButtons[6]);
+    
+    kartenAblageButtons[7].setBounds(672, 400, 100, 50);
+    kartenAblageButtons[7].setText("Siebte Karte");
+    kartenAblageButtons[7].setMargin(new Insets(2, 2, 2, 2));
+    kartenAblageButtons[7].addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
         kartenAblageButton7_ActionPerformed(evt);
       }
     });
-    cp.add(kartenAblageButton7);
-    kartenAblageButton8.setBounds(776, 400, 100, 50);
-    kartenAblageButton8.setText("Achte Karte");
-    kartenAblageButton8.setMargin(new Insets(2, 2, 2, 2));
-    kartenAblageButton8.addActionListener(new ActionListener() { 
+    cp.add(kartenAblageButtons[7]);
+    
+    kartenAblageButtons[8].setBounds(776, 400, 100, 50);
+    kartenAblageButtons[8].setText("Achte Karte");
+    kartenAblageButtons[8].setMargin(new Insets(2, 2, 2, 2));
+    kartenAblageButtons[8].addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
         kartenAblageButton8_ActionPerformed(evt);
       }
     });
-    cp.add(kartenAblageButton8);
-    kartenAblageButton9.setBounds(880, 400, 100, 50);
-    kartenAblageButton9.setText("Neunte Karte");
-    kartenAblageButton9.setMargin(new Insets(2, 2, 2, 2));
-    kartenAblageButton9.addActionListener(new ActionListener() { 
+    cp.add(kartenAblageButtons[8]);
+    
+    kartenAblageButtons[9].setBounds(880, 400, 100, 50);
+    kartenAblageButtons[9].setText("Neunte Karte");
+    kartenAblageButtons[9].setMargin(new Insets(2, 2, 2, 2));
+    kartenAblageButtons[9].addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
         kartenAblageButton9_ActionPerformed(evt);
       }
     });
-    cp.add(kartenAblageButton9);
-    kartenAblageButton10.setBounds(984, 400, 100, 50);
-    kartenAblageButton10.setText("Zehnte Karte");
-    kartenAblageButton10.setMargin(new Insets(2, 2, 2, 2));
-    kartenAblageButton10.addActionListener(new ActionListener() { 
+    cp.add(kartenAblageButtons[9]);
+    
+    kartenAblageButtons[10].setBounds(984, 400, 100, 50);
+    kartenAblageButtons[10].setText("Zehnte Karte");
+    kartenAblageButtons[10].setMargin(new Insets(2, 2, 2, 2));
+    kartenAblageButtons[10].addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
         kartenAblageButton10_ActionPerformed(evt);
       }
     });
-    cp.add(kartenAblageButton10);
-    kartenAblageButton11.setBounds(48, 500, 100, 50);
-    kartenAblageButton11.setText("Elfte Karte");
-    kartenAblageButton11.setMargin(new Insets(2, 2, 2, 2));
-    kartenAblageButton11.addActionListener(new ActionListener() { 
+    cp.add(kartenAblageButtons[10]);
+    
+    kartenAblageButtons[11].setBounds(48, 500, 100, 50);
+    kartenAblageButtons[11].setText("Elfte Karte");
+    kartenAblageButtons[11].setMargin(new Insets(2, 2, 2, 2));
+    kartenAblageButtons[11].addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
         kartenAblageButton11_ActionPerformed(evt);
       }
     });
-    cp.add(kartenAblageButton11);
-    kartenAblageButton12.setBounds(152, 500, 100, 50);
-    kartenAblageButton12.setText("Zweölfte Karte");
-    kartenAblageButton12.setMargin(new Insets(2, 2, 2, 2));
-    kartenAblageButton12.addActionListener(new ActionListener() { 
+    cp.add(kartenAblageButtons[11]);
+    
+    kartenAblageButtons[12].setBounds(152, 500, 100, 50);
+    kartenAblageButtons[12].setText("Zweölfte Karte");
+    kartenAblageButtons[12].setMargin(new Insets(2, 2, 2, 2));
+    kartenAblageButtons[12].addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
         kartenAblageButton12_ActionPerformed(evt);
       }
     });
-    cp.add(kartenAblageButton12);
-    kartenAblageButton13.setBounds(256, 500, 100, 50);
-    kartenAblageButton13.setText("13. Karte");
-    kartenAblageButton13.setMargin(new Insets(2, 2, 2, 2));
-    kartenAblageButton13.addActionListener(new ActionListener() { 
+    cp.add(kartenAblageButtons[12]);
+    
+    kartenAblageButtons[13].setBounds(256, 500, 100, 50);
+    kartenAblageButtons[13].setText("13. Karte");
+    kartenAblageButtons[13].setMargin(new Insets(2, 2, 2, 2));
+    kartenAblageButtons[13].addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
         kartenAblageButton13_ActionPerformed(evt);
       }
     });
-    cp.add(kartenAblageButton13);
-    kartenAblageButton14.setBounds(360, 500, 100, 50);
-    kartenAblageButton14.setText("14. Karte");
-    kartenAblageButton14.setMargin(new Insets(2, 2, 2, 2));
-    kartenAblageButton14.addActionListener(new ActionListener() { 
+    cp.add(kartenAblageButtons[13]);
+    
+    kartenAblageButtons[14].setBounds(360, 500, 100, 50);
+    kartenAblageButtons[14].setText("14. Karte");
+    kartenAblageButtons[14].setMargin(new Insets(2, 2, 2, 2));
+    kartenAblageButtons[14].addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
         kartenAblageButton14_ActionPerformed(evt);
       }
     });
-    cp.add(kartenAblageButton14);
-    kartenAblageButton15.setBounds(464, 500, 100, 50);
-    kartenAblageButton15.setText("15. Karte");
-    kartenAblageButton15.setMargin(new Insets(2, 2, 2, 2));
-    kartenAblageButton15.addActionListener(new ActionListener() { 
+    cp.add(kartenAblageButtons[14]);
+    
+    kartenAblageButtons[15].setBounds(464, 500, 100, 50);
+    kartenAblageButtons[15].setText("15. Karte");
+    kartenAblageButtons[15].setMargin(new Insets(2, 2, 2, 2));
+    kartenAblageButtons[15].addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
         kartenAblageButton15_ActionPerformed(evt);
       }
     });
-    cp.add(kartenAblageButton15);
-    kartenAblageButton16.setBounds(568, 500, 100, 50);
-    kartenAblageButton16.setText("16. Karte");
-    kartenAblageButton16.setMargin(new Insets(2, 2, 2, 2));
-    kartenAblageButton16.addActionListener(new ActionListener() { 
+    cp.add(kartenAblageButtons[15]);
+    
+    kartenAblageButtons[16].setBounds(568, 500, 100, 50);
+    kartenAblageButtons[16].setText("16. Karte");
+    kartenAblageButtons[16].setMargin(new Insets(2, 2, 2, 2));
+    kartenAblageButtons[16].addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
         kartenAblageButton16_ActionPerformed(evt);
       }
     });
-    cp.add(kartenAblageButton16);
-    kartenAblageButton17.setBounds(672, 500, 100, 50);
-    kartenAblageButton17.setText("17. Karte");
-    kartenAblageButton17.setMargin(new Insets(2, 2, 2, 2));
-    kartenAblageButton17.addActionListener(new ActionListener() { 
+    cp.add(kartenAblageButtons[16]);
+    
+    kartenAblageButtons[17].setBounds(672, 500, 100, 50);
+    kartenAblageButtons[17].setText("17. Karte");
+    kartenAblageButtons[17].setMargin(new Insets(2, 2, 2, 2));
+    kartenAblageButtons[17].addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
         kartenAblageButton17_ActionPerformed(evt);
       }
     });
-    cp.add(kartenAblageButton17);
-    kartenAblageButton18.setBounds(776, 500, 100, 50);
-    kartenAblageButton18.setText("18. Karte");
-    kartenAblageButton18.setMargin(new Insets(2, 2, 2, 2));
-    kartenAblageButton18.addActionListener(new ActionListener() { 
+    cp.add(kartenAblageButtons[17]);
+    
+    kartenAblageButtons[18].setBounds(776, 500, 100, 50);
+    kartenAblageButtons[18].setText("18. Karte");
+    kartenAblageButtons[18].setMargin(new Insets(2, 2, 2, 2));
+    kartenAblageButtons[18].addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
         kartenAblageButton18_ActionPerformed(evt);
       }
     });
-    cp.add(kartenAblageButton18);
-    kartenAblageButton19.setBounds(880, 500, 100, 50);
-    kartenAblageButton19.setText("19. Karte");
-    kartenAblageButton19.setMargin(new Insets(2, 2, 2, 2));
-    kartenAblageButton19.addActionListener(new ActionListener() { 
+    cp.add(kartenAblageButtons[18]);
+    
+    kartenAblageButtons[19].setBounds(880, 500, 100, 50);
+    kartenAblageButtons[19].setText("19. Karte");
+    kartenAblageButtons[19].setMargin(new Insets(2, 2, 2, 2));
+    kartenAblageButtons[19].addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
         kartenAblageButton19_ActionPerformed(evt);
       }
     });
-    cp.add(kartenAblageButton19);
-    kartenAblageButton20.setBounds(984, 500, 100, 50);
-    kartenAblageButton20.setText("20. Karte");
-    kartenAblageButton20.setMargin(new Insets(2, 2, 2, 2));
-    kartenAblageButton20.addActionListener(new ActionListener() { 
+    cp.add(kartenAblageButtons[19]);
+    
+    kartenAblageButtons[20].setBounds(984, 500, 100, 50);
+    kartenAblageButtons[20].setText("20. Karte");
+    kartenAblageButtons[20].setMargin(new Insets(2, 2, 2, 2));
+    kartenAblageButtons[20].addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
         kartenAblageButton20_ActionPerformed(evt);
       }
     });
-    cp.add(kartenAblageButton20);
+    cp.add(kartenAblageButtons[20]);
+    
     bubeSetCircle.setBounds(240, 384, 75, 75);
     bubeSetCircle.setText("°");
     bubeSetCircle.setMargin(new Insets(2, 2, 2, 2));
@@ -333,6 +362,7 @@ public class Fenster3 extends JFrame {
       }
     });
     cp.add(bubeSetCircle);
+    
     bubeSetPlus.setBounds(430, 384, 75, 75);
     bubeSetPlus.setText("+");
     bubeSetPlus.setMargin(new Insets(2, 2, 2, 2));
@@ -342,6 +372,7 @@ public class Fenster3 extends JFrame {
       }
     });
     cp.add(bubeSetPlus);
+    
     bubeSetHashtag.setBounds(552, 384, 75, 75);
     bubeSetHashtag.setText("#");
     bubeSetHashtag.setMargin(new Insets(2, 2, 2, 2));
@@ -351,6 +382,7 @@ public class Fenster3 extends JFrame {
       }
     });
     cp.add(bubeSetHashtag);
+    
     bubeSetStar.setBounds(742, 384, 75, 75);
     bubeSetStar.setText("*");
     bubeSetStar.setMargin(new Insets(2, 2, 2, 2));
@@ -360,16 +392,19 @@ public class Fenster3 extends JFrame {
       }
     });
     cp.add(bubeSetStar);
+    
     labelTextHandkarten.setBounds(160, 136, 75, 49);
     labelTextHandkarten.setText("Handkarten: ");
     labelTextHandkarten.setBackground(new Color(0xFFC800));
     labelTextHandkarten.setOpaque(true);
     cp.add(labelTextHandkarten);
+    
     labelInfoTextGezogen.setBounds(784, 136, 163, 49);
     labelInfoTextGezogen.setText("Karte gezogen");
     labelInfoTextGezogen.setBackground(new Color(0xFFC800));
     labelInfoTextGezogen.setOpaque(true);
     cp.add(labelInfoTextGezogen);
+    
     neuStartButton.setBounds(144, 216, 265, 129);
     neuStartButton.setText("Neustart");
     neuStartButton.setMargin(new Insets(2, 2, 2, 2));
@@ -379,6 +414,7 @@ public class Fenster3 extends JFrame {
       }
     });
     cp.add(neuStartButton);
+    
     beendeenButton.setBounds(656, 216, 265, 129);
     beendeenButton.setText("Beenden");
     beendeenButton.setMargin(new Insets(2, 2, 2, 2));
@@ -388,6 +424,7 @@ public class Fenster3 extends JFrame {
       }
     });
     cp.add(beendeenButton);
+    
     LabelTextWinner.setBounds(296, 368, 491, 161);
     LabelTextWinner.setText("SpielerWin");
     LabelTextWinner.setBackground(Color.YELLOW);
@@ -396,17 +433,16 @@ public class Fenster3 extends JFrame {
     // Ende Komponenten
     
     setVisible(true);
-  } // end of public Fenster3
+  } // end of public GameFrame
   
   // Anfang Methoden
   
   public static void main(String[] args) {//Main Methde (/Start-/Haupt-)
-    new Fenster3("Fenster3");//Initialisierung des Fensters 
+    new GameFrame("GameFrame");//Initialisierung des Fensters 
     Game game = new Game();//Initialisierung der Methode Game
   } // end of main
   
   public void jButton2_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
     if(pressCounter== 0){//Prüft ob der Knopf bereits in Gebrauch war (hier überall Gleiche Beschreibung)
       Game.input= 2;//Setzt input auf 2 um die Option in der nachfolgenden Bedingung/Abfrage in richtung "Zwei Spieler" abbiegen zu lassen
       Game.interagiert= true;//Setzt die (Nachfolgende) Bedingung der "Warteschleife" auf erfüllt (Hält die Threads Synchron da sonst Game zu schnell agieren würde)(hier überall Gleiche Beschreibung)
@@ -420,7 +456,6 @@ public class Fenster3 extends JFrame {
   } // end of jButton2_ActionPerformed
   
   public void jButton3_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
     if(pressCounter== 0){
       Game.input= 3;//Lässt(Nachfolgende)Bedingung in Richtung "Drei Spieler" abzweigen
       Game.interagiert= true;
@@ -434,7 +469,6 @@ public class Fenster3 extends JFrame {
   } // end of jButton3_ActionPerformed
   
   public void jButton1_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
     if (pressCounter== 1) {  
       Game.input= 3;//Lässt die nachfolgende Bedingung in Richtung "Spieler 3 beginnt" abbiegen   
       Game.interagiert= true;
@@ -442,7 +476,6 @@ public class Fenster3 extends JFrame {
   } // end of jButton1_ActionPerformed
   
   public void karteLegenButton_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
     Game.input=1;//Lässt die nachfolgende Bedingung das Ablegen einer Karte ansteuern
     karteLegenButton.setVisible(false);//Verbirgt karteLegenButton(Hier wiederholen sich die erklärungen ebenfalls (Lediglich variablennamen ändern sich)) 
     karteAufnehmenButton.setVisible(false);//Verbirgt karteAufnehmenButton
@@ -450,7 +483,6 @@ public class Fenster3 extends JFrame {
   } // end of karteLegenButton_ActionPerformed
   
   public void karteAufnehmenButton_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
     Game.input=2;//Lässt die nachfolgende Bedingung das aufnehmen einer Karte zur Folge haben
     karteAufnehmenButton.setVisible(false);
     karteLegenButton.setVisible(false);
@@ -458,580 +490,255 @@ public class Fenster3 extends JFrame {
   } // end of karteAufnehmenButton_ActionPerformed
   
   public void kartenAblageButton1_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
-    Game.input=1;//Setzt input auf 1, womit die Nachfolgene Abfrage das Enthüllen des Knopfes(kartenAblageButton1) zur Folge hat(Beschreibung hier fast identisch lediglich jew. ein Knopf mehr Pro gehaltener Karte)
-    Fenster3.kartenAblageButton1.setVisible(false);
-    Fenster3.kartenAblageButton2.setVisible(false);
-    Fenster3.kartenAblageButton3.setVisible(false);
-    Fenster3.kartenAblageButton4.setVisible(false);
-    Fenster3.kartenAblageButton5.setVisible(false);
-    Fenster3.kartenAblageButton6.setVisible(false);
-    Fenster3.kartenAblageButton7.setVisible(false);
-    Fenster3.kartenAblageButton8.setVisible(false);
-    Fenster3.kartenAblageButton9.setVisible(false);
-    Fenster3.kartenAblageButton10.setVisible(false); 
-    Fenster3.kartenAblageButton11.setVisible(false);
-    Fenster3.kartenAblageButton12.setVisible(false);
-    Fenster3.kartenAblageButton13.setVisible(false);
-    Fenster3.kartenAblageButton14.setVisible(false);
-    Fenster3.kartenAblageButton15.setVisible(false);
-    Fenster3.kartenAblageButton16.setVisible(false);
-    Fenster3.kartenAblageButton17.setVisible(false);
-    Fenster3.kartenAblageButton18.setVisible(false);
-    Fenster3.kartenAblageButton19.setVisible(false);
-    Fenster3.kartenAblageButton20.setVisible(false);
+    Game.input=1;//Setzt input auf 1, womit die Nachfolgene Abfrage das Enthüllen des Knopfes(kartenAblageButtons[1]) zur Folge hat(Beschreibung hier fast identisch lediglich jew. ein Knopf mehr Pro gehaltener Karte)
+    
+    for(int i=0; i<=20; i++){
+    	GameFrame.kartenAblageButtons[i].setVisible(false);
+    }
+    
     Game.interagiert= true;
   } // end of kartenAblageButton1_ActionPerformed
   
   public void kartenAblageButton2_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
-    Game.input=2;//Setzt input auf 2, womit die Nachfolgene Abfrage das Enthüllen des Knopfes selbst(kartenAblageButton2) und das Enthüllen des Vorangengangenen(kartenAblageButton1) zur Folge hat(Beschreibung hier fast identisch lediglich jew. ein Knopf mehr Pro gehaltener Karte)
-    Fenster3.kartenAblageButton1.setVisible(false);
-    Fenster3.kartenAblageButton2.setVisible(false);
-    Fenster3.kartenAblageButton3.setVisible(false);
-    Fenster3.kartenAblageButton4.setVisible(false);
-    Fenster3.kartenAblageButton5.setVisible(false);
-    Fenster3.kartenAblageButton6.setVisible(false);
-    Fenster3.kartenAblageButton7.setVisible(false);
-    Fenster3.kartenAblageButton8.setVisible(false);
-    Fenster3.kartenAblageButton9.setVisible(false);
-    Fenster3.kartenAblageButton10.setVisible(false); 
-    Fenster3.kartenAblageButton11.setVisible(false);
-    Fenster3.kartenAblageButton12.setVisible(false);
-    Fenster3.kartenAblageButton13.setVisible(false);
-    Fenster3.kartenAblageButton14.setVisible(false);
-    Fenster3.kartenAblageButton15.setVisible(false);
-    Fenster3.kartenAblageButton16.setVisible(false);
-    Fenster3.kartenAblageButton17.setVisible(false);
-    Fenster3.kartenAblageButton18.setVisible(false);
-    Fenster3.kartenAblageButton19.setVisible(false);
-    Fenster3.kartenAblageButton20.setVisible(false);
+    Game.input=2;//Setzt input auf 2, womit die Nachfolgene Abfrage das Enthüllen des Knopfes selbst(kartenAblageButtons[2]) und das Enthüllen des Vorangengangenen(kartenAblageButtons[1]) zur Folge hat(Beschreibung hier fast identisch lediglich jew. ein Knopf mehr Pro gehaltener Karte)
+    
+    for(int i=0; i<=20; i++){
+    	GameFrame.kartenAblageButtons[i].setVisible(false);
+    }
+    
     Game.interagiert= true;
   } // end of kartenAblageButton2_ActionPerformed
   
   public void kartenAblageButton3_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
-    Game.input=3;//Setzt input auf 3, womit die Nachfolgene Abfrage das Enthüllen des Knopfes selbst(kartenAblageButton3) und das Enthüllen des Vorangengangenen(kartenAblageButton2), sowie wiederum dessen vorgänger zur Folge(bis kartenAblageButton1) hat(Beschreibung hier fast identisch lediglich jew. ein Knopf mehr Pro gehaltener Karte)(wie erwähn wiederholt sich das Prozedere und wird deshalb nicht einzeln Beschriftet)
-    Fenster3.kartenAblageButton1.setVisible(false);
-    Fenster3.kartenAblageButton2.setVisible(false);
-    Fenster3.kartenAblageButton3.setVisible(false);
-    Fenster3.kartenAblageButton4.setVisible(false);
-    Fenster3.kartenAblageButton5.setVisible(false);
-    Fenster3.kartenAblageButton6.setVisible(false);
-    Fenster3.kartenAblageButton7.setVisible(false);
-    Fenster3.kartenAblageButton8.setVisible(false);
-    Fenster3.kartenAblageButton9.setVisible(false);
-    Fenster3.kartenAblageButton10.setVisible(false); 
-    Fenster3.kartenAblageButton11.setVisible(false);
-    Fenster3.kartenAblageButton12.setVisible(false);
-    Fenster3.kartenAblageButton13.setVisible(false);
-    Fenster3.kartenAblageButton14.setVisible(false);
-    Fenster3.kartenAblageButton15.setVisible(false);
-    Fenster3.kartenAblageButton16.setVisible(false);
-    Fenster3.kartenAblageButton17.setVisible(false);
-    Fenster3.kartenAblageButton18.setVisible(false);
-    Fenster3.kartenAblageButton19.setVisible(false);
-    Fenster3.kartenAblageButton20.setVisible(false);
+    Game.input=3;//Setzt input auf 3, womit die Nachfolgene Abfrage das Enthüllen des Knopfes selbst(kartenAblageButtons[3]) und das Enthüllen des Vorangengangenen(kartenAblageButtons[2]), sowie wiederum dessen vorgänger zur Folge(bis kartenAblageButtons[1]) hat(Beschreibung hier fast identisch lediglich jew. ein Knopf mehr Pro gehaltener Karte)(wie erwähn wiederholt sich das Prozedere und wird deshalb nicht einzeln Beschriftet)
+
+    for(int i=0; i<=20; i++){
+    	GameFrame.kartenAblageButtons[i].setVisible(false);
+    }
+    
     Game.interagiert= true;
   } // end of kartenAblageButton3_ActionPerformed
   
   public void kartenAblageButton4_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
     Game.input=4;
-    Fenster3.kartenAblageButton1.setVisible(false);
-    Fenster3.kartenAblageButton2.setVisible(false);
-    Fenster3.kartenAblageButton3.setVisible(false);
-    Fenster3.kartenAblageButton4.setVisible(false);
-    Fenster3.kartenAblageButton5.setVisible(false);
-    Fenster3.kartenAblageButton6.setVisible(false);
-    Fenster3.kartenAblageButton7.setVisible(false);
-    Fenster3.kartenAblageButton8.setVisible(false);
-    Fenster3.kartenAblageButton9.setVisible(false);
-    Fenster3.kartenAblageButton10.setVisible(false); 
-    Fenster3.kartenAblageButton11.setVisible(false);
-    Fenster3.kartenAblageButton12.setVisible(false);
-    Fenster3.kartenAblageButton13.setVisible(false);
-    Fenster3.kartenAblageButton14.setVisible(false);
-    Fenster3.kartenAblageButton15.setVisible(false);
-    Fenster3.kartenAblageButton16.setVisible(false);
-    Fenster3.kartenAblageButton17.setVisible(false);
-    Fenster3.kartenAblageButton18.setVisible(false);
-    Fenster3.kartenAblageButton19.setVisible(false);
-    Fenster3.kartenAblageButton20.setVisible(false);
+
+    for(int i=0; i<=20; i++){
+    	GameFrame.kartenAblageButtons[i].setVisible(false);
+    }
+    
     Game.interagiert= true;
   } // end of kartenAblageButton4_ActionPerformed
   
   public void kartenAblageButton5_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
     Game.input=5;
-    Fenster3.kartenAblageButton1.setVisible(false);
-    Fenster3.kartenAblageButton2.setVisible(false);
-    Fenster3.kartenAblageButton3.setVisible(false);
-    Fenster3.kartenAblageButton4.setVisible(false);
-    Fenster3.kartenAblageButton5.setVisible(false);
-    Fenster3.kartenAblageButton6.setVisible(false);
-    Fenster3.kartenAblageButton7.setVisible(false);
-    Fenster3.kartenAblageButton8.setVisible(false);
-    Fenster3.kartenAblageButton9.setVisible(false);
-    Fenster3.kartenAblageButton10.setVisible(false); 
-    Fenster3.kartenAblageButton11.setVisible(false);
-    Fenster3.kartenAblageButton12.setVisible(false);
-    Fenster3.kartenAblageButton13.setVisible(false);
-    Fenster3.kartenAblageButton14.setVisible(false);
-    Fenster3.kartenAblageButton15.setVisible(false);
-    Fenster3.kartenAblageButton16.setVisible(false);
-    Fenster3.kartenAblageButton17.setVisible(false);
-    Fenster3.kartenAblageButton18.setVisible(false);
-    Fenster3.kartenAblageButton19.setVisible(false);
-    Fenster3.kartenAblageButton20.setVisible(false);
+
+    for(int i=0; i<=20; i++){
+    	GameFrame.kartenAblageButtons[i].setVisible(false);
+    }
+    
     Game.interagiert= true;
   } // end of kartenAblageButton5_ActionPerformed
   
   public void kartenAblageButton6_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
     Game.input=6;
-    Fenster3.kartenAblageButton1.setVisible(false);
-    Fenster3.kartenAblageButton2.setVisible(false);
-    Fenster3.kartenAblageButton3.setVisible(false);
-    Fenster3.kartenAblageButton4.setVisible(false);
-    Fenster3.kartenAblageButton5.setVisible(false);
-    Fenster3.kartenAblageButton6.setVisible(false);
-    Fenster3.kartenAblageButton7.setVisible(false);
-    Fenster3.kartenAblageButton8.setVisible(false);
-    Fenster3.kartenAblageButton9.setVisible(false);
-    Fenster3.kartenAblageButton10.setVisible(false); 
-    Fenster3.kartenAblageButton11.setVisible(false);
-    Fenster3.kartenAblageButton12.setVisible(false);
-    Fenster3.kartenAblageButton13.setVisible(false);
-    Fenster3.kartenAblageButton14.setVisible(false);
-    Fenster3.kartenAblageButton15.setVisible(false);
-    Fenster3.kartenAblageButton16.setVisible(false);
-    Fenster3.kartenAblageButton17.setVisible(false);
-    Fenster3.kartenAblageButton18.setVisible(false);
-    Fenster3.kartenAblageButton19.setVisible(false);
-    Fenster3.kartenAblageButton20.setVisible(false);
+    
+    for(int i=0; i<=20; i++){
+    	GameFrame.kartenAblageButtons[i].setVisible(false);
+    }
+    
     Game.interagiert= true;
   } // end of kartenAblageButton6_ActionPerformed
   
   public void kartenAblageButton7_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
     Game.input=7;
-    Fenster3.kartenAblageButton1.setVisible(false);
-    Fenster3.kartenAblageButton2.setVisible(false);
-    Fenster3.kartenAblageButton3.setVisible(false);
-    Fenster3.kartenAblageButton4.setVisible(false);
-    Fenster3.kartenAblageButton5.setVisible(false);
-    Fenster3.kartenAblageButton6.setVisible(false);
-    Fenster3.kartenAblageButton7.setVisible(false);
-    Fenster3.kartenAblageButton8.setVisible(false);
-    Fenster3.kartenAblageButton9.setVisible(false);
-    Fenster3.kartenAblageButton10.setVisible(false); 
-    Fenster3.kartenAblageButton11.setVisible(false);
-    Fenster3.kartenAblageButton12.setVisible(false);
-    Fenster3.kartenAblageButton13.setVisible(false);
-    Fenster3.kartenAblageButton14.setVisible(false);
-    Fenster3.kartenAblageButton15.setVisible(false);
-    Fenster3.kartenAblageButton16.setVisible(false);
-    Fenster3.kartenAblageButton17.setVisible(false);
-    Fenster3.kartenAblageButton18.setVisible(false);
-    Fenster3.kartenAblageButton19.setVisible(false);
-    Fenster3.kartenAblageButton20.setVisible(false);
+    
+    for(int i=0; i<=20; i++){
+    	GameFrame.kartenAblageButtons[i].setVisible(false);
+    }
+
     Game.interagiert= true;
   } // end of kartenAblageButton7_ActionPerformed
   
   public void kartenAblageButton8_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
     Game.input=8;
-    Fenster3.kartenAblageButton1.setVisible(false);
-    Fenster3.kartenAblageButton2.setVisible(false);
-    Fenster3.kartenAblageButton3.setVisible(false);
-    Fenster3.kartenAblageButton4.setVisible(false);
-    Fenster3.kartenAblageButton5.setVisible(false);
-    Fenster3.kartenAblageButton6.setVisible(false);
-    Fenster3.kartenAblageButton7.setVisible(false);
-    Fenster3.kartenAblageButton8.setVisible(false);
-    Fenster3.kartenAblageButton9.setVisible(false);
-    Fenster3.kartenAblageButton10.setVisible(false); 
-    Fenster3.kartenAblageButton11.setVisible(false);
-    Fenster3.kartenAblageButton12.setVisible(false);
-    Fenster3.kartenAblageButton13.setVisible(false);
-    Fenster3.kartenAblageButton14.setVisible(false);
-    Fenster3.kartenAblageButton15.setVisible(false);
-    Fenster3.kartenAblageButton16.setVisible(false);
-    Fenster3.kartenAblageButton17.setVisible(false);
-    Fenster3.kartenAblageButton18.setVisible(false);
-    Fenster3.kartenAblageButton19.setVisible(false);
-    Fenster3.kartenAblageButton20.setVisible(false);
+    
+    for(int i=0; i<=20; i++){
+    	GameFrame.kartenAblageButtons[i].setVisible(false);
+    }
+   
     Game.interagiert= true;
   } // end of kartenAblageButton8_ActionPerformed
   
   public void kartenAblageButton9_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
     Game.input=9;
-    Fenster3.kartenAblageButton1.setVisible(false);
-    Fenster3.kartenAblageButton2.setVisible(false);
-    Fenster3.kartenAblageButton3.setVisible(false);
-    Fenster3.kartenAblageButton4.setVisible(false);
-    Fenster3.kartenAblageButton5.setVisible(false);
-    Fenster3.kartenAblageButton6.setVisible(false);
-    Fenster3.kartenAblageButton7.setVisible(false);
-    Fenster3.kartenAblageButton8.setVisible(false);
-    Fenster3.kartenAblageButton9.setVisible(false);
-    Fenster3.kartenAblageButton10.setVisible(false); 
-    Fenster3.kartenAblageButton11.setVisible(false);
-    Fenster3.kartenAblageButton12.setVisible(false);
-    Fenster3.kartenAblageButton13.setVisible(false);
-    Fenster3.kartenAblageButton14.setVisible(false);
-    Fenster3.kartenAblageButton15.setVisible(false);
-    Fenster3.kartenAblageButton16.setVisible(false);
-    Fenster3.kartenAblageButton17.setVisible(false);
-    Fenster3.kartenAblageButton18.setVisible(false);
-    Fenster3.kartenAblageButton19.setVisible(false);
-    Fenster3.kartenAblageButton20.setVisible(false);
+    
+    for(int i=0; i<=20; i++){
+    	GameFrame.kartenAblageButtons[i].setVisible(false);
+    }
+   
     Game.interagiert= true;
   } // end of kartenAblageButton9_ActionPerformed
   
   public void kartenAblageButton10_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
     Game.input=10;
-    Fenster3.kartenAblageButton1.setVisible(false);
-    Fenster3.kartenAblageButton2.setVisible(false);
-    Fenster3.kartenAblageButton3.setVisible(false);
-    Fenster3.kartenAblageButton4.setVisible(false);
-    Fenster3.kartenAblageButton5.setVisible(false);
-    Fenster3.kartenAblageButton6.setVisible(false);
-    Fenster3.kartenAblageButton7.setVisible(false);
-    Fenster3.kartenAblageButton8.setVisible(false);
-    Fenster3.kartenAblageButton9.setVisible(false);
-    Fenster3.kartenAblageButton10.setVisible(false); 
-    Fenster3.kartenAblageButton11.setVisible(false);
-    Fenster3.kartenAblageButton12.setVisible(false);
-    Fenster3.kartenAblageButton13.setVisible(false);
-    Fenster3.kartenAblageButton14.setVisible(false);
-    Fenster3.kartenAblageButton15.setVisible(false);
-    Fenster3.kartenAblageButton16.setVisible(false);
-    Fenster3.kartenAblageButton17.setVisible(false);
-    Fenster3.kartenAblageButton18.setVisible(false);
-    Fenster3.kartenAblageButton19.setVisible(false);
-    Fenster3.kartenAblageButton20.setVisible(false);
+    
+    for(int i=0; i<=20; i++){
+    	GameFrame.kartenAblageButtons[i].setVisible(false);
+    }
+    
     Game.interagiert= true;
   } // end of kartenAblageButton10_ActionPerformed
   
   public void kartenAblageButton11_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
     Game.input=11;
-    Fenster3.kartenAblageButton1.setVisible(false);
-    Fenster3.kartenAblageButton2.setVisible(false);
-    Fenster3.kartenAblageButton3.setVisible(false);
-    Fenster3.kartenAblageButton4.setVisible(false);
-    Fenster3.kartenAblageButton5.setVisible(false);
-    Fenster3.kartenAblageButton6.setVisible(false);
-    Fenster3.kartenAblageButton7.setVisible(false);
-    Fenster3.kartenAblageButton8.setVisible(false);
-    Fenster3.kartenAblageButton9.setVisible(false);
-    Fenster3.kartenAblageButton10.setVisible(false); 
-    Fenster3.kartenAblageButton11.setVisible(false);
-    Fenster3.kartenAblageButton12.setVisible(false);
-    Fenster3.kartenAblageButton13.setVisible(false);
-    Fenster3.kartenAblageButton14.setVisible(false);
-    Fenster3.kartenAblageButton15.setVisible(false);
-    Fenster3.kartenAblageButton16.setVisible(false);
-    Fenster3.kartenAblageButton17.setVisible(false);
-    Fenster3.kartenAblageButton18.setVisible(false);
-    Fenster3.kartenAblageButton19.setVisible(false);
-    Fenster3.kartenAblageButton20.setVisible(false);
+    
+    for(int i=0; i<=20; i++){
+    	GameFrame.kartenAblageButtons[i].setVisible(false);
+    }
+    
     Game.interagiert= true;
   } // end of kartenAblageButton11_ActionPerformed
   
   public void kartenAblageButton12_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
     Game.input=12;
-    Fenster3.kartenAblageButton1.setVisible(false);
-    Fenster3.kartenAblageButton2.setVisible(false);
-    Fenster3.kartenAblageButton3.setVisible(false);
-    Fenster3.kartenAblageButton4.setVisible(false);
-    Fenster3.kartenAblageButton5.setVisible(false);
-    Fenster3.kartenAblageButton6.setVisible(false);
-    Fenster3.kartenAblageButton7.setVisible(false);
-    Fenster3.kartenAblageButton8.setVisible(false);
-    Fenster3.kartenAblageButton9.setVisible(false);
-    Fenster3.kartenAblageButton10.setVisible(false); 
-    Fenster3.kartenAblageButton11.setVisible(false);
-    Fenster3.kartenAblageButton12.setVisible(false);
-    Fenster3.kartenAblageButton13.setVisible(false);
-    Fenster3.kartenAblageButton14.setVisible(false);
-    Fenster3.kartenAblageButton15.setVisible(false);
-    Fenster3.kartenAblageButton16.setVisible(false);
-    Fenster3.kartenAblageButton17.setVisible(false);
-    Fenster3.kartenAblageButton18.setVisible(false);
-    Fenster3.kartenAblageButton19.setVisible(false);
-    Fenster3.kartenAblageButton20.setVisible(false);
+    
+    for(int i=0; i<=20; i++){
+    	GameFrame.kartenAblageButtons[i].setVisible(false);
+    }
+    
     Game.interagiert= true;
   } // end of kartenAblageButton12_ActionPerformed
   
   public void kartenAblageButton13_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
     Game.input=13;
-    Fenster3.kartenAblageButton1.setVisible(false);
-    Fenster3.kartenAblageButton2.setVisible(false);
-    Fenster3.kartenAblageButton3.setVisible(false);
-    Fenster3.kartenAblageButton4.setVisible(false);
-    Fenster3.kartenAblageButton5.setVisible(false);
-    Fenster3.kartenAblageButton6.setVisible(false);
-    Fenster3.kartenAblageButton7.setVisible(false);
-    Fenster3.kartenAblageButton8.setVisible(false);
-    Fenster3.kartenAblageButton9.setVisible(false);
-    Fenster3.kartenAblageButton10.setVisible(false); 
-    Fenster3.kartenAblageButton11.setVisible(false);
-    Fenster3.kartenAblageButton12.setVisible(false);
-    Fenster3.kartenAblageButton13.setVisible(false);
-    Fenster3.kartenAblageButton14.setVisible(false);
-    Fenster3.kartenAblageButton15.setVisible(false);
-    Fenster3.kartenAblageButton16.setVisible(false);
-    Fenster3.kartenAblageButton17.setVisible(false);
-    Fenster3.kartenAblageButton18.setVisible(false);
-    Fenster3.kartenAblageButton19.setVisible(false);
-    Fenster3.kartenAblageButton20.setVisible(false);
+    
+    for(int i=0; i<=20; i++){
+    	GameFrame.kartenAblageButtons[i].setVisible(false);
+    }
+    
     Game.interagiert= true;
   } // end of kartenAblageButton13_ActionPerformed
   
   public void kartenAblageButton14_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
     Game.input=14;
-    Fenster3.kartenAblageButton1.setVisible(false);
-    Fenster3.kartenAblageButton2.setVisible(false);
-    Fenster3.kartenAblageButton3.setVisible(false);
-    Fenster3.kartenAblageButton4.setVisible(false);
-    Fenster3.kartenAblageButton5.setVisible(false);
-    Fenster3.kartenAblageButton6.setVisible(false);
-    Fenster3.kartenAblageButton7.setVisible(false);
-    Fenster3.kartenAblageButton8.setVisible(false);
-    Fenster3.kartenAblageButton9.setVisible(false);
-    Fenster3.kartenAblageButton10.setVisible(false); 
-    Fenster3.kartenAblageButton11.setVisible(false);
-    Fenster3.kartenAblageButton12.setVisible(false);
-    Fenster3.kartenAblageButton13.setVisible(false);
-    Fenster3.kartenAblageButton14.setVisible(false);
-    Fenster3.kartenAblageButton15.setVisible(false);
-    Fenster3.kartenAblageButton16.setVisible(false);
-    Fenster3.kartenAblageButton17.setVisible(false);
-    Fenster3.kartenAblageButton18.setVisible(false);
-    Fenster3.kartenAblageButton19.setVisible(false);
-    Fenster3.kartenAblageButton20.setVisible(false);
+    
+    for(int i=0; i<=20; i++){
+    	GameFrame.kartenAblageButtons[i].setVisible(false);
+    }
+    
     Game.interagiert= true;
   } // end of kartenAblageButton14_ActionPerformed
   
   public void kartenAblageButton15_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
     Game.input=15;
-    Fenster3.kartenAblageButton1.setVisible(false);
-    Fenster3.kartenAblageButton2.setVisible(false);
-    Fenster3.kartenAblageButton3.setVisible(false);
-    Fenster3.kartenAblageButton4.setVisible(false);
-    Fenster3.kartenAblageButton5.setVisible(false);
-    Fenster3.kartenAblageButton6.setVisible(false);
-    Fenster3.kartenAblageButton7.setVisible(false);
-    Fenster3.kartenAblageButton8.setVisible(false);
-    Fenster3.kartenAblageButton9.setVisible(false);
-    Fenster3.kartenAblageButton10.setVisible(false); 
-    Fenster3.kartenAblageButton11.setVisible(false);
-    Fenster3.kartenAblageButton12.setVisible(false);
-    Fenster3.kartenAblageButton13.setVisible(false);
-    Fenster3.kartenAblageButton14.setVisible(false);
-    Fenster3.kartenAblageButton15.setVisible(false);
-    Fenster3.kartenAblageButton16.setVisible(false);
-    Fenster3.kartenAblageButton17.setVisible(false);
-    Fenster3.kartenAblageButton18.setVisible(false);
-    Fenster3.kartenAblageButton19.setVisible(false);
-    Fenster3.kartenAblageButton20.setVisible(false);
+    
+    for(int i=0; i<=20; i++){
+    	GameFrame.kartenAblageButtons[i].setVisible(false);
+    }
+    
     Game.interagiert= true;
   } // end of kartenAblageButton15_ActionPerformed
   
   public void kartenAblageButton16_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
     Game.input=16;
-    Fenster3.kartenAblageButton1.setVisible(false);
-    Fenster3.kartenAblageButton2.setVisible(false);
-    Fenster3.kartenAblageButton3.setVisible(false);
-    Fenster3.kartenAblageButton4.setVisible(false);
-    Fenster3.kartenAblageButton5.setVisible(false);
-    Fenster3.kartenAblageButton6.setVisible(false);
-    Fenster3.kartenAblageButton7.setVisible(false);
-    Fenster3.kartenAblageButton8.setVisible(false);
-    Fenster3.kartenAblageButton9.setVisible(false);
-    Fenster3.kartenAblageButton10.setVisible(false); 
-    Fenster3.kartenAblageButton11.setVisible(false);
-    Fenster3.kartenAblageButton12.setVisible(false);
-    Fenster3.kartenAblageButton13.setVisible(false);
-    Fenster3.kartenAblageButton14.setVisible(false);
-    Fenster3.kartenAblageButton15.setVisible(false);
-    Fenster3.kartenAblageButton16.setVisible(false);
-    Fenster3.kartenAblageButton17.setVisible(false);
-    Fenster3.kartenAblageButton18.setVisible(false);
-    Fenster3.kartenAblageButton19.setVisible(false);
-    Fenster3.kartenAblageButton20.setVisible(false);
+    
+    for(int i=0; i<=20; i++){
+    	GameFrame.kartenAblageButtons[i].setVisible(false);
+    }
+    
     Game.interagiert= true;
   } // end of kartenAblageButton16_ActionPerformed
   
   public void kartenAblageButton17_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
     Game.input=17;
-    Fenster3.kartenAblageButton1.setVisible(false);
-    Fenster3.kartenAblageButton2.setVisible(false);
-    Fenster3.kartenAblageButton3.setVisible(false);
-    Fenster3.kartenAblageButton4.setVisible(false);
-    Fenster3.kartenAblageButton5.setVisible(false);
-    Fenster3.kartenAblageButton6.setVisible(false);
-    Fenster3.kartenAblageButton7.setVisible(false);
-    Fenster3.kartenAblageButton8.setVisible(false);
-    Fenster3.kartenAblageButton9.setVisible(false);
-    Fenster3.kartenAblageButton10.setVisible(false); 
-    Fenster3.kartenAblageButton11.setVisible(false);
-    Fenster3.kartenAblageButton12.setVisible(false);
-    Fenster3.kartenAblageButton13.setVisible(false);
-    Fenster3.kartenAblageButton14.setVisible(false);
-    Fenster3.kartenAblageButton15.setVisible(false);
-    Fenster3.kartenAblageButton16.setVisible(false);
-    Fenster3.kartenAblageButton17.setVisible(false);
-    Fenster3.kartenAblageButton18.setVisible(false);
-    Fenster3.kartenAblageButton19.setVisible(false);
-    Fenster3.kartenAblageButton20.setVisible(false);
+    
+    for(int i=0; i<=20; i++){
+    	GameFrame.kartenAblageButtons[i].setVisible(false);
+    }
+    
     Game.interagiert= true;
   } // end of kartenAblageButton17_ActionPerformed
   
   public void kartenAblageButton18_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
     Game.input=18;
-    Fenster3.kartenAblageButton1.setVisible(false);
-    Fenster3.kartenAblageButton2.setVisible(false);
-    Fenster3.kartenAblageButton3.setVisible(false);
-    Fenster3.kartenAblageButton4.setVisible(false);
-    Fenster3.kartenAblageButton5.setVisible(false);
-    Fenster3.kartenAblageButton6.setVisible(false);
-    Fenster3.kartenAblageButton7.setVisible(false);
-    Fenster3.kartenAblageButton8.setVisible(false);
-    Fenster3.kartenAblageButton9.setVisible(false);
-    Fenster3.kartenAblageButton10.setVisible(false); 
-    Fenster3.kartenAblageButton11.setVisible(false);
-    Fenster3.kartenAblageButton12.setVisible(false);
-    Fenster3.kartenAblageButton13.setVisible(false);
-    Fenster3.kartenAblageButton14.setVisible(false);
-    Fenster3.kartenAblageButton15.setVisible(false);
-    Fenster3.kartenAblageButton16.setVisible(false);
-    Fenster3.kartenAblageButton17.setVisible(false);
-    Fenster3.kartenAblageButton18.setVisible(false);
-    Fenster3.kartenAblageButton19.setVisible(false);
-    Fenster3.kartenAblageButton20.setVisible(false);
+    
+    for(int i=0; i<=20; i++){
+    	GameFrame.kartenAblageButtons[i].setVisible(false);
+    }
+    
     Game.interagiert= true;
   } // end of kartenAblageButton18_ActionPerformed
   
   public void kartenAblageButton19_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
     Game.input=19;
-    Fenster3.kartenAblageButton1.setVisible(false);
-    Fenster3.kartenAblageButton2.setVisible(false);
-    Fenster3.kartenAblageButton3.setVisible(false);
-    Fenster3.kartenAblageButton4.setVisible(false);
-    Fenster3.kartenAblageButton5.setVisible(false);
-    Fenster3.kartenAblageButton6.setVisible(false);
-    Fenster3.kartenAblageButton7.setVisible(false);
-    Fenster3.kartenAblageButton8.setVisible(false);
-    Fenster3.kartenAblageButton9.setVisible(false);
-    Fenster3.kartenAblageButton10.setVisible(false); 
-    Fenster3.kartenAblageButton11.setVisible(false);
-    Fenster3.kartenAblageButton12.setVisible(false);
-    Fenster3.kartenAblageButton13.setVisible(false);
-    Fenster3.kartenAblageButton14.setVisible(false);
-    Fenster3.kartenAblageButton15.setVisible(false);
-    Fenster3.kartenAblageButton16.setVisible(false);
-    Fenster3.kartenAblageButton17.setVisible(false);
-    Fenster3.kartenAblageButton18.setVisible(false);
-    Fenster3.kartenAblageButton19.setVisible(false);
-    Fenster3.kartenAblageButton20.setVisible(false);
+    
+    for(int i=0; i<=20; i++){
+    	GameFrame.kartenAblageButtons[i].setVisible(false);
+    }
+    
     Game.interagiert= true;
   } // end of kartenAblageButton19_ActionPerformed
   
   public void kartenAblageButton20_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
-    Game.input=20;//Letzter in der Kette der vorangegangenen Knöpfe(bis einschließlich kartenAblageButton1) und somit die selbe funktion
-    Fenster3.kartenAblageButton1.setVisible(false);
-    Fenster3.kartenAblageButton2.setVisible(false);
-    Fenster3.kartenAblageButton3.setVisible(false);
-    Fenster3.kartenAblageButton4.setVisible(false);
-    Fenster3.kartenAblageButton5.setVisible(false);
-    Fenster3.kartenAblageButton6.setVisible(false);
-    Fenster3.kartenAblageButton7.setVisible(false);
-    Fenster3.kartenAblageButton8.setVisible(false);
-    Fenster3.kartenAblageButton9.setVisible(false);
-    Fenster3.kartenAblageButton10.setVisible(false); 
-    Fenster3.kartenAblageButton11.setVisible(false);
-    Fenster3.kartenAblageButton12.setVisible(false);
-    Fenster3.kartenAblageButton13.setVisible(false);
-    Fenster3.kartenAblageButton14.setVisible(false);
-    Fenster3.kartenAblageButton15.setVisible(false);
-    Fenster3.kartenAblageButton16.setVisible(false);
-    Fenster3.kartenAblageButton17.setVisible(false);
-    Fenster3.kartenAblageButton18.setVisible(false);
-    Fenster3.kartenAblageButton19.setVisible(false);
-    Fenster3.kartenAblageButton20.setVisible(false);
+    Game.input=20;//Letzter in der Kette der vorangegangenen Knöpfe(bis einschließlich kartenAblageButtons[1]) und somit die selbe funktion
+   
+    
+    for(int i=0; i<=20; i++){
+    	GameFrame.kartenAblageButtons[i].setVisible(false);
+    }
+    
     Game.interagiert= true;
   } // end of kartenAblageButton20_ActionPerformed
   
   public void bubeSetCircle_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
     Game.bubenInput= 1;//Setzt den bubenInput auf 1 was in der Nachfolgenden Bedingung eine Auswahl des Kartentypus "°" zur Folge hat 
-    Fenster3.bubeSetCircle.setVisible(false);
-    Fenster3.bubeSetPlus.setVisible(false);
-    Fenster3.bubeSetHashtag.setVisible(false);
-    Fenster3.bubeSetStar.setVisible(false);
+    GameFrame.bubeSetCircle.setVisible(false);
+    GameFrame.bubeSetPlus.setVisible(false);
+    GameFrame.bubeSetHashtag.setVisible(false);
+    GameFrame.bubeSetStar.setVisible(false);
     Game.interagiert= true;
   } // end of bubeSetCircle_ActionPerformed
   
   public void bubeSetPlus_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
     Game.bubenInput= 2;//Setzt den bubenInput auf 1 was in der Nachfolgenden Bedingung eine Auswahl des Kartentypus "+" zur Folge hat 
-    Fenster3.bubeSetCircle.setVisible(false);
-    Fenster3.bubeSetPlus.setVisible(false);
-    Fenster3.bubeSetHashtag.setVisible(false);
-    Fenster3.bubeSetStar.setVisible(false);
+    GameFrame.bubeSetCircle.setVisible(false);
+    GameFrame.bubeSetPlus.setVisible(false);
+    GameFrame.bubeSetHashtag.setVisible(false);
+    GameFrame.bubeSetStar.setVisible(false);
     Game.interagiert= true;
   } // end of bubeSetPlus_ActionPerformed
   
   public void bubeSetHashtag_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
     Game.bubenInput= 3;//Setzt den bubenInput auf 1 was in der Nachfolgenden Bedingung eine Auswahl des Kartentypus "#" zur Folge hat 
-    Fenster3.bubeSetCircle.setVisible(false);
-    Fenster3.bubeSetPlus.setVisible(false);
-    Fenster3.bubeSetHashtag.setVisible(false);
-    Fenster3.bubeSetStar.setVisible(false);
+    GameFrame.bubeSetCircle.setVisible(false);
+    GameFrame.bubeSetPlus.setVisible(false);
+    GameFrame.bubeSetHashtag.setVisible(false);
+    GameFrame.bubeSetStar.setVisible(false);
     Game.interagiert= true;
   } // end of bubeSetHashtag_ActionPerformed
   
   public void bubeSetStar_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
     Game.bubenInput= 4;//Setzt den bubenInput auf 1 was in der Nachfolgenden Bedingung eine Auswahl des Kartentypus "*" zur Folge hat 
-    Fenster3.bubeSetCircle.setVisible(false);
-    Fenster3.bubeSetPlus.setVisible(false);
-    Fenster3.bubeSetHashtag.setVisible(false);
-    Fenster3.bubeSetStar.setVisible(false);
+    GameFrame.bubeSetCircle.setVisible(false);
+    GameFrame.bubeSetPlus.setVisible(false);
+    GameFrame.bubeSetHashtag.setVisible(false);
+    GameFrame.bubeSetStar.setVisible(false);
     Game.interagiert= true;
   } // end of bubeSetStar_ActionPerformed
   
   public void neuStartButton_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
     Game.input= 1;//Richtet die nachfolgende Bedingung auf "Neustart" aus 
-    Fenster3.neuStartButton.setVisible(false);
-    Fenster3.beendeenButton.setVisible(false);
+    GameFrame.neuStartButton.setVisible(false);
+    GameFrame.beendeenButton.setVisible(false);
     Game.interagiert= true;
   } // end of neuStartButton_ActionPerformed
   
   public void beendeenButton_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
     Game.input= 2;//Richtet die nachfolgende Bedingung auf "Spiel Beenden" aus
-    Fenster3.neuStartButton.setVisible(false);
-    Fenster3.beendeenButton.setVisible(false);
+    GameFrame.neuStartButton.setVisible(false);
+    GameFrame.beendeenButton.setVisible(false);
     Game.interagiert= true;      
   } // end of beendeenButton_ActionPerformed
   
   // Ende Methoden
-} // end of class Fenster3
+} // end of class GameFrame
