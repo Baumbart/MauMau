@@ -99,17 +99,23 @@ public class Hand {
 
 	// Gibt die Werte aller Karten auf einer Hand aus:
 	public void ausgeben() {
-		Karte currentKarte = head.next;
-
-		while (currentKarte != null) {
-			if (currentKarte.next != null) {
-				System.out.print(currentKarte.element + ", ");
-				currentKarte = currentKarte.next;
-			} else {
-				System.out.print(currentKarte.element);
-				currentKarte = currentKarte.next;
-			}
-		}
-		System.out.println();
-	}
+	    Karte currentKarte = head.next;
+	    GameFrame.labelHandKarten.setText("");//Leert das labelHandKarten von Text
+	    while (currentKarte != null) {
+	      if (currentKarte.next != null) {
+	        GameFrame.labelHandKarten.setVisible(true);//Enthüllt das labelHandKarten
+	        //System.out.print(currentKarte.element + ", ");        
+	        GameFrame.labelHandKarten.setText(GameFrame.labelHandKarten.getText()+" "+currentKarte.element+"");//Beschriftet das labelHandKarten mit den aktuellen Handkarten(ausgenommen der Letzten)
+	        currentKarte = currentKarte.next;
+	      } else {
+	        GameFrame.labelHandKarten.setVisible(true);//Enthüllt das labelHandKarten
+	        //System.out.print(currentKarte.element);
+	        
+	        GameFrame.labelHandKarten.setText(GameFrame.labelHandKarten.getText()+" "+currentKarte.element);//Beschriftet das labelHandKarten mit den aktuellen Handkarten(eingeschlossen der Letzten)
+	        
+	        currentKarte = currentKarte.next;
+	      }
+	    }
+	    //System.out.println();
+	  }
 }
