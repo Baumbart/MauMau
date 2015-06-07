@@ -18,7 +18,6 @@ public class GameFrame extends JFrame {
 	  }
   }
   
-
   //Labels für Kommunikation mit dem User/Spieler
   static JLabel labelSpielerAnweisungen = new JLabel();//Label für: Anweisungen an den Spieler       
   static JLabel labelAblageAusgabe = new JLabel();//Label für: Das Anzegen  der Obersten Ablagestapelkarte 
@@ -26,6 +25,7 @@ public class GameFrame extends JFrame {
   static JLabel labelHandKarten = new JLabel();//Label für: Das Anzeigen der aktuellen Handkarten
   static JLabel labelTextHandkarten = new JLabel();//Label für:Den Schriftzug "Handkarten"
   static JLabel labelInfoTextGezogen = new JLabel();//Label für: Die Informationseinblendung von einer oder zwei gezognen Karten
+  static JLabel LabelTextWinner = new JLabel();//Label für: Den Schriftzug welcher Spieler das Spiel gewonnen hat
   
   //Zählvariable
   static int pressCounter;//Zählt wie oft Button 2+3 Gedrückt wurden
@@ -49,9 +49,9 @@ public class GameFrame extends JFrame {
   static JButton bubeSetHashtag = new JButton();//Button für die auswahl:"#" Bei einem abgelegten Buben
   static JButton bubeSetStar = new JButton();//Button für die auswahl:"*" Bei einem abgelegten Buben
  
+  //Buttons für das Beenden und Neustarten des Spiels
   static JButton neuStartButton = new JButton();//Button für die auswahl: "Neustart"
   static JButton beendeenButton = new JButton();//Button für die auswahl: "Beenden des Spiels"
-  static JLabel LabelTextWinner = new JLabel();//Label für: Den Schriftzug welcher Spieler das Spiel gewonnen hat
   // Ende Attribute
   
   public GameFrame(String title) { 
@@ -69,7 +69,6 @@ public class GameFrame extends JFrame {
     Container cp = getContentPane();//Das(/die) "Content Pane", in welchem sich der Hauptteil der Buttons o.ä. befindet(muss bei Initialisierung festgelegt werden) wird der Variable cp om Typ Container übergeben 
     cp.setLayout(null);//Layoutmanager(?)  
     // Anfang Komponenten    
-    
     
     optionsButtons[1].setBounds(104, 256, 265, 129);//jew höhe breite und position in x- und y- richtung(hier überall Gleiche Beschreibung)
     optionsButtons[1].setText("Zwei Spieler");//Test der auf dem Button/Label zu Sehen ist/Text den der User zu Gesicht bekommt(hier überall Gleiche Beschreibung)
