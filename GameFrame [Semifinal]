@@ -4,45 +4,39 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 
-/**
-  *
-  * Beschreibung
-  *
-  * @author 
-  */
-
 public class GameFrame extends JFrame {
   // Anfang Attribute
 	
-  //Options Buttons
-	
-  static JButton optionsButton1 = new JButton();//Button für die auswahl: "Zweispielermodus" und "Spieler 1 beginnt" 
-  static JButton optionsButton2 = new JButton(); //Button für die auswahl:"Dreispielermodus" und "Spieler 2 beginnt"
-  static JButton optionsButton3 = new JButton();//Button für die auswahl:"Spieler 3 beginnt"   
-  
+  //Options Buttons	
   static JButton[] optionsButtons = new JButton[3];{
   
-	  for(int i=0; i<=3;i++){
+	  for(int i=1; i<=4;i++){
 		  optionsButtons[i] = new JButton();
+		//Button1 für die auswahl: "Zweispielermodus" und "Spieler 1 beginnt"
+		//Button2 für die auswahl:"Dreispielermodus" und "Spieler 2 beginnt"	
+		//Button3 für die auswahl:"Spieler 3 beginnt"
 	  }
   }
   
 
+  //Labels für Kommunikation mit dem User/Spieler
   static JLabel labelSpielerAnweisungen = new JLabel();//Label für: Anweisungen an den Spieler       
   static JLabel labelAblageAusgabe = new JLabel();//Label für: Das Anzegen  der Obersten Ablagestapelkarte 
-  static JLabel labelObersteKarte = new JLabel();//Label für: Den Schriftzug "Oberste Karte"
-  static int pressCounter;//Zählt wie oft Button 2+3 Gedrückt wurden
+  static JLabel labelObersteKarte = new JLabel();//Label für: Den Schriftzug "Oberste Karte"  
   static JLabel labelHandKarten = new JLabel();//Label für: Das Anzeigen der aktuellen Handkarten
+  
+  //Zählvariable
+  static int pressCounter;//Zählt wie oft Button 2+3 Gedrückt wurden
  
+  // Buttons für das Legen und Ziehen 
   static JButton karteLegenButton = new JButton();//Button für die auswahl: "Ablegen einer Karte"
   static JButton karteAufnehmenButton = new JButton();//Button für die auswahl: "Eine Karte aufnehmen"
   
-  //KartenablageButtons 
-    
+  //KartenablageButtons     
   static JButton[] kartenAblageButtons = new JButton[21];{//kartenAblageButtons[1-20] für die auswahl der Abzulegenden Karte
-	  //21
+	  //21 daher damit Konflikte in der Zählweise bzw den Indices vorgebeugt werden 
 	  
-	  for(int i=0; i<=20; i++){
+	  for(int i=1; i<=21; i++){ //Daher auch der Start bei 1
 		  kartenAblageButtons[i] = new JButton();
 	  }
   }
@@ -79,25 +73,25 @@ public class GameFrame extends JFrame {
     // Anfang Komponenten    
     
     
-    optionsButton1.setBounds(104, 256, 265, 129);//jew höhe breite und position in x- und y- richtung(hier überall Gleiche Beschreibung)
-    optionsButton1.setText("Zwei Spieler");//Test der auf dem Button/Label zu Sehen ist/Text den der User zu Gesicht bekommt(hier überall Gleiche Beschreibung)
-    optionsButton1.setMargin(new Insets(2, 2, 2, 2));//Da Button ein (Interfce ist) bzw eigenschaften und methoden von unter anderem solchen erbt sogt dies für die allgemeine verhaltensweise von Buttons(und Menüleisten) "Defines common behaviors for buttons and menu items" (hier überall Gleiche Beschreibung) 
-    optionsButton1.addActionListener(new ActionListener() {//Aktionswächter gibt auskunft sobald ein sich ein "erignis"(event) ereignet
+    optionsButtons[1].setBounds(104, 256, 265, 129);//jew höhe breite und position in x- und y- richtung(hier überall Gleiche Beschreibung)
+    optionsButtons[1].setText("Zwei Spieler");//Test der auf dem Button/Label zu Sehen ist/Text den der User zu Gesicht bekommt(hier überall Gleiche Beschreibung)
+    optionsButtons[1].setMargin(new Insets(2, 2, 2, 2));//Da Button ein (Interfce ist) bzw eigenschaften und methoden von unter anderem solchen erbt sogt dies für die allgemeine verhaltensweise von Buttons(und Menüleisten) "Defines common behaviors for buttons and menu items" (hier überall Gleiche Beschreibung) 
+    optionsButtons[1].addActionListener(new ActionListener() {//Aktionswächter gibt auskunft sobald ein sich ein "erignis"(event) ereignet
     	public void actionPerformed(ActionEvent evt) {//wie z.B. ein "ActionEvent" 
         jButton2_ActionPerformed(evt);              //bei "ActionPerformed" (Knopfdruck)(hier überall Gleiche Beschreibung)
       }
     });
-    cp.add(optionsButton1);//Hinzufügen des Labels zum "Content Pane"(hier überall Gleiche Beschreibung)
+    cp.add(optionsButtons[1]);//Hinzufügen des Labels zum "Content Pane"(hier überall Gleiche Beschreibung)
     
-    optionsButton2.setBounds(400, 256, 265, 129);
-    optionsButton2.setText("Drei Spieler");
-    optionsButton2.setMargin(new Insets(2, 2, 2, 2));
-    optionsButton2.addActionListener(new ActionListener() { 
+    optionsButtons[2].setBounds(400, 256, 265, 129);
+    optionsButtons[2].setText("Drei Spieler");
+    optionsButtons[2].setMargin(new Insets(2, 2, 2, 2));
+    optionsButtons[2].addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
         jButton3_ActionPerformed(evt);
       }
     });
-    cp.add(optionsButton2);
+    cp.add(optionsButtons[2]);
     
     labelSpielerAnweisungen.setBounds(360, 48, 347, 49);//Diemensionen und Standpunkt(hier überall Gleiche Beschreibung)
     labelSpielerAnweisungen.setText("Spieleraufforderungen");//Text im sinne von Anmerkungen für den Programmierenden (Keine ToolTipps)(hier überall Gleiche Beschreibung)
@@ -105,15 +99,15 @@ public class GameFrame extends JFrame {
     labelSpielerAnweisungen.setOpaque(true);//Sichtbarkeit(hier überall Gleiche Beschreibung)
     cp.add(labelSpielerAnweisungen);
     
-    optionsButton3.setBounds(696, 256, 265, 129);
-    optionsButton3.setText("Spieler Drei");
-    optionsButton3.setMargin(new Insets(2, 2, 2, 2));
-    optionsButton3.addActionListener(new ActionListener() { 
+    optionsButtons[3].setBounds(696, 256, 265, 129);
+    optionsButtons[3].setText("Spieler Drei");
+    optionsButtons[3].setMargin(new Insets(2, 2, 2, 2));
+    optionsButtons[3].addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
         jButton1_ActionPerformed(evt);
       }
     });
-    cp.add(optionsButton3);
+    cp.add(optionsButtons[3]);
     
     labelAblageAusgabe.setBounds(720, 136, 35, 49);
     labelAblageAusgabe.setText("AblageAusgabe");
@@ -492,7 +486,7 @@ public class GameFrame extends JFrame {
   public void kartenAblageButton1_ActionPerformed(ActionEvent evt) {
     Game.input=1;//Setzt input auf 1, womit die Nachfolgene Abfrage das Enthüllen des Knopfes(kartenAblageButtons[1]) zur Folge hat(Beschreibung hier fast identisch lediglich jew. ein Knopf mehr Pro gehaltener Karte)
     
-    for(int i=0; i<=20; i++){
+    for(int i=1; i<=20; i++){
     	GameFrame.kartenAblageButtons[i].setVisible(false);
     }
     
@@ -502,7 +496,7 @@ public class GameFrame extends JFrame {
   public void kartenAblageButton2_ActionPerformed(ActionEvent evt) {
     Game.input=2;//Setzt input auf 2, womit die Nachfolgene Abfrage das Enthüllen des Knopfes selbst(kartenAblageButtons[2]) und das Enthüllen des Vorangengangenen(kartenAblageButtons[1]) zur Folge hat(Beschreibung hier fast identisch lediglich jew. ein Knopf mehr Pro gehaltener Karte)
     
-    for(int i=0; i<=20; i++){
+    for(int i=1; i<=20; i++){
     	GameFrame.kartenAblageButtons[i].setVisible(false);
     }
     
@@ -512,7 +506,7 @@ public class GameFrame extends JFrame {
   public void kartenAblageButton3_ActionPerformed(ActionEvent evt) {
     Game.input=3;//Setzt input auf 3, womit die Nachfolgene Abfrage das Enthüllen des Knopfes selbst(kartenAblageButtons[3]) und das Enthüllen des Vorangengangenen(kartenAblageButtons[2]), sowie wiederum dessen vorgänger zur Folge(bis kartenAblageButtons[1]) hat(Beschreibung hier fast identisch lediglich jew. ein Knopf mehr Pro gehaltener Karte)(wie erwähn wiederholt sich das Prozedere und wird deshalb nicht einzeln Beschriftet)
 
-    for(int i=0; i<=20; i++){
+    for(int i=1; i<=20; i++){
     	GameFrame.kartenAblageButtons[i].setVisible(false);
     }
     
@@ -522,7 +516,7 @@ public class GameFrame extends JFrame {
   public void kartenAblageButton4_ActionPerformed(ActionEvent evt) {
     Game.input=4;
 
-    for(int i=0; i<=20; i++){
+    for(int i=1; i<=20; i++){
     	GameFrame.kartenAblageButtons[i].setVisible(false);
     }
     
@@ -532,7 +526,7 @@ public class GameFrame extends JFrame {
   public void kartenAblageButton5_ActionPerformed(ActionEvent evt) {
     Game.input=5;
 
-    for(int i=0; i<=20; i++){
+    for(int i=1; i<=20; i++){
     	GameFrame.kartenAblageButtons[i].setVisible(false);
     }
     
@@ -542,7 +536,7 @@ public class GameFrame extends JFrame {
   public void kartenAblageButton6_ActionPerformed(ActionEvent evt) {
     Game.input=6;
     
-    for(int i=0; i<=20; i++){
+    for(int i=1; i<=20; i++){
     	GameFrame.kartenAblageButtons[i].setVisible(false);
     }
     
@@ -552,7 +546,7 @@ public class GameFrame extends JFrame {
   public void kartenAblageButton7_ActionPerformed(ActionEvent evt) {
     Game.input=7;
     
-    for(int i=0; i<=20; i++){
+    for(int i=1; i<=20; i++){
     	GameFrame.kartenAblageButtons[i].setVisible(false);
     }
 
@@ -562,7 +556,7 @@ public class GameFrame extends JFrame {
   public void kartenAblageButton8_ActionPerformed(ActionEvent evt) {
     Game.input=8;
     
-    for(int i=0; i<=20; i++){
+    for(int i=1; i<=20; i++){
     	GameFrame.kartenAblageButtons[i].setVisible(false);
     }
    
@@ -572,7 +566,7 @@ public class GameFrame extends JFrame {
   public void kartenAblageButton9_ActionPerformed(ActionEvent evt) {
     Game.input=9;
     
-    for(int i=0; i<=20; i++){
+    for(int i=1; i<=20; i++){
     	GameFrame.kartenAblageButtons[i].setVisible(false);
     }
    
@@ -582,7 +576,7 @@ public class GameFrame extends JFrame {
   public void kartenAblageButton10_ActionPerformed(ActionEvent evt) {
     Game.input=10;
     
-    for(int i=0; i<=20; i++){
+    for(int i=1; i<=20; i++){
     	GameFrame.kartenAblageButtons[i].setVisible(false);
     }
     
@@ -592,7 +586,7 @@ public class GameFrame extends JFrame {
   public void kartenAblageButton11_ActionPerformed(ActionEvent evt) {
     Game.input=11;
     
-    for(int i=0; i<=20; i++){
+    for(int i=1; i<=20; i++){
     	GameFrame.kartenAblageButtons[i].setVisible(false);
     }
     
@@ -602,7 +596,7 @@ public class GameFrame extends JFrame {
   public void kartenAblageButton12_ActionPerformed(ActionEvent evt) {
     Game.input=12;
     
-    for(int i=0; i<=20; i++){
+    for(int i=1; i<=20; i++){
     	GameFrame.kartenAblageButtons[i].setVisible(false);
     }
     
@@ -612,7 +606,7 @@ public class GameFrame extends JFrame {
   public void kartenAblageButton13_ActionPerformed(ActionEvent evt) {
     Game.input=13;
     
-    for(int i=0; i<=20; i++){
+    for(int i=1; i<=20; i++){
     	GameFrame.kartenAblageButtons[i].setVisible(false);
     }
     
@@ -622,7 +616,7 @@ public class GameFrame extends JFrame {
   public void kartenAblageButton14_ActionPerformed(ActionEvent evt) {
     Game.input=14;
     
-    for(int i=0; i<=20; i++){
+    for(int i=1; i<=20; i++){
     	GameFrame.kartenAblageButtons[i].setVisible(false);
     }
     
@@ -632,7 +626,7 @@ public class GameFrame extends JFrame {
   public void kartenAblageButton15_ActionPerformed(ActionEvent evt) {
     Game.input=15;
     
-    for(int i=0; i<=20; i++){
+    for(int i=1; i<=20; i++){
     	GameFrame.kartenAblageButtons[i].setVisible(false);
     }
     
@@ -642,7 +636,7 @@ public class GameFrame extends JFrame {
   public void kartenAblageButton16_ActionPerformed(ActionEvent evt) {
     Game.input=16;
     
-    for(int i=0; i<=20; i++){
+    for(int i=1; i<=20; i++){
     	GameFrame.kartenAblageButtons[i].setVisible(false);
     }
     
@@ -652,7 +646,7 @@ public class GameFrame extends JFrame {
   public void kartenAblageButton17_ActionPerformed(ActionEvent evt) {
     Game.input=17;
     
-    for(int i=0; i<=20; i++){
+    for(int i=1; i<=20; i++){
     	GameFrame.kartenAblageButtons[i].setVisible(false);
     }
     
@@ -662,7 +656,7 @@ public class GameFrame extends JFrame {
   public void kartenAblageButton18_ActionPerformed(ActionEvent evt) {
     Game.input=18;
     
-    for(int i=0; i<=20; i++){
+    for(int i=1; i<=20; i++){
     	GameFrame.kartenAblageButtons[i].setVisible(false);
     }
     
@@ -672,7 +666,7 @@ public class GameFrame extends JFrame {
   public void kartenAblageButton19_ActionPerformed(ActionEvent evt) {
     Game.input=19;
     
-    for(int i=0; i<=20; i++){
+    for(int i=1; i<=20; i++){
     	GameFrame.kartenAblageButtons[i].setVisible(false);
     }
     
@@ -683,7 +677,7 @@ public class GameFrame extends JFrame {
     Game.input=20;//Letzter in der Kette der vorangegangenen Knöpfe(bis einschließlich kartenAblageButtons[1]) und somit die selbe funktion
    
     
-    for(int i=0; i<=20; i++){
+    for(int i=1; i<=20; i++){
     	GameFrame.kartenAblageButtons[i].setVisible(false);
     }
     
