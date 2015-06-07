@@ -17,7 +17,11 @@ public class Game {
 	private Hand spieler; // Hand des aktuellen Spielers
 	private Karte current; // Zählnode für mehrere Methoden
 	private Kartenstapel kartenstapel = new Kartenstapel(); // Erzeugung des Kartenstapels, das im Spiel verwendet wird.
-
+	static int bubenInput;
+	
+	static int input;//Variable über welcher der User Hauptsächlich mit dem Programm Kommuniziert
+	static boolean interagiert;//Zur prüfung einer stattgefundenen Usereingabe
+	
 	// Startet bei der Erzeugung das Spiel:
 	public Game() {
 		konfiguration();
@@ -25,10 +29,48 @@ public class Game {
 
 	// Konfiguration des Spiels (Spieleranzahl und Startspieler):
 	private void konfiguration() {
+		
+		//Verbergen der nicht benötigten Buttons und Labels
+		GameFrame.optionsButtons[3].setVisible(false);
+		
+		for(int i=1; i<=20; i++){
+	    	GameFrame.kartenAblageButtons[i].setVisible(false);
+	    }
+		
+		GameFrame.bubeSetCircle.setVisible(false);
+	    GameFrame.bubeSetPlus.setVisible(false);
+	    GameFrame.bubeSetHashtag.setVisible(false);
+	    GameFrame.bubeSetStar.setVisible(false);  
+	    
+	    GameFrame.karteLegenButton.setVisible(false);
+	    GameFrame.karteAufnehmenButton.setVisible(false);
+	    
+	    GameFrame.neuStartButton.setVisible(false);
+	    GameFrame.beendeenButton.setVisible(false);
+	    
+	    
+	    GameFrame.labelAblageAusgabe.setVisible(false);
+	    GameFrame.labelObersteKarte.setVisible(false);
+	    GameFrame.labelHandKarten.setVisible(false);
+	    GameFrame.labelTextHandkarten.setVisible(false);
+	    GameFrame.labelInfoTextGezogen.setVisible(false);	    
+	    GameFrame.LabelTextWinner.setVisible(false);
 
 		// Auswahl der Spieleranzahl:
-		System.out.println("Bitte wählen Sie die Spieleranzahl! (2/3)");
-		int input = scanner.nextInt();
+		//System.out.println("Bitte wählen Sie die Spieleranzahl! (2/3)");
+	    GameFrame.labelSpielerAnweisungen.setText("Bitte wählen Sie die Spieleranzahl!");//Setzt das Label auf den Entsprechenden Text hier: "Bitte wählen Sie die Spieleranzahl!"
+		//int input = scanner.nextInt();
+	    GameFrame.labelSpielerAnweisungen.setText("Bitte wählen Sie die Spieleranzahl!");//Setzt das Label auf den Entsprechenden Text hier: "Bitte wählen Sie die Spieleranzahl!"
+	    while (interagiert != true) {//Wartet auf Usereingabe in "GameFrame" damit das Programm in "Game" nicht vorschnell weiterläuft(Im folgenden Ebenfalls nicht jedes mal wieder aufgeführt)
+	      //System.out.print("");     
+	    	try {
+				Thread.sleep(30);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    } 
+	    interagiert= false;//Setzt die UsereingabeAbfrageVariable wieder zurück
 		player = input;
 
 		// Auswahl des Spielers, der Starten soll:
