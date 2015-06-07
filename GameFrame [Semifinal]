@@ -24,6 +24,8 @@ public class GameFrame extends JFrame {
   static JLabel labelAblageAusgabe = new JLabel();//Label für: Das Anzegen  der Obersten Ablagestapelkarte 
   static JLabel labelObersteKarte = new JLabel();//Label für: Den Schriftzug "Oberste Karte"  
   static JLabel labelHandKarten = new JLabel();//Label für: Das Anzeigen der aktuellen Handkarten
+  static JLabel labelTextHandkarten = new JLabel();//Label für:Den Schriftzug "Handkarten"
+  static JLabel labelInfoTextGezogen = new JLabel();//Label für: Die Informationseinblendung von einer oder zwei gezognen Karten
   
   //Zählvariable
   static int pressCounter;//Zählt wie oft Button 2+3 Gedrückt wurden
@@ -41,15 +43,11 @@ public class GameFrame extends JFrame {
 	  }
   }
   
-  
   //Buttons für den "Bubenwunsch"
   static JButton bubeSetCircle = new JButton();//Button für die auswahl:"°" Bei einem abgelegten Buben 
   static JButton bubeSetPlus = new JButton();//Button für die auswahl:"+" Bei einem abgelegten Buben
   static JButton bubeSetHashtag = new JButton();//Button für die auswahl:"#" Bei einem abgelegten Buben
   static JButton bubeSetStar = new JButton();//Button für die auswahl:"*" Bei einem abgelegten Buben
-  
-  static JLabel labelTextHandkarten = new JLabel();//Label für:Den Schriftzug "Handkarten"
-  static JLabel labelInfoTextGezogen = new JLabel();//Label für: Die Informationseinblendung von einer oder zwei gezognen Karten
  
   static JButton neuStartButton = new JButton();//Button für die auswahl: "Neustart"
   static JButton beendeenButton = new JButton();//Button für die auswahl: "Beenden des Spiels"
