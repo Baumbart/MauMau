@@ -2,7 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
-import javax.swing.event.*;
+//import javax.swing.event.*;
 
 public class GameFrame extends JFrame {
   // Anfang Attribute
@@ -67,7 +67,8 @@ public class GameFrame extends JFrame {
     setLocation(x, y);//Startposition
     setResizable(false);//Verhindert das Vergrößern oder verkleinern des Fensters
     Container cp = getContentPane();//Das(/die) "Content Pane", in welchem sich der Hauptteil der Buttons o.ä. befindet(muss bei Initialisierung festgelegt werden) wird der Variable cp om Typ Container übergeben 
-    cp.setLayout(null);//Layoutmanager(?)  
+    cp.setLayout(null);//Layoutmanager(?) 
+    cp.setBackground(Color.WHITE); //Setzt die die Hintergrundfarbe des JFrames auf weiss
     // Anfang Komponenten    
     
     optionsButtons[1].setBounds(104, 256, 265, 129);//jew höhe breite und position in x- und y- richtung(hier überall Gleiche Beschreibung)
