@@ -38,6 +38,9 @@ public class Game {
 	    	GameFrame.kartenAblageButtons[i].setVisible(false);
 	    }
 		
+		GameFrame.optionsButtons[1].setVisible(true);
+		GameFrame.optionsButtons[2].setVisible(true);
+		
 		GameFrame.bubeSetCircle.setVisible(false);
 	    GameFrame.bubeSetPlus.setVisible(false);
 	    GameFrame.bubeSetHashtag.setVisible(false);
@@ -464,9 +467,14 @@ public class Game {
 
 			for (int i = 0; i < Hand.hand1.size(); i++) {
 				if (Hand.hand1.vergleich(pruefe) == true) {
-					counter++;
+					counter++;					
+					GameFrame.kartenAblageButtons[i+1].setText(""+pruefe.next.element);
+					System.out.println("lollolollll1");
+				}else{
+					GameFrame.kartenAblageButtons[i+1].setText("Nicht Ablegbar");
+					System.out.println("döner"+i);					
 				}
-				pruefe = pruefe.next;
+				pruefe = pruefe.next;				
 			}
 		}
 		if (aktuell == 2) {
@@ -474,8 +482,13 @@ public class Game {
 			Karte pruefe = Hand.hand2.head;
 
 			for (int i = 0; i < Hand.hand2.size(); i++) {
-				if (Hand.hand2.vergleich(pruefe) == true) {
-					counter++;
+				if (Hand.hand1.vergleich(pruefe) == true) {
+					counter++;					
+					GameFrame.kartenAblageButtons[i+1].setText(""+pruefe.next.element);
+					System.out.println("lollolollll1");
+				}else{
+					GameFrame.kartenAblageButtons[i+1].setText("Nicht Ablegbar");
+					System.out.println("döner"+i);					
 				}
 				pruefe = pruefe.next;
 			}
@@ -485,8 +498,13 @@ public class Game {
 			Karte pruefe = Hand.hand3.head;
 
 			for (int i = 0; i < Hand.hand3.size(); i++) {
-				if (Hand.hand3.vergleich(pruefe) == true) {
-					counter++;
+				if (Hand.hand1.vergleich(pruefe) == true) {
+					counter++;					
+					GameFrame.kartenAblageButtons[i+1].setText(""+pruefe.next.element);
+					System.out.println("lollolollll1");
+				}else{
+					GameFrame.kartenAblageButtons[i+1].setText("Nicht Ablegbar");
+					System.out.println("döner"+i);					
 				}
 				pruefe = pruefe.next;
 			}
