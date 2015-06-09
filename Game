@@ -339,7 +339,7 @@ public class Game {
 					//Altes Codesnippet Ende
 					
 					
-					for(int i=1; i<=handkarten;i++){
+					for(int i=1; i<=handkarten && i<=20 ;i++){
 						GameFrame.kartenAblageButtons[i].setVisible(true);						
 					}	
 					
