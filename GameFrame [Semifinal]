@@ -119,7 +119,7 @@ public class GameFrame extends JFrame {
     labelObersteKarte.setOpaque(true);
     cp.add(labelObersteKarte);
     
-    labelHandKarten.setBounds(232, 136, 259, 49);
+    labelHandKarten.setBounds(232, 136, 265, 49);
     labelHandKarten.setText("");
     labelHandKarten.setBackground(new Color(0xFFC800));
     labelHandKarten.setOpaque(true);
@@ -256,7 +256,7 @@ public class GameFrame extends JFrame {
     cp.add(kartenAblageButtons[11]);
     
     kartenAblageButtons[12].setBounds(152, 500, 100, 50);
-    kartenAblageButtons[12].setText("Zweölfte Karte");
+    kartenAblageButtons[12].setText("Zwölfte Karte");
     kartenAblageButtons[12].setMargin(new Insets(2, 2, 2, 2));
     kartenAblageButtons[12].addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
