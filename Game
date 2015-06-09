@@ -21,6 +21,7 @@ public class Game {
 	
 	static int input;//Variable über welcher der User Hauptsächlich mit dem Programm Kommuniziert
 	static boolean interagiert;//Zur prüfung einer stattgefundenen Usereingabe
+	private int handkarten; //Variable der Anzahl der Karten auf der Hand der Spieler 
 	
 	// Startet bei der Erzeugung das Spiel:
 	public Game() {
@@ -188,7 +189,7 @@ public class Game {
 		spieler.ausgeben();
 		System.out.print("[Aktuell]: ");
 		*/
-		
+		spieler.ausgeben();		
 
 		// Wenn zuvor ein Bube gelegt wurde, wird lediglich das ausgewählte Symbol und nicht der ganze String angezeigt:
 		if (bube != true) {
@@ -308,8 +309,37 @@ public class Game {
 					System.out.println("-------------------------");
 					*/
 					
+					//Altes CodeSnippet Anfang
+					if(player==2){
+						//Prüft, welcher Spieler aktuell am Zug ist:
+						if (aktuell == 1) {
+							handkarten = Hand.hand1.size(); //Der Variable "handkarten" wird die Anzahl der Karten auf "hand1" aus der Klasse "Hand" zugewiesen.
+							spieler = Hand.hand1; //Der Variable "spieler" wird die Hand "hand1" aus der Klasse "Hand" zugewiesen.
+						}
+						if (aktuell == 2) {
+							handkarten = Hand.hand2.size(); //Der Variable "handkarten" wird die Anzahl der Karten auf "hand2" aus der Klasse "Hand" zugewiesen.
+							spieler = Hand.hand2; //Der Variable "spieler" wird die Hand "hand2" aus der Klasse "Hand" zugewiesen.
+						}
+					} else {
+						
+						//Prüft, welcher Spieler aktuell dran ist:
+						if (aktuell == 1) {
+							handkarten = Hand.hand1.size(); //Der Variable "handkarten" wird die Anzahl der Karten auf "hand1" aus der Klasse "Hand" zugewiesen.
+							spieler = Hand.hand1; //Der Variable "spieler" wird die Hand "hand1" aus der Klasse "Hand" zugewiesen.
+						}
+						if (aktuell == 2) {
+							handkarten = Hand.hand2.size(); //Der Variable "handkarten" wird die Anzahl der Karten auf "hand2" aus der Klasse "Hand" zugewiesen.
+							spieler = Hand.hand2; //Der Variable "spieler" wird die Hand "hand2" aus der Klasse "Hand" zugewiesen.
+						}
+						if (aktuell == 3) {
+							handkarten = Hand.hand3.size(); //Der Variable "handkarten" wird die Anzahl der Karten auf "hand3" aus der Klasse "Hand" zugewiesen.
+							spieler = Hand.hand3; //Der Variable "spieler" wird die Hand "hand3" aus der Klasse "Hand" zugewiesen.
+						}
+					}
+					//Altes Codesnippet Ende
 					
-					for(int i=0; i<=player;i++){
+					
+					for(int i=1; i<=handkarten;i++){
 						GameFrame.kartenAblageButtons[i].setVisible(true);						
 					}	
 					
