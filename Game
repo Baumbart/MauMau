@@ -712,7 +712,25 @@ public class Game {
 				//System.out.print(")'");
 				//System.out.println();
 				//int input = scanner.nextInt();
-				//System.out.println("-------------------------");
+				//System.out.println("-------------------------");	
+				
+				for(int i=1; i<=handkarten && i<=20 ;i++){
+					GameFrame.kartenAblageButtons[i].setVisible(true);						
+				}	
+				
+				GameFrame.labelSpielerAnweisungen.setText("Spieler " + aktuell + ", legen Sie wenn möglich bitte Ihren Sieben!");
+		          while (!interagiert) {
+		        	  try {
+						Thread.sleep(30);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}                    
+		          } // end of while 
+		          
+		          interagiert= false;
+				
+				
 
 				// Wenn die ausgewählte Karte eine "7" ist, wird sie gelegt:
 				if (aktuell == 1) {
