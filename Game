@@ -228,6 +228,8 @@ public class Game {
 
 	// Zug des aktuellen Spielers:
 	private void zug() {
+		
+		input=0;
 
 		// Wenn Karten gelegt werden können, darf der aktuelle Spieler ziehen oder legen. Ansonsten darf er nur ziehen:
 		if (counter > 0) {
@@ -240,6 +242,9 @@ public class Game {
 				spieler.ausgeben();
 				//System.out.println();
 				seven = false;
+				
+				GameFrame.labelInfoTextGezogen.setVisible(true);
+				GameFrame.labelInfoTextGezogen.setText("Spieler " + aktuell +": "+ "2 Karten gezogen");//Zeigt dem Spieler dass und wie viele Karten er gezogen hat/ ziehen musste (Bis die Nächste eingabe eines Spielers bevorsteht)				
 			}
 
 			// Auswahl, ob der aktuelle Spieler eine Karte legt, oder eine Karte zieht:
