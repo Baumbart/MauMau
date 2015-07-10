@@ -24,7 +24,7 @@ public class GameFrame extends JFrame {
   static JLabel labelObersteKarte = new JLabel();//Label für: Den Schriftzug "Oberste Karte"  
   static JLabel labelHandKarten = new JLabel();//Label für: Das Anzeigen der aktuellen Handkarten
   static JLabel labelTextHandkarten = new JLabel();//Label für:Den Schriftzug "Handkarten"
-  static JLabel labelInfoTextGezogen = new JLabel();//Label für: Die Informationseinblendung von einer oder zwei gezognen Karten
+  static JLabel labelInfoTextGezogen = new JLabel();//Label für: Die Informationseinblendung von einer, zwei oder mehr gezognen Karten
   static JLabel LabelTextWinner = new JLabel();//Label für: Den Schriftzug welcher Spieler das Spiel gewonnen hat
   
   //Zählvariable
@@ -345,7 +345,7 @@ public class GameFrame extends JFrame {
     });
     cp.add(kartenAblageButtons[20]);
     
-    bubeSetCircle.setBounds(240, 384, 75, 75);
+    bubeSetCircle.setBounds(240, 256, 75, 75);
     bubeSetCircle.setText("°");
     bubeSetCircle.setMargin(new Insets(2, 2, 2, 2));
     bubeSetCircle.addActionListener(new ActionListener() { 
@@ -355,7 +355,7 @@ public class GameFrame extends JFrame {
     });
     cp.add(bubeSetCircle);
     
-    bubeSetPlus.setBounds(430, 384, 75, 75);
+    bubeSetPlus.setBounds(430, 256, 75, 75);
     bubeSetPlus.setText("+");
     bubeSetPlus.setMargin(new Insets(2, 2, 2, 2));
     bubeSetPlus.addActionListener(new ActionListener() { 
@@ -365,7 +365,7 @@ public class GameFrame extends JFrame {
     });
     cp.add(bubeSetPlus);
     
-    bubeSetHashtag.setBounds(552, 384, 75, 75);
+    bubeSetHashtag.setBounds(552, 256, 75, 75);
     bubeSetHashtag.setText("#");
     bubeSetHashtag.setMargin(new Insets(2, 2, 2, 2));
     bubeSetHashtag.addActionListener(new ActionListener() { 
@@ -375,7 +375,7 @@ public class GameFrame extends JFrame {
     });
     cp.add(bubeSetHashtag);
     
-    bubeSetStar.setBounds(742, 384, 75, 75);
+    bubeSetStar.setBounds(742, 256, 75, 75);
     bubeSetStar.setText("*");
     bubeSetStar.setMargin(new Insets(2, 2, 2, 2));
     bubeSetStar.addActionListener(new ActionListener() { 
@@ -385,13 +385,13 @@ public class GameFrame extends JFrame {
     });
     cp.add(bubeSetStar);
     
-    labelTextHandkarten.setBounds(160, 136, 75, 49);
+    labelTextHandkarten.setBounds(135, 136, 100, 49);
     labelTextHandkarten.setText("Handkarten: ");
     labelTextHandkarten.setBackground(new Color(0xFFC800));
     labelTextHandkarten.setOpaque(true);
     cp.add(labelTextHandkarten);
     
-    labelInfoTextGezogen.setBounds(784, 136, 163, 49);
+    labelInfoTextGezogen.setBounds(784, 136, 200, 49);
     labelInfoTextGezogen.setText("Karte gezogen");
     labelInfoTextGezogen.setBackground(new Color(0xFFC800));
     labelInfoTextGezogen.setOpaque(true);
@@ -688,6 +688,11 @@ public class GameFrame extends JFrame {
     GameFrame.bubeSetPlus.setVisible(false);
     GameFrame.bubeSetHashtag.setVisible(false);
     GameFrame.bubeSetStar.setVisible(false);
+    
+    for(int i=1; i<=20; i++){
+    	GameFrame.kartenAblageButtons[i].setVisible(false);
+    }
+    
     Game.interagiert= true;
   } // end of bubeSetCircle_ActionPerformed
   
@@ -697,6 +702,11 @@ public class GameFrame extends JFrame {
     GameFrame.bubeSetPlus.setVisible(false);
     GameFrame.bubeSetHashtag.setVisible(false);
     GameFrame.bubeSetStar.setVisible(false);
+    
+    for(int i=1; i<=20; i++){
+    	GameFrame.kartenAblageButtons[i].setVisible(false);
+    }
+    
     Game.interagiert= true;
   } // end of bubeSetPlus_ActionPerformed
   
@@ -706,6 +716,11 @@ public class GameFrame extends JFrame {
     GameFrame.bubeSetPlus.setVisible(false);
     GameFrame.bubeSetHashtag.setVisible(false);
     GameFrame.bubeSetStar.setVisible(false);
+    
+    for(int i=1; i<=20; i++){
+    	GameFrame.kartenAblageButtons[i].setVisible(false);
+    }
+    
     Game.interagiert= true;
   } // end of bubeSetHashtag_ActionPerformed
   
@@ -715,6 +730,11 @@ public class GameFrame extends JFrame {
     GameFrame.bubeSetPlus.setVisible(false);
     GameFrame.bubeSetHashtag.setVisible(false);
     GameFrame.bubeSetStar.setVisible(false);
+    
+    for(int i=1; i<=20; i++){
+    	GameFrame.kartenAblageButtons[i].setVisible(false);
+    }
+    
     Game.interagiert= true;
   } // end of bubeSetStar_ActionPerformed
   
