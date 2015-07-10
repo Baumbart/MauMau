@@ -1,3 +1,5 @@
+import java.awt.Color;
+
 //import java.util.*;
 
 public class Game {
@@ -31,7 +33,7 @@ public class Game {
 	// Konfiguration des Spiels (Spieleranzahl und Startspieler):
 	private void konfiguration() {
 		
-		//Verbergen der nicht benötigten Buttons und Labels
+		//Verbergen der nicht benötigten Buttons und Labels	
 		GameFrame.optionsButtons[3].setVisible(false);
 		
 		for(int i=1; i<=20; i++){
@@ -230,7 +232,7 @@ public class Game {
 	private void zug() {
 		
 		input=0;
-
+		
 		// Wenn Karten gelegt werden können, darf der aktuelle Spieler ziehen oder legen. Ansonsten darf er nur ziehen:
 		if (counter > 0) {
 
@@ -239,12 +241,13 @@ public class Game {
 				ziehenAlle();
 				//System.out.println();
 				//System.out.print("[Handkarten]: ");
+				pruefen();
 				spieler.ausgeben();
 				//System.out.println();
 				seven = false;
 				
 				GameFrame.labelInfoTextGezogen.setVisible(true);
-				GameFrame.labelInfoTextGezogen.setText("Spieler " + aktuell +": "+ "2 Karten gezogen");//Zeigt dem Spieler dass und wie viele Karten er gezogen hat/ ziehen musste (Bis die Nächste eingabe eines Spielers bevorsteht)				
+				GameFrame.labelInfoTextGezogen.setText("Spieler " + aktuell +": "+ sevenStack+" Karten gezogen");//Zeigt dem Spieler dass und wie viele Karten er gezogen hat/ ziehen musste (Bis die Nächste eingabe eines Spielers bevorsteht)				
 			}
 
 			// Auswahl, ob der aktuelle Spieler eine Karte legt, oder eine Karte zieht:
@@ -446,11 +449,11 @@ public class Game {
 				//System.out.println();
 				//System.out.print("[Handkarten]: ");
 				GameFrame.labelInfoTextGezogen.setVisible(true);
-				GameFrame.labelInfoTextGezogen.setText("Spieler " + aktuell +": "+ "2 Karten gezogen");//Zeigt dem Spieler dass und wie viele Karten er gezogen hat/ ziehen musste (Bis die Nächste eingabe eines Spielers bevorsteht)				
+				GameFrame.labelInfoTextGezogen.setText("Spieler " + aktuell +": "+sevenStack+" Karten gezogen");//Zeigt dem Spieler dass und wie viele Karten er gezogen hat/ ziehen musste (Bis die Nächste eingabe eines Spielers bevorsteht)				
 				
-			    spieler.ausgeben();
-				seven = false;
 				pruefen();
+			    spieler.ausgeben();
+				seven = false;				
 				zug();
 			}
 			//System.out.println("[Zug]: 'Ich ziehe eine Karte' (1)");
@@ -475,8 +478,10 @@ public class Game {
 				if (Hand.hand1.vergleich(pruefe) == true) {
 					counter++;					
 					GameFrame.kartenAblageButtons[i+1].setText(""+pruefe.next.element);
+					GameFrame.kartenAblageButtons[i+1].setBackground(null);
 				}else{
-					GameFrame.kartenAblageButtons[i+1].setText("Nicht Ablegbar");
+					GameFrame.kartenAblageButtons[i+1].setBackground(Color.red);
+					GameFrame.kartenAblageButtons[i+1].setText(""+pruefe.next.element);
 				}
 				pruefe = pruefe.next;				
 			}
@@ -489,8 +494,11 @@ public class Game {
 				if (Hand.hand2.vergleich(pruefe) == true) {
 					counter++;					
 					GameFrame.kartenAblageButtons[i+1].setText(""+pruefe.next.element);
+					GameFrame.kartenAblageButtons[i+1].setBackground(null);
+					
 				}else{
-					GameFrame.kartenAblageButtons[i+1].setText("Nicht Ablegbar");
+					GameFrame.kartenAblageButtons[i+1].setBackground(Color.red);
+					GameFrame.kartenAblageButtons[i+1].setText(""+pruefe.next.element);
 				}
 				pruefe = pruefe.next;				
 			}
@@ -503,8 +511,10 @@ public class Game {
 				if (Hand.hand3.vergleich(pruefe) == true) {
 					counter++;					
 					GameFrame.kartenAblageButtons[i+1].setText(""+pruefe.next.element);
+					GameFrame.kartenAblageButtons[i+1].setBackground(null);
 				}else{
-					GameFrame.kartenAblageButtons[i+1].setText("Nicht Ablegbar");					
+					GameFrame.kartenAblageButtons[i+1].setBackground(Color.red);			
+					GameFrame.kartenAblageButtons[i+1].setText(""+pruefe.next.element);
 				}
 				pruefe = pruefe.next;
 			}
@@ -584,10 +594,12 @@ public class Game {
 				//System.out.println();
 				//System.out.println("[Zug]: '" + sevenStack + " Karten gezogen'");
 				//System.out.println();
+				GameFrame.labelInfoTextGezogen.setText("" + sevenStack + " Karten gezogen");
 			} else {
 				//System.out.println();
 				//System.out.println("[Zug]: 'Karte gezogen'");
 				//System.out.println();
+				GameFrame.labelInfoTextGezogen.setText("Karte gezogen");
 			}
 			//System.out.println("-------------------------");
 		} else {
@@ -617,6 +629,10 @@ public class Game {
 			int bubenInput = scanner.nextInt();
 			*/
 			
+			for(int i=1; i<=handkarten && i<=20 ;i++){
+				GameFrame.kartenAblageButtons[i].setVisible(true);						
+			}
+			
 			GameFrame.labelSpielerAnweisungen.setText("Bitte wählen sie ein Symbol");
 		      
 		    GameFrame.bubeSetCircle.setVisible(true);
@@ -634,8 +650,7 @@ public class Game {
 				}    	                  
 		    } // end of while 
 		      
-		    interagiert= false;
-			
+		    interagiert= false;			
 			
 			if (bubenInput < 5) {
 				//System.out.println("-------------------------");
@@ -655,7 +670,7 @@ public class Game {
 			} else {
 				special();
 			}
-		}
+		}		
 	}
 
 	// Prüft, wenn eine "7" oben auf der Ablage liegt, ob der aktuelle Spieler ebenfalls eine "7" auf der Hand hat und fordert ihn auf, diese zu legen:
@@ -676,6 +691,7 @@ public class Game {
 								//System.out.print(" / ");
 							}
 							//System.out.print(i + 1 + ": [" + current.element + "]");
+							GameFrame.kartenAblageButtons[i+1].setBackground(Color.green);
 							j++;
 						}
 						current = current.next;
@@ -690,6 +706,7 @@ public class Game {
 								//System.out.print(" / ");
 							}
 							//System.out.print(i + 1 + ": [" + current.element + "]");
+							GameFrame.kartenAblageButtons[i+1].setBackground(Color.green);
 							j++;
 						}
 						current = current.next;
@@ -704,6 +721,7 @@ public class Game {
 								//System.out.print(" / ");
 							}
 							//System.out.print(i + 1 + ": [" + current.element + "]");
+							GameFrame.kartenAblageButtons[i+1].setBackground(Color.green);
 							j++;
 						}
 						current = current.next;
@@ -714,11 +732,14 @@ public class Game {
 				//int input = scanner.nextInt();
 				//System.out.println("-------------------------");	
 				
+				pruefen();
+				
 				for(int i=1; i<=handkarten && i<=20 ;i++){
 					GameFrame.kartenAblageButtons[i].setVisible(true);						
 				}	
 				
-				GameFrame.labelSpielerAnweisungen.setText("Spieler " + aktuell + ", legen Sie wenn möglich bitte Ihren Sieben!");
+				GameFrame.labelSpielerAnweisungen.setBounds(360, 60, 347, 49);
+				GameFrame.labelSpielerAnweisungen.setText("Spieler " + aktuell + ", legen Sie bitte Ihren Sieben!");
 		          while (!interagiert) {
 		        	  try {
 						Thread.sleep(30);
@@ -726,12 +747,10 @@ public class Game {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}                    
-		          } // end of while 
+		          } // end of while
 		          
 		          interagiert= false;
-				
-				
-
+		          
 				// Wenn die ausgewählte Karte eine "7" ist, wird sie gelegt:
 				if (aktuell == 1) {
 					current = Hand.hand1.head;
@@ -864,10 +883,14 @@ public class Game {
 			Hand.hand3.clear();
 			Ablage.ablage.clear();
 			kartenstapel.mischen();
+			GameFrame.pressCounter= 0;
+			GameFrame.optionsButtons[1].setText("Zwei Spieler");
+			GameFrame.optionsButtons[2].setText("Drei Spieler");
+			GameFrame.labelInfoTextGezogen.setVisible(false);
 			konfiguration();
 		} else {
-			GameFrame.labelSpielerAnweisungen.setText("~SPIEL BEENDET~");
-			end();
+			//GameFrame.labelSpielerAnweisungen.setText("~SPIEL BEENDET~");
+			System.exit(0);
 		}
 	}
 }
